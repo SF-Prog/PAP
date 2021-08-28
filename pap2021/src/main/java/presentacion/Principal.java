@@ -10,8 +10,8 @@ public class Principal {
 				+ "1.  Alta de Usuario \n"
 				+ "2. Alta de Espetaculo\n"
 				+ "3. Consulta de Espetaculo\n"
-				+ "4. Alta de Función de Espetaculo \n"
-				+ "5. Consulta de función de Espetaculo\n"
+				+ "4. Alta de Funciï¿½n de Espetaculo \n"
+				+ "5. Consulta de funciï¿½n de Espetaculo\n"
 				+ "6. Alta de Plataforma\n"
 				/* REQUERIMIENTOS NO MINIMOS*/
 				+ "7. Consulta de Usuario\n"
@@ -20,10 +20,10 @@ public class Principal {
 				+ "10. Agregar Espetaculo a Paquete de\r\n"
 				+ "Espetaculos\n"
 				+ "11. Consulta de Paquete de Espetaculos\n"
-				+ "12. Registro a función de Espetaculo\n"
+				+ "12. Registro a funciï¿½n de Espetaculo\n"
 				/* OPCIONES DE FUNCIONAMIENTO*/
 				+ "13. Salir\n"
-				+ "14. OPCIÓN: ");	
+				+ "14. OPCIï¿½N: ");	
 		
 	}
 	

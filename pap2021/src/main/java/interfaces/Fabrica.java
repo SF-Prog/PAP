@@ -2,7 +2,7 @@ package interfaces;
 
 import logica.ControladorAgregarEspetaculoAPaqueteDeEspetaculos;
 import logica.ControladorAltaDeEspetaculo;
-import logica.ControladorAltaDeFunciónDeEspetaculo;
+import logica.ControladorAltaDeFunciï¿½nDeEspetaculo;
 import logica.ControladorAltaDePlataforma;
 import logica.ControladorAltaDeUsuario;
 import logica.ControladorConsultaDeEspetaculo;
@@ -31,13 +31,10 @@ public class Fabrica {
 	public IControladorAltaDeEspetaculo getIControladorAltaDeEspetaculo() {
 		return new ControladorAltaDeEspetaculo();
 	}
-
 	
-	public IControladorAltaDeFunciónDeEspetaculo getIControladorAltaDeFunciónDeEspetaculo() {
-		return new ControladorAltaDeFunciónDeEspetaculo();
+	public IControladorAltaDeFuncionDeEspetaculo getIControladorAltaDeFuncionDeEspetaculo() {
+		return new ControladorAltaDeFuncionDeEspetaculo();
 	}
-	
-	
 	
 	public IControladorAltaDePlataforma getIControladorAltaDePlataforma() {
 		return new ControladorAltaDePlataforma();
@@ -51,17 +48,13 @@ public class Fabrica {
 		return new ControladorConsultaDeEspetaculo();
 	}
 	
-
-
 	public IControladorConsultaDeFuncionDeEspetaculo getIControladorConsultaDeFuncionDeEspetaculo() {
 		return new ControladorConsultaDeFuncionDeEspetaculo();
 	}
 	
-
 	public IControladorConsultaDePaqueteDeEspetaculos getIControladorConsultaDePaqueteDeEspetaculos() {
 		return new ControladorConsultaDePaqueteDeEspetaculos();
 	}
-	
 	
 	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
 		return new ControladorConsultaDeUsuario();
@@ -70,12 +63,10 @@ public class Fabrica {
 		return new ControladorCrearPaqueteDeEspetaculos();
 	}
 
-
 	public IControladorModificarDatosDeUsuario getIControladorModificarDatosDeUsuario() {
 		return new ControladorModificarDatosDeUsuario();
 	}
 	public IControladorRegistroAFuncionDeEspetaculo get() {
 		return new ControladorRegistroAFuncionDeEspetaculo();
 	}
-	
 }
