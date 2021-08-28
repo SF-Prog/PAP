@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public  class Espectador extends Usuario {
@@ -10,7 +11,7 @@ public  class Espectador extends Usuario {
 		super();
 	}
 
-	public Espectador(String nickName, String nombre, String apellido, String email, String fechaNac) {
+	public Espectador(String nickName, String nombre, String apellido, String email, Date fechaNac) {
 		super(nickName, nombre, apellido, email, fechaNac);
 		// TODO Auto-generated constructor stub
 	}

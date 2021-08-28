@@ -1,5 +1,9 @@
 package logica;
 
+import java.util.ArrayList;
+
+import datatypes.DtEspectaculo;
+import datatypes.DtPaquete;
 import interfaces.IControladorAgregarEspetaculoAPaqueteDeEspetaculos;
 
 public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos implements IControladorAgregarEspetaculoAPaqueteDeEspetaculos {
@@ -39,4 +43,4 @@ public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos implements IContr
 		
 	}
 }
-}
+

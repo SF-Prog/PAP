@@ -2,7 +2,7 @@ package interfaces;
 
 import logica.ControladorAgregarEspetaculoAPaqueteDeEspetaculos;
 import logica.ControladorAltaDeEspetaculo;
-import logica.ControladorAltaDeFunciónDeEspetaculo;
+import logica.ControladorAltaDeFuncionDeEspetaculo;
 import logica.ControladorAltaDePlataforma;
 import logica.ControladorAltaDeUsuario;
 import logica.ControladorConsultaDeEspetaculo;
@@ -31,9 +31,9 @@ public class Fabrica {
 	public IControladorAltaDeEspetaculo getIControladorAltaDeEspetaculo() {
 		return new ControladorAltaDeEspetaculo();
 	}
-	
-	public IControladorAltaDeFunciónDeEspetaculo getIControladorAltaDeFunciónDeEspetaculo() {
-		return new ControladorAltaDeFunciónDeEspetaculo();
+  
+	public IControladorAltaDeFunciï¿½nDeEspetaculo getIControladorAltaDeFunciï¿½nDeEspetaculo() {
+		return new ControladorAltaDeFunciï¿½nDeEspetaculo();
 	}	
 	
 	public IControladorAltaDePlataforma getIControladorAltaDePlataforma() {
@@ -54,11 +54,12 @@ public class Fabrica {
 
 	public IControladorConsultaDePaqueteDeEspetaculos getIControladorConsultaDePaqueteDeEspetaculos() {
 		return new ControladorConsultaDePaqueteDeEspetaculos();
-	}	
+	}
 	
 	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
 		return new ControladorConsultaDeUsuario();
 	}
+  
 	public IControladorCrearPaqueteDeEspetaculos getIControladorCrearPaqueteDeEspetaculos() {
 		return new ControladorCrearPaqueteDeEspetaculos();
 	}
@@ -69,5 +70,5 @@ public class Fabrica {
 	
 	public IControladorRegistroAFuncionDeEspetaculo get() {
 		return new ControladorRegistroAFuncionDeEspetaculo();
-	}	
+	}
 }
