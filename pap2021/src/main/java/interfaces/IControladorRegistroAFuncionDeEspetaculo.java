@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
