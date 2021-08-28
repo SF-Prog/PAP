@@ -1,5 +1,7 @@
 package logica;
 
-public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos {
+import interfaces.IControladorAgregarEspetaculoAPaqueteDeEspetaculos;
+
+public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos implements IControladorAgregarEspetaculoAPaqueteDeEspetaculos {
 
 }

@@ -1,6 +1,6 @@
 package interfaces;
 
-import logica.Date;
+import java.util.Date;
 
 public interface IControladorCrearPaqueteDeEspetaculos {
 	public void solicitarDatos(String nombre, String descripcion, Date fechainicio,  Date fechaFin, int descuento);
