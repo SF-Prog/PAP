@@ -143,7 +143,52 @@ public class Principal {
 		entrada.close();	
 	}// FIN DE ALTA USUARIO
 	
-	static void	AltaDeEspetaculo(){}
+	static void	AltaDeEspectaculo() {
+		Scanner entrada = new Scanner(System.in);
+
+		System.out.println("Plataforma: ");
+		String plataforma = null;
+		plataforma=entrada.nextLine();
+
+		System.out.println("Artista: ");
+		String artista = null;
+		artista=entrada.nextLine();
+
+		System.out.println("Nombre: ");
+		String nombre = null;
+		nombre=entrada.nextLine();
+
+		System.out.println("Descripcion: ");
+		String descripcion = null;
+		descripcion=entrada.nextLine();
+
+		System.out.println("Duracion: ");
+		int duracion = null;
+		duracion=entrada.nextLine();
+
+		System.out.println("Espectadores minimos: ");
+		int especMinimos = null;
+		especMinimos=entrada.nextLine();
+
+		System.out.println("Espectadores maximos: ");
+		int especMaximos = null;
+		especMaximos=entrada.nextLine();
+
+		System.out.println("URL asociada: ");
+		string url = null;
+		url=entrada.nextLine();
+
+		System.out.println("Costo: ");
+		float costo = null;
+		costo=Float.parseFloat(entrada.nextLine());
+
+		System.out.println("Fecha de alta (dd/MM/yyyy): ");
+		string fechaAlta = null;
+		fechaAlta=entrada.nextLine();
+
+		Date fecha = ParseFecha(fechaAlta);
+	}// FIN DE ALTA ESPECTACULO
+	
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){}
