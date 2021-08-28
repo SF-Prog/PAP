@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 import datatypes.DtArtista;
 import datatypes.DtEspectador;
+import datatypes.DtPlataforma;
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
+import interfaces.IControladorAltaDePlataforma;
 import interfaces.IControladorAltaDeUsuario;
 
 public class Principal {
@@ -19,8 +21,8 @@ public class Principal {
 				+ "1.  Alta de Usuario \n"
 				+ "2. Alta de Espetaculo\n"
 				+ "3. Consulta de Espetaculo\n"
-				+ "4. Alta de Función de Espetaculo \n"
-				+ "5. Consulta de función de Espetaculo\n"
+				+ "4. Alta de Funciï¿½n de Espetaculo \n"
+				+ "5. Consulta de funciï¿½n de Espetaculo\n"
 				+ "6. Alta de Plataforma\n"
 				/* REQUERIMIENTOS NO MINIMOS*/
 				+ "7. Consulta de Usuario\n"
@@ -29,10 +31,10 @@ public class Principal {
 				+ "10. Agregar Espetaculo a Paquete de\r\n"
 				+ "Espetaculos\n"
 				+ "11. Consulta de Paquete de Espetaculos\n"
-				+ "12. Registro a función de Espetaculo\n"
+				+ "12. Registro a funciï¿½n de Espetaculo\n"
 				/* OPCIONES DE FUNCIONAMIENTO*/
 				+ "13. Salir\n"
-				+ "14. OPCIÓN: ");	
+				+ "14. OPCIï¿½N: ");	
 		
 	}
 	
@@ -136,7 +138,6 @@ public class Principal {
 			}else {
 				System.out.print("Opcion Incorrecta");
 			}
-			
 		}
 		
 		entrada.close();	
@@ -146,7 +147,45 @@ public class Principal {
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){}
-	static void	AltaDePlataforma(){}
+	static void	AltaDePlataforma(){
+		Scanner entrada = new Scanner(System.in);
+		boolean nombreDePlataformaValido = false;
+		Fabrica f = Fabrica.getInstancia();
+		IControladorAltaDePlataforma icap = f.getIControladorAltaDePlataforma();
+		String nombre = null;
+		String descripcion = null;
+		String URL = null;
+		String deseaCancelar = null;
+		
+		do {
+			System.out.println("Nombre: ");
+			nombre = entrada.nextLine();
+			
+			System.out.println("Descripcion: ");
+			descripcion = entrada.nextLine();
+			
+			System.out.println("URL: ");
+			URL = entrada.nextLine();
+
+			nombreDePlataformaValido = icap.existePlataforma(nombre);
+
+			if(!nombreDePlataformaValido) {
+				System.out.println("El nombre de plataforma ya existe\n\n");
+				System.out.println("Desea Cancelar esta operacion? (s/n)");
+				deseaCancelar = entrada.nextLine();
+				if(deseaCancelar.equals("s")) {
+					nombreDePlataformaValido = true;
+				};
+			};
+		} while(!nombreDePlataformaValido);
+
+		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
+			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
+			icap.ingresaPlataforma(dtPlataforma);
+		};
+
+		entrada.close();
+	};
 	/* REQUERIMIENTOS NO MINIMOS*/
 	static void	ConsultaDeUsuario(){}
 	static void	 ModificarDatosDeUsuario(){}

@@ -1,8 +1,8 @@
 package interfaces;
 
-
+import datatypes.DtPlataforma;
 
 public interface IControladorAltaDePlataforma {
-	public boolean ingresaPlataforma(String nombre, String descripcion, String URL);
-	
+	public void ingresaPlataforma(DtPlataforma dtPlataforma);
+	public boolean existePlataforma(String nombre);
 }
