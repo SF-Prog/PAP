@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.List;
 import interfaces.IControladorAltaDePlataforma;
 
 public class ControladorAltaDePlataforma implements IControladorAltaDePlataforma {
@@ -9,9 +10,14 @@ public class ControladorAltaDePlataforma implements IControladorAltaDePlataforma
 	}
 	@Override
 	public boolean ingresaPlataforma(String nombre, String descripcion, String URL) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
-}
+		boolean existePlataformaConNombre = false;
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
+		List<Plataforma> coleccionPlataformas = mP.getPlataformas();
+		for(Plataforma plataforma : coleccionPlataformas) {
+			if(plataforma.getNombre() == nombre) {
+				existePlataformaConNombre = true;
+			};
+		};
+		return existePlataformaConNombre;
+	};
+};

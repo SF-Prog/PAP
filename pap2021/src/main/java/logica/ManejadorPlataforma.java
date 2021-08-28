@@ -3,14 +3,14 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManjadorPlataforma {
-	private static ManjadorPlataforma instancia = null; 
+public class ManejadorPlataforma {
+	private static ManejadorPlataforma instancia = null; 
 	private List<Plataforma> plataformas = new ArrayList<>();
-	private ManjadorPlataforma(){}
+	private ManejadorPlataforma(){}
 	
-	public static ManjadorPlataforma getInstancia() {
+	public static ManejadorPlataforma getInstancia() {
 		if(instancia == null){
-			instancia = new ManjadorPlataforma();
+			instancia = new ManejadorPlataforma();
 		}
 		return instancia;
 	}
