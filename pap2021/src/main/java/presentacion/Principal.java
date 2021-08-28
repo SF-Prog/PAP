@@ -51,6 +51,7 @@ public class Principal {
 	
 	 
 	static void	AltaDeUsuario() {
+		
 		Fabrica f = Fabrica.getInstancia();
     	IControladorAltaDeUsuario icadu = f.getIControladorAltaDeUsuario();
 		Scanner entrada = new Scanner(System.in);
