@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.Scanner;
 
 import datatypes.DtUsuario;
+import datatypes.DtPlataforma;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeEspetaculo;
 import interfaces.IControladorAltaDeUsuario;
+import interfaces.IControladorAltaDePlataforma;
 
 public class Principal {
 
@@ -268,7 +270,45 @@ public class Principal {
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){}
-	static void	AltaDePlataforma(){}
+	static void	AltaDePlataforma(){
+		Scanner entrada = new Scanner(System.in);
+		boolean nombreDePlataformaValido = false;
+		Fabrica f = Fabrica.getInstancia();
+		IControladorAltaDePlataforma icap = f.getIControladorAltaDePlataforma();
+		String nombre = null;
+		String descripcion = null;
+		String URL = null;
+		String deseaCancelar = null;
+
+		do {
+			System.out.println("Nombre: ");
+			nombre = entrada.nextLine();
+
+			System.out.println("Descripcion: ");
+			descripcion = entrada.nextLine();
+
+			System.out.println("URL: ");
+			URL = entrada.nextLine();
+
+			nombreDePlataformaValido = icap.existePlataforma(nombre);
+
+			if(!nombreDePlataformaValido) {
+				System.out.println("El nombre de plataforma ya existe\n\n");
+				System.out.println("Desea Cancelar esta operacion? (s/n)");
+				deseaCancelar = entrada.nextLine();
+				if(deseaCancelar.equals("s")) {
+					nombreDePlataformaValido = true;
+				};
+			};
+		} while(!nombreDePlataformaValido);
+
+		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
+			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
+			icap.ingresaPlataforma(dtPlataforma);
+		};
+
+		entrada.close();
+	};
 	/* REQUERIMIENTOS NO MINIMOS*/
 	static void	ConsultaDeUsuario(){}
 	static void	 ModificarDatosDeUsuario(){}
