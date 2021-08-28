@@ -51,6 +51,7 @@ public class Principal {
         return fechaDate;
     }
 	
+	 
 	static void	AltaDeUsuario() {
 		Scanner entrada = new Scanner(System.in);
 		
