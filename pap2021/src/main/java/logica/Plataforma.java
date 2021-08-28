@@ -30,6 +30,13 @@ public class Plataforma {
 		this.costo = costo;
 		FechaAlta = fechaAlta;
 	}
+
+	public Plataforma(String nombre, String descripcion, String URLAsociada) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.URLAsociada = URLAsociada;
+	}
 	
 	public String getNombre() {
 		return nombre;

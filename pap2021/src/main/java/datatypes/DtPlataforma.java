@@ -15,6 +15,12 @@ public class DtPlataforma {
 		super();
 	}
 
+	public DtPlataforma(String nombre, String descripcion, String URLAsociada) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.URLAsociada = URLAsociada;
+	}
 
 	public DtPlataforma(String nombre, String descripcion, int duracion, String espectadoresMin, String espectadoresMax,
 			String uRLAsociada, float costo, String fechaAlta) {
@@ -24,11 +30,10 @@ public class DtPlataforma {
 		this.duracion = duracion;
 		this.espectadoresMin = espectadoresMin;
 		this.espectadoresMax = espectadoresMax;
-		URLAsociada = uRLAsociada;
+		this.URLAsociada = uRLAsociada;
 		this.costo = costo;
-		FechaAlta = fechaAlta;
+		this.FechaAlta = fechaAlta;
 	}
-
 
 	public String getNombre() {
 		return nombre;

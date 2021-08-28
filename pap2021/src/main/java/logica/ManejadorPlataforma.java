@@ -18,8 +18,12 @@ public class ManejadorPlataforma {
 	public List<Plataforma> getPlataformas() {
 		return plataformas;
 	}
+
 	public void setPlataformas(List<Plataforma> plataformas) {
 		this.plataformas = plataformas;
 	};
 	
+	public void addPlataforma(Plataforma plataforma) {
+		this.plataformas.add(plataforma);
+	}
 }
