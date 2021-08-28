@@ -26,7 +26,7 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 	}
 
 	@Override
-	public ArrayList<DtEspectaculo> listarEspectáculos(DtPlataforma dtPlataforma) {
+	public ArrayList<DtEspectaculo> listarEspectaculos(DtPlataforma dtPlataforma) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -15,10 +15,7 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	}
 
 	@Override
-	public void ingresaUsuarioArtista(DtUsuario dtUsuario, String descripcion, String biografía, String link) {
+	public void ingresaUsuarioArtista(DtUsuario dtUsuario, String descripcion, String biografia, String link) {
 		// TODO Auto-generated method stub
-		
 	}
-	
-	
 }
