@@ -1,8 +1,9 @@
-package logica;
+package interfaces;
 
 import datatypes.DtEspectaculo;
 
-public class ControladorAltaDeEspetaculo {
+public interface IControladorAltaDeEspetaculo {
 	public void existeEspectáculo(String plataforma, String artista, DtEspectaculo dtEspectaculo);
 	public void ingresaEspectáculo(String plataforma, String artista, DtEspectaculo dtEspectaculo);
+
 }

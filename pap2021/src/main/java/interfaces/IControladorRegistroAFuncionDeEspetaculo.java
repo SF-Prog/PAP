@@ -1,4 +1,4 @@
-package logica;
+package interfaces;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,8 @@ import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtRegistro;
 import datatypes.DtUsuario;
-import interfaces.Date;
 
-public class ControladorRegistroAFuncionDeEspetaculo {
+public interface IControladorRegistroAFuncionDeEspetaculo {
 	public ArrayList<DtEspectaculo> seleccionaPlataforma(String nombrePlataforma);
 	public ArrayList<DtFuncion> seleccionaEspectaculo(String nombreEspectaculo);
 	public ArrayList<DtUsuario> listarEspectadores();
@@ -16,5 +15,6 @@ public class ControladorRegistroAFuncionDeEspetaculo {
 	public boolean seleccionarRegistrosParaCanje(ArrayList<DtRegistro> dtRegistroCanje);
 	public void cambiarFuncion(String nombreFuncion);
 	public void cambiarUsuario(String nickname);
+	
 	
 }

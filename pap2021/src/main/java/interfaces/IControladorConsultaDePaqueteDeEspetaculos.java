@@ -1,14 +1,13 @@
-package logica;
+package interfaces;
 
 import java.util.ArrayList;
-
 
 import datatypes.DtPaquete;
 
 
-public class ControladorConsultaDePaqueteDeEspetaculos {
+public interface IControladorConsultaDePaqueteDeEspetaculos {
 	public ArrayList<DtPaquete> listarPaquetes();
 	public ArrayList<DtPaquete> selecionaPaquete(String nombre);
-
+	
 	
 }

@@ -1,4 +1,4 @@
-package logica;
+package interfaces;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import datatypes.DtFuncion;
 import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 
-public class ControladorConsultaDeEspetaculo {
+public interface IControladorConsultaDeEspetaculo {
 	public ArrayList<DtPlataforma> listarPlataformas();
 	public ArrayList<DtEspectaculo> listarEspectáculos(DtPlataforma dtPlataforma);
 	public void seleccionaEspectaculo(String nombre);

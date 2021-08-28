@@ -1,9 +1,8 @@
-package logica;
+package interfaces;
 
 import datatypes.DtUsuario;
 
-public class ControladorAltaDeUsuario {
+public interface IControladorAltaDeUsuario {
 	public void ingresaUsuarioEspectador(DtUsuario dtUsuario);
 	public void  ingresaUsuarioArtista(DtUsuario dtUsuario, String descripcion, String biografía, String link );
-
-}
+}	

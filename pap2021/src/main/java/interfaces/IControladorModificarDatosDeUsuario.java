@@ -1,10 +1,11 @@
-package logica;
+package interfaces;
 
 import java.util.ArrayList;
 
+import datatypes.DtPlataforma;
 import datatypes.DtUsuario;
 
-public class ControladorModificarDatosDeUsuario {
+public interface IControladorModificarDatosDeUsuario {
 	public ArrayList<DtUsuario>  listarUsuarios();
 	public DtUsuario seleccionarUsuario(String nickname);
 	public void ingresarDatosModificacion(DtUsuario nuevosDatosUsuario);

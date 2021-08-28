@@ -1,8 +1,8 @@
-package logica;
+package interfaces;
 
 
 
-public class ControladorAltaDePlataforma {
+public interface IControladorAltaDePlataforma {
 	public boolean ingresaPlataforma(String nombre, String descripcion, String URL);
 	
 }
