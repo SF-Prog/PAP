@@ -5,16 +5,16 @@ import java.util.Date;
 
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
-import interfaces.IControladorAltaDeFunciónDeEspetaculo;
+import interfaces.IControladorAltaDeFuncionDeEspetaculo;
 
-public class ControladorAltaDeFunciónDeEspetaculo implements IControladorAltaDeFunciónDeEspetaculo{
+public class ControladorAltaDeFuncionDeEspetaculo implements IControladorAltaDeFuncionDeEspetaculo{
 
-	public ControladorAltaDeFunciónDeEspetaculo() {
+	public ControladorAltaDeFuncionDeEspetaculo() {
 		super();
 	}
 	@Override
 	public ArrayList<DtEspectaculo> seleccionaPlataforma(String nombrePlataforma) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -30,5 +30,4 @@ public class ControladorAltaDeFunciónDeEspetaculo implements IControladorAltaDeF
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 }

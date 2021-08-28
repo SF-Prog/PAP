@@ -9,7 +9,7 @@ import datatypes.DtPlataforma;
 
 public interface IControladorConsultaDeEspetaculo {
 	public ArrayList<DtPlataforma> listarPlataformas();
-	public ArrayList<DtEspectaculo> listarEspectáculos(DtPlataforma dtPlataforma);
+	public ArrayList<DtEspectaculo> listarEspectaculos(DtPlataforma dtPlataforma);
 	public void seleccionaEspectaculo(String nombre);
 	public ArrayList<DtFuncion> listarFunciones(DtEspectaculo dtEspectaculo);
 	public DtFuncion seleccionaFuncion(String nombre);
