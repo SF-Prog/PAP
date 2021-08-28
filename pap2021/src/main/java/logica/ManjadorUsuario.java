@@ -22,5 +22,8 @@ public class ManjadorUsuario {
 		this.usuarios = usuarios;
 	}
 	
+	public void agegarUsuarios(Usuario usuario) {
+		this.usuarios.add(usuario);
+	}
 	
 }

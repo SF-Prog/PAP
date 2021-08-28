@@ -1,7 +1,10 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.xml.crypto.Data;
 
 public class Artista extends Usuario{
 	private String descGeneral;
@@ -14,7 +17,7 @@ public class Artista extends Usuario{
 		super();
 	}
 
-	public Artista(String nickName, String nombre, String apellido, String email, String fechaNac,String descGeneral, String biografia, String link) {
+	public Artista(String nickName, String nombre, String apellido, String email, Date fechaNac,String descGeneral, String biografia, String link) {
 		super(nickName, nombre, apellido, email, fechaNac);
 		// TODO Auto-generated constructor stub
 		this.descGeneral = descGeneral;
