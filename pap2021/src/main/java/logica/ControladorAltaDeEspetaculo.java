@@ -9,13 +9,13 @@ public class ControladorAltaDeEspetaculo implements IControladorAltaDeEspetaculo
 		super();
 	}
 	@Override
-	public void existeEspectáculo(String plataforma, String artista, DtEspectaculo dtEspectaculo) {
+	public void existeEspectaculo(String plataforma, String artista, DtEspectaculo dtEspectaculo) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void ingresaEspectáculo(String plataforma, String artista, DtEspectaculo dtEspectaculo) {
+	public void ingresaEspectaculo(String plataforma, String artista, DtEspectaculo dtEspectaculo) {
 		// TODO Auto-generated method stub
 		
 	}

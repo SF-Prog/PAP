@@ -144,49 +144,70 @@ public class Principal {
 	}// FIN DE ALTA USUARIO
 	
 	static void	AltaDeEspectaculo() {
-		Scanner entrada = new Scanner(System.in);
-
-		System.out.println("Plataforma: ");
+		Scanner entrada = new Scanner(System.in);		
+		boolean espectaculoValido = false;
+		Fabrica f = Fabrica.getInstancia();
+		IControladorAltaDeEspetaculo icae = f.getIControladorAltaDeEspetaculo();
 		String plataforma = null;
-		plataforma=entrada.nextLine();
-
-		System.out.println("Artista: ");
 		String artista = null;
-		artista=entrada.nextLine();
-
-		System.out.println("Nombre: ");
 		String nombre = null;
-		nombre=entrada.nextLine();
-
-		System.out.println("Descripcion: ");
 		String descripcion = null;
-		descripcion=entrada.nextLine();
-
-		System.out.println("Duracion: ");
 		int duracion = null;
-		duracion=entrada.nextLine();
-
-		System.out.println("Espectadores minimos: ");
 		int especMinimos = null;
-		especMinimos=entrada.nextLine();
-
-		System.out.println("Espectadores maximos: ");
 		int especMaximos = null;
-		especMaximos=entrada.nextLine();
-
-		System.out.println("URL asociada: ");
 		string url = null;
-		url=entrada.nextLine();
-
-		System.out.println("Costo: ");
 		float costo = null;
-		costo=Float.parseFloat(entrada.nextLine());
-
-		System.out.println("Fecha de alta (dd/MM/yyyy): ");
 		string fechaAlta = null;
-		fechaAlta=entrada.nextLine();
 
-		Date fecha = ParseFecha(fechaAlta);
+		do {
+			System.out.println("Plataforma: ");
+			plataforma=entrada.nextLine();
+	
+			System.out.println("Artista: ");
+			artista=entrada.nextLine();
+	
+			System.out.println("Nombre: ");
+			nombre=entrada.nextLine();
+	
+			System.out.println("Descripcion: ");
+			descripcion=entrada.nextLine();
+	
+			System.out.println("Duracion: ");
+			duracion=entrada.nextLine();
+	
+			System.out.println("Espectadores minimos: ");
+			especMinimos=entrada.nextLine();
+	
+			System.out.println("Espectadores maximos: ");
+			especMaximos=entrada.nextLine();
+	
+			System.out.println("URL asociada: ");
+			url=entrada.nextLine();
+	
+			System.out.println("Costo: ");
+			costo=Float.parseFloat(entrada.nextLine());
+	
+			System.out.println("Fecha de alta (dd/MM/yyyy): ");
+			fechaAlta=entrada.nextLine();
+	
+			Date fecha = ParseFecha(fechaAlta);
+
+			espectaculoValido = icae.existeEspectaculo(nombre);
+
+			if(!espectaculoValido) {
+				System.out.println("El nombre de plataforma ya existe\n\n");
+				System.out.println("Desea Cancelar esta operacion? (s/n)");
+				deseaCancelar = entrada.nextLine();
+				if(deseaCancelar.equals("s")) {
+					nombreDePlataformaValido = true;
+				};
+			};
+		} while(!espectaculoValido);
+
+		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
+			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
+			icap.ingresaPlataforma(dtPlataforma);
+		};
 	}// FIN DE ALTA ESPECTACULO
 	
 	static void	ConsultaDeEspetaculo(){}
