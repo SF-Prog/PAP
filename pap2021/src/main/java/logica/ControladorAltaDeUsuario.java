@@ -29,5 +29,22 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 
 	}
 	
+	@Override
+	public boolean buscarNickname(String nickname) {
+		// TODO Auto-generated method stub
+
+		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		return mU.buscarNickname(nickname);
+
+	}
+	
+	@Override
+	public boolean buscarEmail(String email) {
+		// TODO Auto-generated method stub
+		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		return mU.buscarEmail(email);
+
+	}
+
 	
 }
