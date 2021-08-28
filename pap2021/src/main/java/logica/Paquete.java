@@ -1,9 +1,14 @@
 package logica;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Paquete {
 	private String nombre;
 	private String descripcion;
 	private float Descuento;
+	
+	private List<Espectaculo> espectaculos = new ArrayList<>();
 	
 	public Paquete() {
 		super();
@@ -38,6 +43,14 @@ public class Paquete {
 
 	public void setDescuento(float descuento) {
 		Descuento = descuento;
+	}
+
+	public List<Espectaculo> getEspectaculos() {
+		return espectaculos;
+	}
+
+	public void setEspectaculos(List<Espectaculo> espectaculos) {
+		this.espectaculos = espectaculos;
 	}
 
 	

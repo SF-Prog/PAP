@@ -1,24 +1,26 @@
 package logica;
+import java.util.Date;
+
 
 public class Registro {
-	private fecha fechaRegistro;
+	private Date fechaRegistro;
 	private float costo;
 	
 	public Registro() {
 		super();
 	}
 
-	public Registro(fecha fechaRegistro, float costo) {
+	public Registro(Date fechaRegistro, float costo) {
 		super();
 		this.fechaRegistro = fechaRegistro;
 		this.costo = costo;
 	}
 
-	public fecha getFechaRegistro() {
+	public Date getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(fecha fechaRegistro) {
+	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 

@@ -1,5 +1,8 @@
 package logica;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Plataforma {
 	private String nombre;
 	private String descripcion;
@@ -9,6 +12,8 @@ public class Plataforma {
 	private String URLAsociada;
 	private float costo;
 	private String FechaAlta;
+	
+	private List<Espectaculo> espectaculos = new ArrayList<>();
 	
 	public Plataforma() {
 		super();
@@ -73,6 +78,12 @@ public class Plataforma {
 	}
 	public void setFechaAlta(String fechaAlta) {
 		FechaAlta = fechaAlta;
+	}
+	public List<Espectaculo> getEspectaculos() {
+		return espectaculos;
+	}
+	public void setEspectaculos(List<Espectaculo> espectaculos) {
+		this.espectaculos = espectaculos;
 	}
 
 	

@@ -1,16 +1,18 @@
 package logica;
+import java.util.Date;
+
 
 public class Funcion {
 	private String nombre;
-	private fecha fecha;
-	private fecha horaInicio;
-	private fecha FechaRegistro;
+	private Date fecha;
+	private Date horaInicio;
+	private Date FechaRegistro;
 	
 	public Funcion() {
 		super();
 	}
 
-	public Funcion(String nombre, logica.fecha fecha, logica.fecha horaInicio, logica.fecha fechaRegistro) {
+	public Funcion(String nombre, Date fecha, Date horaInicio, Date fechaRegistro) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -26,27 +28,27 @@ public class Funcion {
 		this.nombre = nombre;
 	}
 
-	public fecha getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(fecha fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public fecha getHoraInicio() {
+	public Date getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(fecha horaInicio) {
+	public void setHoraInicio(Date horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public fecha getFechaRegistro() {
+	public Date getFechaRegistro() {
 		return FechaRegistro;
 	}
 
-	public void setFechaRegistro(fecha fechaRegistro) {
+	public void setFechaRegistro(Date fechaRegistro) {
 		FechaRegistro = fechaRegistro;
 	}
 	
