@@ -17,8 +17,8 @@ public class Principal {
 				+ "1.  Alta de Usuario \n"
 				+ "2. Alta de Espetaculo\n"
 				+ "3. Consulta de Espetaculo\n"
-				+ "4. Alta de Función de Espetaculo \n"
-				+ "5. Consulta de función de Espetaculo\n"
+				+ "4. Alta de FunciÃ³n de Espetaculo \n"
+				+ "5. Consulta de funciÃ³n de Espetaculo\n"
 				+ "6. Alta de Plataforma\n"
 				/* REQUERIMIENTOS NO MINIMOS*/
 				+ "7. Consulta de Usuario\n"
@@ -27,15 +27,13 @@ public class Principal {
 				+ "10. Agregar Espetaculo a Paquete de\r\n"
 				+ "Espetaculos\n"
 				+ "11. Consulta de Paquete de Espetaculos\n"
-				+ "12. Registro a función de Espetaculo\n"
+				+ "12. Registro a funciÃ³n de Espetaculo\n"
 				/* OPCIONES DE FUNCIONAMIENTO*/
 				+ "13. Salir\n"
-				+ "14. OPCIÓN: ");	
-		
-	}
+				+ "14. OPCIÃ“N: ");		
+	}	
 	
-	
-	 public static Date ParseFecha(String fecha){
+	public static Date ParseFecha(String fecha){
       // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
 		 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
@@ -47,8 +45,7 @@ public class Principal {
             System.out.println(ex);
         }
         return fechaDate;
-    }
-	
+  }	
 	 
 	static void	AltaDeUsuario() {
 		
@@ -200,7 +197,73 @@ public class Principal {
 		entrada.close();	
 	}// FIN DE ALTA USUARIO
 	
-	static void	AltaDeEspetaculo(){}
+	static void	AltaDeEspectaculo() {
+		Scanner entrada = new Scanner(System.in);		
+		boolean espectaculoValido = false;
+		Fabrica f = Fabrica.getInstancia();
+		IControladorAltaDeEspetaculo icae = f.getIControladorAltaDeEspetaculo();
+		String plataforma = null;
+		String artista = null;
+		String nombre = null;
+		String descripcion = null;
+		int duracion = null;
+		int especMinimos = null;
+		int especMaximos = null;
+		string url = null;
+		float costo = null;
+		string fechaAlta = null;
+
+		do {
+			System.out.println("Plataforma: ");
+			plataforma=entrada.nextLine();
+	
+			System.out.println("Artista: ");
+			artista=entrada.nextLine();
+	
+			System.out.println("Nombre: ");
+			nombre=entrada.nextLine();
+	
+			System.out.println("Descripcion: ");
+			descripcion=entrada.nextLine();
+	
+			System.out.println("Duracion: ");
+			duracion=entrada.nextLine();
+	
+			System.out.println("Espectadores minimos: ");
+			especMinimos=entrada.nextLine();
+	
+			System.out.println("Espectadores maximos: ");
+			especMaximos=entrada.nextLine();
+	
+			System.out.println("URL asociada: ");
+			url=entrada.nextLine();
+	
+			System.out.println("Costo: ");
+			costo=Float.parseFloat(entrada.nextLine());
+	
+			System.out.println("Fecha de alta (dd/MM/yyyy): ");
+			fechaAlta=entrada.nextLine();
+	
+			Date fecha = ParseFecha(fechaAlta);
+
+			espectaculoValido = icae.existeEspectaculo(nombre);
+
+			if(!espectaculoValido) {
+				System.out.println("El nombre de plataforma ya existe\n\n");
+				System.out.println("Desea Cancelar esta operacion? (s/n)");
+				deseaCancelar = entrada.nextLine();
+				if(deseaCancelar.equals("s")) {
+					nombreDePlataformaValido = true;
+				};
+			};
+		} while(!espectaculoValido);
+
+		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
+			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
+			icap.ingresaPlataforma(dtPlataforma);
+		};
+	}// FIN DE ALTA ESPECTACULO
+	
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){}
@@ -274,7 +337,5 @@ public class Principal {
 			}*/
 		}
 		entrada.close();
-	}
-	
-	
+	}	
 }

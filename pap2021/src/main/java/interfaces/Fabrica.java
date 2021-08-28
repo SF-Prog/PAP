@@ -22,19 +22,19 @@ public class Fabrica {
 		if (instancia == null)
 			instancia = new Fabrica();
 		return instancia;
-	}
-	
+	}	
 
 	public IControladorAgregarEspetaculoAPaqueteDeEspetaculos getIControladorAgregarEspetaculoAPaqueteDeEspetaculos() {
 		return new ControladorAgregarEspetaculoAPaqueteDeEspetaculos();
 	}
+	
 	public IControladorAltaDeEspetaculo getIControladorAltaDeEspetaculo() {
 		return new ControladorAltaDeEspetaculo();
 	}
-	
-	public IControladorAltaDeFuncionDeEspetaculo getIControladorAltaDeFuncionDeEspetaculo() {
-		return new ControladorAltaDeFuncionDeEspetaculo();
-	}
+  
+	public IControladorAltaDeFunci�nDeEspetaculo getIControladorAltaDeFunci�nDeEspetaculo() {
+		return new ControladorAltaDeFunci�nDeEspetaculo();
+	}	
 	
 	public IControladorAltaDePlataforma getIControladorAltaDePlataforma() {
 		return new ControladorAltaDePlataforma();
@@ -47,11 +47,11 @@ public class Fabrica {
 	public IControladorConsultaDeEspetaculo getIControladorConsultaDeEspetaculo() {
 		return new ControladorConsultaDeEspetaculo();
 	}
-	
+
 	public IControladorConsultaDeFuncionDeEspetaculo getIControladorConsultaDeFuncionDeEspetaculo() {
 		return new ControladorConsultaDeFuncionDeEspetaculo();
-	}
-	
+	}	
+
 	public IControladorConsultaDePaqueteDeEspetaculos getIControladorConsultaDePaqueteDeEspetaculos() {
 		return new ControladorConsultaDePaqueteDeEspetaculos();
 	}
@@ -59,6 +59,7 @@ public class Fabrica {
 	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
 		return new ControladorConsultaDeUsuario();
 	}
+  
 	public IControladorCrearPaqueteDeEspetaculos getIControladorCrearPaqueteDeEspetaculos() {
 		return new ControladorCrearPaqueteDeEspetaculos();
 	}
@@ -66,6 +67,7 @@ public class Fabrica {
 	public IControladorModificarDatosDeUsuario getIControladorModificarDatosDeUsuario() {
 		return new ControladorModificarDatosDeUsuario();
 	}
+	
 	public IControladorRegistroAFuncionDeEspetaculo get() {
 		return new ControladorRegistroAFuncionDeEspetaculo();
 	}
