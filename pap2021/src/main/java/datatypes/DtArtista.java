@@ -1,6 +1,6 @@
 package datatypes;
 
-
+import java.util.Date;
 
 public class DtArtista extends DtUsuario {
 	
@@ -15,8 +15,8 @@ public class DtArtista extends DtUsuario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DtArtista(String nickName, String nombre, String apellido, String email, String fechaNac,String descGeneral, String biografia, String link ) {
-		super(nickName, nombre, apellido, email, fechaNac);
+	public DtArtista(String nickName, String nombre, String apellido, String email, Date fecha,String descGeneral, String biografia,String link ){
+		super(nickName, nombre, apellido, email, fecha);
 		this.descGeneral = descGeneral;
 		this.biografia = biografia;
 		this.link = link;

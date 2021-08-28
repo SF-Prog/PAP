@@ -1,6 +1,13 @@
 package presentacion;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+
+import datatypes.DtArtista;
+import datatypes.DtEspectador;
+import datatypes.DtUsuario;
 
 public class Principal {
 
@@ -27,7 +34,100 @@ public class Principal {
 		
 	}
 	
-	static void	AltaDeUsuario(){}
+	
+	 public static Date ParseFecha(String fecha){
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
+	
+	static void	AltaDeUsuario() {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Nickname: ");
+		String nickname = null;
+		nickname=entrada.nextLine(); 
+		
+		System.out.println("Nombre: ");
+		String nombre = null;
+		nombre=entrada.nextLine();
+		
+		System.out.println("Apellido: ");
+		String apellido = null;
+		apellido=entrada.nextLine();
+		
+		System.out.println("email: ");
+		String email = null;
+		email=entrada.nextLine();
+		
+		System.out.println("fechaNac (dd/MM/yyyy): ");
+		String fechaNac = null;
+		fechaNac=entrada.nextLine();
+		
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date fecha = ParseFecha(fechaNac);
+		
+		boolean salida = true;
+		DtUsuario dtUsuario=null;
+		while(salida){
+			System.out.print("Tipo de Usuario:\n (1)Artista \n(2) Especatdor\nOPCION: ");
+			int tipo = 0;
+			tipo=entrada.nextInt();
+			
+			if(tipo == 1){
+				System.out.println("Descripcion General: ");
+				String descGeneral = null;
+				descGeneral=entrada.nextLine();
+				
+				System.out.println("Biografia: ");
+				String biografia = null;
+				biografia=entrada.nextLine();
+				
+				System.out.println("Link: ");
+				String link = null;
+				link=entrada.nextLine();
+				
+
+				
+				dtUsuario = new DtArtista(nickname,nombre,apellido,email,fecha,descGeneral,biografia,link);
+				salida = false;
+			}else if(tipo == 2){
+		
+				dtUsuario = new DtEspectador(nickname,nombre,apellido,email,fecha);
+				salida = false;
+			}else{
+				System.out.print("Opcion Incorrecta");
+			}
+			
+		}
+		salida = true;
+		while(salida){
+			System.out.print("Deseas Confirmar el alta de usuario? (si)/(no) \nOPCION:  ");
+			String respuesta = null;
+			respuesta=entrada.nextLine();
+			
+			if(respuesta=="si"){
+				
+				salida = false;
+			}else if(respuesta=="no"){
+				salida = false;
+			}else {
+				System.out.print("Opcion Incorrecta");
+			}
+			
+		}
+		
+		
+		
+		
+	}
 	static void	AltaDeEspetaculo(){}
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}

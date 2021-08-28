@@ -1,11 +1,13 @@
 package datatypes;
 
+import java.util.Date;
+
 public class DtUsuario {
 	private String nickName;
 	private String nombre;
 	private String apellido;
 	private String email;
-	private String fechaNac;
+	private Date fechaNac;
 	
 	
 	public DtUsuario() {
@@ -13,13 +15,13 @@ public class DtUsuario {
 	}
 
 
-	public DtUsuario(String nickName, String nombre, String apellido, String email, String fechaNac) {
+	public DtUsuario(String nickName, String nombre, String apellido, String email, Date fecha) {
 		super();
 		this.nickName = nickName;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
-		this.fechaNac = fechaNac;
+		this.fechaNac = fecha;
 	}
 
 
@@ -63,12 +65,12 @@ public class DtUsuario {
 	}
 
 
-	public String getFechaNac() {
+	public Date getFechaNac() {
 		return fechaNac;
 	}
 
 
-	public void setFechaNac(String fechaNac) {
+	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
 	

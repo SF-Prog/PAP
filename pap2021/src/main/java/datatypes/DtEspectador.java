@@ -1,5 +1,7 @@
 package datatypes;
 
+import java.util.Date;
+
 public class DtEspectador extends DtUsuario  {
 
 	public DtEspectador() {
@@ -7,8 +9,8 @@ public class DtEspectador extends DtUsuario  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DtEspectador(String nickName, String nombre, String apellido, String email, String fechaNac) {
-		super(nickName, nombre, apellido, email, fechaNac);
+	public DtEspectador(String nickName, String nombre, String apellido, String email, Date fecha) {
+		super(nickName, nombre, apellido, email, fecha);
 		// TODO Auto-generated constructor stub
 	}
 
