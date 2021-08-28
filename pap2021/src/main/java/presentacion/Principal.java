@@ -8,6 +8,8 @@ import java.util.Scanner;
 import datatypes.DtArtista;
 import datatypes.DtEspectador;
 import datatypes.DtUsuario;
+import interfaces.Fabrica;
+import interfaces.IControladorAltaDeUsuario;
 
 public class Principal {
 
@@ -36,7 +38,8 @@ public class Principal {
 	
 	
 	 public static Date ParseFecha(String fecha){
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+      // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
+		 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         try {
             fechaDate = formato.parse(fecha);
@@ -71,32 +74,36 @@ public class Principal {
 		String fechaNac = null;
 		fechaNac=entrada.nextLine();
 		
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
 		Date fecha = ParseFecha(fechaNac);
 		
 		boolean salida = true;
 		DtUsuario dtUsuario=null;
+		// VARTIABLE PARA DETERMINAR EL TIPO DE USUARIO
+		int tipo = 0;
+		
+		String descGeneral = null;
+		String biografia = null;
+		String link = null;
+		
 		while(salida){
 			System.out.print("Tipo de Usuario:\n (1)Artista \n(2) Especatdor\nOPCION: ");
-			int tipo = 0;
+			tipo = 0;
 			tipo=entrada.nextInt();
 			
 			if(tipo == 1){
 				System.out.println("Descripcion General: ");
-				String descGeneral = null;
 				descGeneral=entrada.nextLine();
 				
 				System.out.println("Biografia: ");
-				String biografia = null;
 				biografia=entrada.nextLine();
 				
 				System.out.println("Link: ");
-				String link = null;
 				link=entrada.nextLine();
 				
-
+				dtUsuario = new DtUsuario(nickname,nombre,apellido,email,fecha);
 				
-				dtUsuario = new DtArtista(nickname,nombre,apellido,email,fecha,descGeneral,biografia,link);
+				//dtUsuario = new DtArtista(nickname,nombre,apellido,email,fecha,descGeneral,biografia,link);
+				//dtUsuario = new DtUsuario
 				salida = false;
 			}else if(tipo == 2){
 		
@@ -114,9 +121,17 @@ public class Principal {
 			respuesta=entrada.nextLine();
 			
 			if(respuesta=="si"){
-				
+		    	Fabrica f = Fabrica.getInstancia();
+		    	IControladorAltaDeUsuario icadu = f.getIControladorAltaDeUsuario();
+		    	if(tipo == 1){
+		    		icadu.ingresaUsuarioArtista(dtUsuario,descGeneral,biografia,link);
+		    	}else{
+		    		icadu.ingresaUsuarioEspectador(dtUsuario);
+		    	}
+		    	
 				salida = false;
 			}else if(respuesta=="no"){
+				
 				salida = false;
 			}else {
 				System.out.print("Opcion Incorrecta");
@@ -124,10 +139,9 @@ public class Principal {
 			
 		}
 		
-		
-		
-		
-	}
+		entrada.close();	
+	}// FIN DE ALTA USUARIO
+	
 	static void	AltaDeEspetaculo(){}
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
