@@ -63,7 +63,9 @@ public class Principal {
 			System.out.println("Nickname: ");
 			nickname=entrada.nextLine(); 
 			if(!icadu.buscarNickname(nickname)){
-				existe = false;
+				existe = true;
+				salir = true;
+
 			}else{
 				boolean intento = false;
 				while(!intento){
@@ -91,7 +93,8 @@ public class Principal {
 				System.out.println("Email: ");
 				email=entrada.nextLine(); 
 				if(!icadu.buscarEmail(email)){
-					existe = false;
+					existe = true;
+					salir = true;
 				}else{
 					boolean intento = false;
 					while(!intento){
