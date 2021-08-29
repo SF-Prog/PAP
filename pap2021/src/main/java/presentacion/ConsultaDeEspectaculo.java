@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ConsultaDeEspectaculo extends JInternalFrame {
+	private IControladorConsultaDeEspectaculo iccde;
 
 	/**
 	 * Launch the application.
@@ -35,6 +36,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ConsultaDeEspectaculo(IControladorConsultaDeEspectaculo iccde) {
+		this.iccde = iccde;
 		setBounds(100, 100, 450, 343);
 		getContentPane().setLayout(null);
 		
@@ -112,19 +114,19 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 	
 	
 	public void iniciarlizarComboBoxPlataforma() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(icon.listarClases());
+		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(iccde.listarClases());
 		comboBoxIDClase.setModel(modelclases);
 	}
 	public void iniciarlizarComboBoxEspectaculos() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(icon.listarClases());
+		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(iccde.listarClases());
 		comboBoxIDClase.setModel(modelclases);
 	}
 	public void iniciarlizarComboBoxFunciones() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(icon.listarClases());
+		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(iccde.listarClases());
 		comboBoxIDClase.setModel(modelclases);
 	}
 	public void iniciarlizarComboBoxPaquetes() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(icon.listarClases());
+		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<Integer>(iccde.listarClases());
 		comboBoxIDClase.setModel(modelclases);
 	}
 }

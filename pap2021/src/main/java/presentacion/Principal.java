@@ -92,6 +92,15 @@ public class Principal {
 		JMenuBar menuBar = new JMenuBar();
 		frmCoronatickets.setJMenuBar(menuBar);
 		
+		JMenu mnInicio = new JMenu("Inicio");
+		mnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioInternalFrame.setVisible(false);
+				consultaDeEspectaculoInternalFrame.setVisible(false);
+			}
+		});
+		menuBar.add(mnInicio);
+		
 		JMenu mnAltas = new JMenu("Alta");
 		menuBar.add(mnAltas);
 		
@@ -100,6 +109,7 @@ public class Principal {
 		mnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				altaUsuarioInternalFrame.setVisible(true);
+				
 			}
 		});
 		mnAltas.add(mnAltaUsuario);
