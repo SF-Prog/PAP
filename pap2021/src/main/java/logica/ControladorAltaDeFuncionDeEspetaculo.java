@@ -25,8 +25,7 @@ public class ControladorAltaDeFuncionDeEspetaculo implements IControladorAltaDeF
 	}
 
 	@Override
-	public boolean ingresaFuncion(String nombreFucion, Date fecha, Date horaInicio,
-			ArrayList<DtArtista> artistaInvitado, Date fechaAlta) {
+	public boolean ingresaFuncion(String nombreFucion, Date fecha, Date horaInicio,	ArrayList<DtArtista> artistaInvitado, Date fechaAlta) {
 		// TODO Auto-generated method stub
 		return false;
 	}
