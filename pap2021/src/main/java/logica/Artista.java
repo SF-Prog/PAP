@@ -65,6 +65,8 @@ public class Artista extends Usuario{
 		this.funciones = funciones;
 	}
 	
-	
+	public void agregarFuncion(Funcion funcion){
+		this.funciones.add(funcion);
+	}
 	
 }

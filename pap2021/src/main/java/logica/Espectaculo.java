@@ -125,7 +125,9 @@ public class Espectaculo {
 		this.funciones = funciones;
 	}
 	
-	
+	public void addFuncion(Funcion funcion) {
+		this.funciones.add(funcion);
+	}
 	
 	
 }
