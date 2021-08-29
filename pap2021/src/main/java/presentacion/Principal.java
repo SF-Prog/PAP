@@ -1,18 +1,30 @@
 package presentacion;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import interfaces.Fabrica;
+import interfaces.IControladorAltaDeUsuario;
+
 import java.awt.Toolkit;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal {
 
 	private JFrame frmCoronatickets;
-
+	private JFrame frame;
+	
+	// VARIABLES DE INTERFACE DE VISTAS
+	private AltaUsuario altaUsuarioInternalFrame;
+	// FIN DE VARIABLES DE INTERFACE DE VISTAS
+	
 	/**
 	 * Launch the application.
 	 */
@@ -34,6 +46,22 @@ public class Principal {
 	 */
 	public Principal() {
 		initialize();
+		//
+		Fabrica fabrica = Fabrica.getInstancia();
+		IControladorAltaDeUsuario icau = fabrica.getIControladorAltaDeUsuario();
+		
+		Dimension desktopSize = frame.getSize();
+		Dimension jInternalFrameSize;
+		
+		//DIMENCIONAR LA VENTANA DE ALTA USUARIO
+		altaUsuarioInternalFrame = new AltaUsuario(icau);
+		jInternalFrameSize = altaUsuarioInternalFrame.getSize();
+		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		altaUsuarioInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaUsuarioInternalFrame);
+		
+		//FIN DIMENCIONAR LA VENTANA DE ALTA USUARIO
 	}
 
 	/**
@@ -53,8 +81,13 @@ public class Principal {
 		JMenu mnNewMenu = new JMenu("Alta");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Usuario");
-		mnNewMenu.add(mntmNewMenuItem_1);
+		JMenuItem btnMenuAltaUsuario = new JMenuItem("Usuario");
+		btnMenuAltaUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+
+		mnNewMenu.add(btnMenuAltaUsuario);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Espect\u00E1culo");
 		mnNewMenu.add(mntmNewMenuItem_2);
