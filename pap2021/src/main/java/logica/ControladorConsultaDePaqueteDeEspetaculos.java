@@ -12,6 +12,7 @@ public class ControladorConsultaDePaqueteDeEspetaculos implements IControladorCo
 	private Plataforma plataformaSeleccionada= null;
 	private Espectaculo espectaculoSeleccionada= null;
 	private Funcion funcionSeleccionada = null;
+	private Paquete paqueteSeleccionada = null;
 	public ControladorConsultaDePaqueteDeEspetaculos() {
 		super();
 	}
