@@ -1,5 +1,15 @@
 package interfaces;
 
-public interface IControladorAgregarEspetaculoAPaqueteDeEspetaculos {
+import java.util.ArrayList;
 
+import datatypes.DtEspectaculo;
+import datatypes.DtPaquete;
+
+public interface IControladorAgregarEspetaculoAPaqueteDeEspetaculos {
+	public ArrayList<DtPaquete> listarPaquetes();
+	public void seleccionarPaquete(String paquete);
+	public void seleccionarPlataforma(String plataforma);
+	public ArrayList<DtEspectaculo> listarEspectaculosEnPlataformaNoEnElPaquete();
+	public void seleccionarEspectaculo(String espectaculo);
+	public void ingresarEspectaculoAPaquete();
 }

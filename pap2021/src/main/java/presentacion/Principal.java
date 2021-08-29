@@ -5,12 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import datatypes.DtArtista;
-import datatypes.DtEspectador;
-import datatypes.DtPlataforma;
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
-import interfaces.IControladorAltaDePlataforma;
 import interfaces.IControladorAltaDeUsuario;
 
 public class Principal {
@@ -21,8 +17,8 @@ public class Principal {
 				+ "1.  Alta de Usuario \n"
 				+ "2. Alta de Espetaculo\n"
 				+ "3. Consulta de Espetaculo\n"
-				+ "4. Alta de Funciï¿½n de Espetaculo \n"
-				+ "5. Consulta de funciï¿½n de Espetaculo\n"
+				+ "4. Alta de Función de Espetaculo \n"
+				+ "5. Consulta de función de Espetaculo\n"
 				+ "6. Alta de Plataforma\n"
 				/* REQUERIMIENTOS NO MINIMOS*/
 				+ "7. Consulta de Usuario\n"
@@ -31,10 +27,10 @@ public class Principal {
 				+ "10. Agregar Espetaculo a Paquete de\r\n"
 				+ "Espetaculos\n"
 				+ "11. Consulta de Paquete de Espetaculos\n"
-				+ "12. Registro a funciï¿½n de Espetaculo\n"
+				+ "12. Registro a función de Espetaculo\n"
 				/* OPCIONES DE FUNCIONAMIENTO*/
 				+ "13. Salir\n"
-				+ "14. OPCIï¿½N: ");	
+				+ "14. OPCIÓN: ");	
 		
 	}
 	
@@ -53,93 +49,154 @@ public class Principal {
         return fechaDate;
     }
 	
+	 
 	static void	AltaDeUsuario() {
+		
+		Fabrica f = Fabrica.getInstancia();
+    	IControladorAltaDeUsuario icadu = f.getIControladorAltaDeUsuario();
 		Scanner entrada = new Scanner(System.in);
+		boolean cierroCU= false;
+		boolean existe= false;
+		boolean salir = false;
 		
-		System.out.println("Nickname: ");
 		String nickname = null;
-		nickname=entrada.nextLine(); 
-		
-		System.out.println("Nombre: ");
-		String nombre = null;
-		nombre=entrada.nextLine();
-		
-		System.out.println("Apellido: ");
-		String apellido = null;
-		apellido=entrada.nextLine();
-		
-		System.out.println("email: ");
-		String email = null;
-		email=entrada.nextLine();
-		
-		System.out.println("fechaNac (dd/MM/yyyy): ");
-		String fechaNac = null;
-		fechaNac=entrada.nextLine();
-		
-		Date fecha = ParseFecha(fechaNac);
-		
-		boolean salida = true;
-		DtUsuario dtUsuario=null;
-		// VARTIABLE PARA DETERMINAR EL TIPO DE USUARIO
-		int tipo = 0;
-		
-		String descGeneral = null;
-		String biografia = null;
-		String link = null;
-		
-		while(salida){
-			System.out.print("Tipo de Usuario:\n (1)Artista \n(2) Especatdor\nOPCION: ");
-			tipo = 0;
-			tipo=entrada.nextInt();
-			
-			if(tipo == 1){
-				System.out.println("Descripcion General: ");
-				descGeneral=entrada.nextLine();
-				
-				System.out.println("Biografia: ");
-				biografia=entrada.nextLine();
-				
-				System.out.println("Link: ");
-				link=entrada.nextLine();
-				
-				dtUsuario = new DtUsuario(nickname,nombre,apellido,email,fecha);
-				
-				//dtUsuario = new DtArtista(nickname,nombre,apellido,email,fecha,descGeneral,biografia,link);
-				//dtUsuario = new DtUsuario
-				salida = false;
-			}else if(tipo == 2){
-		
-				dtUsuario = new DtEspectador(nickname,nombre,apellido,email,fecha);
-				salida = false;
+		while(!existe && !salir){
+			System.out.println("Nickname: ");
+			nickname=entrada.nextLine(); 
+			if(!icadu.buscarNickname(nickname)){
+				existe = true;
+				salir = true;
+
 			}else{
-				System.out.print("Opcion Incorrecta");
-			}
-			
-		}
-		salida = true;
-		while(salida){
-			System.out.print("Deseas Confirmar el alta de usuario? (si)/(no) \nOPCION:  ");
-			String respuesta = null;
-			respuesta=entrada.nextLine();
-			
-			if(respuesta=="si"){
-		    	Fabrica f = Fabrica.getInstancia();
-		    	IControladorAltaDeUsuario icadu = f.getIControladorAltaDeUsuario();
-		    	if(tipo == 1){
-		    		icadu.ingresaUsuarioArtista(dtUsuario,descGeneral,biografia,link);
-		    	}else{
-		    		icadu.ingresaUsuarioEspectador(dtUsuario);
-		    	}
-		    	
-				salida = false;
-			}else if(respuesta=="no"){
-				
-				salida = false;
-			}else {
-				System.out.print("Opcion Incorrecta");
+				boolean intento = false;
+				while(!intento){
+					System.out.println("El nickname ya existe desa ingresar otro si o no: \n");
+					String respuesta = null;
+					respuesta=entrada.nextLine();
+					if(respuesta.equals("no")){
+						salir = true;
+						intento= true;
+						cierroCU= true;
+					}else if(!respuesta.equals("si")){
+						System.out.println("opcion incorrecta");
+					}else{
+						intento= true;
+					}
+				}
 			}
 		}
 		
+		String email = null;
+		if(!cierroCU){
+			existe= false;
+			salir = false;
+			while(!existe && !salir){
+				System.out.println("Email: ");
+				email=entrada.nextLine(); 
+				if(!icadu.buscarEmail(email)){
+					existe = true;
+					salir = true;
+				}else{
+					boolean intento = false;
+					while(!intento){
+						System.out.println("El email ya existe desa ingresar otro si o no: \n");
+						String respuesta = null;
+						respuesta=entrada.nextLine();
+						if(respuesta.equals("no")){
+							salir = true;
+							intento= true;
+							cierroCU= true;
+						}else if(!respuesta.equals("si")){
+							System.out.println("opcion incorrecta");
+						}else{
+							intento= true;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		if(!cierroCU) {
+			
+			System.out.println("Nombre: ");
+			String nombre = null;
+			nombre=entrada.nextLine();
+			
+			System.out.println("Apellido: ");
+			String apellido = null;
+			apellido=entrada.nextLine();
+		
+			
+			System.out.println("fechaNac (dd/MM/yyyy): ");
+			String fechaNac = null;
+			fechaNac=entrada.nextLine();
+			
+			Date fecha = ParseFecha(fechaNac);
+			
+			boolean salida = true;
+			DtUsuario dtUsuario=null;
+			// VARTIABLE PARA DETERMINAR EL TIPO DE USUARIO
+			int tipo = 0;
+			
+			String descGeneral = null;
+			String biografia = null;
+			String link = null;
+			
+			while(salida){
+				System.out.print("Tipo de Usuario:\n (1)Artista \n(2) Especatdor\nOPCION: ");
+				tipo = 0;
+				tipo=entrada.nextInt();
+				
+				if(tipo == 1){
+					System.out.println("Descripcion General: ");
+					descGeneral=entrada.nextLine();
+					
+					System.out.println("Biografia: ");
+					biografia=entrada.nextLine();
+					
+					System.out.println("Link: ");
+					link=entrada.nextLine();
+					
+					dtUsuario = new DtUsuario(nickname,nombre,apellido,email,fecha);
+					
+					//dtUsuario = new DtArtista(nickname,nombre,apellido,email,fecha,descGeneral,biografia,link);
+					//dtUsuario = new DtUsuario
+					salida = false;
+				}else if(tipo == 2){
+			
+					dtUsuario = new DtUsuario(nickname,nombre,apellido,email,fecha);
+					salida = false;
+				}else{
+					System.out.print("Opcion Incorrecta");
+				}
+				
+			}
+			salida = true;
+			while(salida){
+				System.out.flush();
+				System.out.print("Deseas Confirmar el alta de usuario? (si)/(no) \nOPCION:  ");
+				String respuesta = null;
+				respuesta=entrada.nextLine();
+				
+				if(respuesta.equals("si")){
+			    	
+			    	if(tipo == 1){
+			    		icadu.ingresaUsuarioArtista(dtUsuario,descGeneral,biografia,link);
+			    	}else{
+			    		icadu.ingresaUsuarioEspectador(dtUsuario);
+			    	}
+			    	
+					salida = false;
+				}else if(respuesta.equals("no")){
+					
+					salida = false;
+				}else {
+					System.out.print("Opcion Incorrecta");
+				}
+				
+			}
+		}//CIERRO EL CASO DE USO
 		entrada.close();	
 	}// FIN DE ALTA USUARIO
 	
@@ -147,45 +204,7 @@ public class Principal {
 	static void	ConsultaDeEspetaculo(){}
 	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){}
-	static void	AltaDePlataforma(){
-		Scanner entrada = new Scanner(System.in);
-		boolean nombreDePlataformaValido = false;
-		Fabrica f = Fabrica.getInstancia();
-		IControladorAltaDePlataforma icap = f.getIControladorAltaDePlataforma();
-		String nombre = null;
-		String descripcion = null;
-		String URL = null;
-		String deseaCancelar = null;
-		
-		do {
-			System.out.println("Nombre: ");
-			nombre = entrada.nextLine();
-			
-			System.out.println("Descripcion: ");
-			descripcion = entrada.nextLine();
-			
-			System.out.println("URL: ");
-			URL = entrada.nextLine();
-
-			nombreDePlataformaValido = icap.existePlataforma(nombre);
-
-			if(!nombreDePlataformaValido) {
-				System.out.println("El nombre de plataforma ya existe\n\n");
-				System.out.println("Desea Cancelar esta operacion? (s/n)");
-				deseaCancelar = entrada.nextLine();
-				if(deseaCancelar.equals("s")) {
-					nombreDePlataformaValido = true;
-				};
-			};
-		} while(!nombreDePlataformaValido);
-
-		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
-			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
-			icap.ingresaPlataforma(dtPlataforma);
-		};
-
-		entrada.close();
-	};
+	static void	AltaDePlataforma(){}
 	/* REQUERIMIENTOS NO MINIMOS*/
 	static void	ConsultaDeUsuario(){}
 	static void	 ModificarDatosDeUsuario(){}
@@ -198,7 +217,10 @@ public class Principal {
 		Scanner entrada = new Scanner(System.in);
 		menu();
 		int opcion = Integer.parseInt(entrada.nextLine());
+	
+		
 		while(opcion!=13) {
+			
 			switch (opcion) {
 			/* REQUERIMIENTOS MINIMOS*/
 		  		case 1:
@@ -239,10 +261,17 @@ public class Principal {
 		  			RegistroAfuncionDeEspetaculo();
 		  			break;
 			}
+
 			menu();
-			if(entrada.hasNextLine()) {
+			//System.out.print(opcion+"\n");
+			opcion = 0;
+			
+			entrada.close();
+			entrada = new Scanner(System.in);
+			opcion = Integer.parseInt(entrada.nextLine());
+			/*if(entrada.hasNextLine()) {
 				opcion = Integer.parseInt(entrada.nextLine());
-			}
+			}*/
 		}
 		entrada.close();
 	}

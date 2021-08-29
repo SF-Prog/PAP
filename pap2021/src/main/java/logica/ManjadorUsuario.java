@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ManjadorUsuario {
@@ -22,5 +23,33 @@ public class ManjadorUsuario {
 		this.usuarios = usuarios;
 	}
 	
+	public void agegarUsuarios(Usuario usuario) {
+		this.usuarios.add(usuario);
+	}
+	
+	public boolean buscarNickname(String nickname) {
+		Iterator<Usuario> usuariosIterator = this.usuarios.iterator();  
+		boolean existe = false;
+		while(usuariosIterator.hasNext() && !existe){
+			if(usuariosIterator.next().getNickName().equals(nickname)){
+				existe = true;
+			}
+		}
+		
+		return existe;
+	}
+	
+	public boolean buscarEmail(String email) {
+		
+		Iterator<Usuario> usuariosIterator = this.usuarios.iterator();  
+		boolean existe = false;
+		while(usuariosIterator.hasNext() && !existe){
+			if(usuariosIterator.next().getEmail().equals(email)){
+				existe = true;
+			}
+		}
+		
+		return existe;
+	}
 	
 }

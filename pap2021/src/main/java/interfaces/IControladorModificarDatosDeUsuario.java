@@ -2,7 +2,7 @@ package interfaces;
 
 import java.util.ArrayList;
 
-import datatypes.DtPlataforma;
+
 import datatypes.DtUsuario;
 
 public interface IControladorModificarDatosDeUsuario {
