@@ -32,6 +32,7 @@ public class ManejadorPlataforma {
 		return plataforma;
 	};
 
+
 	public void setPlataformas(List<Plataforma> plataformas) {
 		this.plataformas = plataformas;
 	};

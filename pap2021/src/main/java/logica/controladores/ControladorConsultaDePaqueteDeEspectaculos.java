@@ -7,14 +7,17 @@ import java.util.List;
 import datatypes.DtPaquete;
 import interfaces.IControladorConsultaDePaqueteDeEspectaculos;
 import logica.Espectaculo;
+import logica.Funcion;
 import logica.Paquete;
+import logica.Plataforma;
 import logica.manejadores.ManejadorPaquete;
 
 public class ControladorConsultaDePaqueteDeEspectaculos implements IControladorConsultaDePaqueteDeEspectaculos {
 	private Espectaculo espectaculoSeleccionado = null;
+	private Funcion funcionSeleccionada = null;
 	private Paquete paqueteSeleccionado = null;
 	
-	public ControladorConsultaDePaqueteDeEspectaculos() {
+	public ControladorConsultaDePaqueteDeEspetaculos() {
 		super();
 	}
 
