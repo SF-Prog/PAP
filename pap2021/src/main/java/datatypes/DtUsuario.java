@@ -3,11 +3,11 @@ package datatypes;
 import java.util.Date;
 
 public class DtUsuario {
-	private String nickName;
-	private String nombre;
-	private String apellido;
-	private String email;
-	private Date fechaNac;
+	protected String nickName;
+	protected String nombre;
+	protected String apellido;
+	protected String email;
+	protected Date fechaNac;
 	
 	
 	public DtUsuario() {

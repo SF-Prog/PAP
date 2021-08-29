@@ -6,7 +6,7 @@ public class Funcion {
 	private String nombre;
 	private Date fecha;
 	private Date horaInicio;
-	private Date FechaRegistro;
+	private Date fechaRegistro;
 	
 	public Funcion() {
 		super();
@@ -17,11 +17,11 @@ public class Funcion {
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.horaInicio = horaInicio;
-		FechaRegistro = fechaRegistro;
+		this.fechaRegistro = fechaRegistro;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -29,7 +29,7 @@ public class Funcion {
 	}
 
 	public Date getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -37,7 +37,7 @@ public class Funcion {
 	}
 
 	public Date getHoraInicio() {
-		return horaInicio;
+		return this.horaInicio;
 	}
 
 	public void setHoraInicio(Date horaInicio) {
@@ -45,11 +45,11 @@ public class Funcion {
 	}
 
 	public Date getFechaRegistro() {
-		return FechaRegistro;
+		return this.fechaRegistro;
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		FechaRegistro = fechaRegistro;
+		this.fechaRegistro = fechaRegistro;
 	}
 	
 	

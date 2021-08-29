@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import datatypes.DtUsuario;
@@ -15,11 +16,11 @@ import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeEspetaculo;
+import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeEspetaculo;
 import interfaces.IControladorConsultaDeFuncionDeEspetaculo;
 import interfaces.IControladorConsultaDePaqueteDeEspetaculos;
-import logica.Usuario;
 import interfaces.IControladorAltaDePlataforma;
 
 public class Principal {
@@ -58,6 +59,20 @@ public class Principal {
             System.out.println(ex);
         }
         return fechaDate;
+  }
+
+ public static Date ParseHora(String hora){
+      // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
+		 SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
+        Date horaDate = null;
+        try {
+            horaDate = formato.parse(hora);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return horaDate;
   }	
  
  public static Date Parsehora(String hora){
@@ -437,7 +452,6 @@ public class Principal {
 		}
 		
 	}
-	static void	AltadeFuncionDeEspetaculo(){}
 	static void	ConsultaDeFuncionDeEspetaculo(){
 		Fabrica f = Fabrica.getInstancia();
 		IControladorConsultaDeFuncionDeEspetaculo iccdfe = f.getIControladorConsultaDeFuncionDeEspetaculo();
@@ -521,6 +535,80 @@ public class Principal {
 			}			
 			salir = true;// SALGO DE LA REITERACION
 		}
+	}
+	static void	AltadeFuncionDeEspetaculo(){
+		Scanner entrada = new Scanner(System.in);
+		String nombrePlataforma = null;
+		String nombreEspectaculo = null;
+		String nombreFuncion = null;
+		String fecha = null;
+		String hora = null;
+		String fechaReg = null;
+		String nickNameArtista = null;
+		String respuestaAgregarArtistas = null;
+		boolean usuarioDeseeAgregarMasArtistas = true;
+		List<DtArtista> artistasIngresadosEnElSistema = null;
+		List<DtArtista> artistasEnFuncion = new ArrayList<DtArtista>();
+
+		Fabrica f = Fabrica.getInstancia();
+		IControladorAltaDeFuncionDeEspectaculo icafe = f.getIControladorAltaDeFuncionDeEspectaculo(); 
+		
+		System.out.println("Ingrese nombre de la Plataforma \n");
+		nombrePlataforma=entrada.nextLine();
+		
+		List<DtEspectaculo> listDtEspectaculos = icafe.seleccionaPlataforma(nombrePlataforma);
+
+		for(DtEspectaculo dte: listDtEspectaculos) {
+			dte.toString();
+		}
+		System.out.println("\n\nIngrese nombre del Espectaculo \n");
+		nombreEspectaculo=entrada.nextLine();
+		
+		icafe.seleccionaEspectaculo(nombreEspectaculo);
+
+		System.out.println("Nombre de Funcion: ");
+		nombreFuncion=entrada.nextLine();
+		
+		System.out.println("Fecha de alta (dd/MM/yyyy): ");
+		fecha=entrada.nextLine();
+
+		Date fechaAlta = ParseFecha(fecha);
+
+		System.out.println("Fecha de alta (HH:mm:ss): ");
+		hora=entrada.nextLine();
+
+		Date horaInicio = ParseFecha(hora);
+
+		System.out.println("Fecha de alta (dd/MM/yyyy): ");
+		fechaReg=entrada.nextLine();
+
+		Date fechaRegistro = ParseFecha(fechaReg);
+		DtFuncion dtFuncion = new DtFuncion(nombreFuncion, fechaAlta, horaInicio, fechaRegistro);
+		
+		artistasIngresadosEnElSistema = icafe.listarArtistas();
+
+		
+		do {
+			for(DtArtista dtArtista : artistasIngresadosEnElSistema){
+				System.out.println("---- ARTISTA ----\n\n");
+				dtArtista.toString();
+			};
+			System.out.println("\n\nIngrese el nickname de aquel artista que quiera asociar a la funcion");
+			nickNameArtista=entrada.nextLine();
+			for(DtArtista dtArtista : artistasIngresadosEnElSistema){
+				if(nickNameArtista.equals(dtArtista.getNickName())){
+					artistasEnFuncion.add(dtArtista);
+				};
+			};
+			System.out.println("\nDesea seguir agregando Artistas? (s/n)");
+			respuestaAgregarArtistas=entrada.nextLine();
+			if(respuestaAgregarArtistas.equals("n")){
+				usuarioDeseeAgregarMasArtistas = false;
+			};
+		} while(usuarioDeseeAgregarMasArtistas);
+
+		icafe.ingresaFuncion(dtFuncion, artistasEnFuncion);
+		entrada.close();
 	}
 	static void	AltaDePlataforma(){
 		Scanner entrada = new Scanner(System.in);

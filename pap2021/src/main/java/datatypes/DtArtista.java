@@ -41,6 +41,9 @@ public class DtArtista extends DtUsuario {
 		this.link = link;
 	}
 
-
-	
+	@Override
+	public String toString() {
+		String retorno =  "\nNickname: " + this.nickName + "\nNombre: " +  this.nombre + "\nApellido: " + this.apellido+ "\nEmail: " + this.email+ "\nEspectadores Maximo: " + this.fechaNac.toString()+ "\n Descripcion General: " + this.descGeneral+ "\nBiografia: " + this.biografia+ "\nLink: " + this.link;
+		return retorno ;
+	}
 }
