@@ -41,6 +41,11 @@ public class DtPaquete {
 		Descuento = descuento;
 	}
 
-	
+	@Override
+	public String toString() {
+		
+		String retorno =  "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.Descuento;
+		return retorno ;
+	}
 	
 }

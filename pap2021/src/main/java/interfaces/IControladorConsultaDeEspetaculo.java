@@ -9,10 +9,11 @@ import datatypes.DtPlataforma;
 
 public interface IControladorConsultaDeEspetaculo {
 	public ArrayList<DtPlataforma> listarPlataformas();
-	public ArrayList<DtEspectaculo> listarEspectaculos(DtPlataforma dtPlataforma);
-	public void seleccionaEspectaculo(String nombre);
-	public ArrayList<DtFuncion> listarFunciones(DtEspectaculo dtEspectaculo);
+	public DtPlataforma seleccionaPlataforma(String nombre);
+	public ArrayList<DtEspectaculo> listarEspectaculos();
+	public DtEspectaculo seleccionaEspectaculo(String nombre);
+	public ArrayList<DtFuncion> listarFunciones();
 	public DtFuncion seleccionaFuncion(String nombre);
-	public ArrayList<DtPaquete> listarPaquetes(DtEspectaculo dtEspectaculo);
+	public ArrayList<DtPaquete> listarPaquetes();
 	public DtPaquete seleccionaPaquere(String nombre);
 }
