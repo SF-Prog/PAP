@@ -9,7 +9,9 @@ import interfaces.IControladorConsultaDePaqueteDeEspetaculos;
 
 
 public class ControladorConsultaDePaqueteDeEspetaculos implements IControladorConsultaDePaqueteDeEspetaculos {
-
+	private Plataforma plataformaSeleccionada= null;
+	private Espectaculo espectaculoSeleccionada= null;
+	private Funcion funcionSeleccionada = null;
 	public ControladorConsultaDePaqueteDeEspetaculos() {
 		super();
 	}

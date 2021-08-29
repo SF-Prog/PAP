@@ -15,6 +15,7 @@ public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos implements IContr
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
 		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public void seleccionarPaquete(String paquete) {
@@ -29,6 +30,7 @@ public class ControladorAgregarEspetaculoAPaqueteDeEspetaculos implements IContr
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculosEnPlataformaNoEnElPaquete() {
 		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public void seleccionarEspectaculo(String espectaculo) {
