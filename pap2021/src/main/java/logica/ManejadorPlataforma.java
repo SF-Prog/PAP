@@ -18,6 +18,16 @@ public class ManejadorPlataforma {
 	public List<Plataforma> getPlataformas() {
 		return plataformas;
 	}
+	
+	public Plataforma getPlataforma(String nombrePlataforma) {
+		Plataforma plataforma = null;
+		for(Plataforma p : this.plataformas){
+			if(p.getNombre().equals(nombrePlataforma)){
+				plataforma = p;
+			}
+		}
+		return plataforma;
+	};
 
 	public void setPlataformas(List<Plataforma> plataformas) {
 		this.plataformas = plataformas;

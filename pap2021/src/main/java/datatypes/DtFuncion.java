@@ -53,6 +53,14 @@ public class DtFuncion {
 		FechaRegistro = fechaRegistro;
 	}
 	
+	@Override
+	public String toString() {
+		
+		String retorno =  "\nNombre: " + this.nombre + "\nFECHA: " +  this.fecha.toString()+ "\nHora Inicio: " + this.horaInicio.toString()+ "\nFecha Registro: " + this.FechaRegistro.toString();
+
+		return retorno ;
+	}
+	
 	
 	
 }
