@@ -1,6 +1,6 @@
 package logica;
-import java.util.Date;
 
+import java.util.Date;
 
 public class Registro {
 	private Date fechaRegistro;
@@ -30,7 +30,5 @@ public class Registro {
 
 	public void setCosto(float costo) {
 		this.costo = costo;
-	}
-	
-	
+	}	
 }

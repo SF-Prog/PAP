@@ -1,16 +1,19 @@
-package logica;
+package logica.manejadores;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManjadorPaquete {
-	private static ManjadorPaquete instancia = null; 
+import logica.Paquete;
+
+public class ManejadorPaquete {
+	private static ManejadorPaquete instancia = null; 
 	private List<Paquete> paquetes = new ArrayList<>();
-	private ManjadorPaquete(){}
 	
-	public static ManjadorPaquete getInstancia() {
+	private ManejadorPaquete(){}
+	
+	public static ManejadorPaquete getInstancia() {
 		if(instancia == null){
-			instancia = new ManjadorPaquete();
+			instancia = new ManejadorPaquete();
 		}
 		return instancia;
 	}
@@ -20,8 +23,5 @@ public class ManjadorPaquete {
 	}
 	public void setPaquetes(List<Paquete> paquetes) {
 		this.paquetes = paquetes;
-	}
-	
-	
-	
+	}	
 }

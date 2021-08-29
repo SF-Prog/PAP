@@ -50,55 +50,55 @@ public class Principal {
 		JMenuBar menuBar = new JMenuBar();
 		frmCoronatickets.setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Alta");
-		menuBar.add(mnNewMenu);
+		JMenu mnAltas = new JMenu("Alta");
+		menuBar.add(mnAltas);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Usuario");
-		mnNewMenu.add(mntmNewMenuItem_1);
+		JMenuItem mnAltaUsuario = new JMenuItem("Usuario");
+		mnAltas.add(mnAltaUsuario);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Espect\u00E1culo");
-		mnNewMenu.add(mntmNewMenuItem_2);
+		JMenuItem mnAltaEspectaculo = new JMenuItem("Espect\u00E1culo");
+		mnAltas.add(mnAltaEspectaculo);
 		
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
-		mnNewMenu.add(mntmNewMenuItem_7);
+		JMenuItem mnAltaFuncionDeEspectaculo = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
+		mnAltas.add(mnAltaFuncionDeEspectaculo);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Plataforma");
-		mnNewMenu.add(mntmNewMenuItem);
+		JMenuItem mnAltaPlataforma = new JMenuItem("Plataforma");
+		mnAltas.add(mnAltaPlataforma);
 		
-		JMenu mnNewMenu_1 = new JMenu("Consultar");
-		menuBar.add(mnNewMenu_1);
+		JMenu mnConsultar = new JMenu("Consultar");
+		menuBar.add(mnConsultar);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Usuario");
-		mnNewMenu_1.add(mntmNewMenuItem_3);
+		JMenuItem mnConsultarUsuario = new JMenuItem("Usuario");
+		mnConsultar.add(mnConsultarUsuario);
 		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Espect\u00E1culo");
-		mnNewMenu_1.add(mntmNewMenuItem_5);
+		JMenuItem mnConsultarEspectaculo = new JMenuItem("Espect\u00E1culo");
+		mnConsultar.add(mnConsultarEspectaculo);
 		
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
-		mnNewMenu_1.add(mntmNewMenuItem_6);
+		JMenuItem mnConsultarFuncionDeEspectaculo = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
+		mnConsultar.add(mnConsultarFuncionDeEspectaculo);
 		
-		JMenuItem mntmNewMenuItem_11 = new JMenuItem("Paquete de Espect\u00E1culos");
-		mnNewMenu_1.add(mntmNewMenuItem_11);
+		JMenuItem mnConsultarPaqueteDeEspectaculos = new JMenuItem("Paquete de Espect\u00E1culos");
+		mnConsultar.add(mnConsultarPaqueteDeEspectaculos);
 		
-		JMenu mnNewMenu_2 = new JMenu("Modificar");
-		menuBar.add(mnNewMenu_2);
+		JMenu mnModificar = new JMenu("Modificar");
+		menuBar.add(mnModificar);
 		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Usuario");
-		mnNewMenu_2.add(mntmNewMenuItem_4);
+		JMenuItem mnModificarUsuario = new JMenuItem("Usuario");
+		mnModificar.add(mnModificarUsuario);
 		
-		JMenu mnNewMenu_4 = new JMenu("Ingresar");
-		menuBar.add(mnNewMenu_4);
+		JMenu mnIngresar = new JMenu("Ingresar");
+		menuBar.add(mnIngresar);
 		
-		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Paquete de Espect\u00E1culos");
-		mnNewMenu_4.add(mntmNewMenuItem_9);
+		JMenuItem mnIngresarPaqueteDeEspectaculos = new JMenuItem("Paquete de Espect\u00E1culos");
+		mnIngresar.add(mnIngresarPaqueteDeEspectaculos);
 		
-		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Espect\u00E1culo a Paquete");
-		mnNewMenu_4.add(mntmNewMenuItem_10);
+		JMenuItem mnIngresarEspectaculoAPaquete = new JMenuItem("Espect\u00E1culo a Paquete");
+		mnIngresar.add(mnIngresarEspectaculoAPaquete);
 		
-		JMenu mnNewMenu_3 = new JMenu("Registrar");
-		menuBar.add(mnNewMenu_3);
+		JMenu mnRegistrar = new JMenu("Registrar");
+		menuBar.add(mnRegistrar);
 		
-		JMenuItem mntmNewMenuItem_8 = new JMenuItem("A Funci\u00F3n de Espect\u00E1culo");
-		mnNewMenu_3.add(mntmNewMenuItem_8);
+		JMenuItem mnRegistrarAFuncionDeEspectaculo = new JMenuItem("A Funci\u00F3n de Espect\u00E1culo");
+		mnRegistrar.add(mnRegistrarAFuncionDeEspectaculo);
 	}
 }

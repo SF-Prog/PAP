@@ -11,5 +11,4 @@ public interface IControladorConsultaDeUsuario {
 	public ArrayList<DtUsuario> seleccionaUsuario(String nickname);
 	public ArrayList<DtEspectaculo> listaInfoEspectaculos(String nickname);
 	public ArrayList<DtFuncion> listaInfoFunciones(String nickname);
-
 }

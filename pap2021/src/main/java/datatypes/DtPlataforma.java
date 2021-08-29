@@ -10,7 +10,6 @@ public class DtPlataforma {
 	private float costo;
 	private String FechaAlta;
 	
-	
 	public DtPlataforma() {
 		super();
 	}
@@ -39,81 +38,63 @@ public class DtPlataforma {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 
 	public int getDuracion() {
 		return duracion;
 	}
 
-
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-
 
 	public String getEspectadoresMin() {
 		return espectadoresMin;
 	}
 
-
 	public void setEspectadoresMin(String espectadoresMin) {
 		this.espectadoresMin = espectadoresMin;
 	}
-
 
 	public String getEspectadoresMax() {
 		return espectadoresMax;
 	}
 
-
 	public void setEspectadoresMax(String espectadoresMax) {
 		this.espectadoresMax = espectadoresMax;
 	}
-
 
 	public String getURLAsociada() {
 		return URLAsociada;
 	}
 
-
 	public void setURLAsociada(String uRLAsociada) {
 		URLAsociada = uRLAsociada;
 	}
-
 
 	public float getCosto() {
 		return costo;
 	}
 
-
 	public void setCosto(float costo) {
 		this.costo = costo;
 	}
-
 
 	public String getFechaAlta() {
 		return FechaAlta;
 	}
 
-
 	public void setFechaAlta(String fechaAlta) {
 		FechaAlta = fechaAlta;
-	}
-	
-	
-	
+	}	
 }

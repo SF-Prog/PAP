@@ -23,7 +23,4 @@ public  class Espectador extends Usuario {
 	public void setEspectadorPaquetes(List<EspectadorPaquete> espectadorPaquetes) {
 		this.espectadorPaquetes = espectadorPaquetes;
 	}
-
-
-	
 }

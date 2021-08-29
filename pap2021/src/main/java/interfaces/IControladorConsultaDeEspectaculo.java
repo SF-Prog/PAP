@@ -7,7 +7,7 @@ import datatypes.DtFuncion;
 import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 
-public interface IControladorConsultaDeEspetaculo {
+public interface IControladorConsultaDeEspectaculo {
 	public ArrayList<DtPlataforma> listarPlataformas();
 	public DtPlataforma seleccionaPlataforma(String nombre);
 	public ArrayList<DtEspectaculo> listarEspectaculos();
@@ -15,5 +15,5 @@ public interface IControladorConsultaDeEspetaculo {
 	public ArrayList<DtFuncion> listarFunciones();
 	public DtFuncion seleccionaFuncion(String nombre);
 	public ArrayList<DtPaquete> listarPaquetes();
-	public DtPaquete seleccionaPaquere(String nombre);
+	public DtPaquete seleccionaPaquete(String nombre);
 }

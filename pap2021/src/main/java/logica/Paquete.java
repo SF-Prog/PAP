@@ -6,8 +6,7 @@ import java.util.List;
 public class Paquete {
 	private String nombre;
 	private String descripcion;
-	private float Descuento;
-	
+	private float Descuento;	
 	private List<Espectaculo> espectaculos = new ArrayList<>();
 	
 	public Paquete() {
@@ -52,6 +51,4 @@ public class Paquete {
 	public void setEspectaculos(List<Espectaculo> espectaculos) {
 		this.espectaculos = espectaculos;
 	}
-
-	
 }

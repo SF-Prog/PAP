@@ -1,4 +1,4 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,14 +9,23 @@ import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtUsuario;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
+import logica.Artista;
+import logica.Espectaculo;
+import logica.Funcion;
+import logica.Plataforma;
+import logica.Usuario;
+import logica.manejadores.ManejadorPlataforma;
+import logica.manejadores.ManejadorUsuario;
 
 public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDeFuncionDeEspectaculo{
 	private Plataforma plataforma;
 	private Espectaculo espectaculo;
 	// private Espectaculo artistasIngresadosEnElSistema;
+	
 	public ControladorAltaDeFuncionDeEspectaculo() {
 		super();
 	}
+	
 	@Override
 	public List<DtEspectaculo> seleccionaPlataforma(String nombrePlataforma) {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
@@ -64,18 +73,19 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 
 	@Override
 	public void ingresaFuncion(DtFuncion dtFuncion, List<DtArtista> artistasInvitados) {
-			Funcion nuevaFuncion = new Funcion(dtFuncion.getNombre(), dtFuncion.getFecha(), dtFuncion.getHoraInicio(), dtFuncion.getFechaRegistro());
-			this.espectaculo.addFuncion(nuevaFuncion);
-			// itera entre la lista de artistas y linkea a acada uno con la nueva
-			for(DtArtista dta: artistasInvitados){
-				ManjadorUsuario mU = ManjadorUsuario.getInstancia();
-				Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dta.getNickName());
-				((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
-			};
+		Funcion nuevaFuncion = new Funcion(dtFuncion.getNombre(), dtFuncion.getFecha(), dtFuncion.getHoraInicio(), dtFuncion.getFechaRegistro());
+		this.espectaculo.addFuncion(nuevaFuncion);
+		// itera entre la lista de artistas y linkea a acada uno con la nueva
+		for(DtArtista dta: artistasInvitados){
+			ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+			Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dta.getNickName());
+			((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
 		};
+	};
+		
 	@Override
 	public List<DtArtista> listarArtistas() {
-		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		// Inicializa la lista en vacio para poder aplicarle el add
 		List<DtArtista> artistasEnElSistema = new ArrayList<DtArtista>();
 		List<Usuario> coleccionUsuarios = mU.getUsuarios();

@@ -13,11 +13,11 @@ import datatypes.DtFuncion;
 import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 import interfaces.Fabrica;
-import interfaces.IControladorAltaDeEspetaculo;
+import interfaces.IControladorAltaDeEspectaculo;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import interfaces.IControladorAltaDeUsuario;
-import interfaces.IControladorConsultaDeEspetaculo;
-import interfaces.IControladorConsultaDeFuncionDeEspetaculo;
+import interfaces.IControladorConsultaDeEspectaculo;
+import interfaces.IControladorConsultaDeFuncionDeEspectaculo;
 import interfaces.IControladorAltaDePlataforma;
 
 public class Principal2 {
@@ -241,7 +241,7 @@ public class Principal2 {
 		Scanner entrada = new Scanner(System.in);		
 		boolean espectaculoValido = false;
 		Fabrica f = Fabrica.getInstancia();
-		IControladorAltaDeEspetaculo icae = f.getIControladorAltaDeEspetaculo();
+		IControladorAltaDeEspectaculo icae = f.getIControladorAltaDeEspectaculo();
 		String plataforma = null;
 		String artista = null;
 		String nombre = null;
@@ -326,7 +326,7 @@ public class Principal2 {
 	
 	static void	ConsultaDeEspetaculo(){
 		Fabrica f = Fabrica.getInstancia();
-		IControladorConsultaDeEspetaculo iccde = f.getIControladorConsultaDeEspetaculo();
+		IControladorConsultaDeEspectaculo iccde = f.getIControladorConsultaDeEspectaculo();
 		boolean salir = false;
 		while(!salir){
 			// LISTO LAS PLATAFORMAS ///
@@ -432,7 +432,7 @@ public class Principal2 {
 					entradaPaquete.close();
 					
 
-					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquere(paquete);
+					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquete(paquete);
 					
 					
 				}else if(rRepetir.equals("no")){
@@ -451,7 +451,7 @@ public class Principal2 {
 	}
 	static void	ConsultaDeFuncionDeEspetaculo(){
 		Fabrica f = Fabrica.getInstancia();
-		IControladorConsultaDeFuncionDeEspetaculo iccdfe = f.getIControladorConsultaDeFuncionDeEspetaculo();
+		IControladorConsultaDeFuncionDeEspectaculo iccdfe = f.getIControladorConsultaDeFuncionDeEspectaculo();
 		boolean salir = false;
 		while(!salir){
 			// LISTO LAS PLATAFORMAS ///
@@ -651,7 +651,7 @@ public class Principal2 {
 	static void	 ModificarDatosDeUsuario(){}
 	static void	CrearPaqueteDeEspetaculos(){
 		Fabrica f = Fabrica.getInstancia();
-		IControladorConsultaDeEspetaculo iccde = f.getIControladorConsultaDeEspetaculo();
+		IControladorConsultaDeEspectaculo iccde = f.getIControladorConsultaDeEspectaculo();
 		boolean salir = false;
 		while(!salir){
 			// LISTO LAS PLATAFORMAS ///
@@ -720,7 +720,7 @@ public class Principal2 {
 					entradaPaquete.close();
 					
 
-					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquere(paquete);
+					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquete(paquete);
 					
 					
 				}else if(rRepetir.equals("no")){

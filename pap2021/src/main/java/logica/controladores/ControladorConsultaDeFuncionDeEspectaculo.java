@@ -1,4 +1,4 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,21 +7,25 @@ import java.util.List;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtPlataforma;
-import interfaces.IControladorConsultaDeFuncionDeEspetaculo;
+import interfaces.IControladorConsultaDeFuncionDeEspectaculo;
+import logica.Espectaculo;
+import logica.Funcion;
+import logica.Plataforma;
+import logica.manejadores.ManejadorPlataforma;
 
-public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorConsultaDeFuncionDeEspetaculo{
-	private Plataforma plataformaSeleccionada= null;
-	private Espectaculo espectaculoSeleccionada= null;
+public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorConsultaDeFuncionDeEspectaculo{
+	private Plataforma plataformaSeleccionada = null;
+	private Espectaculo espectaculoSeleccionada = null;
 	private Funcion funcionSeleccionada = null;
-	public ControladorConsultaDeFuncionDeEspetaculo() {
+	
+	public ControladorConsultaDeFuncionDeEspectaculo() {
 		super();
 	}
 
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
-		
-		ArrayList<DtPlataforma> dtPlataformas =null;
+		ArrayList<DtPlataforma> dtPlataformas = null;
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		for(Plataforma p : listPlataformas){
 			DtPlataforma dtp = new DtPlataforma(p.getNombre(),p.getDescripcion(),p.getDuracion(),p.getEspectadoresMin(),p.getEspectadoresMax(),p.getURLAsociada(),p.getCosto(),p.getFechaAlta());
@@ -34,10 +38,8 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 	public DtPlataforma seleccionaPlataforma(String nombre) {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		Plataforma plataforma = mP.getPlataforma(nombre);
-		this.plataformaSeleccionada =plataforma;
-		
+		this.plataformaSeleccionada =plataforma;		
 		DtPlataforma dtp = new DtPlataforma(plataforma.getNombre(),plataforma.getDescripcion(),plataforma.getDuracion(),plataforma.getEspectadoresMin(),plataforma.getEspectadoresMax(),plataforma.getURLAsociada(),plataforma.getCosto(),plataforma.getFechaAlta());
-
 		return dtp;
 	}
 
@@ -54,9 +56,7 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 
 	@Override
 	public DtEspectaculo seleccionaEspectaculo(String nombre) {
-		// TODO Auto-generated method stub
-		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();
-		
+		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();		
 		Iterator<Espectaculo> eIterator = listEspectaculos.iterator();  
 		DtEspectaculo dte=null;
 		boolean existe = false;
@@ -75,8 +75,7 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 						eIterator.next().getFechaRegistro()
 						);
 			}
-		}
-			
+		}			
 		return dte;
 	}
 
@@ -93,7 +92,6 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 
 	@Override
 	public DtFuncion seleccionaFuncion(String nombre) {
-		// TODO Auto-generated method stub
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		DtFuncion dtf=null;
 		Iterator<Funcion> fIterator = listFunciones.iterator();
@@ -105,8 +103,6 @@ public class ControladorConsultaDeFuncionDeEspetaculo implements IControladorCon
 				dtf =new DtFuncion(fIterator.next().getNombre(),fIterator.next().getFecha(),fIterator.next().getHoraInicio(),fIterator.next().getFechaRegistro());
 			}
 		}
-		return dtf;
-		
-	}
-	
+		return dtf;		
+	}	
 }

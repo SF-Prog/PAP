@@ -1,7 +1,6 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,21 +8,28 @@ import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
-import interfaces.IControladorConsultaDeEspetaculo;
+import interfaces.IControladorConsultaDeEspectaculo;
+import logica.Espectaculo;
+import logica.Funcion;
+import logica.Paquete;
+import logica.Plataforma;
+import logica.manejadores.ManejadorPaquete;
+import logica.manejadores.ManejadorPlataforma;
 
-public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEspetaculo {
+public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeEspectaculo {
 	private Plataforma plataformaSeleccionada= null;
 	private Espectaculo espectaculoSeleccionada= null;
 	private Funcion funcionSeleccionada = null;
-	private Paquete paqueteSeleccionada= null;
-	public ControladorConsultaDeEspetaculo() {
+	private Paquete paqueteSeleccionado = null;
+	
+	public ControladorConsultaDeEspectaculo() {
 		super();
 	}
+	
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
-		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
-		
-		ArrayList<DtPlataforma> dtPlataformas =null;
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
+		ArrayList<DtPlataforma> dtPlataformas = null;
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		for(Plataforma p : listPlataformas){
 			DtPlataforma dtp = new DtPlataforma(p.getNombre(),p.getDescripcion(),p.getDuracion(),p.getEspectadoresMin(),p.getEspectadoresMax(),p.getURLAsociada(),p.getCosto(),p.getFechaAlta());
@@ -37,17 +43,15 @@ public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEs
 		// TODO Auto-generated method stub
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		Plataforma plataforma = mP.getPlataforma(nombre);
-		this.plataformaSeleccionada =plataforma;
-		
+		this.plataformaSeleccionada = plataforma;		
 		DtPlataforma dtp = new DtPlataforma(plataforma.getNombre(),plataforma.getDescripcion(),plataforma.getDuracion(),plataforma.getEspectadoresMin(),plataforma.getEspectadoresMax(),plataforma.getURLAsociada(),plataforma.getCosto(),plataforma.getFechaAlta());
-
 		return dtp;
 	}
 
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
 		
-		ArrayList<DtEspectaculo> dtEspectaculos =null;
+		ArrayList<DtEspectaculo> dtEspectaculos = null;
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		for(Espectaculo e : listEspectaculos){
 			DtEspectaculo dte = new DtEspectaculo(e.getNombre(),e.getDescripcion(),e.getDuracion(),e.getEspectadoresMin(),e.getEspectadoresMax(),e.getUrlAsociada(),e.getCosto(),e.getFechaRegistro());
@@ -59,10 +63,9 @@ public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEs
 	@Override
 	public DtEspectaculo seleccionaEspectaculo(String nombre) {
 		// TODO Auto-generated method stub
-		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();
-		
+		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();		
 		Iterator<Espectaculo> eIterator = listEspectaculos.iterator();  
-		DtEspectaculo dte=null;
+		DtEspectaculo dte = null;
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
 			if(eIterator.next().getNombre().equals(nombre)){
@@ -79,8 +82,7 @@ public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEs
 						eIterator.next().getFechaRegistro()
 						);
 			}
-		}
-			
+		}			
 		return dte;
 	}
 
@@ -116,8 +118,7 @@ public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEs
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
 		// TODO Auto-generated method stub
-		ManjadorPaquete mPa = ManjadorPaquete.getInstancia();
-
+		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
 		ArrayList<DtPaquete> dtPaquete =null;
 		List<Paquete> listPaquetes = mPa.getPaquetes();
 		for(Paquete p : listPaquetes){
@@ -134,28 +135,23 @@ public class ControladorConsultaDeEspetaculo implements IControladorConsultaDeEs
 			dtPaquete.add(dtp);
 		}
 		return dtPaquete;
-
 	}
 
 	@Override
-	public DtPaquete seleccionaPaquere(String nombre) {
+	public DtPaquete seleccionaPaquete(String nombre) {
 		// TODO Auto-generated method stub
-		ManjadorPaquete mPa = ManjadorPaquete.getInstancia();
-
-
-		List<Paquete> listPaquetes = mPa.getPaquetes();
-				
+		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
+		List<Paquete> listPaquetes = mPa.getPaquetes();				
 		DtPaquete dtp=null;
 		Iterator<Paquete> pIterator = listPaquetes.iterator();
 		boolean existe = false;
 		while(pIterator.hasNext() && !existe){
 			if(pIterator.next().getNombre().equals(nombre)){
 				existe = true;
-				this.paqueteSeleccionada = pIterator.next();
+				this.paqueteSeleccionado = pIterator.next();
 				dtp = new DtPaquete(pIterator.next().getNombre(),pIterator.next().getDescripcion(),pIterator.next().getDescuento());
 			}
 		}
 		return dtp;
 	}
-	
 }
