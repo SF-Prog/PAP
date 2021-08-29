@@ -1,15 +1,20 @@
-package logica;
+package logica.controladores;
 
 import java.util.List;
 
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
 import datatypes.DtUsuario;
-import interfaces.IControladorAltaDeEspetaculo;
+import interfaces.IControladorAltaDeEspectaculo;
+import logica.Artista;
+import logica.Espectaculo;
+import logica.Plataforma;
+import logica.Usuario;
+import logica.manejadores.ManejadorPlataforma;
+import logica.manejadores.ManejadorUsuario;
 
-public class ControladorAltaDeEspetaculo implements IControladorAltaDeEspetaculo {
-	
-	public ControladorAltaDeEspetaculo() {
+public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectaculo {	
+	public ControladorAltaDeEspectaculo() {
 		super();
 	}
 	
@@ -36,7 +41,7 @@ public class ControladorAltaDeEspetaculo implements IControladorAltaDeEspetaculo
 		List<Espectaculo> coleccionEspectaculos = p.getEspectaculos();
 		coleccionEspectaculos.add(nuevoEspectaculo);
 		
-		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		Usuario u = mU.buscarUsuarioPorNickname(artista.getNombre());
 		coleccionEspectaculos = ((Artista)u).getEspectaculos();
 		coleccionEspectaculos.add(nuevoEspectaculo);
@@ -44,13 +49,13 @@ public class ControladorAltaDeEspetaculo implements IControladorAltaDeEspetaculo
 	
 	@Override
 	public DtUsuario buscarUsuarioPorNickname(String nickname) {
-		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		return mU.buscarUsuarioPorNickname(nickname).getDtUsuario();
 	}
 	
 	@Override
 	public DtUsuario buscarUsuarioPorEmail(String email) {
-		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		return mU.buscarUsuarioPorEmail(email).getDtUsuario();
 	}
 }

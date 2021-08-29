@@ -1,4 +1,4 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
 
@@ -7,11 +7,11 @@ import datatypes.DtFuncion;
 import datatypes.DtUsuario;
 import interfaces.IControladorConsultaDeUsuario;
 
-public class ControladorConsultaDeUsuario implements IControladorConsultaDeUsuario {
-	
+public class ControladorConsultaDeUsuario implements IControladorConsultaDeUsuario {	
 	public ControladorConsultaDeUsuario() {
 		super();
 	}
+	
 	@Override
 	public ArrayList<DtUsuario> listarUsuarios() {
 		// TODO Auto-generated method stub
@@ -35,6 +35,4 @@ public class ControladorConsultaDeUsuario implements IControladorConsultaDeUsuar
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 }

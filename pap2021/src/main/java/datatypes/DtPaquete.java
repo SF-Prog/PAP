@@ -4,7 +4,6 @@ public class DtPaquete {
 	private String nombre;
 	private String descripcion;
 	private float Descuento;
-	
 
 	public DtPaquete() {
 		super();
@@ -43,9 +42,8 @@ public class DtPaquete {
 
 	@Override
 	public String toString() {
-		
-		String retorno =  "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.Descuento;
-		return retorno ;
+		String retorno = "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.Descuento;
+		return retorno;
 	}
 	
 }

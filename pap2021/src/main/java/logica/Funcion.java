@@ -1,6 +1,6 @@
 package logica;
-import java.util.Date;
 
+import java.util.Date;
 
 public class Funcion {
 	private String nombre;
@@ -50,9 +50,5 @@ public class Funcion {
 
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
-	}
-	
-	
-	
-	
+	}	
 }

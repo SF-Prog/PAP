@@ -1,16 +1,19 @@
-package logica;
+package logica.manejadores;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManjadorRegistro {
-	private static ManjadorRegistro instancia = null; 
+import logica.Registro;
+
+public class ManejadorRegistro {
+	private static ManejadorRegistro instancia = null; 
 	private List<Registro> registros = new ArrayList<>();
-	private ManjadorRegistro(){}
 	
-	public static ManjadorRegistro getInstancia() {
+	private ManejadorRegistro(){}
+	
+	public static ManejadorRegistro getInstancia() {
 		if(instancia == null){
-			instancia = new ManjadorRegistro();
+			instancia = new ManejadorRegistro();
 		}
 		return instancia;
 	}
@@ -18,8 +21,8 @@ public class ManjadorRegistro {
 	public List<Registro> getRegistros() {
 		return registros;
 	}
+	
 	public void setRegistros(List<Registro> registros) {
 		this.registros = registros;
-	}
-	
+	}	
 }

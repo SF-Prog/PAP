@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import datatypes.DtEspectaculo;
 import datatypes.DtPaquete;
 
-public interface IControladorAgregarEspetaculoAPaqueteDeEspetaculos {
+public interface IControladorAgregarEspectaculoAPaqueteDeEspectaculos {
 	public ArrayList<DtPaquete> listarPaquetes();
 	public void seleccionarPaquete(String paquete);
 	public void seleccionarPlataforma(String plataforma);

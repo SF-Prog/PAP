@@ -1,6 +1,5 @@
 package interfaces;
 
-
 import datatypes.DtUsuario;
 
 public interface IControladorAltaDeUsuario {

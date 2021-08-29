@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class Artista extends Usuario{
 	private String descGeneral;
 	private String biografia;
@@ -23,7 +22,6 @@ public class Artista extends Usuario{
 		this.biografia = biografia;
 		this.link = link;
 	}
-
 
 	public String getDescGeneral() {
 		return descGeneral;
@@ -67,6 +65,5 @@ public class Artista extends Usuario{
 	
 	public void agregarFuncion(Funcion funcion){
 		this.funciones.add(funcion);
-	}
-	
+	}	
 }

@@ -1,12 +1,11 @@
-package logica;
+package logica.controladores;
 
 import java.util.Date;
 
-import interfaces.IControladorCrearPaqueteDeEspetaculos;
+import interfaces.IControladorCrearPaqueteDeEspectaculos;
 
-public class ControladorCrearPaqueteDeEspetaculos implements IControladorCrearPaqueteDeEspetaculos {
-
-	public ControladorCrearPaqueteDeEspetaculos() {
+public class ControladorCrearPaqueteDeEspectaculos implements IControladorCrearPaqueteDeEspectaculos {
+	public ControladorCrearPaqueteDeEspectaculos() {
 		super();
 	}
 	 

@@ -31,7 +31,4 @@ public class DtRegistro {
 	public void setCosto(float costo) {
 		this.costo = costo;
 	}
-	
-	
-
 }

@@ -1,17 +1,17 @@
 package interfaces;
 
-import logica.ControladorAgregarEspetaculoAPaqueteDeEspetaculos;
-import logica.ControladorAltaDeEspetaculo;
-import logica.ControladorAltaDeFuncionDeEspectaculo;
-import logica.ControladorAltaDePlataforma;
-import logica.ControladorAltaDeUsuario;
-import logica.ControladorConsultaDeEspetaculo;
-import logica.ControladorConsultaDeFuncionDeEspetaculo;
-import logica.ControladorConsultaDePaqueteDeEspetaculos;
-import logica.ControladorConsultaDeUsuario;
-import logica.ControladorCrearPaqueteDeEspetaculos;
-import logica.ControladorModificarDatosDeUsuario;
-import logica.ControladorRegistroAFuncionDeEspetaculo;
+import logica.controladores.ControladorAgregarEspectaculoAPaqueteDeEspectaculos;
+import logica.controladores.ControladorAltaDeEspectaculo;
+import logica.controladores.ControladorAltaDeFuncionDeEspectaculo;
+import logica.controladores.ControladorAltaDePlataforma;
+import logica.controladores.ControladorAltaDeUsuario;
+import logica.controladores.ControladorConsultaDeEspectaculo;
+import logica.controladores.ControladorConsultaDeFuncionDeEspectaculo;
+import logica.controladores.ControladorConsultaDePaqueteDeEspectaculos;
+import logica.controladores.ControladorConsultaDeUsuario;
+import logica.controladores.ControladorCrearPaqueteDeEspectaculos;
+import logica.controladores.ControladorModificarDatosDeUsuario;
+import logica.controladores.ControladorRegistroAFuncionDeEspectaculo;
 
 public class Fabrica {
 	private static Fabrica instancia = null;
@@ -24,12 +24,12 @@ public class Fabrica {
 		return instancia;
 	}	
 
-	public IControladorAgregarEspetaculoAPaqueteDeEspetaculos getIControladorAgregarEspetaculoAPaqueteDeEspetaculos() {
-		return new ControladorAgregarEspetaculoAPaqueteDeEspetaculos();
+	public IControladorAgregarEspectaculoAPaqueteDeEspectaculos getIControladorAgregarEspetaculoAPaqueteDeEspectaculos() {
+		return new ControladorAgregarEspectaculoAPaqueteDeEspectaculos();
 	}
 	
-	public IControladorAltaDeEspetaculo getIControladorAltaDeEspetaculo() {
-		return new ControladorAltaDeEspetaculo();
+	public IControladorAltaDeEspectaculo getIControladorAltaDeEspectaculo() {
+		return new ControladorAltaDeEspectaculo();
 	}
   
 	public IControladorAltaDeFuncionDeEspectaculo getIControladorAltaDeFuncionDeEspectaculo() {
@@ -44,31 +44,31 @@ public class Fabrica {
 		return new ControladorAltaDeUsuario();
 	}
 	
-	public IControladorConsultaDeEspetaculo getIControladorConsultaDeEspetaculo() {
-		return new ControladorConsultaDeEspetaculo();
+	public IControladorConsultaDeEspectaculo getIControladorConsultaDeEspectaculo() {
+		return new ControladorConsultaDeEspectaculo();
 	}
 
-	public IControladorConsultaDeFuncionDeEspetaculo getIControladorConsultaDeFuncionDeEspetaculo() {
-		return new ControladorConsultaDeFuncionDeEspetaculo();
+	public IControladorConsultaDeFuncionDeEspectaculo getIControladorConsultaDeFuncionDeEspectaculo() {
+		return new ControladorConsultaDeFuncionDeEspectaculo();
 	}	
 
-	public IControladorConsultaDePaqueteDeEspetaculos getIControladorConsultaDePaqueteDeEspetaculos() {
-		return new ControladorConsultaDePaqueteDeEspetaculos();
+	public IControladorConsultaDePaqueteDeEspectaculos getIControladorConsultaDePaqueteDeEspectaculos() {
+		return new ControladorConsultaDePaqueteDeEspectaculos();
 	}
 	
 	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
 		return new ControladorConsultaDeUsuario();
 	}
   
-	public IControladorCrearPaqueteDeEspetaculos getIControladorCrearPaqueteDeEspetaculos() {
-		return new ControladorCrearPaqueteDeEspetaculos();
+	public IControladorCrearPaqueteDeEspectaculos getIControladorCrearPaqueteDeEspectaculos() {
+		return new ControladorCrearPaqueteDeEspectaculos();
 	}
 
 	public IControladorModificarDatosDeUsuario getIControladorModificarDatosDeUsuario() {
 		return new ControladorModificarDatosDeUsuario();
 	}
 	
-	public IControladorRegistroAFuncionDeEspetaculo get() {
-		return new ControladorRegistroAFuncionDeEspetaculo();
+	public IControladorRegistroAFuncionDeEspectaculo getIControladorRegistroAFuncionDeEspectaculo() {
+		return new ControladorRegistroAFuncionDeEspectaculo();
 	}
 }

@@ -1,17 +1,20 @@
-package logica;
+package logica.manejadores;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManjadorUsuario {
-	private static ManjadorUsuario instancia = null; 
+import logica.Usuario;
+
+public class ManejadorUsuario {
+	private static ManejadorUsuario instancia = null; 
 	private List<Usuario> usuarios = new ArrayList<>();
-	private ManjadorUsuario(){}
 	
-	public static ManjadorUsuario getInstancia() {
+	private ManejadorUsuario(){}
+	
+	public static ManejadorUsuario getInstancia() {
 		if(instancia == null){
-			instancia = new ManjadorUsuario();
+			instancia = new ManejadorUsuario();
 		}
 		return instancia;
 	}

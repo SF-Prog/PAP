@@ -1,12 +1,11 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
 
 import datatypes.DtUsuario;
 import interfaces.IControladorModificarDatosDeUsuario;
 
-public class ControladorModificarDatosDeUsuario implements IControladorModificarDatosDeUsuario {
-	
+public class ControladorModificarDatosDeUsuario implements IControladorModificarDatosDeUsuario {	
 	public ControladorModificarDatosDeUsuario() {
 		super();
 	}
@@ -34,5 +33,4 @@ public class ControladorModificarDatosDeUsuario implements IControladorModificar
 		// TODO Auto-generated method stub
 		
 	}
-
 }

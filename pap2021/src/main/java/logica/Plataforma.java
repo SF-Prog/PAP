@@ -12,12 +12,12 @@ public class Plataforma {
 	private String URLAsociada;
 	private float costo;
 	private String FechaAlta;
-	
 	private List<Espectaculo> espectaculos = new ArrayList<>();
 	
 	public Plataforma() {
 		super();
 	}
+	
 	public Plataforma(String nombre, String descripcion, int duracion, String espectadoresMin, String espectadoresMax,
 			String uRLAsociada, float costo, String fechaAlta) {
 		super();
@@ -41,59 +41,72 @@ public class Plataforma {
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
+	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
 	public int getDuracion() {
 		return duracion;
 	}
+	
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
+	
 	public String getEspectadoresMin() {
 		return espectadoresMin;
 	}
+	
 	public void setEspectadoresMin(String espectadoresMin) {
 		this.espectadoresMin = espectadoresMin;
 	}
+	
 	public String getEspectadoresMax() {
 		return espectadoresMax;
 	}
+	
 	public void setEspectadoresMax(String espectadoresMax) {
 		this.espectadoresMax = espectadoresMax;
 	}
+	
 	public String getURLAsociada() {
 		return URLAsociada;
 	}
+	
 	public void setURLAsociada(String uRLAsociada) {
 		URLAsociada = uRLAsociada;
 	}
+	
 	public float getCosto() {
 		return costo;
 	}
+	
 	public void setCosto(float costo) {
 		this.costo = costo;
 	}
+	
 	public String getFechaAlta() {
 		return FechaAlta;
 	}
+	
 	public void setFechaAlta(String fechaAlta) {
 		FechaAlta = fechaAlta;
 	}
+	
 	public List<Espectaculo> getEspectaculos() {
 		return espectaculos;
 	}
+	
 	public void setEspectaculos(List<Espectaculo> espectaculos) {
 		this.espectaculos = espectaculos;
 	}
-
-	
-	
-
 }

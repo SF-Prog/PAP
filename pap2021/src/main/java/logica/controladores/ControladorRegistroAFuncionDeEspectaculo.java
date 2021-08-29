@@ -1,4 +1,4 @@
-package logica;
+package logica.controladores;
 
 import java.util.ArrayList;
 
@@ -6,12 +6,10 @@ import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtRegistro;
 import datatypes.DtUsuario;
+import interfaces.IControladorRegistroAFuncionDeEspectaculo;
 
-import interfaces.IControladorRegistroAFuncionDeEspetaculo;
-
-public class ControladorRegistroAFuncionDeEspetaculo implements IControladorRegistroAFuncionDeEspetaculo  {
-
-	public ControladorRegistroAFuncionDeEspetaculo() {
+public class ControladorRegistroAFuncionDeEspectaculo implements IControladorRegistroAFuncionDeEspectaculo  {
+	public ControladorRegistroAFuncionDeEspectaculo() {
 		super();
 	}
 	
@@ -56,7 +54,5 @@ public class ControladorRegistroAFuncionDeEspetaculo implements IControladorRegi
 	public void cambiarUsuario(String nickname) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	
+	}	
 }
