@@ -2,16 +2,24 @@ package presentacion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import datatypes.DtUsuario;
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
+import datatypes.DtFuncion;
+import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeEspetaculo;
 import interfaces.IControladorAltaDeUsuario;
+import interfaces.IControladorConsultaDeEspetaculo;
+import interfaces.IControladorConsultaDeFuncionDeEspetaculo;
+import interfaces.IControladorConsultaDePaqueteDeEspetaculos;
+import logica.Usuario;
 import interfaces.IControladorAltaDePlataforma;
 
 public class Principal {
@@ -35,7 +43,7 @@ public class Principal {
 				+ "12. Registro a función de Espetaculo\n"
 				/* OPCIONES DE FUNCIONAMIENTO*/
 				+ "13. Salir\n"
-				+ "14. OPCIÓN: ");		
+				+ "14. OPCION: ");		
 	}	
 	
  public static Date ParseFecha(String fecha){
@@ -51,6 +59,20 @@ public class Principal {
         }
         return fechaDate;
   }	
+ 
+ public static Date Parsehora(String hora){
+     // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
+		 SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
+       Date fechaHora = null;
+       try {
+    	   fechaHora = formato.parse(hora);
+       } 
+       catch (ParseException ex) 
+       {
+           System.out.println(ex);
+       }
+       return fechaHora;
+ }	
 	 
 	static void	AltaDeUsuario() {
 		
@@ -290,9 +312,216 @@ public class Principal {
 		entrada.close();
 	}// FIN DE ALTA ESPECTACULO
 	
-	static void	ConsultaDeEspetaculo(){}
+	static void	ConsultaDeEspetaculo(){
+		Fabrica f = Fabrica.getInstancia();
+		IControladorConsultaDeEspetaculo iccde = f.getIControladorConsultaDeEspetaculo();
+		boolean salir = false;
+		while(!salir){
+			// LISTO LAS PLATAFORMAS ///
+			ArrayList<DtPlataforma> dtPlataformas = iccde.listarPlataformas();
+			for(DtPlataforma dtp: dtPlataformas) {
+				System.out.print("- "+dtp.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS PLATAFORMAS ///
+			
+			// SELECCIONO LA PLATAFORMA ///
+			System.out.print("Seleccione una plataforma por su nombre:\n");
+			Scanner entradaPla = new Scanner(System.in);
+			String plataforma = null;
+			plataforma=entradaPla.nextLine(); 
+			entradaPla.close();
+			
+			DtPlataforma plataformaSeleccionada = iccde.seleccionaPlataforma(plataforma);
+
+			// FIN SELECCIONO LA PLATAFORMA ///
+			
+			
+			
+			// LISTO LAS ESPECTACULOS ///
+			ArrayList<DtEspectaculo> dtEspectaculos = iccde.listarEspectaculos();
+			for(DtEspectaculo dte: dtEspectaculos) {
+				System.out.print("- "+dte.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS ESPECTACULOS ///
+			
+			// SELECCIONO LA ESPECTACULO ///
+			System.out.print("Seleccione una especatulo por su nombre:\n");
+			Scanner entradaEsp = new Scanner(System.in);
+			String especatculo = null;
+			especatculo=entradaEsp.nextLine(); 
+			entradaEsp.close();
+			
+			DtEspectaculo especatculoSeleccionada =  iccde.seleccionaEspectaculo(especatculo);
+			
+			// FIN SELECCIONO LA ESPECTACULO ///
+			//DETALLE DE ESPETACULO//
+			System.out.print("Espectaculo Seleccionado:\n"+especatculoSeleccionada);
+			// FIN DETALLE DE ESPETACULO//
+			
+			// LISTO LAS FUNCIONES ///
+			System.out.print("\nFUNCIONES ASOCIADAS AL ESPECTACULO SELECCIONADO: \n");
+			ArrayList<DtFuncion> dtFunciones = iccde.listarFunciones();
+			for(DtFuncion dtf: dtFunciones) {
+				System.out.print("- "+dtf.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS FUNCIONES ///
+
+
+			
+			
+			boolean repiteFuncion = false;
+			while(!repiteFuncion) {
+				
+				System.out.print("\n QUIERE DETALLAR ALGUNA FUNCION?: (si)/(no) \n");
+				Scanner entradaRepetir = new Scanner(System.in);
+				String rRepetir = null;
+				rRepetir=entradaEsp.nextLine(); 
+				entradaRepetir.close();
+				
+				if(rRepetir.equals("si")){
+					System.out.print("\n INGRESE NOMBRE FUNCION: \n");
+					Scanner entradaFuncion = new Scanner(System.in);
+					String funcion = null;
+					funcion=entradaFuncion.nextLine(); 
+					entradaFuncion.close();
+					
+					DtFuncion funcionSeleccionada = iccde.seleccionaFuncion(funcion);
+				}else if(rRepetir.equals("no")){
+					repiteFuncion = true;
+				}else{
+					System.out.print("\n OPCION INCORRECTA \n");
+				}
+				
+			}
+			
+			
+			// LISTO LAS PAQUETE ///
+			System.out.print("\nPAQUETES ASOCIADAS AL ESPECTACULO SELECCIONADO: \n");
+			ArrayList<DtPaquete> dtPaquetes = iccde.listarPaquetes();
+			for(DtPaquete dtp: dtPaquetes) {
+				System.out.print("- "+dtp.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS PAQUETE ///
+			boolean repitePaquete = false;
+			while(!repitePaquete) {
+				
+				System.out.print("\n QUIERE DETALLAR ALGUNA FUNCION?: (si)/(no) \n");
+				Scanner entradaRepetir = new Scanner(System.in);
+				String rRepetir = null;
+				rRepetir=entradaEsp.nextLine(); 
+				entradaRepetir.close();
+				
+				if(rRepetir.equals("si")){
+					
+					System.out.print("\n INGRESE NOMBRE PAQUETE: \n");
+					Scanner entradaPaquete = new Scanner(System.in);
+					String paquete = null;
+					paquete=entradaPaquete.nextLine(); 
+					entradaPaquete.close();
+					
+
+					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquere(paquete);
+					
+					
+				}else if(rRepetir.equals("no")){
+					repitePaquete = true;
+				}else{
+					System.out.print("\n OPCION INCORRECTA \n");
+				}
+				
+			}
+			
+			
+			
+			salir = true;// SALGO DE LA REITERACION
+		}
+		
+	}
 	static void	AltadeFuncionDeEspetaculo(){}
-	static void	ConsultaDeFuncionDeEspetaculo(){}
+	static void	ConsultaDeFuncionDeEspetaculo(){
+		Fabrica f = Fabrica.getInstancia();
+		IControladorConsultaDeFuncionDeEspetaculo iccdfe = f.getIControladorConsultaDeFuncionDeEspetaculo();
+		boolean salir = false;
+		while(!salir){
+			// LISTO LAS PLATAFORMAS ///
+			ArrayList<DtPlataforma> dtPlataformas = iccdfe.listarPlataformas();
+			for(DtPlataforma dtp: dtPlataformas) {
+				System.out.print("- "+dtp.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS PLATAFORMAS ///
+			
+			// SELECCIONO LA PLATAFORMA ///
+			System.out.print("Seleccione una plataforma por su nombre:\n");
+			Scanner entradaPla = new Scanner(System.in);
+			String plataforma = null;
+			plataforma=entradaPla.nextLine(); 
+			entradaPla.close();
+			
+			DtPlataforma plataformaSeleccionada = iccdfe.seleccionaPlataforma(plataforma);
+
+			// FIN SELECCIONO LA PLATAFORMA ///
+			
+			
+			
+			// LISTO LAS ESPECTACULOS ///
+			ArrayList<DtEspectaculo> dtEspectaculos = iccdfe.listarEspectaculos();
+			for(DtEspectaculo dte: dtEspectaculos) {
+				System.out.print("- "+dte.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS ESPECTACULOS ///
+			
+			// SELECCIONO LA ESPECTACULO ///
+			System.out.print("Seleccione una especatulo por su nombre:\n");
+			Scanner entradaEsp = new Scanner(System.in);
+			String especatculo = null;
+			especatculo=entradaEsp.nextLine(); 
+			entradaEsp.close();
+			
+			DtEspectaculo especatculoSeleccionada =  iccdfe.seleccionaEspectaculo(especatculo);
+			
+			// FIN SELECCIONO LA ESPECTACULO ///
+			//DETALLE DE ESPETACULO//
+			System.out.print("Espectaculo Seleccionado:\n"+especatculoSeleccionada);
+			// FIN DETALLE DE ESPETACULO//
+			
+			// LISTO LAS FUNCIONES ///
+			System.out.print("\nFUNCIONES ASOCIADAS AL ESPECTACULO SELECCIONADO: \n");
+			ArrayList<DtFuncion> dtFunciones = iccdfe.listarFunciones();
+			for(DtFuncion dtf: dtFunciones) {
+				System.out.print("- "+dtf.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS FUNCIONES ///
+
+
+			
+			
+			boolean repiteFuncion = false;
+			while(!repiteFuncion) {
+				
+				System.out.print("\n QUIERE DETALLAR ALGUNA FUNCION?: (si)/(no) \n");
+				Scanner entradaRepetir = new Scanner(System.in);
+				String rRepetir = null;
+				rRepetir=entradaEsp.nextLine(); 
+				entradaRepetir.close();
+				
+				if(rRepetir.equals("si")){
+					System.out.print("\n INGRESE NOMBRE FUNCION: \n");
+					Scanner entradaFuncion = new Scanner(System.in);
+					String funcion = null;
+					funcion=entradaFuncion.nextLine(); 
+					entradaFuncion.close();
+					
+					DtFuncion funcionSeleccionada = iccdfe.seleccionaFuncion(funcion);
+				}else if(rRepetir.equals("no")){
+					repiteFuncion = true;
+				}else{
+					System.out.print("\n OPCION INCORRECTA \n");
+				}
+				
+			}			
+			salir = true;// SALGO DE LA REITERACION
+		}
+	}
 	static void	AltaDePlataforma(){
 		Scanner entrada = new Scanner(System.in);
 		boolean nombreDePlataformaValido = false;
@@ -335,9 +564,135 @@ public class Principal {
 	/* REQUERIMIENTOS NO MINIMOS*/
 	static void	ConsultaDeUsuario(){}
 	static void	 ModificarDatosDeUsuario(){}
-	static void	CrearPaqueteDeEspetaculos(){}
+	static void	CrearPaqueteDeEspetaculos(){
+		Fabrica f = Fabrica.getInstancia();
+		IControladorConsultaDeEspetaculo iccde = f.getIControladorConsultaDeEspetaculo();
+		boolean salir = false;
+		while(!salir){
+			// LISTO LAS PLATAFORMAS ///
+			ArrayList<DtPlataforma> dtPlataformas = iccde.listarPlataformas();
+			for(DtPlataforma dtp: dtPlataformas) {
+				System.out.print("- "+dtp.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS PLATAFORMAS ///
+			
+			// SELECCIONO LA PLATAFORMA ///
+			System.out.print("Seleccione una plataforma por su nombre:\n");
+			Scanner entradaPla = new Scanner(System.in);
+			String plataforma = null;
+			plataforma=entradaPla.nextLine(); 
+			entradaPla.close();
+			
+			DtPlataforma plataformaSeleccionada = iccde.seleccionaPlataforma(plataforma);
+
+			// FIN SELECCIONO LA PLATAFORMA ///
+			
+			
+			
+			// LISTO LAS ESPECTACULOS ///
+			ArrayList<DtEspectaculo> dtEspectaculos = iccde.listarEspectaculos();
+			for(DtEspectaculo dte: dtEspectaculos) {
+				System.out.print("- "+dte.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS ESPECTACULOS ///
+			
+			// SELECCIONO LA ESPECTACULO ///
+			System.out.print("Seleccione una especatulo por su nombre:\n");
+			Scanner entradaEsp = new Scanner(System.in);
+			String especatculo = null;
+			especatculo=entradaEsp.nextLine(); 
+			entradaEsp.close();
+			
+			DtEspectaculo especatculoSeleccionada =  iccde.seleccionaEspectaculo(especatculo);
+			
+			// FIN SELECCIONO LA ESPECTACULO ///
+			//DETALLE DE ESPETACULO//
+			System.out.print("Espectaculo Seleccionado:\n"+especatculoSeleccionada);
+			// FIN DETALLE DE ESPETACULO//
+				
+			// LISTO LAS ESPECTACULOS ///
+			System.out.print("\n PAQUETE ASOCIADAS AL ESPECTACULO SELECCIONADO: \n");
+			ArrayList<DtPaquete> dtPaquetes = iccde.listarPaquetes();
+			for(DtPaquete dtp: dtPaquetes) {
+				System.out.print("- "+dtp.getNombre()+"\n");		
+			}
+			// FIN DE LISTADO LAS ESPECTACULOS ///
+			boolean repitePaquete = false;
+			while(!repitePaquete) {
+				
+				System.out.print("\n QUIERE DETALLAR ALGUNA FUNCION?: (si)/(no) \n");
+				Scanner entradaRepetir = new Scanner(System.in);
+				String rRepetir = null;
+				rRepetir=entradaEsp.nextLine(); 
+				entradaRepetir.close();
+				
+				if(rRepetir.equals("si")){
+					
+					System.out.print("\n INGRESE NOMBRE PAQUETE: \n");
+					Scanner entradaPaquete = new Scanner(System.in);
+					String paquete = null;
+					paquete=entradaPaquete.nextLine(); 
+					entradaPaquete.close();
+					
+
+					 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquere(paquete);
+					
+					
+				}else if(rRepetir.equals("no")){
+					repitePaquete = true;
+				}else{
+					System.out.print("\n OPCION INCORRECTA \n");
+				}
+				
+			}
+			
+			
+			
+			salir = true;// SALGO DE LA REITERACION
+		}
+	}
 	static void	AgregarEspetaculoAPaqueteDeEspetaculos(){}
-	static void ConsultaDePaqueteDeEspetaculos(){}
+	static void ConsultaDePaqueteDeEspetaculos(){
+		/*Fabrica f = Fabrica.getInstancia();
+		IControladorConsultaDePaqueteDeEspetaculos iccd = f.getIControladorConsultaDePaqueteDeEspetaculos();
+		
+		// LISTO LAS PAQUETE ///
+		System.out.print("\nPAQUETES ASOCIADAS AL ESPECTACULO SELECCIONADO: \n");
+		ArrayList<DtPaquete> dtPaquetes = iccde.listarPaquetes();
+		for(DtPaquete dtp: dtPaquetes) {
+			System.out.print("- "+dtp.getNombre()+"\n");		
+		}
+		// FIN DE LISTADO LAS PAQUETE ///
+		boolean repitePaquete = false;
+		while(!repitePaquete) {
+			
+			System.out.print("\n QUIERE DETALLAR ALGUNA FUNCION?: (si)/(no) \n");
+			Scanner entradaRepetir = new Scanner(System.in);
+			String rRepetir = null;
+			rRepetir=entradaEsp.nextLine(); 
+			entradaRepetir.close();
+			
+			if(rRepetir.equals("si")){
+				
+				System.out.print("\n INGRESE NOMBRE PAQUETE: \n");
+				Scanner entradaPaquete = new Scanner(System.in);
+				String paquete = null;
+				paquete=entradaPaquete.nextLine(); 
+				entradaPaquete.close();
+				
+
+				 DtPaquete paqueteSeleccionado =  iccde.seleccionaPaquere(paquete);
+				
+				
+			}else if(rRepetir.equals("no")){
+				repitePaquete = true;
+			}else{
+				System.out.print("\n OPCION INCORRECTA \n");
+			}
+			
+		}*/
+					
+	}
 	static void RegistroAfuncionDeEspetaculo(){}
 	
 	public static void main(String[] args) {

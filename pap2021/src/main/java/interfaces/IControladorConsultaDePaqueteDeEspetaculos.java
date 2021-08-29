@@ -7,7 +7,7 @@ import datatypes.DtPaquete;
 
 public interface IControladorConsultaDePaqueteDeEspetaculos {
 	public ArrayList<DtPaquete> listarPaquetes();
-	public ArrayList<DtPaquete> selecionaPaquete(String nombre);
+	public DtPaquete selecionaPaquete(String nombre);
 	
 	
 }

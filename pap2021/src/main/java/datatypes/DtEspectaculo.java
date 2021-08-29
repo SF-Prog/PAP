@@ -129,6 +129,14 @@ public class DtEspectaculo {
 		this.fechaRegistro = fechaRegistro;
 	}
 	
+	@Override
+	public String toString() {
+		
+		String retorno =  "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.duracion+ "\nEspectadores Minimo: " + this.espectadoresMin+ "\nEspectadores Maximo: " + this.espectadoresMax+ "\nUrl = " + this.urlAsociada+ "\nCosto = " + this.costo+ "\nFecha De Registro: " + this.fechaRegistro.toString();
+		
+
+		return retorno ;
+	}
 	
 	
 	
