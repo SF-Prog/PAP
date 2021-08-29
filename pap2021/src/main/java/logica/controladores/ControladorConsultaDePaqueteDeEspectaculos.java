@@ -17,7 +17,7 @@ public class ControladorConsultaDePaqueteDeEspectaculos implements IControladorC
 	private Funcion funcionSeleccionada = null;
 	private Paquete paqueteSeleccionado = null;
 	
-	public ControladorConsultaDePaqueteDeEspetaculos() {
+	public ControladorConsultaDePaqueteDeEspectaculos() {
 		super();
 	}
 
