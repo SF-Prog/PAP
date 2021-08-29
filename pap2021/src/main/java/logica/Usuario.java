@@ -2,7 +2,7 @@ package logica;
 
 import java.util.Date;
 
-
+import datatypes.DtUsuario;
 
 public class Usuario {
 	private String nickName;
@@ -63,6 +63,10 @@ public class Usuario {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-
 	
+	public DtUsuario getDtUsuario()
+	{
+		DtUsuario res = new DtUsuario(this.getNickName(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
+		return res;
+	}	
 }

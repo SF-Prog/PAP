@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 import datatypes.DtUsuario;
+import datatypes.DtArtista;
+import datatypes.DtEspectaculo;
 import datatypes.DtPlataforma;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeEspetaculo;
@@ -63,10 +65,10 @@ public class Principal {
 		while(!existe && !salir){
 			System.out.println("Nickname: ");
 			nickname=entrada.nextLine(); 
-			if(!icadu.buscarNickname(nickname)){
+			if(!icadu.buscarUsuarioPorNickname(nickname)){
+				// SI NO EXISTE BUSCARNICKNAME() RETORNA NULL
 				existe = true;
 				salir = true;
-
 			}else{
 				boolean intento = false;
 				while(!intento){
@@ -93,7 +95,8 @@ public class Principal {
 			while(!existe && !salir){
 				System.out.println("Email: ");
 				email=entrada.nextLine(); 
-				if(!icadu.buscarEmail(email)){
+				if(!icadu.buscarUsuarioPorEmail(email)){
+					// SI NO EXISTE BUSCAREMAIL() RETORNA NULL
 					existe = true;
 					salir = true;
 				}else{
@@ -117,8 +120,8 @@ public class Principal {
 		}
 		
 		
-		if(!cierroCU) {
-			
+		if(!cierroCU) 
+		{			
 			System.out.println("Nombre: ");
 			String nombre = null;
 			nombre=entrada.nextLine();
@@ -215,6 +218,9 @@ public class Principal {
 		String url = null;
 		float costo = 0;
 		String fechaAlta = null;
+		Date fecha = null;
+		DtArtista dtArtista = null;
+		String deseaCancelar = null;
 
 		do {
 			System.out.println("Plataforma: ");
@@ -222,49 +228,66 @@ public class Principal {
 	
 			System.out.println("Artista: ");
 			artista=entrada.nextLine();
-	
-			System.out.println("Nombre: ");
-			nombre=entrada.nextLine();
-	
-			System.out.println("Descripcion: ");
-			descripcion=entrada.nextLine();
-	
-			System.out.println("Duracion: ");
-			duracion=entrada.nextInt();
-	
-			System.out.println("Espectadores minimos: ");
-			especMinimos=entrada.nextInt();
-	
-			System.out.println("Espectadores maximos: ");
-			especMaximos=entrada.nextInt();
-	
-			System.out.println("URL asociada: ");
-			url=entrada.nextLine();
-	
-			System.out.println("Costo: ");
-			costo=Float.parseFloat(entrada.nextLine());
-	
-			System.out.println("Fecha de alta (dd/MM/yyyy): ");
-			fechaAlta=entrada.nextLine();
-	
-			Date fecha = ParseFecha(fechaAlta);
 
-			espectaculoValido = icae.existeEspectaculo(nombre);
-
-			if(!espectaculoValido) {
-				System.out.println("El nombre de plataforma ya existe\n\n");
-				System.out.println("Desea Cancelar esta operacion? (s/n)");
-				deseaCancelar = entrada.nextLine();
-				if(deseaCancelar.equals("s")) {
-					nombreDePlataformaValido = true;
-				};
-			};
+			DtUsuario u = icae.buscarUsuarioPorNickname(artista);
+			if (u != null) 
+			{
+				if (u instanceof DtArtista)
+				{
+					dtArtista = (DtArtista)u;
+					
+					System.out.println("Nombre: ");
+					nombre=entrada.nextLine();
+			
+					System.out.println("Descripcion: ");
+					descripcion=entrada.nextLine();
+			
+					System.out.println("Duracion: ");
+					duracion=entrada.nextInt();
+			
+					System.out.println("Espectadores minimos: ");
+					especMinimos=entrada.nextInt();
+			
+					System.out.println("Espectadores maximos: ");
+					especMaximos=entrada.nextInt();
+			
+					System.out.println("URL asociada: ");
+					url=entrada.nextLine();
+			
+					System.out.println("Costo: ");
+					costo=Float.parseFloat(entrada.nextLine());
+			
+					System.out.println("Fecha de alta (dd/MM/yyyy): ");
+					fechaAlta=entrada.nextLine();	
+					fecha = ParseFecha(fechaAlta);
+					
+					espectaculoValido = icae.existeEspectaculo(plataforma, nombre);
+					if(!espectaculoValido) {
+						System.out.println("El nombre de espectaculo ya existe\n\n");
+						System.out.println("Desea Cancelar esta operacion? (s/n)");
+						deseaCancelar = entrada.nextLine();
+						if(deseaCancelar.equals("s")) {
+							espectaculoValido = true;
+						};
+					};					
+				}
+				else
+				{
+					System.out.println("El usuario ingresado no es artista\n\n");
+				}
+			}
+			else
+			{
+				System.out.println("El artista ingresado no existe\n\n");
+			}
 		} while(!espectaculoValido);
 
 		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
-			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
-			icap.ingresaPlataforma(dtPlataforma);
+			DtEspectaculo dtEspectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, url, costo, fecha);
+			icae.ingresaEspectaculo(plataforma, dtArtista, dtEspectaculo);
 		};
+		
+		entrada.close();
 	}// FIN DE ALTA ESPECTACULO
 	
 	static void	ConsultaDeEspetaculo(){}
@@ -320,8 +343,7 @@ public class Principal {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		menu();
-		int opcion = Integer.parseInt(entrada.nextLine());
-	
+		int opcion = Integer.parseInt(entrada.nextLine());	
 		
 		while(opcion!=13) {
 			
@@ -331,7 +353,7 @@ public class Principal {
 		  			AltaDeUsuario();
 		  			break;
 		  		case 2:
-		  			AltaDeEspetaculo();
+		  			AltaDeEspectaculo();
 		  			break;
 		  		case 3:
 		  			ConsultaDeEspetaculo();

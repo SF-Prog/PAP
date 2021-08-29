@@ -1,8 +1,12 @@
 package interfaces;
 
+import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
+import datatypes.DtUsuario;
 
 public interface IControladorAltaDeEspetaculo {
-	public void existeEspectaculo(String plataforma, String artista, DtEspectaculo dtEspectaculo);
-	public void ingresaEspectaculo(String plataforma, String artista, DtEspectaculo dtEspectaculo);
+	public boolean existeEspectaculo(String plataforma, String espectaculo);
+	public void ingresaEspectaculo(String plataforma, DtArtista artista, DtEspectaculo dtEspectaculo);
+	public DtUsuario buscarUsuarioPorNickname(String nickname);
+	public DtUsuario buscarUsuarioPorEmail(String email);
 }
