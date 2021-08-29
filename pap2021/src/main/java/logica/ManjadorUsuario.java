@@ -19,6 +19,7 @@ public class ManjadorUsuario {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
+	
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
@@ -27,29 +28,25 @@ public class ManjadorUsuario {
 		this.usuarios.add(usuario);
 	}
 	
-	public boolean buscarNickname(String nickname) {
-		Iterator<Usuario> usuariosIterator = this.usuarios.iterator();  
-		boolean existe = false;
-		while(usuariosIterator.hasNext() && !existe){
+	public Usuario buscarUsuarioPorNickname(String nickname) {
+		Iterator<Usuario> usuariosIterator = this.usuarios.iterator(); 
+		Usuario res = null;
+		while(usuariosIterator.hasNext() && res != null){
 			if(usuariosIterator.next().getNickName().equals(nickname)){
-				existe = true;
+				res = usuariosIterator.next();
 			}
-		}
-		
-		return existe;
+		}		
+		return res;
 	}
 	
-	public boolean buscarEmail(String email) {
-		
+	public Usuario buscarUsuarioPorEmail(String email) {		
 		Iterator<Usuario> usuariosIterator = this.usuarios.iterator();  
-		boolean existe = false;
-		while(usuariosIterator.hasNext() && !existe){
+		Usuario res = null;
+		while(usuariosIterator.hasNext() && res != null){
 			if(usuariosIterator.next().getEmail().equals(email)){
-				existe = true;
+				res = usuariosIterator.next();
 			}
-		}
-		
-		return existe;
+		}		
+		return res;
 	}
-	
 }
