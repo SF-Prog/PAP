@@ -217,7 +217,10 @@ public class Principal {
 		Scanner entrada = new Scanner(System.in);
 		menu();
 		int opcion = Integer.parseInt(entrada.nextLine());
+	
+		
 		while(opcion!=13) {
+			
 			switch (opcion) {
 			/* REQUERIMIENTOS MINIMOS*/
 		  		case 1:
@@ -260,10 +263,15 @@ public class Principal {
 			}
 
 			menu();
+			//System.out.print(opcion+"\n");
+			opcion = 0;
 			
-			if(entrada.hasNextLine()) {
+			entrada.close();
+			entrada = new Scanner(System.in);
+			opcion = Integer.parseInt(entrada.nextLine());
+			/*if(entrada.hasNextLine()) {
 				opcion = Integer.parseInt(entrada.nextLine());
-			}
+			}*/
 		}
 		entrada.close();
 	}
