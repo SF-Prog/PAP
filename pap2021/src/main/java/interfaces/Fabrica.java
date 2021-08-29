@@ -32,8 +32,8 @@ public class Fabrica {
 		return new ControladorAltaDeEspetaculo();
 	}
   
-	public IControladorAltaDeFunci�nDeEspetaculo getIControladorAltaDeFunci�nDeEspetaculo() {
-		return new ControladorAltaDeFunci�nDeEspetaculo();
+	public IControladorAltaDeFuncionDeEspetaculo getIControladorAltaDeFuncionDeEspetaculo() {
+		return new ControladorAltaDeFuncionDeEspetaculo();
 	}	
 	
 	public IControladorAltaDePlataforma getIControladorAltaDePlataforma() {

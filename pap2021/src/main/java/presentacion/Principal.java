@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
+import interfaces.IControladorAltaDeEspetaculo;
 import interfaces.IControladorAltaDeUsuario;
 
 public class Principal {
@@ -33,7 +34,7 @@ public class Principal {
 				+ "14. OPCIÓN: ");		
 	}	
 	
-	public static Date ParseFecha(String fecha){
+ public static Date ParseFecha(String fecha){
       // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
 		 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
@@ -206,12 +207,12 @@ public class Principal {
 		String artista = null;
 		String nombre = null;
 		String descripcion = null;
-		int duracion = null;
-		int especMinimos = null;
-		int especMaximos = null;
-		string url = null;
-		float costo = null;
-		string fechaAlta = null;
+		int duracion = 0;
+		int especMinimos = 0;
+		int especMaximos = 0;
+		String url = null;
+		float costo = 0;
+		String fechaAlta = null;
 
 		do {
 			System.out.println("Plataforma: ");
@@ -227,13 +228,13 @@ public class Principal {
 			descripcion=entrada.nextLine();
 	
 			System.out.println("Duracion: ");
-			duracion=entrada.nextLine();
+			duracion=entrada.nextInt();
 	
 			System.out.println("Espectadores minimos: ");
-			especMinimos=entrada.nextLine();
+			especMinimos=entrada.nextInt();
 	
 			System.out.println("Espectadores maximos: ");
-			especMaximos=entrada.nextLine();
+			especMaximos=entrada.nextInt();
 	
 			System.out.println("URL asociada: ");
 			url=entrada.nextLine();

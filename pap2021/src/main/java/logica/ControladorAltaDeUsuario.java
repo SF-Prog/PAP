@@ -25,7 +25,7 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 
 
 		ManjadorUsuario mU = ManjadorUsuario.getInstancia();
-		Artista nuevoArtista = new Artista(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac(),descripcion,biografía,link);
+		Artista nuevoArtista = new Artista(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac(),descripcion,biografia,link);
 		mU.agegarUsuarios(nuevoArtista);
 
 	}
