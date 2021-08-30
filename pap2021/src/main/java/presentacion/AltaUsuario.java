@@ -5,14 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 
+import datatypes.DtUsuario;
 import interfaces.IControladorAltaDeUsuario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import java.awt.Panel;
 import java.awt.Button;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class AltaUsuario extends JInternalFrame {
@@ -23,7 +28,8 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField txtEmail;
 	private JTextField txtFecha;
 	private JTextField txtLink;
-
+	private JTextArea textAreaBiografia;
+	private JTextArea textAreaDescripcion;
 	/**
 	 * Launch the application.
 	 */
@@ -108,24 +114,28 @@ public class AltaUsuario extends JInternalFrame {
 		
 		// DEFINICION DE COMPONENTES //
 		JRadioButton rdbtnArtista = new JRadioButton("Artista");
+		rdbtnArtista.setSelected(true);
 		panel.add(rdbtnArtista);
 		
 		JRadioButton rdbtnEspectador = new JRadioButton("Espectador");
+		rdbtnEspectador.setSelected(false);
 		panel.add(rdbtnEspectador);
 		
 		Button btnConfirmar = new Button("Aceptar");
+
 		btnConfirmar.setBounds(253, 354, 114, 39);
 		getContentPane().add(btnConfirmar);
 		
 		Button btnCancelar = new Button("Cancelar");
+
 		btnCancelar.setBounds(71, 354, 115, 39);
 		getContentPane().add(btnCancelar);
 		
-		JTextArea textAreaDescripcion = new JTextArea();
+		textAreaDescripcion = new JTextArea();
 		textAreaDescripcion.setBounds(28, 222, 190, 69);
 		getContentPane().add(textAreaDescripcion);
 		
-		JTextArea textAreaBiografia = new JTextArea();
+		textAreaBiografia = new JTextArea();
 		textAreaBiografia.setBounds(228, 222, 190, 69);
 		getContentPane().add(textAreaBiografia);
 		
@@ -147,6 +157,15 @@ public class AltaUsuario extends JInternalFrame {
 				// DESHABILITADO DE LOS CAMPOS PARA ESPECTADOR
 				textAreaBiografia.setEnabled(false);
 				textAreaBiografia.setVisible(false);
+				lblBiografia.setVisible(false);
+				
+				textAreaDescripcion.setEnabled(false);
+				textAreaDescripcion.setVisible(false);
+				lblDescripcionGeneral.setVisible(false);
+				
+				txtLink.setEnabled(false);
+				txtLink.setVisible(false);
+				lblLink.setVisible(false);
 				
 				
 				
@@ -161,9 +180,124 @@ public class AltaUsuario extends JInternalFrame {
 				// HABILITADO DE LOS CAMPOS PARA ARTISTA
 				textAreaBiografia.setEnabled(true);
 				textAreaBiografia.setVisible(true);
+				lblBiografia.setVisible(true);
+				
+				textAreaDescripcion.setEnabled(true);
+				textAreaDescripcion.setVisible(true);
+				lblDescripcionGeneral.setVisible(true);
+				
+				txtLink.setEnabled(true);
+				txtLink.setVisible(true);
+				lblLink.setVisible(true);
+				
 			}
 		});
 		
+
+		btnCancelar.addActionListener(new ActionListener() {
+			// EVENTO BOTON CANCELAR
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+			}
+			
+		});
+		
+		btnConfirmar.addActionListener(new ActionListener() {
+			// EVENTO BOTON ACEPTAR
+			public void actionPerformed(ActionEvent e) {
+				String msg="";
+				if(rdbtnArtista.isSelected()){
+					// SE SELECCIONO TIPO ARTISTA
+					if(!camposVaciosArtista()){
+						if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+							agregarUsuario(1);
+						}else{
+							 msg ="El nickname y/o el email ya estan en uso";
+						}
+						
+					}else{
+						//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+					}
+				}else if(rdbtnEspectador.isSelected()){
+					// SE SELECCIONO TIPO ESPECTADOR
+					if(!camposVaciosEspectador()){
+						if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+							agregarUsuario(2);
+						}else{
+							 msg ="El nickname y/o el email ya estan en uso";
+						}
+						
+					}else{
+						//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
+			}
+		});
 		// FIN DE DEFINICION DE EVENTOS //
 	}
-}
+	
+	private void agregarUsuario(int tipo){
+		Date fecha = ParseFecha(txtFecha.getText());
+		
+		DtUsuario dtUsuario = new DtUsuario(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(),fecha);
+		if(tipo==1){
+			icau.ingresaUsuarioArtista(dtUsuario,textAreaDescripcion.getText(),textAreaBiografia.getText(),txtLink.getText());
+		}else{
+			icau.ingresaUsuarioEspectador(dtUsuario);
+		}
+		
+		
+	}//FIN AGREGAR USUARIO
+	
+	private void limpiarFormulario() {
+			 txtNickname.setText("");
+			txtNombre.setText("");
+			txtApellido.setText("");
+			txtEmail.setText("");
+			txtFecha.setText("");
+			txtLink.setText("");
+			textAreaBiografia.setText("");
+			textAreaDescripcion.setText("");
+	       
+	 }
+	 private boolean camposVaciosArtista() {
+		 if( txtNickname.getText().isEmpty() ||
+			 txtNombre.getText().isEmpty() ||
+			 txtApellido.getText().isEmpty()|| 
+			 txtEmail.getText().isEmpty() ||
+			 txtFecha.getText().isEmpty()||
+			 txtLink.getText().isEmpty() ||
+			 textAreaBiografia.getText().isEmpty() ||
+			 textAreaDescripcion.getText().isEmpty()) {
+			 	return true;
+			}
+		 return false;
+	 }
+	 
+	 private boolean camposVaciosEspectador() {
+		 if( txtNickname.getText().isEmpty() ||
+			 txtNombre.getText().isEmpty() ||
+			 txtApellido.getText().isEmpty()|| 
+			 txtEmail.getText().isEmpty() ||
+			 txtFecha.getText().isEmpty() ) {
+			 	return true;
+			}
+		 return false;
+	 }
+	 
+	 private static Date ParseFecha(String fecha){
+	      // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
+			 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	        Date fechaDate = null;
+	        try {
+	            fechaDate = formato.parse(fecha);
+	        } 
+	        catch (ParseException ex) 
+	        {
+	            System.out.println(ex);
+	        }
+	        return fechaDate;
+	  }
+
+}// FIN CLASE

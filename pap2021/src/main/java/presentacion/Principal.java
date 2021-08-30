@@ -50,7 +50,7 @@ public class Principal {
 		//
 		Fabrica fabrica = Fabrica.getInstancia();
 		IControladorAltaDeUsuario icau = fabrica.getIControladorAltaDeUsuario();
-		altaUsuarioInternalFrame = new AltaUsuario(icau);
+		
 		Dimension desktopSize = frmCoronatickets.getSize();
 		Dimension jInternalFrameSize;
 		
