@@ -22,10 +22,10 @@ public class Fabrica {
 		if (instancia == null)
 			instancia = new Fabrica();
 		return instancia;
-	}	
-
-	public IControladorAgregarEspectaculoAPaqueteDeEspectaculos getIControladorAgregarEspetaculoAPaqueteDeEspectaculos() {
-		return new ControladorAgregarEspectaculoAPaqueteDeEspectaculos();
+	}
+	
+	public IControladorAltaDeUsuario getIControladorAltaDeUsuario() {
+		return new ControladorAltaDeUsuario();
 	}
 	
 	public IControladorAltaDeEspectaculo getIControladorAltaDeEspectaculo() {
@@ -34,14 +34,18 @@ public class Fabrica {
   
 	public IControladorAltaDeFuncionDeEspectaculo getIControladorAltaDeFuncionDeEspectaculo() {
 		return new ControladorAltaDeFuncionDeEspectaculo();
-	}	
+	}
 	
 	public IControladorAltaDePlataforma getIControladorAltaDePlataforma() {
 		return new ControladorAltaDePlataforma();
 	}
+
+	public IControladorModificarDatosDeUsuario getIControladorModificarDatosDeUsuario() {
+		return new ControladorModificarDatosDeUsuario();
+	}
 	
-	public IControladorAltaDeUsuario getIControladorAltaDeUsuario() {
-		return new ControladorAltaDeUsuario();
+	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
+		return new ControladorConsultaDeUsuario();
 	}
 	
 	public IControladorConsultaDeEspectaculo getIControladorConsultaDeEspectaculo() {
@@ -55,17 +59,13 @@ public class Fabrica {
 	public IControladorConsultaDePaqueteDeEspectaculos getIControladorConsultaDePaqueteDeEspectaculos() {
 		return new ControladorConsultaDePaqueteDeEspectaculos();
 	}
-	
-	public IControladorConsultaDeUsuario getIControladorConsultaDeUsuario() {
-		return new ControladorConsultaDeUsuario();
-	}
   
 	public IControladorCrearPaqueteDeEspectaculos getIControladorCrearPaqueteDeEspectaculos() {
 		return new ControladorCrearPaqueteDeEspectaculos();
 	}
 
-	public IControladorModificarDatosDeUsuario getIControladorModificarDatosDeUsuario() {
-		return new ControladorModificarDatosDeUsuario();
+	public IControladorAgregarEspectaculoAPaqueteDeEspectaculos getIControladorAgregarEspectaculoAPaqueteDeEspectaculos() {
+		return new ControladorAgregarEspectaculoAPaqueteDeEspectaculos();
 	}
 	
 	public IControladorRegistroAFuncionDeEspectaculo getIControladorRegistroAFuncionDeEspectaculo() {

@@ -1,12 +1,11 @@
 package interfaces;
 
-import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
-import datatypes.DtUsuario;
+import excepciones.AltaEspectaculoExcepcion;
 
 public interface IControladorAltaDeEspectaculo {
+	public String[] listarPlataformas();
+	public String[] listarArtistas();
 	public boolean existeEspectaculo(String plataforma, String espectaculo);
-	public void ingresaEspectaculo(String plataforma, DtArtista artista, DtEspectaculo dtEspectaculo);
-	public DtUsuario buscarUsuarioPorNickname(String nickname);
-	public DtUsuario buscarUsuarioPorEmail(String email);
+	public void ingresaEspectaculo(String plataforma, String artista, DtEspectaculo dtEspectaculo) throws AltaEspectaculoExcepcion;
 }

@@ -1,13 +1,11 @@
 package logica.controladores;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
-import datatypes.DtUsuario;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import logica.Artista;
 import logica.Espectaculo;

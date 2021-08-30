@@ -1,27 +1,28 @@
 package presentacion;
 
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-
-import datatypes.DtUsuario;
-import interfaces.IControladorAltaDeUsuario;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import java.awt.Panel;
-import java.awt.Button;
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
+import interfaces.IControladorAltaDeUsuario;
+import datatypes.DtUsuario;
+
 public class AltaUsuario extends JInternalFrame {
+	private static final long serialVersionUID = 1L;
+	
 	private IControladorAltaDeUsuario icau;
+	
 	private JTextField txtNickname;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
@@ -30,29 +31,26 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField txtLink;
 	private JTextArea textAreaBiografia;
 	private JTextArea textAreaDescripcion;
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaUsuario frame = new AltaUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	private JRadioButton rdbtnArtista;
+	private JRadioButton rdbtnEspectador;
+	private JLabel lblBiografia;
+	private JLabel lblDescripcionGeneral;
+	private JLabel lblLink;
 
-	/**
-	 * Create the frame.
-	 */
 	public AltaUsuario(IControladorAltaDeUsuario icau) {
 		this.icau = icau;
-		setBounds(100, 100, 450, 455);
+		setResizable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setClosable(true);
+        setTitle("Alta de Usuario");
+		setBounds(100, 100, 450, 398);
 		getContentPane().setLayout(null);
+
+		JLabel lblTitulo = new JLabel("Ingrese los siguientes datos");
+		lblTitulo.setBounds(153, 11, 235, 14);
+		getContentPane().add(lblTitulo);
 		
 		txtNickname = new JTextField();
 		txtNickname.setBounds(50, 63, 86, 20);
@@ -60,7 +58,7 @@ public class AltaUsuario extends JInternalFrame {
 		txtNickname.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nickname");
-		lblNewLabel.setBounds(50, 43, 46, 14);
+		lblNewLabel.setBounds(50, 43, 86, 14);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -68,8 +66,8 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setColumns(10);
 		txtNombre.setBounds(50, 114, 86, 20);
+		txtNombre.setColumns(10);
 		getContentPane().add(txtNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido");
@@ -77,17 +75,17 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(lblApellido);
 		
 		txtApellido = new JTextField();
-		txtApellido.setColumns(10);
 		txtApellido.setBounds(153, 114, 86, 20);
+		txtApellido.setColumns(10);
 		getContentPane().add(txtApellido);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(146, 43, 46, 14);
+		lblEmail.setBounds(153, 43, 46, 14);
 		getContentPane().add(lblEmail);
 		
 		txtEmail = new JTextField();
+		txtEmail.setBounds(153, 63, 119, 20);
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(146, 63, 86, 20);
 		getContentPane().add(txtEmail);
 		
 		JLabel lblFecha = new JLabel("Fecha");
@@ -95,40 +93,57 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(lblFecha);
 		
 		txtFecha = new JTextField();
-		txtFecha.setColumns(10);
 		txtFecha.setBounds(50, 165, 86, 20);
+		txtFecha.setColumns(10);
 		getContentPane().add(txtFecha);
-		
-		JLabel lblLink = new JLabel("Link");
+
+		lblLink = new JLabel("Link");
 		lblLink.setBounds(153, 145, 46, 14);
 		getContentPane().add(lblLink);
 		
 		txtLink = new JTextField();
-		txtLink.setColumns(10);
 		txtLink.setBounds(153, 165, 86, 20);
+		txtLink.setColumns(10);
 		getContentPane().add(txtLink);
 		
 		Panel panel = new Panel();
-		panel.setBounds(272, 63, 119, 62);
+		panel.setBounds(277, 97, 119, 62);
 		getContentPane().add(panel);
 		
-		// DEFINICION DE COMPONENTES //
-		JRadioButton rdbtnArtista = new JRadioButton("Artista");
+		rdbtnArtista = new JRadioButton("Artista");
+		rdbtnArtista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioArtistaActionPerformed(e);
+			}
+		});
 		rdbtnArtista.setSelected(true);
 		panel.add(rdbtnArtista);
 		
-		JRadioButton rdbtnEspectador = new JRadioButton("Espectador");
+		rdbtnEspectador = new JRadioButton("Espectador");
+		rdbtnEspectador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioEspectadorActionPerformed(e);
+			}
+		});
 		rdbtnEspectador.setSelected(false);
 		panel.add(rdbtnEspectador);
 		
-		Button btnConfirmar = new Button("Aceptar");
-
-		btnConfirmar.setBounds(253, 354, 114, 39);
-		getContentPane().add(btnConfirmar);
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioAceptarActionPerformed(e);		
+			}
+		});
+		btnAceptar.setBounds(253, 321, 117, 25);
+		getContentPane().add(btnAceptar);
 		
-		Button btnCancelar = new Button("Cancelar");
-
-		btnCancelar.setBounds(71, 354, 115, 39);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioCancelarActionPerformed(e);
+			}
+		});
+		btnCancelar.setBounds(71, 321, 117, 25);
 		getContentPane().add(btnCancelar);
 		
 		textAreaDescripcion = new JTextArea();
@@ -139,130 +154,108 @@ public class AltaUsuario extends JInternalFrame {
 		textAreaBiografia.setBounds(228, 222, 190, 69);
 		getContentPane().add(textAreaBiografia);
 		
-		JLabel lblDescripcionGeneral = new JLabel("Descripcion General");
-		lblDescripcionGeneral.setBounds(71, 197, 102, 14);
+		lblDescripcionGeneral = new JLabel("Descripci\u00F3n General");
+		lblDescripcionGeneral.setBounds(71, 197, 128, 14);
 		getContentPane().add(lblDescripcionGeneral);
 		
-		JLabel lblBiografia = new JLabel("Biografia");
-		lblBiografia.setBounds(296, 197, 46, 14);
+		lblBiografia = new JLabel("Biograf\u00EDa");
+		lblBiografia.setBounds(296, 197, 100, 14);
 		getContentPane().add(lblBiografia);
-		// FIN DEFINICION DE COMPONENTES //
-		
-		// DEFINICION DE EVENTOS///
-		rdbtnEspectador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// SETEO DE LO RADIO BUTTON
-				rdbtnArtista.setSelected(false);
-				rdbtnEspectador.setSelected(true);
-				// DESHABILITADO DE LOS CAMPOS PARA ESPECTADOR
-				textAreaBiografia.setEnabled(false);
-				textAreaBiografia.setVisible(false);
-				lblBiografia.setVisible(false);
-				
-				textAreaDescripcion.setEnabled(false);
-				textAreaDescripcion.setVisible(false);
-				lblDescripcionGeneral.setVisible(false);
-				
-				txtLink.setEnabled(false);
-				txtLink.setVisible(false);
-				lblLink.setVisible(false);
-				
-				
-				
-			}
-		});
-		rdbtnArtista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				rdbtnArtista.setSelected(true);
-				rdbtnEspectador.setSelected(false);
-				
-				// HABILITADO DE LOS CAMPOS PARA ARTISTA
-				textAreaBiografia.setEnabled(true);
-				textAreaBiografia.setVisible(true);
-				lblBiografia.setVisible(true);
-				
-				textAreaDescripcion.setEnabled(true);
-				textAreaDescripcion.setVisible(true);
-				lblDescripcionGeneral.setVisible(true);
-				
-				txtLink.setEnabled(true);
-				txtLink.setVisible(true);
-				lblLink.setVisible(true);
-				
-			}
-		});
-		
-
-		btnCancelar.addActionListener(new ActionListener() {
-			// EVENTO BOTON CANCELAR
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-			}
-			
-		});
-		
-		btnConfirmar.addActionListener(new ActionListener() {
-			// EVENTO BOTON ACEPTAR
-			public void actionPerformed(ActionEvent e) {
-				String msg="";
-				if(rdbtnArtista.isSelected()){
-					// SE SELECCIONO TIPO ARTISTA
-					if(!camposVaciosArtista()){
-						if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
-							agregarUsuario(1);
-						}else{
-							 msg ="El nickname y/o el email ya estan en uso";
-						}
-						
-					}else{
-						//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
-					}
-				}else if(rdbtnEspectador.isSelected()){
-					// SE SELECCIONO TIPO ESPECTADOR
-					if(!camposVaciosEspectador()){
-						if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
-							agregarUsuario(2);
-						}else{
-							 msg ="El nickname y/o el email ya estan en uso";
-						}
-						
-					}else{
-						//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
-					}
-				}
-
-			}
-		});
-		// FIN DE DEFINICION DE EVENTOS //
 	}
 	
-	private void agregarUsuario(int tipo){
-		Date fecha = ParseFecha(txtFecha.getText());
+	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0) {
+		String msg="";
+		if(rdbtnArtista.isSelected()){
+			// SE SELECCIONO TIPO ARTISTA
+			if(!camposVaciosArtista()){
+				if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+					agregarUsuario(1);
+				}else{
+					 msg ="El nickname y/o el email ya estan en uso";
+				}
+				
+			}else{
+				//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+			}
+		}else if(rdbtnEspectador.isSelected()){
+			// SE SELECCIONO TIPO ESPECTADOR
+			if(!camposVaciosEspectador()){
+				if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+					agregarUsuario(2);
+				}else{
+					 msg ="El nickname y/o el email ya estan en uso";
+				}
+				
+			}else{
+				//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	} 
+	
+	protected void altaUsuarioCancelarActionPerformed(ActionEvent arg0) {
+		limpiarFormulario();
+        setVisible(false);
+	}
+	
+	protected void altaUsuarioArtistaActionPerformed(ActionEvent arg0) {			
+		rdbtnArtista.setSelected(true);
+		rdbtnEspectador.setSelected(false);
 		
+		// HABILITADO DE LOS CAMPOS PARA ARTISTA
+		textAreaBiografia.setEnabled(true);
+		textAreaBiografia.setVisible(true);
+		lblBiografia.setVisible(true);
+		
+		textAreaDescripcion.setEnabled(true);
+		textAreaDescripcion.setVisible(true);
+		lblDescripcionGeneral.setVisible(true);
+		
+		txtLink.setEnabled(true);
+		txtLink.setVisible(true);
+		lblLink.setVisible(true);
+	}
+	
+	protected void altaUsuarioEspectadorActionPerformed(ActionEvent arg0) {
+		// SETEO DE LO RADIO BUTTON
+		rdbtnArtista.setSelected(false);
+		rdbtnEspectador.setSelected(true);
+		// DESHABILITADO DE LOS CAMPOS PARA ESPECTADOR
+		textAreaBiografia.setEnabled(false);
+		textAreaBiografia.setVisible(false);
+		lblBiografia.setVisible(false);
+		
+		textAreaDescripcion.setEnabled(false);
+		textAreaDescripcion.setVisible(false);
+		lblDescripcionGeneral.setVisible(false);
+		
+		txtLink.setEnabled(false);
+		txtLink.setVisible(false);
+		lblLink.setVisible(false);			
+	}
+	
+	private void limpiarFormulario() {
+		txtNickname.setText("");
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtEmail.setText("");
+		txtFecha.setText("");
+		txtLink.setText("");
+		textAreaBiografia.setText("");
+		textAreaDescripcion.setText("");	       
+	 }
+	
+	private void agregarUsuario(int tipo){
+		Date fecha = ParseFecha(txtFecha.getText());		
 		DtUsuario dtUsuario = new DtUsuario(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(),fecha);
 		if(tipo==1){
 			icau.ingresaUsuarioArtista(dtUsuario,textAreaDescripcion.getText(),textAreaBiografia.getText(),txtLink.getText());
 		}else{
 			icau.ingresaUsuarioEspectador(dtUsuario);
-		}
-		
-		
-	}//FIN AGREGAR USUARIO
+		}		
+	}
 	
-	private void limpiarFormulario() {
-			 txtNickname.setText("");
-			txtNombre.setText("");
-			txtApellido.setText("");
-			txtEmail.setText("");
-			txtFecha.setText("");
-			txtLink.setText("");
-			textAreaBiografia.setText("");
-			textAreaDescripcion.setText("");
-	       
-	 }
 	 private boolean camposVaciosArtista() {
-		 if( txtNickname.getText().isEmpty() ||
+		if(txtNickname.getText().isEmpty() ||
 			 txtNombre.getText().isEmpty() ||
 			 txtApellido.getText().isEmpty()|| 
 			 txtEmail.getText().isEmpty() ||
@@ -271,33 +264,32 @@ public class AltaUsuario extends JInternalFrame {
 			 textAreaBiografia.getText().isEmpty() ||
 			 textAreaDescripcion.getText().isEmpty()) {
 			 	return true;
-			}
-		 return false;
+		}
+		return false;
 	 }
 	 
 	 private boolean camposVaciosEspectador() {
-		 if( txtNickname.getText().isEmpty() ||
+		if(txtNickname.getText().isEmpty() ||
 			 txtNombre.getText().isEmpty() ||
 			 txtApellido.getText().isEmpty()|| 
 			 txtEmail.getText().isEmpty() ||
-			 txtFecha.getText().isEmpty() ) {
+			 txtFecha.getText().isEmpty()) {
 			 	return true;
-			}
-		 return false;
+		}
+		return false;
 	 }
 	 
 	 private static Date ParseFecha(String fecha){
-	      // FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
-			 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-	        Date fechaDate = null;
-	        try {
-	            fechaDate = formato.parse(fecha);
-	        } 
-	        catch (ParseException ex) 
-	        {
-	            System.out.println(ex);
-	        }
-	        return fechaDate;
-	  }
-
-}// FIN CLASE
+      	// FUNCION AUXILIAR PARA CONVERTIR STRING FECHA A DATE FECHA
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } 
+        catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+	 }
+}
