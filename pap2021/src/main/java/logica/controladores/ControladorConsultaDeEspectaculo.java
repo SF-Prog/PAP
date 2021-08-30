@@ -39,6 +39,20 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	}
 	
 	@Override
+	public String[] listarPlataformasComboBox() {
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
+		
+		List<Plataforma> listPlataformas = mP.getPlataformas();
+		String[] Plataformas = new String[listPlataformas.size()];
+		int i=0;
+		for(Plataforma p : listPlataformas){
+			Plataformas[i] =p.getNombre();
+			i++;
+		}
+		return Plataformas;
+	}
+	
+	@Override
 	public DtPlataforma seleccionaPlataforma(String nombre) {
 		// TODO Auto-generated method stub
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
@@ -50,7 +64,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
-		
 		ArrayList<DtEspectaculo> dtEspectaculos = null;
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		for(Espectaculo e : listEspectaculos){
@@ -58,6 +71,19 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 			dtEspectaculos.add(dte);
 		}
 		return dtEspectaculos;
+
+	}
+	
+	@Override
+	public String[] listarEspectaculosComboBox(){
+		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
+		String[] Espectaculos = new String[listEspectaculos.size()];
+		int i=0;
+		for(Espectaculo e : listEspectaculos){
+			Espectaculos[i] = e.getNombre();
+			i++;
+		}
+		return Espectaculos;
 	}
 
 	@Override
@@ -99,6 +125,18 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	}
 
 	@Override
+	public String[] listarFuncionesComboBox() {
+		// TODO Auto-generated method stub
+		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
+		String[] Funciones = new String[listFunciones.size()];
+		int i=0;
+		for(Funcion e : listFunciones){
+			Funciones[i] = e.getNombre();
+			i++;
+		}
+		return Funciones;
+	}
+	@Override
 	public DtFuncion seleccionaFuncion(String nombre) {
 		// TODO Auto-generated method stub
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
@@ -137,6 +175,31 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dtPaquete;
 	}
 
+	
+	@Override
+	public String[] listarPaquetesComboBox() {
+		// TODO Auto-generated method stub
+		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
+
+		List<Paquete> listPaquetes = mPa.getPaquetes();
+		String[] Paquetes = new String[listPaquetes.size()];
+		int i=0;
+		for(Paquete p : listPaquetes){
+			List<Espectaculo> listEspectaculos = p.getEspectaculos();
+			Iterator<Espectaculo> eIterator = listEspectaculos.iterator();
+			boolean existe = false;
+			while(eIterator.hasNext() && !existe){
+				if(eIterator.next().getNombre().equals(this.espectaculoSeleccionada.getNombre())){
+					existe = true;
+					Paquetes[i] = p.getNombre();
+					
+				}
+			}
+			i++;
+		}
+		return Paquetes;
+
+	}
 	@Override
 	public DtPaquete seleccionaPaquete(String nombre) {
 		// TODO Auto-generated method stub
