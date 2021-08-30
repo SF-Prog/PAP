@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
+import interfaces.IControladorConsultaDeEspectaculo;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -24,6 +25,7 @@ public class Principal {
 	
 	// VARIABLES DE INTERFACE DE VISTAS
 	private AltaUsuario altaUsuarioInternalFrame;
+	private ConsultaDeEspectaculo consultaDeEspectaculoInternalFrame;
 	// FIN DE VARIABLES DE INTERFACE DE VISTAS
 	
 	/**
@@ -50,6 +52,7 @@ public class Principal {
 		//
 		Fabrica fabrica = Fabrica.getInstancia();
 		IControladorAltaDeUsuario icau = fabrica.getIControladorAltaDeUsuario();
+		IControladorConsultaDeEspectaculo iccde = fabrica.getIControladorConsultaDeEspectaculo();
 		
 		Dimension desktopSize = frmCoronatickets.getSize();
 		Dimension jInternalFrameSize;
@@ -63,6 +66,16 @@ public class Principal {
 		frmCoronatickets.getContentPane().add(altaUsuarioInternalFrame);
 		
 		//FIN DIMENCIONAR LA VENTANA DE ALTA USUARIO
+		
+		//DIMENCIONAR LA VENTANA DE CONSULTA DE ESPECTACULO
+		consultaDeEspectaculoInternalFrame = new ConsultaDeEspectaculo(iccde);
+		jInternalFrameSize = consultaDeEspectaculoInternalFrame.getSize();
+		consultaDeEspectaculoInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		consultaDeEspectaculoInternalFrame.setVisible(false);
+		frmCoronatickets.getContentPane().add(consultaDeEspectaculoInternalFrame);
+		
+		//FIN DIMENCIONAR LA VENTANA DE CONSULTA DE ESPECTACULO
 	}
 
 	/**
@@ -108,6 +121,11 @@ public class Principal {
 		mnConsultar.add(mnConsultarUsuario);
 		
 		JMenuItem mnConsultarEspectaculo = new JMenuItem("Espect\u00E1culo");
+		mnConsultarEspectaculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				consultaDeEspectaculoInternalFrame.setVisible(true);
+			}
+		});
 		mnConsultar.add(mnConsultarEspectaculo);
 		
 		JMenuItem mnConsultarFuncionDeEspectaculo = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
