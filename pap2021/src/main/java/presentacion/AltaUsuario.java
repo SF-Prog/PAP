@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -173,9 +174,8 @@ public class AltaUsuario extends JInternalFrame {
 				}else{
 					 msg ="El nickname y/o el email ya estan en uso";
 				}
-				
 			}else{
-				//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+				msg = "No puede haber campos vacíos";
 			}
 		}else if(rdbtnEspectador.isSelected()){
 			// SE SELECCIONO TIPO ESPECTADOR
@@ -183,12 +183,15 @@ public class AltaUsuario extends JInternalFrame {
 				if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
 					agregarUsuario(2);
 				}else{
-					 msg ="El nickname y/o el email ya estan en uso";
-				}
-				
+					 msg = "El nickname y/o el email ya estan en uso";
+				}				
 			}else{
-				//JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Agregar Inscripcion", JOptionPane.ERROR_MESSAGE);
+				msg = "No puede haber campos vacíos";
 			}
+		}
+		if (!msg.isEmpty()) 
+		{
+			JOptionPane.showMessageDialog(this, msg, "Alta Usuario", JOptionPane.ERROR_MESSAGE);
 		}
 	} 
 	
