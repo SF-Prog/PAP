@@ -26,13 +26,13 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	}
 	
 	@Override
-	public boolean buscarUsuarioPorNickname(String nickname) {
+	public boolean existeUsuarioPorNickname(String nickname) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		return mU.buscarUsuarioPorNickname(nickname) != null;
 	}
 	
 	@Override
-	public boolean buscarUsuarioPorEmail(String email) {
+	public boolean existeUsuarioPorEmail(String email) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		return mU.buscarUsuarioPorEmail(email) != null;
 	}

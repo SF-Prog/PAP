@@ -169,7 +169,11 @@ public class AltaUsuario extends JInternalFrame {
 		if(rdbtnArtista.isSelected()){
 			// SE SELECCIONO TIPO ARTISTA
 			if(!camposVaciosArtista()){
-				if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+				System.out.println(txtEmail.getText());
+				System.out.println(txtNickname.getText());
+				System.out.println(!icau.existeUsuarioPorEmail(txtEmail.getText()));
+				System.out.println(!icau.existeUsuarioPorNickname(txtNickname.getText()));
+				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(1);
 				}else{
 					 msg ="El nickname y/o el email ya estan en uso";
@@ -180,7 +184,7 @@ public class AltaUsuario extends JInternalFrame {
 		}else if(rdbtnEspectador.isSelected()){
 			// SE SELECCIONO TIPO ESPECTADOR
 			if(!camposVaciosEspectador()){
-				if(!icau.buscarUsuarioPorEmail(txtEmail.getText())  && !icau.buscarUsuarioPorNickname(txtNickname.getText()) ){
+				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(2);
 				}else{
 					 msg = "El nickname y/o el email ya estan en uso";
@@ -259,13 +263,8 @@ public class AltaUsuario extends JInternalFrame {
 	
 	 private boolean camposVaciosArtista() {
 		if(txtNickname.getText().isEmpty() ||
-			 txtNombre.getText().isEmpty() ||
-			 txtApellido.getText().isEmpty()|| 
 			 txtEmail.getText().isEmpty() ||
-			 txtFecha.getText().isEmpty()||
-			 txtLink.getText().isEmpty() ||
-			 textAreaBiografia.getText().isEmpty() ||
-			 textAreaDescripcion.getText().isEmpty()) {
+			 txtFecha.getText().isEmpty()) {
 			 	return true;
 		}
 		return false;
@@ -273,8 +272,6 @@ public class AltaUsuario extends JInternalFrame {
 	 
 	 private boolean camposVaciosEspectador() {
 		if(txtNickname.getText().isEmpty() ||
-			 txtNombre.getText().isEmpty() ||
-			 txtApellido.getText().isEmpty()|| 
 			 txtEmail.getText().isEmpty() ||
 			 txtFecha.getText().isEmpty()) {
 			 	return true;
