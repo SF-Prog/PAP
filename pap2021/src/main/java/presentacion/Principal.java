@@ -100,22 +100,23 @@ public class Principal {
 		frmCoronatickets = new JFrame();
 		frmCoronatickets.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\bruno.garcia\\Desktop\\descarga.png"));
 		frmCoronatickets.setTitle("CoronaTickets");
-		frmCoronatickets.setBounds(100, 100, 450, 300);
+		frmCoronatickets.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//frmCoronatickets.setBounds(100, 100, 450, 300);
 		frmCoronatickets.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCoronatickets.getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frmCoronatickets.setJMenuBar(menuBar);
 		
-		JMenu mnInicio = new JMenu("Inicio");
-		mnInicio.addActionListener(new ActionListener() {
+		JMenuItem mntmNewMenuItem = new JMenuItem("inicio");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				altaUsuarioInternalFrame.setVisible(false);
 				consultaDeEspectaculoInternalFrame.setVisible(false);
 				consultaDefuncionDeEspetaculoInternalFrame.setVisible(false);
 			}
 		});
-		menuBar.add(mnInicio);
+		menuBar.add(mntmNewMenuItem);
 		
 		JMenu mnAltas = new JMenu("Alta");
 		menuBar.add(mnAltas);
