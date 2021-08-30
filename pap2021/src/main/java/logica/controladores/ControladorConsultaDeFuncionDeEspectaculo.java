@@ -33,6 +33,19 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		}
 		return dtPlataformas;
 	}
+	@Override
+	public String[] listarPlataformasComboBox() {
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
+		
+		List<Plataforma> listPlataformas = mP.getPlataformas();
+		String[] Plataformas = new String[listPlataformas.size()];
+		int i=0;
+		for(Plataforma p : listPlataformas){
+			Plataformas[i] =p.getNombre();
+			i++;
+		}
+		return Plataformas;
+	}
 
 	@Override
 	public DtPlataforma seleccionaPlataforma(String nombre) {
@@ -43,6 +56,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		return dtp;
 	}
 
+	
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos() {
 		ArrayList<DtEspectaculo> dtEspectaculos =null;
@@ -52,6 +66,18 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 			dtEspectaculos.add(dte);
 		}
 		return dtEspectaculos;
+	}
+	
+	@Override
+	public String[] listarEspectaculosComboBox(){
+		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
+		String[] Espectaculos = new String[listEspectaculos.size()];
+		int i=0;
+		for(Espectaculo e : listEspectaculos){
+			Espectaculos[i] = e.getNombre();
+			i++;
+		}
+		return Espectaculos;
 	}
 
 	@Override
@@ -89,7 +115,20 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		}
 		return dtFunciones;
 	}
-
+	
+	@Override
+	public String[] listarFuncionesComboBox() {
+		// TODO Auto-generated method stub
+		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
+		String[] Funciones = new String[listFunciones.size()];
+		int i=0;
+		for(Funcion e : listFunciones){
+			Funciones[i] = e.getNombre();
+			i++;
+		}
+		return Funciones;
+	}
+	
 	@Override
 	public DtFuncion seleccionaFuncion(String nombre) {
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
