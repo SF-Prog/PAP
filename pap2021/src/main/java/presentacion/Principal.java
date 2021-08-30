@@ -133,6 +133,7 @@ public class Principal {
 		JMenuItem mnConsultarEspectaculo = new JMenuItem("Espect\u00E1culo");
 		mnConsultarEspectaculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaDeEspectaculoInternalFrame.iniciarlizarComboBoxPlataforma();
 				consultaDeEspectaculoInternalFrame.setVisible(true);
 			}
 		});
