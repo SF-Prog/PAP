@@ -1,7 +1,6 @@
 package presentacion;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -11,15 +10,17 @@ import javax.swing.JMenuItem;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
 
+import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Toolkit;
-import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Principal {
 
 	private JFrame frmCoronatickets;
-	private JFrame frame;
+
 	
 	// VARIABLES DE INTERFACE DE VISTAS
 	private AltaUsuario altaUsuarioInternalFrame;
@@ -49,8 +50,8 @@ public class Principal {
 		//
 		Fabrica fabrica = Fabrica.getInstancia();
 		IControladorAltaDeUsuario icau = fabrica.getIControladorAltaDeUsuario();
-		
-		Dimension desktopSize = frame.getSize();
+		altaUsuarioInternalFrame = new AltaUsuario(icau);
+		Dimension desktopSize = frmCoronatickets.getSize();
 		Dimension jInternalFrameSize;
 		
 		//DIMENCIONAR LA VENTANA DE ALTA USUARIO
@@ -59,7 +60,7 @@ public class Principal {
 		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		altaUsuarioInternalFrame.setVisible(false);
-		frame.getContentPane().add(altaUsuarioInternalFrame);
+		frmCoronatickets.getContentPane().add(altaUsuarioInternalFrame);
 		
 		//FIN DIMENCIONAR LA VENTANA DE ALTA USUARIO
 	}
@@ -85,6 +86,7 @@ public class Principal {
 		JMenuItem mnAltaUsuario = new JMenuItem("Usuario");
 		mnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});
 		mnAltas.add(mnAltaUsuario);
