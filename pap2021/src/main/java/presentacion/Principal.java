@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeEspectaculo;
+import interfaces.IControladorConsultaDeFuncionDeEspectaculo;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -26,6 +27,7 @@ public class Principal {
 	// VARIABLES DE INTERFACE DE VISTAS
 	private AltaUsuario altaUsuarioInternalFrame;
 	private ConsultaDeEspectaculo consultaDeEspectaculoInternalFrame;
+	private ConsultaDefuncionDeEspetaculo consultaDefuncionDeEspetaculoInternalFrame;
 	// FIN DE VARIABLES DE INTERFACE DE VISTAS
 	
 	/**
@@ -53,6 +55,8 @@ public class Principal {
 		Fabrica fabrica = Fabrica.getInstancia();
 		IControladorAltaDeUsuario icau = fabrica.getIControladorAltaDeUsuario();
 		IControladorConsultaDeEspectaculo iccde = fabrica.getIControladorConsultaDeEspectaculo();
+		IControladorConsultaDeFuncionDeEspectaculo iccdfe = fabrica.getIControladorConsultaDeFuncionDeEspectaculo();
+		
 		
 		Dimension desktopSize = frmCoronatickets.getSize();
 		Dimension jInternalFrameSize;
@@ -76,6 +80,17 @@ public class Principal {
 		frmCoronatickets.getContentPane().add(consultaDeEspectaculoInternalFrame);
 		
 		//FIN DIMENCIONAR LA VENTANA DE CONSULTA DE ESPECTACULO
+		
+
+		//DIMENCIONAR LA VENTANA DE CONSULTA DE FUNCION DE ESPECTACULO
+		consultaDefuncionDeEspetaculoInternalFrame = new ConsultaDefuncionDeEspetaculo(iccdfe);
+		jInternalFrameSize = consultaDefuncionDeEspetaculoInternalFrame.getSize();
+		consultaDefuncionDeEspetaculoInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		consultaDefuncionDeEspetaculoInternalFrame.setVisible(false);
+		frmCoronatickets.getContentPane().add(consultaDefuncionDeEspetaculoInternalFrame);
+		
+		//FIN DIMENCIONAR LA VENTANA DE CONSULTA DE  FUNCION DE ESPECTACULO
 	}
 
 	/**
@@ -92,6 +107,16 @@ public class Principal {
 		JMenuBar menuBar = new JMenuBar();
 		frmCoronatickets.setJMenuBar(menuBar);
 		
+		JMenu mnInicio = new JMenu("Inicio");
+		mnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaUsuarioInternalFrame.setVisible(false);
+				consultaDeEspectaculoInternalFrame.setVisible(false);
+				consultaDefuncionDeEspetaculoInternalFrame.setVisible(false);
+			}
+		});
+		menuBar.add(mnInicio);
+		
 		JMenu mnAltas = new JMenu("Alta");
 		menuBar.add(mnAltas);
 		
@@ -100,6 +125,7 @@ public class Principal {
 		mnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				altaUsuarioInternalFrame.setVisible(true);
+				
 			}
 		});
 		mnAltas.add(mnAltaUsuario);
@@ -123,12 +149,19 @@ public class Principal {
 		JMenuItem mnConsultarEspectaculo = new JMenuItem("Espect\u00E1culo");
 		mnConsultarEspectaculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaDeEspectaculoInternalFrame.iniciarlizarComboBoxPlataforma();
 				consultaDeEspectaculoInternalFrame.setVisible(true);
 			}
 		});
 		mnConsultar.add(mnConsultarEspectaculo);
 		
 		JMenuItem mnConsultarFuncionDeEspectaculo = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
+		mnConsultarFuncionDeEspectaculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				consultaDefuncionDeEspetaculoInternalFrame.setVisible(false);
+				
+			}
+		});
 		mnConsultar.add(mnConsultarFuncionDeEspectaculo);
 		
 		JMenuItem mnConsultarPaqueteDeEspectaculos = new JMenuItem("Paquete de Espect\u00E1culos");
