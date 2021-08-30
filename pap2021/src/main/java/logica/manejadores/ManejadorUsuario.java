@@ -46,9 +46,10 @@ public class ManejadorUsuario {
 	public Usuario buscarUsuarioPorNickname(String nickname) {
 		Iterator<Usuario> usuariosIterator = this.usuarios.iterator(); 
 		Usuario res = null;
-		while(usuariosIterator.hasNext() && res != null){
-			if(usuariosIterator.next().getNickName().equals(nickname)){
-				res = usuariosIterator.next();
+		while(res == null && usuariosIterator.hasNext()){
+			Usuario temp = usuariosIterator.next();
+			if(temp.getNickName().equals(nickname)){
+				res = temp;
 			}
 		}		
 		return res;
@@ -57,9 +58,10 @@ public class ManejadorUsuario {
 	public Usuario buscarUsuarioPorEmail(String email) {		
 		Iterator<Usuario> usuariosIterator = this.usuarios.iterator();  
 		Usuario res = null;
-		while(usuariosIterator.hasNext() && res != null){
-			if(usuariosIterator.next().getEmail().equals(email)){
-				res = usuariosIterator.next();
+		while(res == null && usuariosIterator.hasNext()){
+			Usuario temp = usuariosIterator.next();
+			if(temp.getEmail().equals(email)){
+				res = temp;
 			}
 		}		
 		return res;
