@@ -237,93 +237,6 @@ public class Principal2 {
 		entrada.close();	
 	}// FIN DE ALTA USUARIO
 	
-	static void	AltaDeEspectaculo() {
-		Scanner entrada = new Scanner(System.in);		
-		boolean espectaculoValido = false;
-		Fabrica f = Fabrica.getInstancia();
-		IControladorAltaDeEspectaculo icae = f.getIControladorAltaDeEspectaculo();
-		String plataforma = null;
-		String artista = null;
-		String nombre = null;
-		String descripcion = null;
-		int duracion = 0;
-		int especMinimos = 0;
-		int especMaximos = 0;
-		String url = null;
-		float costo = 0;
-		String fechaAlta = null;
-		Date fecha = null;
-		DtArtista dtArtista = null;
-		String deseaCancelar = null;
-
-		do {
-			System.out.println("Plataforma: ");
-			plataforma=entrada.nextLine();
-	
-			System.out.println("Artista: ");
-			artista=entrada.nextLine();
-
-			DtUsuario u = icae.buscarUsuarioPorNickname(artista);
-			if (u != null) 
-			{
-				if (u instanceof DtArtista)
-				{
-					dtArtista = (DtArtista)u;
-					
-					System.out.println("Nombre: ");
-					nombre=entrada.nextLine();
-			
-					System.out.println("Descripcion: ");
-					descripcion=entrada.nextLine();
-			
-					System.out.println("Duracion: ");
-					duracion=entrada.nextInt();
-			
-					System.out.println("Espectadores minimos: ");
-					especMinimos=entrada.nextInt();
-			
-					System.out.println("Espectadores maximos: ");
-					especMaximos=entrada.nextInt();
-			
-					System.out.println("URL asociada: ");
-					url=entrada.nextLine();
-			
-					System.out.println("Costo: ");
-					costo=Float.parseFloat(entrada.nextLine());
-			
-					System.out.println("Fecha de alta (dd/MM/yyyy): ");
-					fechaAlta=entrada.nextLine();	
-					fecha = ParseFecha(fechaAlta);
-					
-					espectaculoValido = icae.existeEspectaculo(plataforma, nombre);
-					if(!espectaculoValido) {
-						System.out.println("El nombre de espectaculo ya existe\n\n");
-						System.out.println("Desea Cancelar esta operacion? (s/n)");
-						deseaCancelar = entrada.nextLine();
-						if(deseaCancelar.equals("s")) {
-							espectaculoValido = true;
-						};
-					};					
-				}
-				else
-				{
-					System.out.println("El usuario ingresado no es artista\n\n");
-				}
-			}
-			else
-			{
-				System.out.println("El artista ingresado no existe\n\n");
-			}
-		} while(!espectaculoValido);
-
-		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
-			DtEspectaculo dtEspectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, url, costo, fecha);
-			icae.ingresaEspectaculo(plataforma, dtArtista, dtEspectaculo);
-		};
-		
-		entrada.close();
-	}// FIN DE ALTA ESPECTACULO
-	
 	static void	ConsultaDeEspetaculo(){
 		Fabrica f = Fabrica.getInstancia();
 		IControladorConsultaDeEspectaculo iccde = f.getIControladorConsultaDeEspectaculo();
@@ -641,7 +554,7 @@ public class Principal2 {
 
 		if(deseaCancelar.equals("n") || deseaCancelar.equals(null)) {
 			DtPlataforma dtPlataforma = new DtPlataforma(nombre, descripcion, URL);
-			icap.ingresaPlataforma(dtPlataforma);
+			//icap.ingresaPlataforma(dtPlataforma);
 		};
 
 		entrada.close();
@@ -793,7 +706,7 @@ public class Principal2 {
 		  			AltaDeUsuario();
 		  			break;
 		  		case 2:
-		  			AltaDeEspectaculo();
+		  			//AltaDeEspectaculo();
 		  			break;
 		  		case 3:
 		  			ConsultaDeEspetaculo();

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import datatypes.DtArtista;
+import logica.Artista;
 import logica.Usuario;
 
 public class ManejadorUsuario {
@@ -29,6 +31,16 @@ public class ManejadorUsuario {
 	
 	public void agegarUsuarios(Usuario usuario) {
 		this.usuarios.add(usuario);
+	}
+
+	public List<String> getArtistas() {
+		List<String> res = new ArrayList<>();
+		for(Usuario u: usuarios) {
+			if (u instanceof Artista){
+				res.add(u.getNickName());
+			}
+		}		
+		return res;
 	}
 	
 	public Usuario buscarUsuarioPorNickname(String nickname) {
