@@ -176,7 +176,9 @@ public class AltaEspectaculo extends JInternalFrame {
             int especMaximos = Integer.parseInt(txtEspecMaximos.getText());
             String urlAsociada = txtURLAsociada.getText();
             float costo = Float.parseFloat(txtCosto.getText());
-            Date fecha = ParseFecha(dFechaDeAlta.getDateFormatString());
+           
+            //Date fecha = ParseFecha(dFechaDeAlta.getDateFormatString());
+            Date fecha = dFechaDeAlta.getDate();
         	try {
         		DtEspectaculo espectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, urlAsociada, costo, fecha);
 				icon.ingresaEspectaculo(plataforma, artista, espectaculo);

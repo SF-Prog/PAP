@@ -118,6 +118,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 			// BOTON VER ESPECTACULO
 			public void actionPerformed(ActionEvent e) {
 				DtEspectaculo dtEspectaculo = iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+
 				textArea.setText(dtEspectaculo.toString());
 			}
 		});
@@ -150,11 +151,13 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 			public void itemStateChanged(ItemEvent e) {
 				comboBoxFunciones.removeAllItems();
 				comboBoxPaquetes.removeAllItems();
+				if(comboBoxEspectaculos.getSelectedItem()!= null) {
 				iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
 				inicializarComboBoxFunciones();
 				inicializarComboBoxPaquetes();
+				}
 			}
-		});
+		}); 
 		
 		/*comboBoxFunciones.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -193,9 +196,12 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 	public void inicializarComboBoxPlataforma() {
 		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(iccde.listarPlataformasComboBox());
 		comboBoxPlataformas.setModel(modelclases);
+		System.out.println(comboBoxPlataformas.getItemAt(0));
+		comboBoxPlataformas.setSelectedItem(comboBoxPlataformas.getItemAt(0));
+		//comboBoxPlataformas.setSelectedIndex(0);
 	}
 	
-	public void inicializarComboBoxEspectaculos() {
+	public void inicializarComboBoxEspectaculos() { 
 		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(iccde.listarEspectaculosComboBox());
 		comboBoxEspectaculos.setModel(modelclases);
 	}
