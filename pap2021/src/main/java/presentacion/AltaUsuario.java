@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -28,7 +31,8 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtEmail;
-	private JTextField txtFecha;
+	private JDateChooser txtFecha;
+	//private JTextField txtFecha;
 	private JTextField txtLink;
 	private JTextArea textAreaBiografia;
 	private JTextArea textAreaDescripcion;
@@ -37,6 +41,7 @@ public class AltaUsuario extends JInternalFrame {
 	private JLabel lblBiografia;
 	private JLabel lblDescripcionGeneral;
 	private JLabel lblLink;
+
 
 	public AltaUsuario(IControladorAltaDeUsuario icau) {
 		this.icau = icau;
@@ -93,10 +98,14 @@ public class AltaUsuario extends JInternalFrame {
 		lblFecha.setBounds(50, 145, 46, 14);
 		getContentPane().add(lblFecha);
 		
-		txtFecha = new JTextField();
+		txtFecha = new JDateChooser();
+		txtFecha.setBounds(50, 165, 86, 20);
+		getContentPane().add(txtFecha);
+		
+		/*txtFecha = new JTextField();
 		txtFecha.setBounds(50, 165, 86, 20);
 		txtFecha.setColumns(10);
-		getContentPane().add(txtFecha);
+		getContentPane().add(txtFecha);*/
 
 		lblLink = new JLabel("Link");
 		lblLink.setBounds(153, 145, 46, 14);
@@ -175,6 +184,8 @@ public class AltaUsuario extends JInternalFrame {
 				System.out.println(!icau.existeUsuarioPorNickname(txtNickname.getText()));
 				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(1);
+					JOptionPane.showMessageDialog(this, "Usuario argegado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+					limpiarFormulario();
 				}else{
 					 msg ="El nickname y/o el email ya estan en uso";
 				}
@@ -186,6 +197,9 @@ public class AltaUsuario extends JInternalFrame {
 			if(!camposVaciosEspectador()){
 				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(2);
+					JOptionPane.showMessageDialog(this, "Usuario argegado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+					limpiarFormulario();
+					
 				}else{
 					 msg = "El nickname y/o el email ya estan en uso";
 				}				
@@ -245,14 +259,16 @@ public class AltaUsuario extends JInternalFrame {
 		txtNombre.setText("");
 		txtApellido.setText("");
 		txtEmail.setText("");
-		txtFecha.setText("");
+		//txtFecha.setText("");
+		txtFecha.setDate(null);
 		txtLink.setText("");
 		textAreaBiografia.setText("");
 		textAreaDescripcion.setText("");	       
 	 }
 	
 	private void agregarUsuario(int tipo){
-		Date fecha = ParseFecha(txtFecha.getText());		
+		//Date fecha = ParseFecha(txtFecha.getText());	
+		Date fecha = txtFecha.getDate();
 		DtUsuario dtUsuario = new DtUsuario(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(),fecha);
 		if(tipo==1){
 			icau.ingresaUsuarioArtista(dtUsuario,textAreaDescripcion.getText(),textAreaBiografia.getText(),txtLink.getText());
@@ -264,7 +280,7 @@ public class AltaUsuario extends JInternalFrame {
 	 private boolean camposVaciosArtista() {
 		if(txtNickname.getText().isEmpty() ||
 			 txtEmail.getText().isEmpty() ||
-			 txtFecha.getText().isEmpty()) {
+			 txtFecha.getDate() == null) {
 			 	return true;
 		}
 		return false;
@@ -273,7 +289,7 @@ public class AltaUsuario extends JInternalFrame {
 	 private boolean camposVaciosEspectador() {
 		if(txtNickname.getText().isEmpty() ||
 			 txtEmail.getText().isEmpty() ||
-			 txtFecha.getText().isEmpty()) {
+			 txtFecha.getDate() == null) {
 			 	return true;
 		}
 		return false;

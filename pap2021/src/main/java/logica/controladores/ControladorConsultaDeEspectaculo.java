@@ -13,6 +13,7 @@ import logica.Espectaculo;
 import logica.Funcion;
 import logica.Paquete;
 import logica.Plataforma;
+import logica.Usuario;
 import logica.manejadores.ManejadorPaquete;
 import logica.manejadores.ManejadorPlataforma;
 
@@ -94,18 +95,19 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		DtEspectaculo dte = null;
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
-			if(eIterator.next().getNombre().equals(nombre)){
+			Espectaculo temp = eIterator.next();
+			if(temp.getNombre().equals(nombre)){
 				existe = true;
-				espectaculoSeleccionada = eIterator.next();
+				espectaculoSeleccionada = temp;
 				dte = new DtEspectaculo(
-						eIterator.next().getNombre(),
-						eIterator.next().getDescripcion(),
-						eIterator.next().getDuracion(),
-						eIterator.next().getEspectadoresMin(),
-						eIterator.next().getEspectadoresMax(),
-						eIterator.next().getUrlAsociada(),
-						eIterator.next().getCosto(),
-						eIterator.next().getFechaRegistro()
+						temp.getNombre(),
+						temp.getDescripcion(),
+						temp.getDuracion(),
+						temp.getEspectadoresMin(),
+						temp.getEspectadoresMax(),
+						temp.getUrlAsociada(),
+						temp.getCosto(),
+						temp.getFechaRegistro()
 						);
 			}
 		}			
@@ -144,10 +146,11 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		Iterator<Funcion> fIterator = listFunciones.iterator();
 		boolean existe = false;
 		while(fIterator.hasNext() && !existe){
+			Funcion temp = fIterator.next();
 			if(fIterator.next().getNombre().equals(nombre)){
 				existe = true;
-				this.funcionSeleccionada = fIterator.next();
-				dtf =new DtFuncion(fIterator.next().getNombre(),fIterator.next().getFecha(),fIterator.next().getHoraInicio(),fIterator.next().getFechaRegistro());
+				this.funcionSeleccionada = temp;
+				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro());
 			}
 		}
 		return dtf;
@@ -165,7 +168,8 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 			Iterator<Espectaculo> eIterator = listEspectaculos.iterator();
 			boolean existe = false;
 			while(eIterator.hasNext() && !existe){
-				if(eIterator.next().getNombre().equals(this.espectaculoSeleccionada.getNombre())){
+				Espectaculo temp = eIterator.next();
+				if(temp.getNombre().equals(this.espectaculoSeleccionada.getNombre())){
 					existe = true;
 					dtp = new DtPaquete(p.getNombre(),p.getDescripcion(),p.getDescuento());
 				}
@@ -189,7 +193,8 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 			Iterator<Espectaculo> eIterator = listEspectaculos.iterator();
 			boolean existe = false;
 			while(eIterator.hasNext() && !existe){
-				if(eIterator.next().getNombre().equals(this.espectaculoSeleccionada.getNombre())){
+				Espectaculo temp = eIterator.next();
+				if(temp.getNombre().equals(this.espectaculoSeleccionada.getNombre())){
 					existe = true;
 					Paquetes[i] = p.getNombre();
 					
@@ -209,10 +214,11 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		Iterator<Paquete> pIterator = listPaquetes.iterator();
 		boolean existe = false;
 		while(pIterator.hasNext() && !existe){
-			if(pIterator.next().getNombre().equals(nombre)){
+			Paquete temp = pIterator.next();
+			if(temp.getNombre().equals(nombre)){
 				existe = true;
 				this.paqueteSeleccionado = pIterator.next();
-				dtp = new DtPaquete(pIterator.next().getNombre(),pIterator.next().getDescripcion(),pIterator.next().getDescuento());
+				dtp = new DtPaquete(temp.getNombre(),temp.getDescripcion(),temp.getDescuento());
 			}
 		}
 		return dtp;
