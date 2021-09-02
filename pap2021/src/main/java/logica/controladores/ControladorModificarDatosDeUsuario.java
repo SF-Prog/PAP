@@ -12,25 +12,21 @@ public class ControladorModificarDatosDeUsuario implements IControladorModificar
 	
 	@Override
 	public ArrayList<DtUsuario> listarUsuarios() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public DtUsuario seleccionarUsuario(String nickname) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void ingresarDatosModificacion(DtUsuario nuevosDatosUsuario) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void finalizarModificacionUsuario() {
-		// TODO Auto-generated method stub
 		
 	}
 }

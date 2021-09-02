@@ -6,4 +6,4 @@ public class AltaFuncionDeEspectaculoExcepcion extends Exception{
 	public AltaFuncionDeEspectaculoExcepcion(String string) {
         super(string);
     }
-};
+}

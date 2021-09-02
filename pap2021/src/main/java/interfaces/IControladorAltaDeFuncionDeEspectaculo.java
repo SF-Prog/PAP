@@ -14,8 +14,7 @@ public interface IControladorAltaDeFuncionDeEspectaculo {
 	public boolean existeFuncion(String nombreFuncion);
 	public void ingresaFuncion(DtFuncion dtFuncion, List<String>  artistaInvitado) throws AltaFuncionDeEspectaculoExcepcion;
 	public List<DtArtista> listarArtistas();
-	public void agregarArtistaAFuncion(String nombreArtista);
-	
+	public void agregarArtistaAFuncion(String nombreArtista);	
 	public String[] listarPlataformasComboBox();
 	public String[] listarEspectaculosComboBox();
 	public String[] listarArtistasComboBox();

@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="pap2021">
-	
+	<persistence-unit name="pap2021">	
 		<class>logica.Plataforma</class>
 		<class>logica.Espectaculo</class>
-		<class>logica.Funcion</class>
-		
+		<class>logica.Funcion</class>		
 		<class>logica.Usuario</class>
 		<class>logica.Artista</class>
-		<class>logica.Espectador</class>
-		
-		
+		<class>logica.Espectador</class>		
 		<class>logica.EspectadorPaquete</class>
-		<class>logica.Paquete</class>
-
-		
+		<class>logica.Paquete</class>		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />

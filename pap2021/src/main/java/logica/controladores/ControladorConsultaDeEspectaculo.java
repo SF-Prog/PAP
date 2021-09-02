@@ -13,7 +13,6 @@ import logica.Espectaculo;
 import logica.Funcion;
 import logica.Paquete;
 import logica.Plataforma;
-import logica.Usuario;
 import logica.manejadores.ManejadorPaquete;
 import logica.manejadores.ManejadorPlataforma;
 
@@ -41,8 +40,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	
 	@Override
 	public String[] listarPlataformasComboBox() {
-		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
-		
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		String[] Plataformas = new String[listPlataformas.size()];
 		int i=0;
@@ -55,7 +53,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	
 	@Override
 	public DtPlataforma seleccionaPlataforma(String nombre) {
-		// TODO Auto-generated method stub
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		Plataforma plataforma = mP.getPlataforma(nombre);
 		this.plataformaSeleccionada = plataforma;		
@@ -89,7 +86,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 
 	@Override
 	public DtEspectaculo seleccionaEspectaculo(String nombre) {
-		// TODO Auto-generated method stub
 		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();		
 		Iterator<Espectaculo> eIterator = listEspectaculos.iterator();  
 		DtEspectaculo dte = null;
@@ -116,7 +112,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 
 	@Override
 	public ArrayList<DtFuncion> listarFunciones() {
-		// TODO Auto-generated method stub
 		ArrayList<DtFuncion> dtFunciones =null;
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		for(Funcion e : listFunciones){
@@ -128,7 +123,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 
 	@Override
 	public String[] listarFuncionesComboBox() {
-		// TODO Auto-generated method stub
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		String[] Funciones = new String[listFunciones.size()];
 		int i=0;
@@ -138,9 +132,9 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		}
 		return Funciones;
 	}
+	
 	@Override
 	public DtFuncion seleccionaFuncion(String nombre) {
-		// TODO Auto-generated method stub
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		DtFuncion dtf=null;
 		Iterator<Funcion> fIterator = listFunciones.iterator();
@@ -158,7 +152,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
-		// TODO Auto-generated method stub
 		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
 		ArrayList<DtPaquete> dtPaquete =null;
 		List<Paquete> listPaquetes = mPa.getPaquetes();
@@ -182,9 +175,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	
 	@Override
 	public String[] listarPaquetesComboBox() {
-		// TODO Auto-generated method stub
 		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
-
 		List<Paquete> listPaquetes = mPa.getPaquetes();
 		String[] Paquetes = new String[listPaquetes.size()];
 		int i=0;
@@ -205,9 +196,9 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return Paquetes;
 
 	}
+	
 	@Override
 	public DtPaquete seleccionaPaquete(String nombre) {
-		// TODO Auto-generated method stub
 		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
 		List<Paquete> listPaquetes = mPa.getPaquetes();				
 		DtPaquete dtp=null;

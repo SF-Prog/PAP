@@ -1,8 +1,6 @@
 package logica;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,8 +11,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @IdClass(IdEspectadorPaquete.class)
-public class EspectadorPaquete {
-	
+public class EspectadorPaquete {	
 	@Temporal(TemporalType.DATE)
 	private Date fechaCompra;
 	
@@ -43,7 +40,7 @@ public class EspectadorPaquete {
 
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
-	}
+	} /*
 
 	public List<Paquete> getPaquetes() {
 		return paquetes;
@@ -51,5 +48,5 @@ public class EspectadorPaquete {
 
 	public void setPaquetes(List<Paquete> paquetes) {
 		this.paquetes = paquetes;
-	}	
+	} */
 }

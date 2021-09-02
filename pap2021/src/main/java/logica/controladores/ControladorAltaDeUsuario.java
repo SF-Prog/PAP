@@ -15,7 +15,7 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	public void ingresaUsuarioEspectador(DtUsuario dtUsuario) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		Espectador nuevoEspectador = new Espectador(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac());
-		mU.agegarUsuarios(nuevoEspectador);		
+		mU.agegarUsuarios(nuevoEspectador);
 	}
 
 	@Override
