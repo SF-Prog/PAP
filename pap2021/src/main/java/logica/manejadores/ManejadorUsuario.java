@@ -10,7 +10,7 @@ import logica.Usuario;
 
 public class ManejadorUsuario {
 	private static ManejadorUsuario instancia = null; 
-	private List<Usuario> usuarios = new ArrayList<>();
+	//private List<Usuario> usuarios = new ArrayList<>();
 	
 	private ManejadorUsuario(){}
 	
@@ -27,10 +27,12 @@ public class ManejadorUsuario {
 	
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+		
 	}
 	
 	public void agegarUsuarios(Usuario usuario) {
 		this.usuarios.add(usuario);
+		//comint(s1)
 	}
 
 	public List<String> getArtistas() {

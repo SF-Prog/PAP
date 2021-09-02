@@ -4,11 +4,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+
+@Entity
+@DiscriminatorValue("Artista")
 public class Artista extends Usuario{
 	private String descGeneral;
 	private String biografia;
 	private String link;
+	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Espectaculo> espectaculos = new ArrayList<>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Funcion> funciones = new ArrayList<>();
 	
 	public Artista() {
