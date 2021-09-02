@@ -35,7 +35,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
         setMaximizable(true);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Consulta de Espectáculo");
+        setTitle("Consulta de Espectï¿½culo");
 		setBounds(100, 100, 450, 343);
 		getContentPane().setLayout(null);
 		
@@ -194,8 +194,8 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 	}
 
 	public void inicializarComboBoxPlataforma() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(iccde.listarPlataformasComboBox());
-		comboBoxPlataformas.setModel(modelclases);
+		DefaultComboBoxModel<String> modelPlataformas = new DefaultComboBoxModel<String>(iccde.listarPlataformasComboBox());
+		comboBoxPlataformas.setModel(modelPlataformas);
 		System.out.println(comboBoxPlataformas.getItemAt(0));
 		comboBoxPlataformas.setSelectedItem(comboBoxPlataformas.getItemAt(0));
 		//comboBoxPlataformas.setSelectedIndex(0);

@@ -44,7 +44,7 @@ public class AltaEspectaculo extends JInternalFrame {
         setMaximizable(true);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Alta de Espectáculo");
+        setTitle("Alta de Espectï¿½culo");
 		setBounds(100, 100, 395, 445);
 		getContentPane().setLayout(null);
 		
@@ -182,15 +182,15 @@ public class AltaEspectaculo extends JInternalFrame {
         	try {
         		DtEspectaculo espectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, urlAsociada, costo, fecha);
 				icon.ingresaEspectaculo(plataforma, artista, espectaculo);
-	            JOptionPane.showMessageDialog(this, "Espectáculo dado de alta con éxito!", "Alta de Espectáculo",
+	            JOptionPane.showMessageDialog(this, "Espectï¿½culo dado de alta con ï¿½xito!", "Alta de Espectï¿½culo",
 	                        JOptionPane.INFORMATION_MESSAGE);
 	            limpiarFormulario();
 	            setVisible(false);
 			} catch (AltaEspectaculoExcepcion e) {
-				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta de Espectáculo", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta de Espectï¿½culo", JOptionPane.ERROR_MESSAGE);
 			}
         }
-	} 
+	}
 	
 	protected void altaEspectaculoCancelarActionPerformed(ActionEvent arg0) {
 		limpiarFormulario();
@@ -200,19 +200,19 @@ public class AltaEspectaculo extends JInternalFrame {
 	private boolean checkFormulario() {
     	String plataforma = (String)comboBoxPlataformas.getSelectedItem();
         if (plataforma == null) {
-            JOptionPane.showMessageDialog(this, "Plataforma debe ser elegida", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Plataforma debe ser elegida", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
     	String artista = (String)comboBoxArtistas.getSelectedItem();
         if (artista == null) {
-            JOptionPane.showMessageDialog(this, "Artista debe ser elegido", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Artista debe ser elegido", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         } 
         String nombre = txtNombre.getText();
         if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nombre no puede ser vacío", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Nombre no puede ser vacï¿½o", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -220,7 +220,7 @@ public class AltaEspectaculo extends JInternalFrame {
         try {
             Integer.parseInt(duracion);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Duración debe ser numérica", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Duraciï¿½n debe ser numï¿½rica", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -228,7 +228,7 @@ public class AltaEspectaculo extends JInternalFrame {
         try {
             Integer.parseInt(especMinimos);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Espectadores mínimos debe ser numérico", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Espectadores mï¿½nimos debe ser numï¿½rico", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -236,7 +236,7 @@ public class AltaEspectaculo extends JInternalFrame {
         try {
             Integer.parseInt(especMaximos);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Espectadores máximos debe ser numérico", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Espectadores mï¿½ximos debe ser numï¿½rico", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -244,7 +244,7 @@ public class AltaEspectaculo extends JInternalFrame {
         try {
             Float.parseFloat(costo);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Costo debe ser numérico", "Alta de Espectáculo",
+            JOptionPane.showMessageDialog(this, "Costo debe ser numï¿½rico", "Alta de Espectï¿½culo",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }

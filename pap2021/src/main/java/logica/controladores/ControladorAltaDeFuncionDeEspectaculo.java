@@ -6,6 +6,7 @@ import java.util.List;
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
+import datatypes.DtPlataforma;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import logica.Artista;
 import logica.Espectaculo;
@@ -14,11 +15,13 @@ import logica.Plataforma;
 import logica.Usuario;
 import logica.manejadores.ManejadorPlataforma;
 import logica.manejadores.ManejadorUsuario;
+import excepciones.AltaFuncionDeEspectaculoExcepcion;
 
 public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDeFuncionDeEspectaculo{
-	private Plataforma plataforma;
-	private Espectaculo espectaculo;
-	// private Espectaculo artistasIngresadosEnElSistema;
+	private Plataforma plataformaSeleccionada;
+	private Espectaculo espectaculoSeleccionado;
+	private List<String> artistasIngresadosEnFuncion = new ArrayList<String>();
+	private List<String> artistasIngresadosEnSistema = new ArrayList<String>();
 	
 	public ControladorAltaDeFuncionDeEspectaculo() {
 		super();
@@ -34,7 +37,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		for(Plataforma plataforma : coleccionPlataformas) {
 			if(nombrePlataforma.equals(plataforma.getNombre())) {
 				coleccionEspectaculos = plataforma.getEspectaculos();
-				this.plataforma = plataforma;
+				this.plataformaSeleccionada = plataforma;
 			};
 		};
 		for(Espectaculo espectaculo : coleccionEspectaculos) {
@@ -46,12 +49,12 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 
 	@Override
 	public Espectaculo seleccionaEspectaculo(String nombreEspectaculo) {
-		List<Espectaculo> coleccionEspectaculos = this.plataforma.getEspectaculos();
+		List<Espectaculo> coleccionEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		Espectaculo espectaculoSeleccionado = null;
 		for(Espectaculo espectaculo : coleccionEspectaculos) {
 			if(espectaculo.getNombre().equals(nombreEspectaculo)){
 				espectaculoSeleccionado = espectaculo;
-				this.espectaculo = espectaculo;
+				this.espectaculoSeleccionado = espectaculo;
 			}
 		};
 		return espectaculoSeleccionado;
@@ -60,7 +63,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	@Override
 	public boolean existeFuncion(String nombreFuncion) {
 		boolean existeFuncionEnElEspectaculo = false;
-		List<Funcion> funcionesDelEspectaculo = this.espectaculo.getFunciones();
+		List<Funcion> funcionesDelEspectaculo = this.espectaculoSeleccionado.getFunciones();
 		for(Funcion funcion : funcionesDelEspectaculo){
 			if(funcion.getNombre().equals(nombreFuncion)){
 				existeFuncionEnElEspectaculo = true;
@@ -70,14 +73,20 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	};
 
 	@Override
-	public void ingresaFuncion(DtFuncion dtFuncion, List<DtArtista> artistasInvitados) {
+	public void ingresaFuncion(DtFuncion dtFuncion, List<String> artistasInvitados) throws AltaFuncionDeEspectaculoExcepcion {
 		Funcion nuevaFuncion = new Funcion(dtFuncion.getNombre(), dtFuncion.getFecha(), dtFuncion.getHoraInicio(), dtFuncion.getFechaRegistro());
-		this.espectaculo.addFuncion(nuevaFuncion);
-		// itera entre la lista de artistas y linkea a acada uno con la nueva
-		for(DtArtista dta: artistasInvitados){
-			ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-			Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dta.getNickName());
-			((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
+		Espectaculo espectaculo = this.espectaculoSeleccionado;
+		String nombreFuncion = dtFuncion.getNombre();
+		if(existeFuncion(dtFuncion.getNombre())) {
+			throw new AltaFuncionDeEspectaculoExcepcion("La funcion " + nombreFuncion + " ya se encuentra en el sistema");
+		} else {
+			espectaculo.addFuncion(nuevaFuncion);			
+			// itera entre la lista de artistas y linkea a acada uno con la nueva
+			for(String dtaNickName: artistasInvitados){
+				ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+				Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dtaNickName);
+				((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
+			};
 		};
 	};
 		
@@ -94,5 +103,50 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 			};
 		};
 		return artistasEnElSistema;
+	};
+	
+	@Override
+	public String[] listarPlataformasComboBox() {
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
+		
+		List<Plataforma> listPlataformas = mP.getPlataformas();
+		String[] Plataformas = new String[listPlataformas.size() + 1];
+		Plataformas[0] = "";
+		int i=1;
+		for(Plataforma p : listPlataformas){
+			Plataformas[i] =p.getNombre();
+			i++;
+		}
+		return Plataformas;
+	};
+	
+	public String[] listarEspectaculosComboBox() {
+		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
+		String[] Espectaculos = new String[listEspectaculos.size() + 1];
+		Espectaculos[0] = "";
+		int i=1;
+		for(Espectaculo e : listEspectaculos){
+			Espectaculos[i] = e.getNombre();
+			i++;
+		}
+		return Espectaculos;
+	};
+	
+	public String[] listarArtistasComboBox() {
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+		List<String> listArtistas = mU.getArtistas();
+		String[] Artistas = new String[listArtistas.size() + 1];
+		Artistas[0] = "";
+		int i=1;
+		for(String nicknameArtista: listArtistas) {
+			Artistas[i] = nicknameArtista;
+			i++;
+		};
+		artistasIngresadosEnSistema = listArtistas;
+		return Artistas;
+	};
+	
+	public void agregarArtistaAFuncion(String nombreArtista) {
+		artistasIngresadosEnFuncion.add(nombreArtista);
 	};
 }

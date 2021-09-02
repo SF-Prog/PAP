@@ -33,7 +33,7 @@ public class ConsultaDeFuncionDeEspectaculo extends JInternalFrame {
         setMaximizable(true);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Consulta de Función de Espectáculo");
+        setTitle("Consulta de Funciï¿½n de Espectï¿½culo");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
