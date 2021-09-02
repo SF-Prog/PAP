@@ -14,6 +14,7 @@ public class ManejadorPaquete {
 	public static ManejadorPaquete getInstancia() {
 		if(instancia == null){
 			instancia = new ManejadorPaquete();
+			
 		}
 		return instancia;
 	}
