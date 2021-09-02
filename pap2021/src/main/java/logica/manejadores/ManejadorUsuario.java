@@ -8,6 +8,8 @@ import datatypes.DtArtista;
 import logica.Artista;
 import logica.Usuario;
 
+import persistencia.Conexion;
+
 public class ManejadorUsuario {
 	private static ManejadorUsuario instancia = null; 
 	//private List<Usuario> usuarios = new ArrayList<>();
@@ -22,6 +24,7 @@ public class ManejadorUsuario {
 	}
 
 	public List<Usuario> getUsuarios() {
+
 		return usuarios;
 	}
 	
