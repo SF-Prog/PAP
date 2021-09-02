@@ -1,13 +1,15 @@
 package logica.manejadores;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import logica.Plataforma;
+import persistencia.Conexion;
 
 public class ManejadorPlataforma {
 	private static ManejadorPlataforma instancia = null; 
-	private List<Plataforma> plataformas = new ArrayList<>();
 	
 	private ManejadorPlataforma(){}
 	
@@ -19,24 +21,23 @@ public class ManejadorPlataforma {
 	}
 
 	public List<Plataforma> getPlataformas() {
-		return this.plataformas;
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();	
+		Query query = em.createQuery("select p from Plataforma p");		
+		return (List<Plataforma>)query.getResultList();
 	}
 	
-	public Plataforma getPlataforma(String nombrePlataforma) {
-		Plataforma plataforma = null;
-		for(Plataforma p : this.plataformas){
-			if(p.getNombre().equals(nombrePlataforma)){
-				plataforma = p;
-			}
-		}
-		return plataforma;
-	};
-
-	public void setPlataformas(List<Plataforma> plataformas) {
-		this.plataformas = plataformas;
-	};
+	public Plataforma getPlataforma(String plataforma) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();		
+		return em.find(Plataforma.class, plataforma);
+	}
 	
 	public void addPlataforma(Plataforma plataforma) {
-		this.plataformas.add(plataforma);
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();		
+		em.getTransaction().begin();
+		em.persist(plataforma);
+		em.getTransaction().commit();
 	}
 }
