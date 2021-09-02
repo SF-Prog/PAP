@@ -1,13 +1,11 @@
 package logica.manejadores;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import datatypes.DtArtista;
 import logica.Artista;
 import logica.Usuario;
 
@@ -24,11 +22,9 @@ public class ManejadorUsuario {
 			instancia = new ManejadorUsuario();
 		}
 		return instancia;
-	}
-
+	}	
 	
-	
-	/*public List<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 
 		//return usuarios;
 		
@@ -40,13 +36,13 @@ public class ManejadorUsuario {
 		List<Usuario> listUsuario = (List<Usuario>) query.getResultList();
 		
 		return listUsuario;
-	}
+	}/*
 	
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 		
-	}*/
-	
+	}
+	*/
 	public void agegarUsuarios(Usuario usuario) {
 		///this.usuarios.add(usuario);+
 		
@@ -118,7 +114,13 @@ public class ManejadorUsuario {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		
-		Usuario usuario = em.find(Usuario.class, email);
-		return usuario;
+		Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.email=:email");
+	    query.setParameter("email", email);
+	    try {
+	        return (Usuario)query.getSingleResult();
+        }
+	    catch (Exception e) {
+			return null;
+	    }
 	}
 }

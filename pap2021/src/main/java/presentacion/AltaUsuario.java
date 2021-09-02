@@ -184,7 +184,7 @@ public class AltaUsuario extends JInternalFrame {
 				System.out.println(!icau.existeUsuarioPorNickname(txtNickname.getText()));
 				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(1);
-					JOptionPane.showMessageDialog(this, "Usuario argegado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "Usuario agregado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
 					limpiarFormulario();
 				}else{
 					 msg ="El nickname y/o el email ya estan en uso";
@@ -197,7 +197,7 @@ public class AltaUsuario extends JInternalFrame {
 			if(!camposVaciosEspectador()){
 				if(!icau.existeUsuarioPorEmail(txtEmail.getText()) && !icau.existeUsuarioPorNickname(txtNickname.getText())){
 					agregarUsuario(2);
-					JOptionPane.showMessageDialog(this, "Usuario argegado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "Usuario agregado correctamente", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
 					limpiarFormulario();
 					
 				}else{
