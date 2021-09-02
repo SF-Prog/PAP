@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("Espectador")
 public  class Espectador extends Usuario {
 	
-	//@OneToMany(mappedBy = "espectador",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "espectador",cascade = CascadeType.ALL)
 	private List<EspectadorPaquete> espectadorPaquetes = new ArrayList<>();
 	
 	public Espectador() {

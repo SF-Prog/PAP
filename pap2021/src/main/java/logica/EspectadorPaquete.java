@@ -11,20 +11,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-//@Entity
-//@IdClass(IdEspectadorPaquete.class)
+@Entity
+@IdClass(IdEspectadorPaquete.class)
 public class EspectadorPaquete {
 	
-	//@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date fechaCompra;
-	private List<Paquete> paquetes = new ArrayList<>();
 	
-	//@Id
-	//@ManyToOne
+	///private List<Paquete> paquetes = new ArrayList<>();
+	
+	@Id
+	@ManyToOne
 	private Espectador espectador;
 	
-	//@Id
-	//@ManyToOne
+	@Id
+	@ManyToOne
 	private Paquete paquetes;
 
 	public EspectadorPaquete() {
