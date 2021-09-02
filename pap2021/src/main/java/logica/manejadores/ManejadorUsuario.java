@@ -36,16 +36,15 @@ public class ManejadorUsuario {
 		List<Usuario> listUsuario = (List<Usuario>) query.getResultList();
 		
 		return listUsuario;
-	}/*
-	
+	} /*
+  
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 		
-	}
-	*/
+	} */
+  
 	public void agegarUsuarios(Usuario usuario) {
 		///this.usuarios.add(usuario);+
-		
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		
