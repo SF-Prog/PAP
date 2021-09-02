@@ -1,13 +1,15 @@
 package logica.manejadores;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import logica.Paquete;
+import persistencia.Conexion;
 
 public class ManejadorPaquete {
-	private static ManejadorPaquete instancia = null; 
-	private List<Paquete> paquetes = new ArrayList<>();
+	private static ManejadorPaquete instancia = null;
 	
 	private ManejadorPaquete(){}
 	
@@ -20,9 +22,9 @@ public class ManejadorPaquete {
 	}
 
 	public List<Paquete> getPaquetes() {
-		return paquetes;
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();	
+		Query query = em.createQuery("select p from Paquete p");		
+		return (List<Paquete>)query.getResultList();
 	}
-	public void setPaquetes(List<Paquete> paquetes) {
-		this.paquetes = paquetes;
-	}	
 }
