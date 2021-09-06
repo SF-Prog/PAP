@@ -24,6 +24,17 @@ public class Espectaculo {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Funcion> funciones = new ArrayList<>();
 	
+	public List<Artista> getArtistas() {
+		return artistas;
+	}
+
+	public void setArtistas(List<Artista> artistas) {
+		this.artistas = artistas;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Artista> artistas = new ArrayList<>();
+	
 	public Espectaculo() {
 		super();
 	}

@@ -58,13 +58,14 @@ public class Artista extends Usuario{
 		this.link = link;
 	}
 
-	public List<Espectaculo> getEspectaculos() {
+	
+	/*public List<Espectaculo> getEspectaculos() {
 		return espectaculos;
 	}
 
 	public void setEspectaculos(List<Espectaculo> espectaculos) {
 		this.espectaculos = espectaculos;
-	}
+	}*/
 
 	public List<Funcion> getFunciones() {
 		return funciones;
