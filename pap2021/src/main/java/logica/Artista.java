@@ -17,8 +17,8 @@ public class Artista extends Usuario{
 	private String biografia;
 	private String link;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Espectaculo> espectaculos = new ArrayList<>();
+	/*@OneToMany(cascade = CascadeType.ALL)
+	private List<Espectaculo> espectaculos = new ArrayList<>();*/
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Funcion> funciones = new ArrayList<>();
