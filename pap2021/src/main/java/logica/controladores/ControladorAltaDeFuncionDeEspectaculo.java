@@ -3,6 +3,9 @@ package logica.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
@@ -15,7 +18,11 @@ import logica.Plataforma;
 import logica.Usuario;
 import logica.manejadores.ManejadorPlataforma;
 import logica.manejadores.ManejadorUsuario;
+import persistencia.Conexion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
+
+
+
 
 public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDeFuncionDeEspectaculo{
 	private Plataforma plataformaSeleccionada;
@@ -80,12 +87,26 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		if(existeFuncion(dtFuncion.getNombre())) {
 			throw new AltaFuncionDeEspectaculoExcepcion("La funcion " + nombreFuncion + " ya se encuentra en el sistema");
 		} else {
-			espectaculo.addFuncion(nuevaFuncion);			
+			Conexion conexion = Conexion.getInstancia();
+			EntityManager em = conexion.getEntityManager();		
+			
+			espectaculo.addFuncion(nuevaFuncion);	
+			 // comit de espectaculo 
+			em.getTransaction().begin();
+			em.persist(espectaculo);
+			em.getTransaction().commit();
+			
 			// itera entre la lista de artistas y linkea a acada uno con la nueva
 			for(String dtaNickName: artistasInvitados){
 				ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 				Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dtaNickName);
 				((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
+				
+				em.getTransaction().begin();
+				em.persist(usuarioArtista);
+				em.getTransaction().commit();
+				// conete en la base de datos
+				
 			};
 		};
 	};
@@ -133,20 +154,26 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	};
 	
 	public String[] listarArtistasComboBox() {
+		
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		List<String> listArtistas = mU.getArtistas();
 		String[] Artistas = new String[listArtistas.size() + 1];
 		Artistas[0] = "";
 		int i=1;
+		String artistaDelEspectaculo = mU.buscarArtistaPorEspectaculo(espectaculoSeleccionado.getNombre());
+		
 		for(String nicknameArtista: listArtistas) {
-			Artistas[i] = nicknameArtista;
-			i++;
+			if(!artistaDelEspectaculo.equals(nicknameArtista)) {
+				Artistas[i] = nicknameArtista;
+				i++;
+			}
 		};
 		artistasIngresadosEnSistema = listArtistas;
 		return Artistas;
 	};
 	
 	public void agregarArtistaAFuncion(String nombreArtista) {
+		
 		artistasIngresadosEnFuncion.add(nombreArtista);
 	};
 }

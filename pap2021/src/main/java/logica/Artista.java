@@ -17,8 +17,8 @@ public class Artista extends Usuario{
 	private String biografia;
 	private String link;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Espectaculo> espectaculos = new ArrayList<>();
+	/*@OneToMany(cascade = CascadeType.ALL)
+	private List<Espectaculo> espectaculos = new ArrayList<>();*/
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Funcion> funciones = new ArrayList<>();
@@ -58,13 +58,14 @@ public class Artista extends Usuario{
 		this.link = link;
 	}
 
-	public List<Espectaculo> getEspectaculos() {
+	
+	/*public List<Espectaculo> getEspectaculos() {
 		return espectaculos;
 	}
 
 	public void setEspectaculos(List<Espectaculo> espectaculos) {
 		this.espectaculos = espectaculos;
-	}
+	}*/
 
 	public List<Funcion> getFunciones() {
 		return funciones;
