@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import datatypes.DtArtista;
@@ -14,6 +15,10 @@ import logica.Plataforma;
 import logica.Usuario;
 import logica.manejadores.ManejadorPlataforma;
 import logica.manejadores.ManejadorUsuario;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import persistencia.Conexion;
 
 public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectaculo {	
 	public ControladorAltaDeEspectaculo() {
@@ -32,6 +37,7 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
         	i++;
         }
         return res;
+ 
 	}
 
 	@Override
@@ -70,6 +76,8 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
 		Espectaculo nuevoEspectaculo = new Espectaculo(espectaculo, dtE.getDescripcion(), dtE.getDuracion(), dtE.getEspectadoresMin(), 
 				dtE.getEspectadoresMax(), dtE.getUrlAsociada(), dtE.getCosto(), dtE.getFechaRegistro());
 
+		/*
+		 /// PERSISTENCIA LOCAL
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		Plataforma p = mP.getPlataforma(plataforma);
 		List<Espectaculo> coleccionEspectaculos = p.getEspectaculos();
@@ -79,5 +87,23 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
 		Usuario u = mU.buscarUsuarioPorNickname(artista);
 		coleccionEspectaculos = ((Artista)u).getEspectaculos();
 		coleccionEspectaculos.add(nuevoEspectaculo);
+		*/
+		
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();		
+		
+		
+		Plataforma p = em.find(Plataforma.class, plataforma);
+		p.getEspectaculos().add(nuevoEspectaculo);
+		
+		Artista  u =  em.find(Artista.class, artista); 
+		  u.getEspectaculos().add(nuevoEspectaculo);
+		
+		
+	
+		em.getTransaction().begin();
+		em.persist(p);
+		em.persist(u);
+		em.getTransaction().commit();
 	}
 }
