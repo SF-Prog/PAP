@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
 @Entity
 @DiscriminatorValue("Artista")
 public class Artista extends Usuario{
@@ -30,7 +29,6 @@ public class Artista extends Usuario{
 
 	public Artista(String nickName, String nombre, String apellido, String email, Date fechaNac,String descGeneral, String biografia, String link) {
 		super(nickName, nombre, apellido, email, fechaNac);
-		// TODO Auto-generated constructor stub
 		this.descGeneral = descGeneral;
 		this.biografia = biografia;
 		this.link = link;

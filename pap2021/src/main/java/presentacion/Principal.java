@@ -191,6 +191,7 @@ public class Principal {
 		JMenuItem mnAltaFuncionDeEspectaculo = new JMenuItem("Funci\u00F3n de Espect\u00E1culo");
 		mnAltaFuncionDeEspectaculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				altaFuncionDeEspectaculoInternalFrame.inicializarComboBoxPlataforma();
 				altaFuncionDeEspectaculoInternalFrame.setVisible(true);				
 			}
 		});

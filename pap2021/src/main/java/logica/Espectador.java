@@ -9,11 +9,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-
 @Entity
 @DiscriminatorValue("Espectador")
-public  class Espectador extends Usuario {
-	
+public  class Espectador extends Usuario {	
 	@OneToMany(mappedBy = "espectador",cascade = CascadeType.ALL)
 	private List<EspectadorPaquete> espectadorPaquetes = new ArrayList<>();
 	
@@ -23,7 +21,6 @@ public  class Espectador extends Usuario {
 
 	public Espectador(String nickName, String nombre, String apellido, String email, Date fechaNac) {
 		super(nickName, nombre, apellido, email, fechaNac);
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<EspectadorPaquete> getEspectadorPaquetes() {

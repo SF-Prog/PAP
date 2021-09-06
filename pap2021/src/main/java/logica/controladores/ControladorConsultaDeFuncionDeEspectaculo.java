@@ -33,6 +33,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		}
 		return dtPlataformas;
 	}
+	
 	@Override
 	public String[] listarPlataformasComboBox() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();

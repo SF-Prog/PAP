@@ -22,6 +22,7 @@ public class AltaPlataforma extends JInternalFrame {
 	private JTextField txtNombre;
 	private JTextField txtDescripcion;
 	private JTextField txtURL;
+	private String nombreFormulario = "Alta de Plataforma";
 
 	public AltaPlataforma(IControladorAltaDePlataforma icon) {
 		this.icon = icon;
@@ -47,7 +48,7 @@ public class AltaPlataforma extends JInternalFrame {
 		getContentPane().add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
+		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setBounds(10, 83, 167, 14);
 		getContentPane().add(lblDescripcion);
 		
@@ -92,12 +93,12 @@ public class AltaPlataforma extends JInternalFrame {
         	try {
         		DtPlataforma plataforma = new DtPlataforma(nombre, descripcion, url);
 				icon.ingresaPlataforma(plataforma);
-	            JOptionPane.showMessageDialog(this, "Plataforma dada de alta con éxito!", "Alta de Plataforma",
+	            JOptionPane.showMessageDialog(this, "Plataforma dada de alta con exito!", nombreFormulario,
 	                        JOptionPane.INFORMATION_MESSAGE);
 	            limpiarFormulario();
 	            setVisible(false);
 			} catch (AltaPlataformaExcepcion e) {
-				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta de Plataforma", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
 			}
         }
 	} 
@@ -108,9 +109,8 @@ public class AltaPlataforma extends JInternalFrame {
 	}
 	
 	private boolean checkFormulario() {
-        String nombre = txtNombre.getText();
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nombre no puede ser vacío", "Alta de Plataforma",
+        if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nombre no puede ser vacio", nombreFormulario,
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }

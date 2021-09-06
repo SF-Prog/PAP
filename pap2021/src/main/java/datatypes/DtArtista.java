@@ -9,7 +9,6 @@ public class DtArtista extends DtUsuario {
 	
 	public DtArtista() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public DtArtista(String nickName, String nombre, String apellido, String email, Date fecha,String descGeneral, String biografia,String link ){
