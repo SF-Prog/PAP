@@ -73,17 +73,5 @@ public class ManejadorUsuario {
 	    }
 	}
 	
-	public String buscarArtistaPorEspectaculo(String espectaculo){
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();		
-		Query query = em.createQuery("SELECT u.artista_nickname FROM usuario_espectaculo u WHERE u.espectaculos_nombre=:espectaculo");
-		
-	    query.setParameter("espectaculos_nombre", espectaculo);
-	    try {
-	        return  query.getSingleResult().toString();   
-        }   
-	    catch (Exception e) {
-			return null;
-	    }
-	}
+
 }
