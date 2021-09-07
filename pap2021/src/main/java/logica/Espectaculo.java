@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,19 +23,15 @@ public class Espectaculo {
 	private float costo;
 	private Date fechaRegistro;
 	
+	@ManyToOne
+	@JoinColumn(name = "Coljoin")
+	private Artista artista;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Funcion> funciones = new ArrayList<>();
 	
-	public List<Artista> getArtistas() {
-		return artistas;
-	}
-
-	public void setArtistas(List<Artista> artistas) {
-		this.artistas = artistas;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Artista> artistas = new ArrayList<>();
+/*	@OneToMany(cascade = CascadeType.ALL)
+	private List<Artista> artistas = new ArrayList<>();*/
 	
 	public Espectaculo() {
 		super();
@@ -127,4 +125,13 @@ public class Espectaculo {
 	public void addFuncion(Funcion funcion) {
 		this.funciones.add(funcion);
 	}
+
+	public Artista getArtista() {
+		return artista;
+	}
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+	}
+	
 }
