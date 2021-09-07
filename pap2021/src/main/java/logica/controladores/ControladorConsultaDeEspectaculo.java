@@ -141,7 +141,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		boolean existe = false;
 		while(fIterator.hasNext() && !existe){
 			Funcion temp = fIterator.next();
-			if(fIterator.next().getNombre().equals(nombre)){
+			if(temp.getNombre().equals(nombre)){
 				existe = true;
 				this.funcionSeleccionada = temp;
 				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro());

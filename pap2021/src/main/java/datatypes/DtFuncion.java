@@ -55,7 +55,19 @@ public class DtFuncion {
 	
 	@Override
 	public String toString() {
-		String retorno = "\nNombre: " + this.nombre + "\nFECHA: " +  this.fecha.toString()+ "\nHora Inicio: " + this.horaInicio.toString()+ "\nFecha Registro: " + this.FechaRegistro.toString();
+		String fecha = "";
+		if (this.fecha != null) {
+			fecha = this.fecha.toString();
+		}
+		String horaInicio = "";
+		if (this.horaInicio != null) {
+			horaInicio = this.horaInicio.toString();
+		}
+		String fechaRegistro = "";
+		if (this.FechaRegistro != null) {
+			fechaRegistro = this.FechaRegistro.toString();
+		}
+		String retorno = "\nNombre: " + this.nombre + "\nFecha: " +  fecha+ "\nHora Inicio: " + horaInicio+ "\nFecha Registro: " + fechaRegistro;
 		return retorno ;
 	}
 	

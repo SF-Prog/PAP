@@ -92,18 +92,15 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();		
 		
-		
 		Plataforma p = em.find(Plataforma.class, plataforma);
 		p.getEspectaculos().add(nuevoEspectaculo);
 		
-		Artista  u =  em.find(Artista.class, artista); 
-		  u.getEspectaculos().add(nuevoEspectaculo);
+		Artista u =  em.find(Artista.class, artista); 
+		nuevoEspectaculo.setArtista(u);
 		
-		
-	
 		em.getTransaction().begin();
 		em.persist(p);
-		em.persist(u);
+		em.persist(nuevoEspectaculo);
 		em.getTransaction().commit();
 	}
 }

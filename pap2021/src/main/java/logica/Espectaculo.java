@@ -24,7 +24,7 @@ public class Espectaculo {
 	private Date fechaRegistro;
 	
 	@ManyToOne
-	@JoinColumn(name = "Coljoin")
+	@JoinColumn(name = "Artista")
 	private Artista artista;
 	
 	@OneToMany(cascade = CascadeType.ALL)

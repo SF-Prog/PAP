@@ -88,18 +88,19 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		DtEspectaculo dte=null;
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
-			if(eIterator.next().getNombre().equals(nombre)){
+			Espectaculo it = eIterator.next();
+			if(it.getNombre().equals(nombre)){
 				existe = true;
 				espectaculoSeleccionada = eIterator.next();
 				dte = new DtEspectaculo(
-						eIterator.next().getNombre(),
-						eIterator.next().getDescripcion(),
-						eIterator.next().getDuracion(),
-						eIterator.next().getEspectadoresMin(),
-						eIterator.next().getEspectadoresMax(),
-						eIterator.next().getUrlAsociada(),
-						eIterator.next().getCosto(),
-						eIterator.next().getFechaRegistro()
+						it.getNombre(),
+						it.getDescripcion(),
+						it.getDuracion(),
+						it.getEspectadoresMin(),
+						it.getEspectadoresMax(),
+						it.getUrlAsociada(),
+						it.getCosto(),
+						it.getFechaRegistro()
 						);
 			}
 		}			
@@ -137,10 +138,11 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		Iterator<Funcion> fIterator = listFunciones.iterator();
 		boolean existe = false;
 		while(fIterator.hasNext() && !existe){
-			if(fIterator.next().getNombre().equals(nombre)){
+			Funcion it = fIterator.next();
+			if(it.getNombre().equals(nombre)){
 				existe = true;
-				this.funcionSeleccionada = fIterator.next();
-				dtf =new DtFuncion(fIterator.next().getNombre(),fIterator.next().getFecha(),fIterator.next().getHoraInicio(),fIterator.next().getFechaRegistro());
+				this.funcionSeleccionada = it;
+				dtf =new DtFuncion(it.getNombre(),it.getFecha(),it.getHoraInicio(),it.getFechaRegistro());
 			}
 		}
 		return dtf;		
