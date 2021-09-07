@@ -94,8 +94,12 @@ public class DtEspectaculo {
 	}
 	
 	@Override
-	public String toString() {		
-		String retorno = "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.duracion+ "\nEspectadores Minimo: " + this.espectadoresMin+ "\nEspectadores Maximo: " + this.espectadoresMax+ "\nUrl = " + this.urlAsociada+ "\nCosto = " + this.costo+ "\nFecha De Registro: " + this.fechaRegistro.toString();
+	public String toString() {
+		String fechaRegistro = "";
+		if (this.fechaRegistro != null) {
+			fechaRegistro = this.fechaRegistro.toString();
+		}	
+		String retorno = "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.duracion+ "\nEspectadores Minimo: " + this.espectadoresMin+ "\nEspectadores Maximo: " + this.espectadoresMax+ "\nUrl = " + this.urlAsociada+ "\nCosto = " + this.costo+ "\nFecha De Registro: " + fechaRegistro;
 		return retorno ;
 	}
 }

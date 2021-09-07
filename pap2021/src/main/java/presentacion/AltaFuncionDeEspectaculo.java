@@ -248,13 +248,17 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        DefaultListModel model = (DefaultListModel) listaArtistasAgregados.getModel();
     	Integer artistaLength = listaArtistasAgregados.getModel().getSize();
         if (artistaLength < 1) {
             JOptionPane.showMessageDialog(this, "Al menos un artista debe ser elegido", nombreFormulario,
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }        
+        if(textFieldNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Nombre no puede ser vacio", nombreFormulario,
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
 	}
 	
