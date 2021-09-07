@@ -160,7 +160,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		String[] Artistas = new String[listArtistas.size() + 1];
 		Artistas[0] = "";
 		int i=1;
-		String artistaDelEspectaculo = mU.buscarArtistaPorEspectaculo(espectaculoSeleccionado.getNombre());
+		String artistaDelEspectaculo = espectaculoSeleccionado.getArtista().getNickName();
 		
 		for(String nicknameArtista: listArtistas) {
 			if(!artistaDelEspectaculo.equals(nicknameArtista)) {

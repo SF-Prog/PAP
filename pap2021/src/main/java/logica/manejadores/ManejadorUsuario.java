@@ -68,7 +68,7 @@ public class ManejadorUsuario {
 	    try {
 	        return (Usuario)query.getSingleResult();
         }
-	    catch (Exception e) {
+	    catch (Exception e) { 
 			return null;
 	    }
 	}
@@ -76,7 +76,6 @@ public class ManejadorUsuario {
 	public String buscarArtistaPorEspectaculo(String espectaculo){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();		
-		System.out.println("\nSELECT u.artista_nickname FROM usuario_espectaculo u WHERE u.espectaculos_nombre="+espectaculo+"\n");
 		Query query = em.createQuery("SELECT u.artista_nickname FROM usuario_espectaculo u WHERE u.espectaculos_nombre=:espectaculo");
 		
 	    query.setParameter("espectaculos_nombre", espectaculo);
