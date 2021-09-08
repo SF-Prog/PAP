@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import interfaces.IControladorConsultaDeFuncionDeEspectaculo;
+import logica.Espectaculo;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 
@@ -103,32 +104,62 @@ public class ConsultaDeFuncionDeEspectaculo extends JInternalFrame {
 		btnVerEspectaculo.addActionListener(new ActionListener() {
 			// BOTON VER ESPECTACULO
 			public void actionPerformed(ActionEvent e) {
-				DtEspectaculo dtEspectaculo = iccdfe.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
-				textArea.setText(dtEspectaculo.toString());
+				if(comboBoxEspectaculos.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxEspectaculos.getSelectedItem().toString())) {
+						DtEspectaculo dtEspectaculo = iccdfe.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+						textArea.setText(dtEspectaculo.toString());
+					}else {
+						textArea.setText("SELECCIONASTE UN CAMPO VACIO");
+					}
+				}else{
+					textArea.setText("NO HAY NINGUN ESPECTACULO CARGADO");
+				}
 			}
 		});
 		
 		btnVerFuncion.addActionListener(new ActionListener() {
 			// BOTON VER FUNCION
 			public void actionPerformed(ActionEvent e) {
-				DtFuncion dtFuncion = iccdfe.seleccionaFuncion(comboBoxFunciones.getSelectedItem().toString());
-				textArea.setText(dtFuncion.toString());
+				if(comboBoxFunciones.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxFunciones.getSelectedItem().toString())) {
+						DtFuncion dtFuncion = iccdfe.seleccionaFuncion(comboBoxFunciones.getSelectedItem().toString());
+						textArea.setText(dtFuncion.toString());
+					}else {
+						textArea.setText("SELECCIONASTE UN CAMPO VACIO");
+					}
+				}else{
+					textArea.setText("NO HAY NINGUNA FUNCION CARGADA");
+				}
 			}
 		});
 
 		comboBoxPlataformas.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				comboBoxEspectaculos.removeAllItems();
-				iccdfe.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
-				inicializarComboBoxEspectaculos();
+				if(comboBoxPlataformas.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxPlataformas.getSelectedItem().toString())) {
+							iccdfe.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
+							inicializarComboBoxEspectaculos();
+					}
+				}
 			}
 		});
 		
 		comboBoxEspectaculos.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				comboBoxFunciones.removeAllItems();
-				iccdfe.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
-				inicializarComboBoxFunciones();
+				comboBoxFunciones.removeAllItems(); 
+				if(comboBoxEspectaculos.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxEspectaculos.getSelectedItem().toString())) {
+						iccdfe.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+						inicializarComboBoxFunciones();
+				
+					}
+			
+				}
 			}
 		});
 		
