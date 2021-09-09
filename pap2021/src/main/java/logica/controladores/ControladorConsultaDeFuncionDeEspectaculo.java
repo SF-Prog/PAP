@@ -17,14 +17,18 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	private Plataforma plataformaSeleccionada = null;
 	private Espectaculo espectaculoSeleccionada = null;
 	private Funcion funcionSeleccionada = null;
-	
+
 	public ControladorConsultaDeFuncionDeEspectaculo() {
 		super();
 	}
 
+
+	
+
+	
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
-		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
 		ArrayList<DtPlataforma> dtPlataformas = null;
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		for(Plataforma p : listPlataformas){
@@ -36,8 +40,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	
 	@Override
 	public String[] listarPlataformasComboBox() {
-		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
-		
+		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		String[] Plataformas = new String[listPlataformas.size()];
 		int i=0;
@@ -47,26 +50,26 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		}
 		return Plataformas;
 	}
-
+	
 	@Override
 	public DtPlataforma seleccionaPlataforma(String nombre) {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		Plataforma plataforma = mP.getPlataforma(nombre);
-		this.plataformaSeleccionada =plataforma;		
+		this.plataformaSeleccionada = plataforma;		
 		DtPlataforma dtp = new DtPlataforma(plataforma.getNombre(),plataforma.getDescripcion(),plataforma.getDuracion(),plataforma.getEspectadoresMin(),plataforma.getEspectadoresMax(),plataforma.getURLAsociada(),plataforma.getCosto(),plataforma.getFechaAlta());
 		return dtp;
 	}
 
-	
 	@Override
-	public ArrayList<DtEspectaculo> listarEspectaculos() {
-		ArrayList<DtEspectaculo> dtEspectaculos =null;
+	public ArrayList<DtEspectaculo> listarEspectaculos(){
+		ArrayList<DtEspectaculo> dtEspectaculos = null;
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		for(Espectaculo e : listEspectaculos){
 			DtEspectaculo dte = new DtEspectaculo(e.getNombre(),e.getDescripcion(),e.getDuracion(),e.getEspectadoresMin(),e.getEspectadoresMax(),e.getUrlAsociada(),e.getCosto(),e.getFechaRegistro());
 			dtEspectaculos.add(dte);
 		}
 		return dtEspectaculos;
+
 	}
 	
 	@Override
@@ -85,22 +88,22 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	public DtEspectaculo seleccionaEspectaculo(String nombre) {
 		List<Espectaculo> listEspectaculos = plataformaSeleccionada.getEspectaculos();		
 		Iterator<Espectaculo> eIterator = listEspectaculos.iterator();  
-		DtEspectaculo dte=null;
+		DtEspectaculo dte = null;
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
-			Espectaculo it = eIterator.next();
-			if(it.getNombre().equals(nombre)){
+			Espectaculo temp = eIterator.next();
+			if(temp.getNombre().equals(nombre)){
 				existe = true;
-				espectaculoSeleccionada = eIterator.next();
+				espectaculoSeleccionada = temp;
 				dte = new DtEspectaculo(
-						it.getNombre(),
-						it.getDescripcion(),
-						it.getDuracion(),
-						it.getEspectadoresMin(),
-						it.getEspectadoresMax(),
-						it.getUrlAsociada(),
-						it.getCosto(),
-						it.getFechaRegistro()
+						temp.getNombre(),
+						temp.getDescripcion(),
+						temp.getDuracion(),
+						temp.getEspectadoresMin(),
+						temp.getEspectadoresMax(),
+						temp.getUrlAsociada(),
+						temp.getCosto(),
+						temp.getFechaRegistro()
 						);
 			}
 		}			
@@ -117,10 +120,9 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		}
 		return dtFunciones;
 	}
-	
+
 	@Override
 	public String[] listarFuncionesComboBox() {
-		// TODO Auto-generated method stub
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		String[] Funciones = new String[listFunciones.size()];
 		int i=0;
@@ -138,13 +140,15 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		Iterator<Funcion> fIterator = listFunciones.iterator();
 		boolean existe = false;
 		while(fIterator.hasNext() && !existe){
-			Funcion it = fIterator.next();
-			if(it.getNombre().equals(nombre)){
+			Funcion temp = fIterator.next();
+			if(temp.getNombre().equals(nombre)){
 				existe = true;
-				this.funcionSeleccionada = it;
-				dtf =new DtFuncion(it.getNombre(),it.getFecha(),it.getHoraInicio(),it.getFechaRegistro());
+				this.funcionSeleccionada = temp;
+				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro());
 			}
 		}
-		return dtf;		
-	}	
+		return dtf;
+	}
+
+	
 }
