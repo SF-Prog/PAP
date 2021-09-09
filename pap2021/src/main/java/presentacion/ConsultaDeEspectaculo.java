@@ -74,6 +74,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		comboBoxPaquetes = new JComboBox<String>();
 		comboBoxPaquetes.setBounds(10, 232, 167, 22);
 		getContentPane().add(comboBoxPaquetes);
+		comboBoxPaquetes.setEnabled(false);
 		
 		JButton btnVerEspectaculo = new JButton("Ver");	
 		btnVerEspectaculo.setBounds(182, 113, 57, 23);
@@ -86,10 +87,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		JButton btnVerPaquete = new JButton("Ver");		
 		btnVerPaquete.setBounds(182, 232, 57, 23);
 		getContentPane().add(btnVerPaquete);
-		
-		JButton btnTraerEspectaculos = new JButton("Traer");
-		btnTraerEspectaculos.setBounds(182, 57, 72, 23);
-		getContentPane().add(btnTraerEspectaculos);
+		btnVerPaquete.setEnabled(false);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(269, 37, 155, 230);
@@ -117,17 +115,36 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		btnVerEspectaculo.addActionListener(new ActionListener() {
 			// BOTON VER ESPECTACULO
 			public void actionPerformed(ActionEvent e) {
-				DtEspectaculo dtEspectaculo = iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
 
-				textArea.setText(dtEspectaculo.toString());
+				
+				if(comboBoxEspectaculos.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxEspectaculos.getSelectedItem().toString())) {
+						DtEspectaculo dtEspectaculo = iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+						textArea.setText(dtEspectaculo.toString());
+					}else {
+						textArea.setText("SELECCIONASTE UN CAMPO VACIO");
+					}
+				}else{
+					textArea.setText("NO HAY NINGUN ESPECTACULO CARGADO");
+				}
 			}
 		});
 		
 		btnVerFuncion.addActionListener(new ActionListener() {
 			// BOTON VER FUNCION
 			public void actionPerformed(ActionEvent e) {
-				DtFuncion dtFuncion = iccde.seleccionaFuncion(comboBoxFunciones.getSelectedItem().toString());
-				textArea.setText(dtFuncion.toString());
+				if(comboBoxFunciones.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxFunciones.getSelectedItem().toString())) {
+						DtFuncion dtFuncion = iccde.seleccionaFuncion(comboBoxFunciones.getSelectedItem().toString());
+						textArea.setText(dtFuncion.toString());
+					}else {
+						textArea.setText("SELECCIONASTE UN CAMPO VACIO");
+					}
+				}else{
+					textArea.setText("NO HAY NINGUNA FUNCION CARGADA");
+				}
 			}
 		});
 		
@@ -142,8 +159,13 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		comboBoxPlataformas.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				comboBoxEspectaculos.removeAllItems();
-				iccde.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
-				inicializarComboBoxEspectaculos();
+				if(comboBoxPlataformas.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxPlataformas.getSelectedItem().toString())) {
+						iccde.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
+						inicializarComboBoxEspectaculos();
+					}
+				}
 			}
 		});
 		
@@ -151,10 +173,13 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 			public void itemStateChanged(ItemEvent e) {
 				comboBoxFunciones.removeAllItems();
 				comboBoxPaquetes.removeAllItems();
-				if(comboBoxEspectaculos.getSelectedItem()!= null) {
-				iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
-				inicializarComboBoxFunciones();
-				inicializarComboBoxPaquetes();
+				if(comboBoxEspectaculos.getItemCount()> 0) {
+					String campoVacio ="";
+					if(!campoVacio.equals(comboBoxEspectaculos.getSelectedItem().toString())) {
+						iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+						inicializarComboBoxFunciones();
+						inicializarComboBoxPaquetes();
+					}
 				}
 			}
 		}); 

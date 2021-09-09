@@ -42,8 +42,9 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	public String[] listarPlataformasComboBox() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
 		List<Plataforma> listPlataformas = mP.getPlataformas();
-		String[] Plataformas = new String[listPlataformas.size()];
-		int i=0;
+		String[] Plataformas = new String[listPlataformas.size()+1];
+		Plataformas[0]="";
+		int i=1;
 		for(Plataforma p : listPlataformas){
 			Plataformas[i] =p.getNombre();
 			i++;
@@ -75,8 +76,9 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	@Override
 	public String[] listarEspectaculosComboBox(){
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
-		String[] Espectaculos = new String[listEspectaculos.size()];
-		int i=0;
+		String[] Espectaculos = new String[listEspectaculos.size()+1];
+		Espectaculos[0]="";
+		int i=1;
 		for(Espectaculo e : listEspectaculos){
 			Espectaculos[i] = e.getNombre();
 			i++;
@@ -124,8 +126,9 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	@Override
 	public String[] listarFuncionesComboBox() {
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
-		String[] Funciones = new String[listFunciones.size()];
-		int i=0;
+		String[] Funciones = new String[listFunciones.size()+1];
+		Funciones[0]="";
+		int i=1;
 		for(Funcion e : listFunciones){
 			Funciones[i] = e.getNombre();
 			i++;
