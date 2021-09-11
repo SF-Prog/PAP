@@ -164,9 +164,7 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 				
 		comboBoxPlataformas.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				System.out.println(e.getItem());
 				icon.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
-//				comboBoxEspectaculos.setEnabled(true);
 				inicializarComboBoxEspectaculos();
 				inicializarComboBoxArtistas();
 			};
@@ -183,10 +181,11 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 			};
 		});
 		btnAgregarArtista.addActionListener(new ActionListener() {
-			// BOTON VER ESPECTACULO
 			public void actionPerformed(ActionEvent e) {
-				icon.agregarArtistaAFuncion(comboBoxArtistas.getSelectedItem().toString());
-				modelArtistasAgregados.addElement(comboBoxArtistas.getSelectedItem().toString());
+				if (!modelArtistasAgregados.contains(comboBoxArtistas.getSelectedItem())) {
+					icon.agregarArtistaAFuncion(comboBoxArtistas.getSelectedItem().toString());
+					modelArtistasAgregados.addElement(comboBoxArtistas.getSelectedItem().toString());
+				}
 			};
 		});
 	}
@@ -194,10 +193,12 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 	protected void altaFuncionDeEspectaculoAceptarActionPerformed(ActionEvent arg0) {
         if (checkFormulario()) {
         	String nombre = textFieldNombre.getText();
-        	Date horaInicio = null;
+        	String horaInicio = "";
+        	//String horaInicio = dFieldHoraInicio.getValue().toString(); 
+        	//System.out.println(horaInicio);
          	Date fechaAlta = dFechaDeAlta.getDate();
         	Date fechaInicio = dFechaDeInicio.getDate();
-        	List<String> artistasInvitados =  new ArrayList<String>();
+        	List<String> artistasInvitados = new ArrayList<String>();
         	
         	for(int i = 0; i< listaArtistasAgregados.getModel().getSize();i++) {
         		artistasInvitados.add(listaArtistasAgregados.getModel().getElementAt(i).toString());
@@ -264,12 +265,12 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 	
 	private void limpiarFormulario() {
 		textFieldNombre.setText("");
-		dFieldHoraInicio.setValue(null);
-		dFechaDeInicio.setDate(new Date());
-		DefaultListModel model = (DefaultListModel) listaArtistasAgregados.getModel();
+		dFechaDeAlta.setDate(null);
+		dFechaDeInicio.setDate(null);
+		DefaultListModel model = (DefaultListModel)listaArtistasAgregados.getModel();
 		model.removeAllElements();
-		comboBoxPlataformas.removeAllItems();
-		comboBoxEspectaculos.removeAllItems();
-		comboBoxArtistas.removeAllItems();
+		comboBoxPlataformas.setSelectedItem(0);
+		inicializarComboBoxEspectaculos();
+		inicializarComboBoxArtistas();
 	}
 }
