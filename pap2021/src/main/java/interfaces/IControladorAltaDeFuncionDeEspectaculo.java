@@ -12,7 +12,7 @@ public interface IControladorAltaDeFuncionDeEspectaculo {
 	public List<DtEspectaculo> seleccionaPlataforma(String nombrePlataforma);
 	public Espectaculo seleccionaEspectaculo(String nombreEspectaculo);
 	public boolean existeFuncion(String nombreFuncion);
-	public void ingresaFuncion(DtFuncion dtFuncion, List<String>  artistaInvitado) throws AltaFuncionDeEspectaculoExcepcion;
+	public void ingresaFuncion(DtFuncion dtFuncion, List<String> artistaInvitado) throws AltaFuncionDeEspectaculoExcepcion;
 	public List<DtArtista> listarArtistas();
 	public void agregarArtistaAFuncion(String nombreArtista);	
 	public String[] listarPlataformasComboBox();

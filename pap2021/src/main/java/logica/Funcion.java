@@ -10,14 +10,14 @@ public class Funcion {
 	@Id
 	private String nombre;
 	private Date fecha;
-	private Date horaInicio;
+	private String horaInicio;
 	private Date fechaRegistro;
 	
 	public Funcion() {
 		super();
 	}
 
-	public Funcion(String nombre, Date fecha, Date horaInicio, Date fechaRegistro) {
+	public Funcion(String nombre, Date fecha, String horaInicio, Date fechaRegistro) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -41,11 +41,11 @@ public class Funcion {
 		this.fecha = fecha;
 	}
 
-	public Date getHoraInicio() {
+	public String getHoraInicio() {
 		return this.horaInicio;
 	}
 
-	public void setHoraInicio(Date horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 

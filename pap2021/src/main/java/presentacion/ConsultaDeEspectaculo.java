@@ -35,8 +35,8 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
         setMaximizable(true);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Consulta de Espect�culo");
-		setBounds(100, 100, 450, 343);
+        setTitle("Consulta de Espectaculo");
+		setBounds(100, 100, 562, 307);
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Ingrese los siguientes datos");
@@ -55,11 +55,11 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		lblPlataforma.setBounds(10, 33, 133, 14);
 		getContentPane().add(lblPlataforma);
 		
-		JLabel lblSeleccioneE = new JLabel("Seleccione Espect\u00E1culo");
+		JLabel lblSeleccioneE = new JLabel("Seleccione Espectaculo");
 		lblSeleccioneE.setBounds(10, 88, 167, 14);
 		getContentPane().add(lblSeleccioneE);
 		
-		JLabel lblFunciones = new JLabel("Seleccione Funciones");
+		JLabel lblFunciones = new JLabel("Seleccione Funcion");
 		lblFunciones.setBounds(10, 146, 133, 14);
 		getContentPane().add(lblFunciones);
 		
@@ -67,7 +67,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		comboBoxFunciones.setBounds(10, 171, 167, 22);
 		getContentPane().add(comboBoxFunciones);
 		
-		JLabel lblSeleccioneE_2 = new JLabel("Seleccione Paquetes");
+		JLabel lblSeleccioneE_2 = new JLabel("Seleccione Paquete");
 		lblSeleccioneE_2.setBounds(10, 207, 133, 14);
 		getContentPane().add(lblSeleccioneE_2);
 		
@@ -90,7 +90,7 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 		btnVerPaquete.setEnabled(false);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(269, 37, 155, 230);
+		textArea.setBounds(269, 37, 264, 230);
 		getContentPane().add(textArea);
 		
 		JButton btnAceptar = new JButton("Aceptar");

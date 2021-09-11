@@ -34,8 +34,8 @@ public class ConsultaDeFuncionDeEspectaculo extends JInternalFrame {
         setMaximizable(true);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Consulta de Funci�n de Espect�culo");
-		setBounds(100, 100, 450, 300);
+        setTitle("Consulta de Funcion de Espectaculo");
+		setBounds(100, 100, 554, 310);
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Ingrese los siguientes datos");
@@ -54,11 +54,11 @@ public class ConsultaDeFuncionDeEspectaculo extends JInternalFrame {
 		lblPlataforma.setBounds(10, 33, 133, 14);
 		getContentPane().add(lblPlataforma);
 		
-		JLabel lblSeleccioneE = new JLabel("Seleccione Espect\u00E1culo");
+		JLabel lblSeleccioneE = new JLabel("Seleccione Espectaculo");
 		lblSeleccioneE.setBounds(10, 88, 167, 14);
 		getContentPane().add(lblSeleccioneE);
 		
-		JLabel lblFunciones = new JLabel("Seleccione Funciones");
+		JLabel lblFunciones = new JLabel("Seleccione Funcion");
 		lblFunciones.setBounds(10, 146, 133, 14);
 		getContentPane().add(lblFunciones);
 		
@@ -72,14 +72,10 @@ public class ConsultaDeFuncionDeEspectaculo extends JInternalFrame {
 		
 		JButton btnVerFuncion = new JButton("Ver");
 		btnVerFuncion.setBounds(182, 171, 57, 23);
-		getContentPane().add(btnVerFuncion);		
-		
-		JButton btnTraerEspectaculos = new JButton("Traer");
-		btnTraerEspectaculos.setBounds(182, 57, 77, 23);
-		getContentPane().add(btnTraerEspectaculos);
+		getContentPane().add(btnVerFuncion);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(269, 37, 155, 230);
+		textArea.setBounds(269, 37, 259, 230);
 		getContentPane().add(textArea);
 		
 		JButton btnAceptar = new JButton("Aceptar");

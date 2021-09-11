@@ -5,7 +5,7 @@ import java.util.Date;
 public class DtFuncion {
 	private String nombre;
 	private Date fecha;
-	private Date horaInicio;
+	private String horaInicio;
 	private Date FechaRegistro;
 	
 	public DtFuncion() {
@@ -13,7 +13,7 @@ public class DtFuncion {
 		super();
 	}
 
-	public DtFuncion(String nombre, Date fecha, Date horaInicio, Date fechaRegistro) {
+	public DtFuncion(String nombre, Date fecha, String horaInicio, Date fechaRegistro) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -37,11 +37,11 @@ public class DtFuncion {
 		this.fecha = fecha;
 	}
 
-	public Date getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Date horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 

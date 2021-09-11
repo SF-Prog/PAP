@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
-import datatypes.DtPlataforma;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import logica.Artista;
 import logica.Espectaculo;
@@ -20,8 +18,6 @@ import logica.manejadores.ManejadorPlataforma;
 import logica.manejadores.ManejadorUsuario;
 import persistencia.Conexion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
-
-
 
 
 public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDeFuncionDeEspectaculo{
@@ -38,7 +34,6 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	public List<DtEspectaculo> seleccionaPlataforma(String nombrePlataforma) {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();
 		List<Espectaculo> coleccionEspectaculos = null;
-		// Inicializa la lista en vacio para poder aplicarle el add
 		List<DtEspectaculo> coleccionDtEspectaculos = new ArrayList<DtEspectaculo>();
 		List<Plataforma> coleccionPlataformas = mP.getPlataformas();
 		for(Plataforma plataforma : coleccionPlataformas) {
@@ -47,10 +42,12 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 				this.plataformaSeleccionada = plataforma;
 			};
 		};
-		for(Espectaculo espectaculo : coleccionEspectaculos) {
-			DtEspectaculo dte = new DtEspectaculo(espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getDuracion(), espectaculo.getEspectadoresMin(), espectaculo.getEspectadoresMax(), espectaculo.getUrlAsociada(), espectaculo.getCosto(), espectaculo.getFechaRegistro());
-			coleccionDtEspectaculos.add(dte);
-		};
+		if (coleccionEspectaculos != null) {
+			for(Espectaculo espectaculo : coleccionEspectaculos) {
+				DtEspectaculo dte = new DtEspectaculo(espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getDuracion(), espectaculo.getEspectadoresMin(), espectaculo.getEspectadoresMax(), espectaculo.getUrlAsociada(), espectaculo.getCosto(), espectaculo.getFechaRegistro());
+				coleccionDtEspectaculos.add(dte);
+			};
+		}
 		return coleccionDtEspectaculos;
 	};
 
@@ -88,15 +85,12 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 			throw new AltaFuncionDeEspectaculoExcepcion("La funcion " + nombreFuncion + " ya se encuentra en el sistema");
 		} else {
 			Conexion conexion = Conexion.getInstancia();
-			EntityManager em = conexion.getEntityManager();		
-			
+			EntityManager em = conexion.getEntityManager();					
 			espectaculo.addFuncion(nuevaFuncion);	
-			 // comit de espectaculo 
 			em.getTransaction().begin();
 			em.persist(espectaculo);
 			em.getTransaction().commit();
 			
-			// itera entre la lista de artistas y linkea a acada uno con la nueva
 			for(String dtaNickName: artistasInvitados){
 				ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 				Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dtaNickName);
@@ -104,9 +98,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 				
 				em.getTransaction().begin();
 				em.persist(usuarioArtista);
-				em.getTransaction().commit();
-				// conete en la base de datos
-				
+				em.getTransaction().commit();				
 			};
 		};
 	};
@@ -114,7 +106,6 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	@Override
 	public List<DtArtista> listarArtistas() {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-		// Inicializa la lista en vacio para poder aplicarle el add
 		List<DtArtista> artistasEnElSistema = new ArrayList<DtArtista>();
 		List<Usuario> coleccionUsuarios = mU.getUsuarios();
 		for(Usuario usuario : coleccionUsuarios) {
@@ -154,26 +145,28 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	};
 	
 	public String[] listarArtistasComboBox() {
-		
-		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-		List<String> listArtistas = mU.getArtistas();
-		String[] Artistas = new String[listArtistas.size() + 1];
-		Artistas[0] = "";
-		int i=1;
-		String artistaDelEspectaculo = espectaculoSeleccionado.getArtista().getNickName();
-		
-		for(String nicknameArtista: listArtistas) {
-			if(!artistaDelEspectaculo.equals(nicknameArtista)) {
-				Artistas[i] = nicknameArtista;
-				i++;
-			}
-		};
-		artistasIngresadosEnSistema = listArtistas;
-		return Artistas;
+		if (espectaculoSeleccionado != null) {
+			ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+			List<String> listArtistas = mU.getArtistas();
+			String[] Artistas = new String[listArtistas.size() + 1];
+			Artistas[0] = "";
+			int i=1;
+			String artistaDelEspectaculo = espectaculoSeleccionado.getArtista().getNickName();			
+			for(String nicknameArtista: listArtistas) {
+				if(!artistaDelEspectaculo.equals(nicknameArtista)) {
+					Artistas[i] = nicknameArtista;
+					i++;
+				}
+			};
+			artistasIngresadosEnSistema = listArtistas;
+			return Artistas;
+		}
+		else {
+			return new String[0];
+		}
 	};
 	
-	public void agregarArtistaAFuncion(String nombreArtista) {
-		
+	public void agregarArtistaAFuncion(String nombreArtista) {		
 		artistasIngresadosEnFuncion.add(nombreArtista);
 	};
 }
