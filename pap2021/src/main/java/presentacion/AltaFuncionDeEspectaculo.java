@@ -14,26 +14,17 @@ import javax.swing.DefaultListModel;
 
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
 import javax.swing.JComboBox;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.awt.Font;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JSpinField;
 
-import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
 
 public class AltaFuncionDeEspectaculo extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
@@ -42,11 +33,12 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 	private JTextField textFieldNombre;
 	private JList listaArtistasAgregados;
 	private JDateChooser dFechaDeAlta;
+	private JTextField textFieldHoraInicio;
 	private JDateChooser dFechaDeInicio;
 	private JComboBox<String> comboBoxPlataformas;
 	private JComboBox<String> comboBoxEspectaculos;
 	private JComboBox<String> comboBoxArtistas;
-	private JSpinner dFieldHoraInicio;
+	private List<String> artistasInvitados = new ArrayList<String>();
 	private String nombreFormulario = "Alta de Funcion de Espectaculo";
 
 	public AltaFuncionDeEspectaculo(IControladorAltaDeFuncionDeEspectaculo icon) {
@@ -115,6 +107,7 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 		lblHoraDeInicio.setBounds(75, 242, 95, 25);
 		getContentPane().add(lblHoraDeInicio);
 		
+		
 		JLabel lblFechaDeAlta = new JLabel("Fecha de alta");
 		lblFechaDeAlta.setBounds(75, 275, 95, 25);
 		getContentPane().add(lblFechaDeAlta);
@@ -128,15 +121,13 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 		dFechaDeInicio = new JDateChooser();
 		dFechaDeInicio.setBounds(166, 211, 150, 20);
 		getContentPane().add(dFechaDeInicio);
-		dFechaDeInicio.setEnabled(false);
-
-		Date date = new Date();
-		SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
-		dFieldHoraInicio = new JSpinner(sdm);
-		JSpinner.DateEditor de = new JSpinner.DateEditor(dFieldHoraInicio, "HH:mm");
-		dFieldHoraInicio.setEditor(de);
-		dFieldHoraInicio.setBounds(167, 244, 59, 20);
-		getContentPane().add(dFieldHoraInicio);		
+		dFechaDeInicio.setEnabled(false);	
+		
+		textFieldHoraInicio = new JTextField();
+		textFieldHoraInicio.setBounds(167, 244, 86, 20);
+		getContentPane().add(textFieldHoraInicio);
+		textFieldHoraInicio.setColumns(10);
+		textFieldHoraInicio.setEnabled(false);
 		
 		dFechaDeAlta = new JDateChooser();
 		dFechaDeAlta.setBounds(167, 275, 150, 20);
@@ -166,25 +157,27 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 			public void itemStateChanged(ItemEvent e) {
 				icon.seleccionaPlataforma(comboBoxPlataformas.getSelectedItem().toString());
 				inicializarComboBoxEspectaculos();
-				inicializarComboBoxArtistas();
 			};
 		});
 		comboBoxEspectaculos.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				icon.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
+				inicializarComboBoxArtistas();
+				
 				textFieldNombre.setEnabled(true);
 				dFechaDeInicio.setEnabled(true);
 				dFechaDeAlta.setEnabled(true);
-				dFieldHoraInicio.setEnabled(true);
+				textFieldHoraInicio.setEnabled(true);
 				comboBoxArtistas.setEnabled(true);
 				listaArtistasAgregados.setEnabled(true);
 			};
 		});
 		btnAgregarArtista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!modelArtistasAgregados.contains(comboBoxArtistas.getSelectedItem())) {
-					icon.agregarArtistaAFuncion(comboBoxArtistas.getSelectedItem().toString());
-					modelArtistasAgregados.addElement(comboBoxArtistas.getSelectedItem().toString());
+				Object artistaElegido = comboBoxArtistas.getSelectedItem();
+				if (artistaElegido != null && !modelArtistasAgregados.contains(artistaElegido)){
+					icon.agregarArtistaAFuncion(artistaElegido.toString());
+					modelArtistasAgregados.addElement(artistaElegido.toString());
 				}
 			};
 		});
@@ -193,23 +186,15 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
 	protected void altaFuncionDeEspectaculoAceptarActionPerformed(ActionEvent arg0) {
         if (checkFormulario()) {
         	String nombre = textFieldNombre.getText();
-        	String horaInicio = "";
-        	//String horaInicio = dFieldHoraInicio.getValue().toString(); 
-        	//System.out.println(horaInicio);
          	Date fechaAlta = dFechaDeAlta.getDate();
-        	Date fechaInicio = dFechaDeInicio.getDate();
-        	List<String> artistasInvitados = new ArrayList<String>();
-        	
-        	for(int i = 0; i< listaArtistasAgregados.getModel().getSize();i++) {
-        		artistasInvitados.add(listaArtistasAgregados.getModel().getElementAt(i).toString());
-            };
+        	String horaInicio = textFieldHoraInicio.getText();
+        	Date fechaInicio = dFechaDeInicio.getDate();        	
         	try {
         		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
         		icon.ingresaFuncion(dtFuncion, artistasInvitados);
         		JOptionPane.showMessageDialog(this, "Funcion dado de alta con exito!", nombreFormulario,
                         JOptionPane.INFORMATION_MESSAGE);
         		limpiarFormulario();
-                setVisible(false);
         	} catch (AltaFuncionDeEspectaculoExcepcion e) {
         		JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
         	}
@@ -248,24 +233,30 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "Espectaculo debe ser elegido", nombreFormulario,
                     JOptionPane.ERROR_MESSAGE);
             return false;
-        }
-    	Integer artistaLength = listaArtistasAgregados.getModel().getSize();
-        if (artistaLength < 1) {
-            JOptionPane.showMessageDialog(this, "Al menos un artista debe ser elegido", nombreFormulario,
-                    JOptionPane.ERROR_MESSAGE);
-            return false;
-        }        
+        }   
         if(textFieldNombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Nombre no puede ser vacio", nombreFormulario,
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    	for(int i = 0; i < listaArtistasAgregados.getModel().getSize(); i++) {
+    		String artista = listaArtistasAgregados.getModel().getElementAt(i).toString();
+    		if (!artista.isEmpty()) {
+        		artistasInvitados.add(artista);
+    		}
+        };
+        if (artistasInvitados.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Al menos un artista debe ser elegido", nombreFormulario,
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }     
         return true;
 	}
 	
 	private void limpiarFormulario() {
 		textFieldNombre.setText("");
 		dFechaDeAlta.setDate(null);
+		textFieldHoraInicio.setText("");
 		dFechaDeInicio.setDate(null);
 		DefaultListModel model = (DefaultListModel)listaArtistasAgregados.getModel();
 		model.removeAllElements();

@@ -2,7 +2,6 @@ package presentacion;
 
 import java.awt.Panel;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -18,9 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
 import interfaces.IControladorAltaDeUsuario;
-import datatypes.DtPlataforma;
 import datatypes.DtUsuario;
-import excepciones.AltaPlataformaExcepcion;
 
 public class AltaUsuario extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
@@ -223,7 +220,6 @@ public class AltaUsuario extends JInternalFrame {
 		rdbtnArtista.setSelected(true);
 		rdbtnEspectador.setSelected(false);
 		
-		// HABILITADO DE LOS CAMPOS PARA ARTISTA
 		textAreaBiografia.setEnabled(true);
 		textAreaBiografia.setVisible(true);
 		lblBiografia.setVisible(true);
@@ -241,7 +237,6 @@ public class AltaUsuario extends JInternalFrame {
 		rdbtnArtista.setSelected(false);
 		rdbtnEspectador.setSelected(true);
 		
-		// DESHABILITADO DE LOS CAMPOS PARA ESPECTADOR
 		textAreaBiografia.setEnabled(false);
 		textAreaBiografia.setVisible(false);
 		lblBiografia.setVisible(false);

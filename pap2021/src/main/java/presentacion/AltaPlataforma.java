@@ -96,7 +96,6 @@ public class AltaPlataforma extends JInternalFrame {
 	            JOptionPane.showMessageDialog(this, "Plataforma dada de alta con exito!", nombreFormulario,
 	                        JOptionPane.INFORMATION_MESSAGE);
 	            limpiarFormulario();
-	            setVisible(false);
 			} catch (AltaPlataformaExcepcion e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
 			}
