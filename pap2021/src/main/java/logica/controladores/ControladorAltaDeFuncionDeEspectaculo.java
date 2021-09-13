@@ -94,7 +94,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 			for(String dtaNickName: artistasInvitados){
 				ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 				Usuario usuarioArtista = mU.buscarUsuarioPorNickname(dtaNickName);
-				((Artista) usuarioArtista).agregarFuncion(nuevaFuncion);
+				((Artista)usuarioArtista).agregarFuncion(nuevaFuncion);
 				
 				em.getTransaction().begin();
 				em.persist(usuarioArtista);

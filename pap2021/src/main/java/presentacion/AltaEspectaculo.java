@@ -182,7 +182,6 @@ public class AltaEspectaculo extends JInternalFrame {
 	            JOptionPane.showMessageDialog(this, "Espectaculo dado de alta con exito!", nombreFormulario,
 	                        JOptionPane.INFORMATION_MESSAGE);
 	            limpiarFormulario();
-	            setVisible(false);
 			} catch (AltaEspectaculoExcepcion e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
 			}
