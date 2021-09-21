@@ -1,9 +1,9 @@
 
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
-<!--  CONTENIDO INICIO -->
+<!--  CONTENIDO DEJAR DE SEGUIR UN USUARIO -->
 
 
-<!-- FIN  CONTENIDO INICIO -->
+<!-- FIN  CONTENIDO  DEJAR DE SEGUIR UN USUARIO -->
 <%@ include file="/footer.jsp"%>
 

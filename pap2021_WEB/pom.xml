@@ -4,6 +4,12 @@
   <artifactId>pap2021_WEB</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<hibernate.version>5.4.4.Final</hibernate.version>
+  </properties>
+  <!--   mvn install:install-file -Dfile=pap2021.jar -DgrupoId=com.pap2021  -DartifactId=pap2021 -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true -->
   <build>
     <plugins>
       <plugin>
@@ -19,4 +25,26 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  <dependency>
+		<groupId>com.pap2021</groupId>
+  		<artifactId>pap2021</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.2.6</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+</dependencies>
 </project>
