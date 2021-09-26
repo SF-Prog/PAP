@@ -7,12 +7,12 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <!-- MINIMOS -->
-      <li><a href="/inicioSesion.jsp"> Inicio Sesión</a></li>
-      <li><a href="CierreSesion">Cierre Sesión</a></li>
-      <li><a href="/altaUsuario.jsp">Alta Usuario</a></li>
-      <li><a href="/consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
-      <li><a href="/altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
-      <li><a href="/consultaFuncionDeEspectáculo.jsp">Consulta Función de Espectáculo</a></li>
+      <li><a href="inicioSesion.jsp"> Inicio Sesión</a></li>
+      <li><a href="cierreSesion">Cierre Sesión</a></li>
+      <li><a href="altaUsuario.jsp">Alta Usuario</a></li>
+      <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+      <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
+      <li><a href="consultaFuncionDeEspectáculo.jsp">Consulta Función de Espectáculo</a></li>
       <li><a href="SeguirUsuario">Seguir a un Usuario</a></li>
       <li><a href="dejarSeguirUsuario">Dejar de seguir a un Usuario</a></li>
        <!-- NO MINIMOS -->
