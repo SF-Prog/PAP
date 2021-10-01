@@ -8,7 +8,11 @@
       <li class="active"><a href="#">Home</a></li>
       <!-- MINIMOS -->
       <li><a href="inicioSesion.jsp"> Inicio Sesión</a></li>
-      <!-- <li><a href="cierreSesion">Cierre Sesión</a></li>-->
+      <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+	       <input type="hidden"  value="close" class="btn btn-primary">
+	      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+	      </form>
+      </li>
       <li><a href="altaUsuario.jsp">Alta Usuario</a></li>
       <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
       <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>

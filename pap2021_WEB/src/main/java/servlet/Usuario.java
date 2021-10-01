@@ -87,6 +87,11 @@ public class Usuario extends HttpServlet {
 		}else if(this.esAltaUsuarioEspectador(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA			
 
+		}else if(this.esCerrarSesion(request)){
+			HttpSession session = request.getSession();
+		    session.invalidate();
+			rd=request.getRequestDispatcher("inicioSesion.jsp");
+			rd.forward(request, response);
 		}
 		
 
@@ -100,6 +105,16 @@ public class Usuario extends HttpServlet {
 		}
 		return false;
 	}
+	
+	private boolean esCerrarSesion (HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("close") ){
+			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
+			System.out.println("cerro sesion");
+			return true;
+		}
+		return false;
+	}
+	
 	
 	private boolean esAltaUsuarioArtista (HttpServletRequest request) {
 		if(request.getParameterMap().containsKey("nicknameU") &&

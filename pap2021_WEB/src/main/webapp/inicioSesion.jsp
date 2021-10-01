@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
 <!--  CONTENIDO INICIO SESION -->
@@ -15,7 +16,7 @@
 		    <input type="password" class="form-control" name="password" id="password" required>
 		  </div>
 		</div>
-		<c:if test="${mensaje.isEmpty()}">
+		<c:if test="${mensaje!= null}">
 			<div class="alert alert-danger" style="text-align: center;"><p>${mensaje}</p></div>
 		</c:if>
 		<div class="row" style="margin: 30px 0 0 0;">
