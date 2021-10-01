@@ -7,37 +7,47 @@
 		<div class="row">
 			<div class="col-md-5">
 				<label class="form-label">NickName:</label> 
-				<input class="form-control" type="text" name="nicknameU" placeholder="Ingrese su nickname"/><br/>
+				<input class="form-control" type="text" name="nicknameU" placeholder="Ingrese su nickname" required /><br/>
 			</div>
 			<div class="col-md-5">
 				<label class="form-label">Email:</label> 
-				<input class="form-control" type="email" name="emailU" placeholder="Ingrese su email"/><br/>
+				<input class="form-control" type="email" name="emailU" placeholder="Ingrese su email" required /><br/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-5">
 				<label class="form-label">Nombre:</label> 
-				<input class="form-control" type="text" name="nombreU" placeholder="Ingrese su nombre"/><br/>
+				<input class="form-control" type="text" name="nombreU" placeholder="Ingrese su nombre" required /><br/>
 			</div>
 			<div class="col-md-5">
 				<label class="form-label">Apellido:</label> 
-				<input class="form-control" type="text" name="apellidoU" placeholder="Ingrese su apellido"/><br/>
+				<input class="form-control" type="text" name="apellidoU" placeholder="Ingrese su apellido" required /><br/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="btn-group col-md-3" role="group" aria-label="Basic example" style="height: 79px;">
- 				<button type="button" class="btn btn-primary">Artista</button>
- 				<button type="button" class="btn btn-primary">Espectador</button>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="TipoUsuario"  id="Espectador" value="Espectador" checked>
+				  <label class="form-check-label" for="Espectador">
+				    Espectador
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="TipoUsuario"  id="Artista"  value="Artista" >
+				  <label class="form-check-label" for="Artista">
+				    Artista
+				  </label>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<label class="form-label">Link:</label> 
-				<input class="form-control" type="text" name="linkU" placeholder="Ingrese un link de referencia"/><br/>
+				<input class="form-control" type="text" name="linkU" placeholder="Ingrese un link de referencia" /><br/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<label class="form-label" for="descripcionGeneralU">Descricpion General:</label> 
-				<textarea class="form-control" type="text" id="descripcionGeneralU" rows="3" placeholder="Ingrese una descripcion general"></textarea>
+				<textarea class="form-control" type="text" id="descripcionGeneralU" rows="3" placeholder="Ingrese una descripcion general" ></textarea>
 			</div>
 			<div class="col-md-4">
 				<label class="form-label" for="biografiaU">Biografia:</label> 
