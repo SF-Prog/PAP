@@ -1,37 +1,50 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import datatypes.DtEspectaculo;
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
+import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeUsuario;
 import logica.Espectaculo;
 
 /**
  * Servlet implementation class Usuario
  */
+@MultipartConfig
 @WebServlet("/Usuario")
 public class Usuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	Fabrica fabrica;
+	IControladorConsultaDeUsuario iccdu;
+	IControladorAltaDeUsuario icadu;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Usuario() {
         super();
         // TODO Auto-generated constructor stub
+        fabrica =  Fabrica.getInstancia();
+		iccdu = fabrica.getIControladorConsultaDeUsuario();
+		icadu = fabrica.getIControladorAltaDeUsuario();
     }
 
 	/**
@@ -48,8 +61,8 @@ public class Usuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		/*doGet(request, response);*/
-		Fabrica fabrica = Fabrica.getInstancia();
-		IControladorConsultaDeUsuario iccdu = fabrica.getIControladorConsultaDeUsuario();
+		
+
 		RequestDispatcher rd;
 		if(this.esInicioSesion(request)){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
@@ -81,12 +94,51 @@ public class Usuario extends HttpServlet {
 				rd.forward(request, response);
 			}
 
-		}else if(this.esAltaUsuarioArtista (request) ){
-			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA			
-
+		}else if(this.esAltaUsuarioArtista(request) ){
+			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA	
+			System.out.println("entro Artista");
+			String nickName =request.getParameter("nicknameU");
+			String email =request.getParameter("emailU");
+			String nombre =  request.getParameter("nombreU");
+			String apellido = request.getParameter("apellidoU");
+			
+			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+			String parameter = request.getParameter("fecchaU");
+			Date fecha = null ;
+			try {
+				fecha = in.parse(parameter);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			String descripcionGeneral =request.getParameter("descripcionGeneralU");
+			String link = request.getParameter("linkU");
+			String biografia = request.getParameter("biografiaU");
+			
+			icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha), descripcionGeneral, biografia, link);
+			System.out.println("entro Artista");
 		}else if(this.esAltaUsuarioEspectador(request) ){
-			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA			
-
+			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR
+			String nickName =request.getParameter("nicknameU");
+			String email =request.getParameter("emailU");
+			String nombre =  request.getParameter("nombreU");
+			String apellido = request.getParameter("apellidoU");
+			
+			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+			String parameter = request.getParameter("fecchaU");
+			Date fecha = null ;
+			try {
+				fecha = in.parse(parameter);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha);
+			icadu.ingresaUsuarioEspectador( dt);
+			System.out.println( dt);
+			System.out.println("entro espectador");
+			//PrintWriter out = response.getWriter( dt);
 		}else if(this.esCerrarSesion(request)){
 			HttpSession session = request.getSession();
 		    session.invalidate();
@@ -117,14 +169,18 @@ public class Usuario extends HttpServlet {
 	
 	
 	private boolean esAltaUsuarioArtista (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("nicknameU") &&
-		   request.getParameterMap().containsKey("emailU") &&
-		   request.getParameterMap().containsKey("nombreU") &&
-		   request.getParameterMap().containsKey("apellidoU") &&
-		   request.getParameterMap().containsKey("TipoUsuario") &&
-		   request.getParameterMap().containsKey("descripcionGeneralU") &&
-		   request.getParameterMap().containsKey("linkU") &&
-		   request.getParameterMap().containsKey("biografiaU") ){
+
+		/*if(request.getParameterMap().containsKey("nicknameU") &&
+				   request.getParameterMap().containsKey("emailU") &&
+				   request.getParameterMap().containsKey("nombreU") &&
+				   request.getParameterMap().containsKey("apellidoU") &&
+				   request.getParameterMap().containsKey("TipoUsuario") &&
+				   request.getParameterMap().containsKey("descripcionGeneralU") &&
+				   request.getParameterMap().containsKey("linkU") &&
+				   request.getParameterMap().containsKey("biografiaU") ){*/
+		System.out.println(request.getParameter("TipoUsuario").equals("Artista"));
+		
+		if( request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Artista") ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA		
 			return true;
 		}
@@ -132,11 +188,13 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esAltaUsuarioEspectador (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("nicknameU") &&
-		   request.getParameterMap().containsKey("emailU") &&
-		   request.getParameterMap().containsKey("nombreU") &&
-		   request.getParameterMap().containsKey("apellidoU") &&
-		   request.getParameterMap().containsKey("TipoUsuario") ){
+		/*if(request.getParameterMap().containsKey("nicknameU") &&
+				   request.getParameterMap().containsKey("emailU") &&
+				   request.getParameterMap().containsKey("nombreU") &&
+				   request.getParameterMap().containsKey("apellidoU") &&
+				   request.getParameterMap().containsKey("TipoUsuario") ){*/
+		System.out.println(request.getParameter("TipoUsuario").equals("Espectador"));
+		if(request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Espectador")){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR		
 			return true;
 		}

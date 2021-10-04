@@ -3,7 +3,7 @@
 <!--  CONTENIDO ALTA USUARIO -->
 <div id="seccionFormulario">
 	
-	<form action="ServletReferencia" method="post" name="altaUsuarioForm" style="margin-left: 40px;">
+	<form action="Usuario" method="post" id="altaUsuarioForm" name="altaUsuarioForm" style="margin-left: 40px;">
 		<div class="row">
 			<div class="col-md-5">
 				<label class="form-label">NickName:</label> 
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="btn-group col-md-3" role="group" aria-label="Basic example" style="height: 79px;">
+			<div class="btn-group col-md-2" role="group" aria-label="Basic example" style="height: 79px;">
 				<div class="form-check">
 				  <input class="form-check-input" type="radio" name="TipoUsuario"  id="Espectador" value="Espectador" checked>
 				  <label class="form-check-label" for="Espectador">
@@ -39,7 +39,12 @@
 				  </label>
 				</div>
 			</div>
-			<div class="col-md-6">
+
+		    <div class='col-md-3'>
+	         	<label class="form-label">Fecha:</label> 
+	            <input  class="form-control" type="date" name="fecchaU" id="birthday" name="birthday">
+		     </div>
+			<div class="col-md-5">
 				<label class="form-label">Link:</label> 
 				<input class="form-control" type="text" name="linkU" placeholder="Ingrese un link de referencia" /><br/>
 			</div>
@@ -60,6 +65,21 @@
 	</form>
 </div>
 
+<script>
+function enviar(){
+	var formParametr = new FormData(document.getElementById("altaUsuarioForm"));
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+	     console.log(xhttp);
+	    }
+	};
+	xhttp.open("POST", "Usuario", true);
+	xhttp.send(formParametr);
+
+}
+</script>
 <!-- FIN  CONTENIDO ALTA USUARIO -->
 <%@ include file="/footer.jsp"%>
 

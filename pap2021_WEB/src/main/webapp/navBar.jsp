@@ -16,9 +16,16 @@
       <li><a href="altaUsuario.jsp">Alta Usuario</a></li>
       <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
       <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
-      <li><a href="consultaFuncionDeEspectáculo.jsp">Consulta Función de Espectáculo</a></li>
-      <li><a href="SeguirUsuario">Seguir a un Usuario</a></li>
-      <li><a href="dejarSeguirUsuario">Dejar de seguir a un Usuario</a></li>
+      <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
+      
+      <%if (session == null){
+		out.print("no");
+		}else{
+			// String username = (String)session.getValue("uNickName");
+			//out.print(username);
+			out.print("<li><a href=\"SeguirUsuario\">Seguir a un Usuario</a></li>");
+			out.print("<li><a href=\"dejarSeguirUsuario\">Dejar de seguir a un Usuario</a></li>");
+		}%>
        <!-- NO MINIMOS -->
        <!--  <li><a href="#">Consulta de Usuario</a></li>
        <li><a href="#">Modificar Datos de Usuario</a></li>

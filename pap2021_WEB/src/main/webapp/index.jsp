@@ -13,26 +13,14 @@
 
 
 <%
-out.print(session.isNew());
-/*if(null == session.getAttribute("nicknameU")){
-	  out.print("no");
-	}else{
-		 out.print("si");
-	}*/ 
-	
-	if (session == null)
-{
-  // the user *does not* have a valid session; handle this however you need to.
+
+if (session == null){
 		out.print("no");
-}
-else
-{
-  // the user *does* have a valid session.
-  // do whatever you need to for logged in users.
- String username = (String)session.getValue("USERNAME");
+}else{
+
+ String username = (String)session.getValue("uNickName");
  out.print(username);
-}
-	%>
+}%>
 
 
 <!-- FIN  CONTENIDO INICIO -->
