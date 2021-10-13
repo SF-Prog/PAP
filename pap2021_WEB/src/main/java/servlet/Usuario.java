@@ -68,12 +68,13 @@ public class Usuario extends HttpServlet {
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-
+			boolean conectado = false;
 			if(email !=""  && password != "") {
 				ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
 				logica.Usuario usuario = this.iniciarSesionUsuario(usuarios,email,password);
 				if(usuario != null) {
-					 HttpSession session = request.getSession();
+					 HttpSession session = request.getSession(conectado);
+					 session.setAttribute("conectado", true);
 					 session.setAttribute("uNickName", usuario.getNickName());
 					 session.setAttribute("uEmail", usuario.getEmail());
 					 session.setAttribute("uApellido", usuario.getApellido());
@@ -140,10 +141,18 @@ public class Usuario extends HttpServlet {
 			System.out.println("entro espectador");
 			//PrintWriter out = response.getWriter( dt);
 		}else if(this.esCerrarSesion(request)){
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(false);
 		    session.invalidate();
 			rd=request.getRequestDispatcher("inicioSesion.jsp");
 			rd.forward(request, response);
+			
+	        response.setContentType("");  
+	        PrintWriter out=response.getWriter();  
+	        //request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
+	        
+	        /*HttpSession sesion = request.getSession(false);
+	        sesion.invalidate();
+	        response.sendRedirect("index.jsp");*/
 		}
 		
 
