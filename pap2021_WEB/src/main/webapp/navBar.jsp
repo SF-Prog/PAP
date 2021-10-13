@@ -21,7 +21,7 @@
 		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
 		      </form>
 	     </li>
-		<li><a href="SeguirUsuario">Seguir a un Usuario</a></li>
+		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
 		<li><a href="dejarSeguirUsuario">Dejar de seguir a un Usuario</a></li>
 	  <%}%>
 		

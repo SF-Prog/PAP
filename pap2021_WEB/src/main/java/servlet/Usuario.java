@@ -36,6 +36,7 @@ public class Usuario extends HttpServlet {
 	Fabrica fabrica;
 	IControladorConsultaDeUsuario iccdu;
 	IControladorAltaDeUsuario icadu;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,6 +46,7 @@ public class Usuario extends HttpServlet {
         fabrica =  Fabrica.getInstancia();
 		iccdu = fabrica.getIControladorConsultaDeUsuario();
 		icadu = fabrica.getIControladorAltaDeUsuario();
+		
     }
 
 	/**
@@ -102,7 +104,8 @@ public class Usuario extends HttpServlet {
 			String email =request.getParameter("emailU");
 			String nombre =  request.getParameter("nombreU");
 			String apellido = request.getParameter("apellidoU");
-			
+			String password =request.getParameter("password");
+			String imagen ="";
 			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
 			String parameter = request.getParameter("fecchaU");
 			Date fecha = null ;
@@ -117,7 +120,7 @@ public class Usuario extends HttpServlet {
 			String link = request.getParameter("linkU");
 			String biografia = request.getParameter("biografiaU");
 			
-			icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha), descripcionGeneral, biografia, link);
+			icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
 			System.out.println("entro Artista");
 		}else if(this.esAltaUsuarioEspectador(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR
@@ -125,7 +128,8 @@ public class Usuario extends HttpServlet {
 			String email =request.getParameter("emailU");
 			String nombre =  request.getParameter("nombreU");
 			String apellido = request.getParameter("apellidoU");
-			
+			String password =request.getParameter("password");
+			String imagen ="";
 			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
 			String parameter = request.getParameter("fecchaU");
 			Date fecha = null ;
@@ -135,7 +139,7 @@ public class Usuario extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha);
+			DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
 			icadu.ingresaUsuarioEspectador( dt);
 			System.out.println( dt);
 			System.out.println("entro espectador");
@@ -153,6 +157,17 @@ public class Usuario extends HttpServlet {
 	        /*HttpSession sesion = request.getSession(false);
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
+		}else if(this.esTraerUsuarios(request)){
+			
+			ArrayList<logica.Usuario> listUsuarios =  iccdu.listarUsuarios();
+
+		    Gson gson = new Gson();
+		   
+	        // Convert numbers array into JSON string.
+	        String plataformasJson = gson.toJson(listUsuarios);
+	        PrintWriter out=response.getWriter(); 
+	        out.println(plataformasJson); 
+	        
 		}
 		
 
@@ -171,6 +186,14 @@ public class Usuario extends HttpServlet {
 		if(request.getParameterMap().containsKey("close") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			System.out.println("cerro sesion");
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean esTraerUsuarios (HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("traerUsuarios") ){
+			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			return true;
 		}
 		return false;
@@ -215,7 +238,7 @@ public class Usuario extends HttpServlet {
 		logica.Usuario dtu = null;
 		if(email.equals("admin@admin.com") && password.equals("1234")) {
 			Date fecha = new Date();
-			dtu = new logica.Usuario ("admin","admin","admin","admin@admin.com",fecha);
+			dtu = new logica.Usuario ("admin","admin","admin","admin@admin.com",fecha,"","");
 			System.out.println("ingreso admin");
 		}else{
 			
@@ -226,7 +249,7 @@ public class Usuario extends HttpServlet {
 			while(eIterator.hasNext() && !existe){
 				logica.Usuario temp = eIterator.next();
 				if(temp.getEmail().equals(email)){
-					if(password.equals(temp.getNombre()+"."+temp.getApellido())) {
+					if(password.equals(temp.getPassword())) {
 						existe = true;
 						dtu=temp;
 						System.out.println("ingreso usuario");

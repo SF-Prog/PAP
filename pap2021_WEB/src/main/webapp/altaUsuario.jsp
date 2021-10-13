@@ -25,6 +25,13 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-md-5">
+				<label class="form-label">Password:</label> 
+				<input class="form-control" type="text" name="password" placeholder="contraseña" required /><br/>
+			</div>
+			
+		</div> 
+		<div class="row">
 			<div class="btn-group col-md-2" role="group" aria-label="Basic example" style="height: 79px;">
 				<div class="form-check">
 				  <input class="form-check-input" type="radio" name="TipoUsuario"  id="Espectador" value="Espectador" checked>

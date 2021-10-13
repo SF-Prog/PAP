@@ -51,9 +51,7 @@
 				<a  class="btn btn-primary col-md-2" onclick="agregar();" style="width:100%"> Agregar </a>
 			</div>
 			<div class="col-md-5">
-				<ul id="listaArtistas">
-				  <li ><data value="21053">Cherry Tomato</data></li>
-				
+				<ul id="listaArtistas">				
 				</ul>
 			</div>
 			<input  class="form-control" type="date" name="fecchaU" id="birthday" name="birthday">
@@ -280,7 +278,7 @@ function enviar(){
 
 	listaArtistas = JSON.stringify(listaArtistas) ;
 	formParametr.append("listaArtistas",listaArtistas);
-	formParametr.append("altaFuncion",altaFuncion);
+	formParametr.append("altaFuncion","altaFuncion");
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {

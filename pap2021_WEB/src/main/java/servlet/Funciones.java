@@ -62,7 +62,7 @@ public class Funciones extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(this.esAltaFuncionDeEspectaculo(request)) {
 
-			String nombre = request.getParameter("nombre");
+			String nombre = request.getParameter("Nombre");
 		    Date fechaAlta=null;
 			try {
 				fechaAlta = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaAlta"));
@@ -78,28 +78,34 @@ public class Funciones extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
-        	Gson gson = new Gson();
+        	
+			String imagen = "";
+			
+			//Gson gson = new Gson();
         	
         	String json= request.getParameter("listaArtistas"); 
         	ObjectMapper mapper = new ObjectMapper();
    
         	List<String> listaArtistas = mapper.readValue(json, new TypeReference<List<String>>(){});
+        	//List<String> listaArtistas= null;
         	//String[] listaArtistas = request.getParameter("listaArtistas"); 
-        	
-        	
-        		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
-        		try {
-  
-				} catch (AltaFuncionDeEspectaculoExcepcion e) {
-					// TODO Auto-generated catch block
-					throw new ServletException(e.getMessage());
-					
-					
-				}
-        		System.out.println("si"); 
-        	
-        		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
-        		System.out.println("no"); 
+        	System.out.println(listaArtistas);
+    	
+    		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta, imagen);
+    		
+    		try {
+				icadfde.ingresaFuncion(dtFuncion, listaArtistas);
+			} catch (AltaFuncionDeEspectaculoExcepcion e) {
+				// TODO Auto-generated catch block
+				throw new ServletException(e.getMessage());
+				
+			}
+    		
+    		
+    		System.out.println("si"); 
+    	
+    		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
+    		System.out.println("no"); 
         	
 
 			//icadfde.
