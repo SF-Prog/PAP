@@ -277,7 +277,8 @@ function enviar(){
 		listaArtistas[i]=document.getElementById('listaArtistas').getElementsByTagName('li')[i].dataset.value;
 	}
 	
-	
+
+	listaArtistas = JSON.stringify(listaArtistas) ;
 	formParametr.append("listaArtistas",listaArtistas);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {

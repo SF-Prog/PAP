@@ -2,7 +2,11 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import datatypes.DtFuncion;
@@ -57,10 +63,29 @@ public class Funciones extends HttpServlet {
 		if(this.esAltaFuncionDeEspectaculo(request)) {
 
 			String nombre = request.getParameter("nombre");
-         	Date fechaAlta = request.getParameter("fechaAlta");
+		    Date fechaAlta;
+			try {
+				fechaAlta = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaAlta"));
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}  
         	String horaInicio = request.getParameter("horaInicio");
-        	Date fechaInicio = request.getParameter("fechaInicio");  
-        	String[] listaArtistas = request.getParameter("listaArtistas"); 
+        	Date fechaInicio;
+			try {
+				fechaInicio = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaInicio"));
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+        	Gson gson = new Gson();
+        	
+        	String json= request.getParameter("listaArtistas"); 
+        	ObjectMapper mapper = new ObjectMapper();
+   
+        	List<String> listaArtistas = mapper.readValue(json, new TypeReference<List<String>>(){});
+        	//String[] listaArtistas = request.getParameter("listaArtistas"); 
+        	
         	try {
         		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
         		icadfde.ingresaFuncion(dtFuncion, listaArtistas);
