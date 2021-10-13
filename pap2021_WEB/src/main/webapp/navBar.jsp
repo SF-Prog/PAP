@@ -22,7 +22,7 @@
 		      </form>
 	     </li>
 		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
-		<li><a href="dejarSeguirUsuario">Dejar de seguir a un Usuario</a></li>
+
 	  <%}%>
 		
       <%/*if (session == null){
