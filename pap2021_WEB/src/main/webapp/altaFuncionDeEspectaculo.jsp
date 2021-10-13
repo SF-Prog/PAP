@@ -5,7 +5,7 @@
 
 <div id="seccionFormulario">
 	
-	<form action="Usuario" method="post" id="altaUsuarioForm" name="altaUsuarioForm" style="margin-left: 40px;">
+	<form onsubmit="return enviar();" id="altaFuncion" name="altaFuncion" style="margin-left: 40px;">
 	
 		<div class="row"> 
 			<div class="col-md-5">
@@ -48,7 +48,7 @@
 				</select>
 			</div>
 			<div class="col-md-2">
-				<button  name="btnEnvio" class="btn btn-primary col-md-2" onclick="agregar();" style="width:100%"> Agregar </button>
+				<a  class="btn btn-primary col-md-2" onclick="agregar();" style="width:100%"> Agregar </a>
 			</div>
 			<div class="col-md-5">
 				<ul id="listaArtistas">
@@ -277,8 +277,10 @@ function enviar(){
 		listaArtistas[i]=document.getElementById('listaArtistas').getElementsByTagName('li')[i].dataset.value;
 	}
 	
-	
+
+	listaArtistas = JSON.stringify(listaArtistas) ;
 	formParametr.append("listaArtistas",listaArtistas);
+	formParametr.append("altaFuncion",altaFuncion);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
@@ -288,7 +290,7 @@ function enviar(){
 	};
 	xhttp.open("POST", "Funciones", true);
 	xhttp.send(formParametr);
-
+	return false;
 }
 taerPlataformas();
 </script>
