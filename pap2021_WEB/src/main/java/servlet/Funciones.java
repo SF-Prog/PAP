@@ -63,17 +63,17 @@ public class Funciones extends HttpServlet {
 		if(this.esAltaFuncionDeEspectaculo(request)) {
 
 			String nombre = request.getParameter("nombre");
-		    Date fechaAlta;
+		    Date fechaAlta=null;
 			try {
-				fechaAlta = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaAlta"));
+				fechaAlta = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaAlta"));
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}  
         	String horaInicio = request.getParameter("horaInicio");
-        	Date fechaInicio;
+        	Date fechaInicio=null;
 			try {
-				fechaInicio = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaInicio"));
+				fechaInicio = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaInicio"));
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -86,13 +86,22 @@ public class Funciones extends HttpServlet {
         	List<String> listaArtistas = mapper.readValue(json, new TypeReference<List<String>>(){});
         	//String[] listaArtistas = request.getParameter("listaArtistas"); 
         	
-        	try {
+        	
         		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
-        		icadfde.ingresaFuncion(dtFuncion, listaArtistas);
-     
-        	} catch (AltaFuncionDeEspectaculoExcepcion e) {
+        		try {
+					icadfde.ingresaFuncion(dtFuncion, listaArtistas);
+				} catch (AltaFuncionDeEspectaculoExcepcion e) {
+					// TODO Auto-generated catch block
+					throw new ServletException(e.getMessage());
+					
+					
+				}
+        		System.out.println("si"); 
+        	
         		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
-        	}
+        		System.out.println("no"); 
+        	
+
 			//icadfde.
 		    //Gson gson = new Gson();
 		    //System.out.println(iccde.seleccionaPaquete(request.getParameter("paquete")));
@@ -110,7 +119,7 @@ public class Funciones extends HttpServlet {
 		   
 	        // Convert numbers array into JSON string.
 	        String plataformasJson = gson.toJson(listaPlataforma);
-	        System.out.println("agus");
+	        //System.out.println("agus");
 	        out.println(plataformasJson); 
 
 			// request.setAttribute("plataformas", numbersJson);
@@ -144,8 +153,8 @@ public class Funciones extends HttpServlet {
 
 	     }else if(this.selectEspectaculos(request)){
 			// TRAIGO LA LISTA DE ESPECTACULOS
-	    	 icadfde.seleccionaEspectaculo(request.getParameter("espectaculos"));
-			
+	    	 logica.Espectaculo esp = icadfde.seleccionaEspectaculo(request.getParameter("espectaculos"));
+	    	 System.out.println(esp.getNombre());
 	     }
 	}
 
@@ -169,10 +178,10 @@ public class Funciones extends HttpServlet {
 	private boolean getEspectaculos(HttpServletRequest request) {
 		if(request.getParameterMap().containsKey("getEspectaculo") && !request.getParameter("plataforma").isEmpty()){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION		
-			System.out.println("agus2");
+			//System.out.println("agus2");
 			return true;
 		}
-		System.out.println("agus3");
+		//System.out.println("agus3");
 		return false;
 	}
 	
