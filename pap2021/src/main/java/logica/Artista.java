@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Artista")
@@ -27,11 +26,11 @@ public class Artista extends Usuario{
 		super();
 	}
 
-	public Artista(String nickName, String nombre, String apellido, String email, Date fechaNac,String descGeneral, String biografia, String link) {
-		super(nickName, nombre, apellido, email, fechaNac);
-		this.descGeneral = descGeneral;
-		this.biografia = biografia;
-		this.link = link;
+	public Artista(String nickName, String nombre, String apellido, String email, Date fechaNac, String password, String image, String descGeneral, String biografia, String link) {
+		super(nickName, nombre, apellido, email, fechaNac, password, image);
+		this.setDescGeneral(descGeneral);
+		this.setBiografia(biografia);
+		this.setLink(link);
 	}
 
 	public String getDescGeneral() {
@@ -58,15 +57,6 @@ public class Artista extends Usuario{
 		this.link = link;
 	}
 
-	
-	/*public List<Espectaculo> getEspectaculos() {
-		return espectaculos;
-	}
-
-	public void setEspectaculos(List<Espectaculo> espectaculos) {
-		this.espectaculos = espectaculos;
-	}*/
-
 	public List<Funcion> getFunciones() {
 		return funciones;
 	}
@@ -78,4 +68,12 @@ public class Artista extends Usuario{
 	public void agregarFuncion(Funcion funcion){
 		this.funciones.add(funcion);
 	}	
+	
+	/*public List<Espectaculo> getEspectaculos() {
+		return espectaculos;
+	}
+
+	public void setEspectaculos(List<Espectaculo> espectaculos) {
+		this.espectaculos = espectaculos;
+	}*/
 }

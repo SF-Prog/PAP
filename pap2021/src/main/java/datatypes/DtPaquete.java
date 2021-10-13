@@ -3,7 +3,7 @@ package datatypes;
 public class DtPaquete {
 	private String nombre;
 	private String descripcion;
-	private float Descuento;
+	private float descuento;
 
 	public DtPaquete() {
 		super();
@@ -11,9 +11,9 @@ public class DtPaquete {
 	
 	public DtPaquete(String nombre, String descripcion, float descuento) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		Descuento = descuento;
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setDescuento(descuento);
 	}
 
 	public String getNombre() {
@@ -33,16 +33,16 @@ public class DtPaquete {
 	}
 
 	public float getDescuento() {
-		return Descuento;
+		return this.descuento;
 	}
 
 	public void setDescuento(float descuento) {
-		Descuento = descuento;
+		this.descuento = descuento;
 	}
 
 	@Override
 	public String toString() {
-		String retorno = "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.Descuento;
+		String retorno = "\nNombre: " + this.getNombre() + "\nDescripcion: " +  this.getDescripcion() + "\nDuracion: " + this.getDescuento();
 		return retorno;
 	}
 	

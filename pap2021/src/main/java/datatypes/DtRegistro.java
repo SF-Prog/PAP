@@ -12,8 +12,8 @@ public class DtRegistro {
 
 	public DtRegistro(Date fechaRegistro, float costo) {
 		super();
-		this.fechaRegistro = fechaRegistro;
-		this.costo = costo;
+		this.setFechaRegistro(fechaRegistro);
+		this.setCosto(costo);
 	}
 
 	public Date getFechaRegistro() {

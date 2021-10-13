@@ -6,19 +6,20 @@ public class DtFuncion {
 	private String nombre;
 	private Date fecha;
 	private String horaInicio;
-	private Date FechaRegistro;
+	private Date fechaRegistro;
+	private String image;
 	
 	public DtFuncion() {
-		
 		super();
 	}
 
-	public DtFuncion(String nombre, Date fecha, String horaInicio, Date fechaRegistro) {
+	public DtFuncion(String nombre, Date fecha, String horaInicio, Date fechaRegistro, String image) {
 		super();
-		this.nombre = nombre;
-		this.fecha = fecha;
-		this.horaInicio = horaInicio;
-		FechaRegistro = fechaRegistro;
+		this.setNombre(nombre);
+		this.setFecha(fecha);
+		this.setHoraInicio(horaInicio);
+		this.setFechaRegistro(fechaRegistro);
+		this.setImage(image);
 	}
 
 	public String getNombre() {
@@ -46,28 +47,36 @@ public class DtFuncion {
 	}
 
 	public Date getFechaRegistro() {
-		return FechaRegistro;
+		return fechaRegistro;
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		FechaRegistro = fechaRegistro;
+		this.fechaRegistro = fechaRegistro;
+	}	
+
+	public String getImage() {
+		return image;
 	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}	
 	
 	@Override
 	public String toString() {
 		String fecha = "";
-		if (this.fecha != null) {
-			fecha = this.fecha.toString();
+		if (this.getFecha() != null) {
+			fecha = this.getFecha().toString();
 		}
 		String horaInicio = "";
-		if (this.horaInicio != null) {
-			horaInicio = this.horaInicio.toString();
+		if (this.getHoraInicio() != null) {
+			horaInicio = this.getHoraInicio().toString();
 		}
 		String fechaRegistro = "";
-		if (this.FechaRegistro != null) {
-			fechaRegistro = this.FechaRegistro.toString();
+		if (this.getFechaRegistro() != null) {
+			fechaRegistro = this.getFechaRegistro().toString();
 		}
-		String retorno = "\nNombre: " + this.nombre + "\nFecha: " +  fecha+ "\nHora Inicio: " + horaInicio+ "\nFecha Registro: " + fechaRegistro;
+		String retorno = "\nNombre: " + this.getNombre() + "\nFecha: " + fecha + "\nHora Inicio: " + horaInicio + "\nFecha Registro: " + fechaRegistro;
 		return retorno ;
 	}
 	

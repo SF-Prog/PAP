@@ -7,7 +7,7 @@ public class DtEspectador extends DtUsuario  {
 		super();
 	}
 
-	public DtEspectador(String nickName, String nombre, String apellido, String email, Date fecha) {
-		super(nickName, nombre, apellido, email, fecha);
+	public DtEspectador(String nickName, String nombre, String apellido, String email, Date fecha, String password, String image) {
+		super(nickName, nombre, apellido, email, fecha, password, image);
 	}
 }

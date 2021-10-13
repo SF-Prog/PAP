@@ -12,17 +12,19 @@ public class Funcion {
 	private Date fecha;
 	private String horaInicio;
 	private Date fechaRegistro;
+	private String image;
 	
 	public Funcion() {
 		super();
 	}
 
-	public Funcion(String nombre, Date fecha, String horaInicio, Date fechaRegistro) {
+	public Funcion(String nombre, Date fecha, String horaInicio, Date fechaRegistro, String image) {
 		super();
-		this.nombre = nombre;
-		this.fecha = fecha;
-		this.horaInicio = horaInicio;
-		this.fechaRegistro = fechaRegistro;
+		this.setNombre(nombre);
+		this.setFecha(fecha);
+		this.setHoraInicio(horaInicio);
+		this.setFechaRegistro(fechaRegistro);
+		this.setImage(image);
 	}
 
 	public String getNombre() {
@@ -55,5 +57,13 @@ public class Funcion {
 
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
+	}	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}	
 }

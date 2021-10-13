@@ -13,7 +13,7 @@ public class Paquete {
 	@Id
 	private String nombre;
 	private String descripcion;
-	private float Descuento;	
+	private float descuento;	
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Espectaculo> espectaculos = new ArrayList<>();
@@ -24,9 +24,9 @@ public class Paquete {
 
 	public Paquete(String nombre, String descripcion, float descuento) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		Descuento = descuento;
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setDescuento(descuento);
 	}
 
 	public String getNombre() {
@@ -46,11 +46,11 @@ public class Paquete {
 	}
 
 	public float getDescuento() {
-		return Descuento;
+		return this.descuento;
 	}
 
 	public void setDescuento(float descuento) {
-		Descuento = descuento;
+		this.descuento = descuento;
 	}
 
 	public List<Espectaculo> getEspectaculos() {

@@ -14,14 +14,14 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	@Override
 	public void ingresaUsuarioEspectador(DtUsuario dtUsuario) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-		Espectador nuevoEspectador = new Espectador(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac());
+		Espectador nuevoEspectador = new Espectador(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac(),dtUsuario.getPassword(),dtUsuario.getImage());
 		mU.agegarUsuarios(nuevoEspectador);
 	}
 
 	@Override
 	public void ingresaUsuarioArtista(DtUsuario dtUsuario, String descripcion, String biografia, String link) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-		Artista nuevoArtista = new Artista(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac(),descripcion,biografia,link);
+		Artista nuevoArtista = new Artista(dtUsuario.getNickName(),dtUsuario.getNombre(),dtUsuario.getApellido(),dtUsuario.getEmail(),dtUsuario.getFechaNac(),dtUsuario.getPassword(),dtUsuario.getImage(),descripcion,biografia,link);
 		mU.agegarUsuarios(nuevoArtista);
 	}
 	

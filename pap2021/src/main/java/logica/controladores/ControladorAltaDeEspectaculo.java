@@ -74,7 +74,7 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
 			throw new AltaEspectaculoExcepcion("El espectaculo " + espectaculo + " ya se encuentra en la plataforma " + plataforma);
 		
 		Espectaculo nuevoEspectaculo = new Espectaculo(espectaculo, dtE.getDescripcion(), dtE.getDuracion(), dtE.getEspectadoresMin(), 
-				dtE.getEspectadoresMax(), dtE.getUrlAsociada(), dtE.getCosto(), dtE.getFechaRegistro());
+				dtE.getEspectadoresMax(), dtE.getUrlAsociada(), dtE.getCosto(), dtE.getFechaRegistro(), dtE.getImage());
 
 		/*
 		 /// PERSISTENCIA LOCAL

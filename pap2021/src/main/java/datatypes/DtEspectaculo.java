@@ -11,22 +11,24 @@ public class DtEspectaculo {
 	private String urlAsociada;
 	private float costo;
 	private Date fechaRegistro;	
+	private String image;
 	
 	public DtEspectaculo() {
 		super();
 	}
 
 	public DtEspectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,
-			String urlAsociada, float costo, Date fechaRegistro) {
+			String urlAsociada, float costo, Date fechaRegistro, String image) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.duracion = duracion;
-		this.espectadoresMin = espectadoresMin;
-		this.espectadoresMax = espectadoresMax;
-		this.urlAsociada = urlAsociada;
-		this.costo = costo;
-		this.fechaRegistro = fechaRegistro;
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setDuracion(duracion);
+		this.setEspectadoresMin(espectadoresMin);
+		this.setEspectadoresMax(espectadoresMax);
+		this.setUrlAsociada(urlAsociada);
+		this.setCosto(costo);
+		this.setFechaRegistro(fechaRegistro);
+		this.setImage(image);
 	}
 
 	public String getNombre() {
@@ -91,15 +93,23 @@ public class DtEspectaculo {
 
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
+	}	
+
+	public String getImage() {
+		return image;
 	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}	
 	
 	@Override
 	public String toString() {
 		String fechaRegistro = "";
-		if (this.fechaRegistro != null) {
-			fechaRegistro = this.fechaRegistro.toString();
+		if (this.getFechaRegistro() != null) {
+			fechaRegistro = this.getFechaRegistro().toString();
 		}	
-		String retorno = "\nNombre: " + this.nombre + "\nDescripcion: " +  this.descripcion+ "\nDuracion: " + this.duracion+ "\nEspectadores Minimo: " + this.espectadoresMin+ "\nEspectadores Maximo: " + this.espectadoresMax+ "\nUrl = " + this.urlAsociada+ "\nCosto = " + this.costo+ "\nFecha De Registro: " + fechaRegistro;
+		String retorno = "\nNombre: " + this.getNombre() + "\nDescripcion: " + this.getDescripcion() + "\nDuracion: " + this.getDuracion() + "\nEspectadores Minimo: " + this.getEspectadoresMin() + "\nEspectadores Maximo: " + this.getEspectadoresMax() + "\nUrl = " + this.getUrlAsociada() + "\nCosto = " + this.getCosto() + "\nFecha De Registro: " + fechaRegistro;
 		return retorno ;
 	}
 }

@@ -1,11 +1,16 @@
 package logica;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import datatypes.DtUsuario;
 
@@ -18,18 +23,29 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private Date fechaNac;
+	private String password;
+	private String image;
+
+	@JoinColumn(nullable = false)
+	@ManyToMany
+	private List<Usuario> seguidores = new ArrayList<>();
+
+	@ManyToMany(mappedBy = "seguidores")
+	private List<Usuario> seguidos = new ArrayList<>();
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String nickName, String nombre, String apellido, String email, Date fechaNac2) {
+	public Usuario(String nickName, String nombre, String apellido, String email, Date fecha, String password, String image) {
 		super();
-		this.nickName = nickName;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.fechaNac = fechaNac2;
+		this.setNickName(nickName);
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		this.setEmail(email);
+		this.setFechaNac(fecha);
+		this.setPassword(password);
+		this.setImage(image);
 	}
 
 	public String getNickName() {
@@ -71,10 +87,45 @@ public class Usuario {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
-	public DtUsuario getDtUsuario()
-	{
-		DtUsuario res = new DtUsuario(this.getNickName(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
+	public DtUsuario getDtUsuario() {
+		DtUsuario res = new DtUsuario(this.getNickName(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.getPassword(), this.getImage());
 		return res;
+	}
+	
+	public List<Usuario> getUsuariosSeguidos() {
+		return seguidos;
+	}
+	
+	public void setUsuariosSeguidos(List<Usuario> usuarios) {
+		this.seguidos = usuarios;
+	}
+
+	public void seguir(Usuario usuario) throws IOException {
+		if (!seguidores.add(usuario)) {
+			throw new IOException("Ya se encuentra siguiendo a " + usuario.getNickName());
+		}
+	}
+
+	public void dejarDeSeguir(Usuario usuario) throws IOException {
+		if (!seguidores.remove(usuario)) {
+			throw new IOException("No sigue a " + usuario.getNickName() + ", imposible dejar de seguir");
+		}
 	}	
 }

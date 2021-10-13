@@ -21,10 +21,6 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	public ControladorConsultaDeFuncionDeEspectaculo() {
 		super();
 	}
-
-
-	
-
 	
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
@@ -66,7 +62,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		ArrayList<DtEspectaculo> dtEspectaculos = null;
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		for(Espectaculo e : listEspectaculos){
-			DtEspectaculo dte = new DtEspectaculo(e.getNombre(),e.getDescripcion(),e.getDuracion(),e.getEspectadoresMin(),e.getEspectadoresMax(),e.getUrlAsociada(),e.getCosto(),e.getFechaRegistro());
+			DtEspectaculo dte = new DtEspectaculo(e.getNombre(),e.getDescripcion(),e.getDuracion(),e.getEspectadoresMin(),e.getEspectadoresMax(),e.getUrlAsociada(),e.getCosto(),e.getFechaRegistro(),e.getImage());
 			dtEspectaculos.add(dte);
 		}
 		return dtEspectaculos;
@@ -98,15 +94,16 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 				existe = true;
 				espectaculoSeleccionada = temp;
 				dte = new DtEspectaculo(
-						temp.getNombre(),
-						temp.getDescripcion(),
-						temp.getDuracion(),
-						temp.getEspectadoresMin(),
-						temp.getEspectadoresMax(),
-						temp.getUrlAsociada(),
-						temp.getCosto(),
-						temp.getFechaRegistro()
-						);
+					temp.getNombre(),
+					temp.getDescripcion(),
+					temp.getDuracion(),
+					temp.getEspectadoresMin(),
+					temp.getEspectadoresMax(),
+					temp.getUrlAsociada(),
+					temp.getCosto(),
+					temp.getFechaRegistro(),
+					temp.getImage()
+				);
 			}
 		}			
 		return dte;
@@ -117,7 +114,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		ArrayList<DtFuncion> dtFunciones =null;
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		for(Funcion e : listFunciones){
-			DtFuncion dtf = new DtFuncion(e.getNombre(),e.getFecha(),e.getHoraInicio(),e.getFechaRegistro());
+			DtFuncion dtf = new DtFuncion(e.getNombre(),e.getFecha(),e.getHoraInicio(),e.getFechaRegistro(),e.getImage());
 			dtFunciones.add(dtf);
 		}
 		return dtFunciones;
@@ -147,7 +144,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 			if(temp.getNombre().equals(nombre)){
 				existe = true;
 				this.funcionSeleccionada = temp;
-				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro());
+				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro(),temp.getImage());
 			}
 		}
 		return dtf;

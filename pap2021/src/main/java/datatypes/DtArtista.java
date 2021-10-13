@@ -11,12 +11,11 @@ public class DtArtista extends DtUsuario {
 		super();
 	}
 	
-	public DtArtista(String nickName, String nombre, String apellido, String email, Date fecha,String descGeneral, String biografia,String link ){
-		super(nickName, nombre, apellido, email, fecha);
-		this.descGeneral = descGeneral;
-		this.biografia = biografia;
-		this.link = link;
-
+	public DtArtista(String nickName, String nombre, String apellido, String email, Date fecha, String password, String image, String descGeneral, String biografia,String link ){
+		super(nickName, nombre, apellido, email, fecha, password, image);
+		this.setDescGeneral(descGeneral);
+		this.setBiografia(biografia);
+		this.setLink(link);
 	}
 	
 	public String getDescGeneral() {
@@ -45,7 +44,7 @@ public class DtArtista extends DtUsuario {
 
 	@Override
 	public String toString() {
-		String retorno =  "\nNickname: " + this.nickName + "\nNombre: " +  this.nombre + "\nApellido: " + this.apellido+ "\nEmail: " + this.email+ "\nEspectadores Maximo: " + this.fechaNac.toString()+ "\n Descripcion General: " + this.descGeneral+ "\nBiografia: " + this.biografia+ "\nLink: " + this.link;
-		return retorno ;
+		String retorno =  "\nNickname: " + this.getNickName() + "\nNombre: " +  this.getNombre() + "\nApellido: " + this.getApellido() + "\nEmail: " + this.getEmail() + "\nEspectadores Maximo: " + this.getFechaNac().toString()+ "\n Descripcion General: " + this.getDescGeneral() + "\nBiografia: " + this.getBiografia() + "\nLink: " + this.getLink();
+		return retorno;
 	}
 }

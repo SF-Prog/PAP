@@ -193,7 +193,7 @@ public class AltaUsuario extends JInternalFrame {
 	} 
 	
 	private void agregarUsuario(int tipo){
-		DtUsuario dtUsuario = new DtUsuario(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(),txtFecha.getDate());
+		DtUsuario dtUsuario = new DtUsuario(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(),txtFecha.getDate(),"","");
 		if(tipo == 1){
 			icau.ingresaUsuarioArtista(dtUsuario,textAreaDescripcion.getText(),textAreaBiografia.getText(),txtLink.getText());
 		}else{

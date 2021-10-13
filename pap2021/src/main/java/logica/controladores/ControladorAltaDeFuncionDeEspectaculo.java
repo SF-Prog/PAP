@@ -44,7 +44,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		};
 		if (coleccionEspectaculos != null) {
 			for(Espectaculo espectaculo : coleccionEspectaculos) {
-				DtEspectaculo dte = new DtEspectaculo(espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getDuracion(), espectaculo.getEspectadoresMin(), espectaculo.getEspectadoresMax(), espectaculo.getUrlAsociada(), espectaculo.getCosto(), espectaculo.getFechaRegistro());
+				DtEspectaculo dte = new DtEspectaculo(espectaculo.getNombre(), espectaculo.getDescripcion(), espectaculo.getDuracion(), espectaculo.getEspectadoresMin(), espectaculo.getEspectadoresMax(), espectaculo.getUrlAsociada(), espectaculo.getCosto(), espectaculo.getFechaRegistro(), espectaculo.getImage());
 				coleccionDtEspectaculos.add(dte);
 			};
 		}
@@ -78,7 +78,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 
 	@Override
 	public void ingresaFuncion(DtFuncion dtFuncion, List<String> artistasInvitados) throws AltaFuncionDeEspectaculoExcepcion {
-		Funcion nuevaFuncion = new Funcion(dtFuncion.getNombre(), dtFuncion.getFecha(), dtFuncion.getHoraInicio(), dtFuncion.getFechaRegistro());
+		Funcion nuevaFuncion = new Funcion(dtFuncion.getNombre(), dtFuncion.getFecha(), dtFuncion.getHoraInicio(), dtFuncion.getFechaRegistro(), dtFuncion.getImage());
 		Espectaculo espectaculo = this.espectaculoSeleccionado;
 		String nombreFuncion = dtFuncion.getNombre();
 		if(existeFuncion(dtFuncion.getNombre())) {
@@ -110,7 +110,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		List<Usuario> coleccionUsuarios = mU.getUsuarios();
 		for(Usuario usuario : coleccionUsuarios) {
 			if(usuario instanceof Artista) {
-				DtArtista dta = new DtArtista(((Artista) usuario).getNickName(), ((Artista) usuario).getNombre(), ((Artista) usuario).getApellido(), ((Artista) usuario).getEmail(), ((Artista) usuario).getFechaNac(), ((Artista) usuario).getDescGeneral(), ((Artista) usuario).getBiografia(), ((Artista) usuario).getLink());
+				DtArtista dta = new DtArtista(((Artista) usuario).getNickName(), ((Artista) usuario).getNombre(), ((Artista) usuario).getApellido(), ((Artista) usuario).getEmail(), ((Artista) usuario).getFechaNac(), ((Artista) usuario).getPassword(), ((Artista) usuario).getImage(), ((Artista) usuario).getDescGeneral(), ((Artista) usuario).getBiografia(), ((Artista) usuario).getLink());
 				artistasEnElSistema.add(dta);
 			};
 		};

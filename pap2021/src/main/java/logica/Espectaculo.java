@@ -22,6 +22,7 @@ public class Espectaculo {
 	private String urlAsociada;
 	private float costo;
 	private Date fechaRegistro;
+	private String image;
 	
 	@ManyToOne
 	@JoinColumn(name = "Artista")
@@ -38,16 +39,17 @@ public class Espectaculo {
 	}
 
 	public Espectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,
-			String urlAsociada, float costo, Date fechaRegistro) {
+			String urlAsociada, float costo, Date fechaRegistro, String image) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.duracion = duracion;
-		this.espectadoresMin = espectadoresMin;
-		this.espectadoresMax = espectadoresMax;
-		this.urlAsociada = urlAsociada;
-		this.costo = costo;
-		this.fechaRegistro = fechaRegistro;
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setDuracion(duracion);
+		this.setEspectadoresMin(espectadoresMin);
+		this.setEspectadoresMax(espectadoresMax);
+		this.setUrlAsociada(urlAsociada);
+		this.setCosto(costo);
+		this.setFechaRegistro(fechaRegistro);
+		this.setImage(image);
 	}
 
 	public String getNombre() {
@@ -133,5 +135,12 @@ public class Espectaculo {
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}	
 }

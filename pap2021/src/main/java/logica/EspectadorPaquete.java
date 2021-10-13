@@ -31,7 +31,7 @@ public class EspectadorPaquete {
 
 	public EspectadorPaquete(Date fechaCompra) {
 		super();
-		this.fechaCompra = fechaCompra;
+		this.setFechaCompra(fechaCompra);
 	}
 
 	public Date getFechaCompra() {

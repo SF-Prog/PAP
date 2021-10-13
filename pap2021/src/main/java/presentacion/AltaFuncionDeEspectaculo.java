@@ -190,7 +190,7 @@ public class AltaFuncionDeEspectaculo extends JInternalFrame {
         	String horaInicio = textFieldHoraInicio.getText();
         	Date fechaInicio = dFechaDeInicio.getDate();        	
         	try {
-        		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
+        		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta, "");
         		icon.ingresaFuncion(dtFuncion, artistasInvitados);
         		JOptionPane.showMessageDialog(this, "Funcion dado de alta con exito!", nombreFormulario,
                         JOptionPane.INFORMATION_MESSAGE);

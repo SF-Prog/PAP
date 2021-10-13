@@ -18,7 +18,7 @@ public class Plataforma {
 	private String espectadoresMax;
 	private String URLAsociada;
 	private float costo;
-	private String FechaAlta;
+	private String fechaAlta;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Espectaculo> espectaculos = new ArrayList<>();
@@ -26,25 +26,25 @@ public class Plataforma {
 	public Plataforma() {
 		super();
 	}
+
+	public Plataforma(String nombre, String descripcion, String URLAsociada) {
+		super();
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setURLAsociada(URLAsociada);
+	}
 	
 	public Plataforma(String nombre, String descripcion, int duracion, String espectadoresMin, String espectadoresMax,
 			String uRLAsociada, float costo, String fechaAlta) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.duracion = duracion;
-		this.espectadoresMin = espectadoresMin;
-		this.espectadoresMax = espectadoresMax;
-		URLAsociada = uRLAsociada;
-		this.costo = costo;
-		FechaAlta = fechaAlta;
-	}
-
-	public Plataforma(String nombre, String descripcion, String URLAsociada) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.URLAsociada = URLAsociada;
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setDuracion(duracion);
+		this.setEspectadoresMin(espectadoresMin);
+		this.setEspectadoresMax(espectadoresMax);
+		this.setURLAsociada(URLAsociada);
+		this.setCosto(costo);
+		this.setFechaAlta(fechaAlta);
 	}
 	
 	public String getNombre() {
@@ -104,11 +104,11 @@ public class Plataforma {
 	}
 	
 	public String getFechaAlta() {
-		return FechaAlta;
+		return this.fechaAlta;
 	}
 	
 	public void setFechaAlta(String fechaAlta) {
-		FechaAlta = fechaAlta;
+		this.fechaAlta = fechaAlta;
 	}
 	
 	public List<Espectaculo> getEspectaculos() {

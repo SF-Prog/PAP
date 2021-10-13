@@ -177,7 +177,7 @@ public class AltaEspectaculo extends JInternalFrame {
             String urlAsociada = txtURLAsociada.getText();           
             Date fecha = dFechaDeAlta.getDate();
         	try {
-        		DtEspectaculo espectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, urlAsociada, costo, fecha);
+        		DtEspectaculo espectaculo = new DtEspectaculo(nombre, descripcion, duracion, especMinimos, especMaximos, urlAsociada, costo, fecha, "");
 				icon.ingresaEspectaculo(plataforma, artista, espectaculo);
 	            JOptionPane.showMessageDialog(this, "Espectaculo dado de alta con exito!", nombreFormulario,
 	                        JOptionPane.INFORMATION_MESSAGE);
