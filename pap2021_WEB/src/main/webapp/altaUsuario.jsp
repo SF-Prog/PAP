@@ -59,6 +59,9 @@
 				<textarea class="form-control"  id="biografiaU" rows="3" placeholder="Ingrese su biografia"></textarea>
 			</div>
 		</div>
+		<div class="row" style="margin:40px 0 0 30px" id="msg">
+				
+		</div>
 		<div class="row" style="margin:40px 0 0 30px">
 			<input type="submit" name="btnEnvio" value="Ingresar Usuario" class="btn btn-primary col-md-2">		
 		</div>
@@ -72,6 +75,8 @@ function enviar(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
+	    document.getElementById("altaUsuarioForm").reset();
+	    document.getElementById("msg").innerHTML('<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>');
 	     console.log(xhttp);
 	    }
 	};
