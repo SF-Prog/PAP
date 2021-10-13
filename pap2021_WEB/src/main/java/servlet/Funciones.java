@@ -89,7 +89,7 @@ public class Funciones extends HttpServlet {
         	
         		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta);
         		try {
-					icadfde.ingresaFuncion(dtFuncion, listaArtistas);
+  
 				} catch (AltaFuncionDeEspectaculoExcepcion e) {
 					// TODO Auto-generated catch block
 					throw new ServletException(e.getMessage());
