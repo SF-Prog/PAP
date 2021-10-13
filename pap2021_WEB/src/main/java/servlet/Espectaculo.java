@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 
 import interfaces.Fabrica;
+import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import interfaces.IControladorConsultaDeEspectaculo;
 
 
@@ -32,6 +33,7 @@ public class Espectaculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Fabrica fabrica;
 	IControladorConsultaDeEspectaculo iccde;
+	IControladorAltaDeFuncionDeEspectaculo icadfde;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,6 +42,7 @@ public class Espectaculo extends HttpServlet {
         // TODO Auto-generated constructor stub
         fabrica = Fabrica.getInstancia();
         iccde = fabrica.getIControladorConsultaDeEspectaculo();
+       
     }
 
 	/**
@@ -140,7 +143,7 @@ public class Espectaculo extends HttpServlet {
 	        String paquetesDetalleJson = gson.toJson(iccde.seleccionaEspectaculo(request.getParameter("paquete")));
 	        out.println(paquetesDetalleJson); 
 			
-		}
+		} 
 
 	}
 	
@@ -203,4 +206,5 @@ public class Espectaculo extends HttpServlet {
 		}
 		return false;
 	}
+	
 }
