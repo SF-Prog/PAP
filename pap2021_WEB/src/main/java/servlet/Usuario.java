@@ -178,7 +178,7 @@ public class Usuario extends HttpServlet {
 				   request.getParameterMap().containsKey("descripcionGeneralU") &&
 				   request.getParameterMap().containsKey("linkU") &&
 				   request.getParameterMap().containsKey("biografiaU") ){*/
-		System.out.println(request.getParameter("TipoUsuario").equals("Artista"));
+	//	System.out.println(request.getParameter("TipoUsuario").equals("Artista"));
 		
 		if( request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Artista") ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA		
@@ -193,7 +193,7 @@ public class Usuario extends HttpServlet {
 				   request.getParameterMap().containsKey("nombreU") &&
 				   request.getParameterMap().containsKey("apellidoU") &&
 				   request.getParameterMap().containsKey("TipoUsuario") ){*/
-		System.out.println(request.getParameter("TipoUsuario").equals("Espectador"));
+		//System.out.println(request.getParameter("TipoUsuario").equals("Espectador"));
 		if(request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Espectador")){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR		
 			return true;
