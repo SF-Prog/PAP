@@ -76,8 +76,10 @@ function enviar(){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 	    document.getElementById("altaUsuarioForm").reset();
-	    document.getElementById("msg").innerHTML('<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>');
+	   
 	     console.log(xhttp);
+	    }else{
+	    	 document.getElementById("msg").innerHTML('<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>');
 	    }
 	};
 	xhttp.open("POST", "Usuario", true);
