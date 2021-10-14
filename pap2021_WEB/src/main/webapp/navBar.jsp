@@ -1,3 +1,4 @@
+<%HttpSession sesion = request.getSession();%>
 <body>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -13,9 +14,10 @@
       <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
       <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
       <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
-      <%
-		HttpSession sesion = request.getSession();
-		if (sesion.getAttribute("conectado") != null) {%>
+	  
+	  <%
+	  if (sesion.getAttribute("conectado") != null) {
+		if (sesion.getAttribute("tipo") != "artista") {%>
 		<li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
 		       <input type="hidden"  value="close" class="btn btn-primary">
 		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
@@ -23,8 +25,21 @@
 	     </li>
 		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
 
-	  <%}%>
-		
+	  <%}else if(sesion.getAttribute("tipo") != "espectador"){%>
+	  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+		       <input type="hidden"  value="close" class="btn btn-primary">
+		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+		      </form>
+	     </li>
+		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+	<%}else{%>
+	<li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+		       <input type="hidden"  value="close" class="btn btn-primary">
+		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+		      </form>
+	     </li>
+		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+	<%}%>
       <%/*if (session == null){
 		out.print("no");
 		}else{

@@ -76,12 +76,24 @@ public class Usuario extends HttpServlet {
 				logica.Usuario usuario = this.iniciarSesionUsuario(usuarios,email,password);
 				if(usuario != null) {
 					 HttpSession session = request.getSession(conectado);
+					 
+					 
 					 session.setAttribute("conectado", true);
 					 session.setAttribute("uNickName", usuario.getNickName());
 					 session.setAttribute("uEmail", usuario.getEmail());
 					 session.setAttribute("uApellido", usuario.getApellido());
 					 session.setAttribute("uNombre", usuario.getNombre());
+
+					 if(usuario instanceof logica.Artista){
+						 session.setAttribute("tipo", "artista");
+					 }else if(usuario instanceof logica.Espectador) {
+						 session.setAttribute("tipo", "espectador");
+					 }else {
+						 session.setAttribute("tipo", "admin");
+					 }
+					 
 					 request.setAttribute("mensaje", "Bienvenido "+usuario.getNickName());
+					 
 					 rd=request.getRequestDispatcher("index.jsp");
 					 rd.forward(request, response);
 				}else{
