@@ -10,30 +10,30 @@
 	  <%
 	  if (sesion.getAttribute("conectado") != null) {
 		if (sesion.getAttribute("tipo") != "artista") {%>
-      	  <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+      	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
 		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
 		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		      <input type="hidden"  value="close" class="btn btn-primary">
-		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+		      <input type="hidden" value="close" class="btn btn-primary">
+		      <input type="submit" value="Cierre Sesión" class="btn btn-primary">
 		      </form>
 	      </li>
 
 	  <%}else if(sesion.getAttribute("tipo") != "espectador"){%>
-	      <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
-      	  <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+	      <li><a href="altaFuncionDeEspectaculo.jsp">Alta Función de Espectáculo</a></li>
+      	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
 		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
 		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		       <input type="hidden"  value="close" class="btn btn-primary">
-		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+		      <input type="hidden" value="close" class="btn btn-primary">
+		      <input type="submit" value="Cierre Sesión" class="btn btn-primary">
 		      </form>
 	     </li>
 	<%}}else {%>
-      	 <li><a href="inicioSesion.jsp"> Inicio Sesión</a></li>  
-      	 <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+      	 <li><a href="inicioSesion.jsp">Inicio Sesión</a></li>  
+	     <li><a href="altaUsuario.jsp">Alta usuario</a></li>
+      	 <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
       	 <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li> 
-	     <li><a href="altaUsuario.jsp">Registrar usuario</a></li>
 	<%}%>
        <!-- NO MINIMOS -->
        <!--  <li><a href="#">Consulta de Usuario</a></li>
