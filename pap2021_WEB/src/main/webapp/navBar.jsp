@@ -13,9 +13,11 @@
       	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
 		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
-		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		      <input type="hidden" value="close" class="btn btn-primary">
-		      <input type="submit" value="Cierre Sesión" class="btn btn-primary">
+
+		  <li><form action="Usuario" method="POST" name="nombreForm" style="mergin-left: 40px;">
+		      <input type="hidden"  name="close" value="close" class="btn btn-primary">
+		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
+
 		      </form>
 	      </li>
 
@@ -24,9 +26,10 @@
       	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
 		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
-		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		      <input type="hidden" value="close" class="btn btn-primary">
-		      <input type="submit" value="Cierre Sesión" class="btn btn-primary">
+
+		  <li><form action="Usuario" method="POST" name="nombreForm" style="mergin-left: 40px;">
+		       <input type="hidden" name="close" value="close" class="btn btn-primary">
+		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
 		      </form>
 	     </li>
 	<%}}else {%>
@@ -50,3 +53,22 @@
     </ul>
   </div>
 </nav>
+
+
+<script>
+function cerrarSesion(){
+	var formParametr = new FormData();
+	formParametr.append("cerrarSesion","close");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       // Typical action to be performed when the document is ready:
+	     console.log(xhttp.responseText);
+	      
+	    }
+	};
+	xhttp.open("POST", "Usuario", true);
+	xhttp.send(formParametr);
+    return false;
+}
+</script>

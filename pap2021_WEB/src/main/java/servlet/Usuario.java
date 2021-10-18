@@ -132,6 +132,9 @@ public class Usuario extends HttpServlet {
 			
 			icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
 			System.out.println("entro Artista");
+			request.setAttribute("mensaje", "Usuario creado correctament");
+			rd=request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
 		}else if(this.esAltaUsuarioEspectador(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR
 			String nickName =request.getParameter("nicknameU");
@@ -154,17 +157,23 @@ public class Usuario extends HttpServlet {
 			System.out.println( dt);
 			System.out.println("entro espectador");
 			//PrintWriter out = response.getWriter( dt);
-		}else if(this.esCerrarSesion(request)){
-			HttpSession session = request.getSession(false);
-		    session.invalidate();
-			rd=request.getRequestDispatcher("inicioSesion.jsp");
-			rd.forward(request, response);
 			
+			request.setAttribute("mensaje", "Usuario creado correctament");
+			rd=request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}else if(this.esCerrarSesion(request)){
+			HttpSession sesion = request.getSession(false);
+		    sesion.invalidate();
+		    
+			request.setAttribute("mensaje", "Nos vemos");
+			rd=request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+			 
 	        
 	        //PrintWriter out=response.getWriter();  
-	        //request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
+	       /* request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
 	        
-	        /*HttpSession sesion = request.getSession(false);
+	        HttpSession sesion = request.getSession(false);
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
 		}else if(this.esTraerUsuarios(request)){
@@ -212,6 +221,7 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esCerrarSesion (HttpServletRequest request) {
+		System.out.println(request.getParameterMap().containsKey("close"));
 		if(request.getParameterMap().containsKey("close") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			System.out.println("cerro sesion");
