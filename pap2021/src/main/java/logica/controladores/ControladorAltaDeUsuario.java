@@ -72,7 +72,7 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	    	if (uSeguido == null) {
 	    		throw new Exception("No existe el usuario " + seguido);
 	    	} else {
-	    		mU.dejarSeguirUsuario(uSeguidor, uSeguidor);
+	    		mU.dejarSeguirUsuario(uSeguidor, uSeguido);
 	    	}
 	    }
 	}
