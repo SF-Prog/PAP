@@ -5,24 +5,17 @@
 
 <!--  CONTENIDO INICIO -->
 
-
 <c:if test="${mensaje!= null}">
 <div class="alert alert-success" style="text-align: center; font-size: 32px; width: 300px; margin-right: auto;  margin-left: auto;"><p>${mensaje} </p></div>
 </c:if>
 
-
-
-<%
-
-if (session == null){
+<%/*if (session == null){
 		out.print("no");
 }else{
 
  String username = (String)session.getValue("uNickName");
  out.print(username);
-}%>
-
+}*/%>
 
 <!-- FIN  CONTENIDO INICIO -->
 <%@ include file="/footer.jsp"%>
-

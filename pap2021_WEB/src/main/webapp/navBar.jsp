@@ -3,51 +3,38 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="index.jsp">CoronaTickets.uy</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <!-- MINIMOS -->
-      <li><a href="inicioSesion.jsp"> Inicio Sesión</a></li>
-      
-      <li><a href="altaUsuario.jsp">Alta Usuario</a></li>
-      <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
-      <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
-      <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
-	  
+      <li class="active"><a href="index.jsp">Home</a></li>
 	  <%
 	  if (sesion.getAttribute("conectado") != null) {
 		if (sesion.getAttribute("tipo") != "artista") {%>
-		<li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		       <input type="hidden"  value="close" class="btn btn-primary">
+      	  <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+          <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
+		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+		      <input type="hidden"  value="close" class="btn btn-primary">
 		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
 		      </form>
-	     </li>
-		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+	      </li>
 
 	  <%}else if(sesion.getAttribute("tipo") != "espectador"){%>
-	  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+	      <li><a href="altaFuncionDeEspectaculo.jsp"> Alta Función de Espectáculo</a></li>
+      	  <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+          <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
+		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+		  <li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
 		       <input type="hidden"  value="close" class="btn btn-primary">
 		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
 		      </form>
 	     </li>
-		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
-	<%}else{%>
-	<li><form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
-		       <input type="hidden"  value="close" class="btn btn-primary">
-		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
-		      </form>
-	     </li>
-		<li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+	<%}}else {%>
+      	 <li><a href="inicioSesion.jsp"> Inicio Sesión</a></li>  
+      	 <li><a href="consultaEspectaculo.jsp"> Consulta Espectáculo</a></li>
+      	 <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li> 
+	     <li><a href="altaUsuario.jsp">Registrar usuario</a></li>
 	<%}%>
-      <%/*if (session == null){
-		out.print("no");
-		}else{
-			// String username = (String)session.getValue("uNickName");
-			//out.print(username);
-			out.print("<li><a href=\"SeguirUsuario\">Seguir a un Usuario</a></li>");
-			out.print("<li><a href=\"dejarSeguirUsuario\">Dejar de seguir a un Usuario</a></li>");
-		}*/%>
        <!-- NO MINIMOS -->
        <!--  <li><a href="#">Consulta de Usuario</a></li>
        <li><a href="#">Modificar Datos de Usuario</a></li>
