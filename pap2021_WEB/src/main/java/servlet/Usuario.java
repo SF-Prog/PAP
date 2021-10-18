@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.lang.Exception;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,12 +20,10 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import datatypes.DtEspectaculo;
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeUsuario;
-import logica.Espectaculo;
 
 /**
  * Servlet implementation class Usuario
@@ -45,8 +44,7 @@ public class Usuario extends HttpServlet {
         // TODO Auto-generated constructor stub
         fabrica =  Fabrica.getInstancia();
 		iccdu = fabrica.getIControladorConsultaDeUsuario();
-		icadu = fabrica.getIControladorAltaDeUsuario();
-		
+		icadu = fabrica.getIControladorAltaDeUsuario();		
     }
 
 	/**
@@ -163,7 +161,7 @@ public class Usuario extends HttpServlet {
 			rd.forward(request, response);
 			
 	        response.setContentType("");  
-	        PrintWriter out=response.getWriter();  
+	        //PrintWriter out=response.getWriter();  
 	        //request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
 	        
 	        /*HttpSession sesion = request.getSession(false);
@@ -178,12 +176,26 @@ public class Usuario extends HttpServlet {
 	        // Convert numbers array into JSON string.
 	        String plataformasJson = gson.toJson(listUsuarios);
 	        PrintWriter out=response.getWriter(); 
-	        out.println(plataformasJson); 
-	        
-		}
-		
-
-		
+	        out.println(plataformasJson); 	        
+		}else if(this.esSeguirUsuario(request)){
+			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			String nickNameSeguido =request.getParameter("nickNameSeguido");
+			try {
+				icadu.seguirUsuario(nickNameSeguidor, nickNameSeguido);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}       
+		}else if(this.esDejarSeguirUsuario(request)){
+			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			String nickNameSeguido =request.getParameter("nickNameSeguido");
+			try {
+				icadu.dejarSeguirUsuario(nickNameSeguidor, nickNameSeguido);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}      
+		}		
 	}
 
 	private boolean esInicioSesion (HttpServletRequest request) {
@@ -204,13 +216,12 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esTraerUsuarios (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("traerUsuarios") ){
+		if(request.getParameterMap().containsKey("dejarSeguirUsuario") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			return true;
 		}
 		return false;
-	}
-	
+	}	
 	
 	private boolean esAltaUsuarioArtista (HttpServletRequest request) {
 
@@ -232,6 +243,22 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esAltaUsuarioEspectador (HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("traerUsuarios") ){
+			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean esSeguirUsuario (HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("seguirUsuario") ){
+			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
+			return true;
+		}
+		return false;
+	}	
+	
+	private boolean esDejarSeguirUsuario (HttpServletRequest request) {
 		/*if(request.getParameterMap().containsKey("nicknameU") &&
 				   request.getParameterMap().containsKey("emailU") &&
 				   request.getParameterMap().containsKey("nombreU") &&
@@ -243,8 +270,7 @@ public class Usuario extends HttpServlet {
 			return true;
 		}
 		return false;
-	}
-	
+	}	
 
 	private logica.Usuario iniciarSesionUsuario (ArrayList<logica.Usuario> usuarios,String email ,String password){
 		logica.Usuario dtu = null;
