@@ -160,7 +160,7 @@ public class Usuario extends HttpServlet {
 			rd=request.getRequestDispatcher("inicioSesion.jsp");
 			rd.forward(request, response);
 			
-	        response.setContentType("");  
+	        
 	        //PrintWriter out=response.getWriter();  
 	        //request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
 	        
@@ -168,25 +168,30 @@ public class Usuario extends HttpServlet {
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
 		}else if(this.esTraerUsuarios(request)){
-			
+			//System.out.println("agusss");
 			ArrayList<logica.Usuario> listUsuarios =  iccdu.listarUsuarios();
-
+			
+			
 		    Gson gson = new Gson();
 		   
 	        // Convert numbers array into JSON string.
 	        String plataformasJson = gson.toJson(listUsuarios);
 	        PrintWriter out=response.getWriter(); 
-	        out.println(plataformasJson); 	        
+	        out.println(plataformasJson); 	   
+	        
+	        
 		}else if(this.esSeguirUsuario(request)){
+			
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String nickNameSeguido =request.getParameter("nickNameSeguido");
+			
 			try {
 				icadu.seguirUsuario(nickNameSeguidor, nickNameSeguido);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			} catch (Exception e) { 
 				e.printStackTrace();
 			}       
 		}else if(this.esDejarSeguirUsuario(request)){
+			
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String nickNameSeguido =request.getParameter("nickNameSeguido");
 			try {
@@ -194,7 +199,7 @@ public class Usuario extends HttpServlet {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}      
+			}     
 		}		
 	}
 
@@ -215,26 +220,9 @@ public class Usuario extends HttpServlet {
 		return false;
 	}
 	
-	private boolean esTraerUsuarios (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("dejarSeguirUsuario") ){
-			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
-			return true;
-		}
-		return false;
-	}	
+
 	
 	private boolean esAltaUsuarioArtista (HttpServletRequest request) {
-
-		/*if(request.getParameterMap().containsKey("nicknameU") &&
-				   request.getParameterMap().containsKey("emailU") &&
-				   request.getParameterMap().containsKey("nombreU") &&
-				   request.getParameterMap().containsKey("apellidoU") &&
-				   request.getParameterMap().containsKey("TipoUsuario") &&
-				   request.getParameterMap().containsKey("descripcionGeneralU") &&
-				   request.getParameterMap().containsKey("linkU") &&
-				   request.getParameterMap().containsKey("biografiaU") ){*/
-	//	System.out.println(request.getParameter("TipoUsuario").equals("Artista"));
-		
 		if( request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Artista") ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA		
 			return true;
@@ -243,29 +231,30 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esAltaUsuarioEspectador (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("traerUsuarios") ){
+		if(request.getParameterMap().containsKey("TipoUsuario")&& !request.getParameter("TipoUsuario").equals("Espectador") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			return true;
 		}
 		return false;
 	}
 	
+	private boolean esTraerUsuarios (HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("traerUsuarios") && !request.getParameter("traerUsuarios").isEmpty()  ){
+			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
+			return true;
+		}
+		return false;
+	}	
 	private boolean esSeguirUsuario (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("seguirUsuario") ){
+		if(request.getParameterMap().containsKey("seguirUsuario")&& !request.getParameter("seguirUsuario").isEmpty()  ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
 			return true;
 		}
 		return false;
 	}	
 	
-	private boolean esDejarSeguirUsuario (HttpServletRequest request) {
-		/*if(request.getParameterMap().containsKey("nicknameU") &&
-				   request.getParameterMap().containsKey("emailU") &&
-				   request.getParameterMap().containsKey("nombreU") &&
-				   request.getParameterMap().containsKey("apellidoU") &&
-				   request.getParameterMap().containsKey("TipoUsuario") ){*/
-		//System.out.println(request.getParameter("TipoUsuario").equals("Espectador"));
-		if(request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Espectador")){
+	private boolean esDejarSeguirUsuario(HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("dejarSeguir") && !request.getParameter("dejarSeguir").isEmpty()){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR		
 			return true;
 		}
