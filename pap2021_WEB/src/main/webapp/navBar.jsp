@@ -12,12 +12,11 @@
 		if (sesion.getAttribute("tipo") != "artista") {%>
       	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
-		  <li><a href="seguirUsuario.jsp">Seguir a un Usuario</a></li>
+		  <li><a href="seguirUsuario.jsp">Seguimiento de Usuarios</a></li>
 
 		  <li><form action="Usuario" method="POST" name="nombreForm" style="mergin-left: 40px;">
 		      <input type="hidden"  name="close" value="close" class="btn btn-primary">
 		      <input type="submit"  value="Cierre Sesión" class="btn btn-primary">
-
 		      </form>
 	      </li>
 

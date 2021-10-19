@@ -60,8 +60,7 @@ public class Usuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*doGet(request, response);*/
-		
+		/*doGet(request, response);*/		
 
 		RequestDispatcher rd;
 		if(this.esInicioSesion(request)){
@@ -174,8 +173,7 @@ public class Usuario extends HttpServlet {
 		    
 			request.setAttribute("mensaje", "Nos vemos");
 			rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-			 
+			rd.forward(request, response);			 
 	        
 	        //PrintWriter out=response.getWriter();  
 	       /* request.getRequestDispatcher("index.jsp").include(request, response);  //aca le pongo la redireccion del logout
@@ -184,38 +182,36 @@ public class Usuario extends HttpServlet {
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
 		}else if(this.esTraerUsuarios(request)){
-			//System.out.println("agusss");
 			ArrayList<logica.Usuario> listUsuarios =  iccdu.listarUsuarios();
-			
-			
-		    Gson gson = new Gson();
-		   
+		    Gson gson = new Gson();		   
 	        // Convert numbers array into JSON string.
 	        String plataformasJson = gson.toJson(listUsuarios);
 	        PrintWriter out=response.getWriter(); 
-	        out.println(plataformasJson); 	   
-	        
-	        
-		}else if(this.esSeguirUsuario(request)){
-			
+	        out.println(plataformasJson);	        
+		}else if(this.esSeguirUsuario(request)){			
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
-			String nickNameSeguido =request.getParameter("nickNameSeguido");
-			
+			String nickNameSeguido =request.getParameter("nickNameSeguido");	
+			String message = "Usuario seguido correctamente";		
 			try {
 				icadu.seguirUsuario(nickNameSeguidor, nickNameSeguido);
 			} catch (Exception e) { 
-				e.printStackTrace();
+				message = e.getMessage();
 			}       
-		}else if(this.esDejarSeguirUsuario(request)){
-			
+			request.setAttribute("mensaje", message);
+			rd=request.getRequestDispatcher("seguirUsuario.jsp");
+			rd.forward(request, response);
+		}else if(this.esDejarSeguirUsuario(request)){			
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String nickNameSeguido =request.getParameter("nickNameSeguido");
+			String message = "Usuario dejado de seguir correctamente";
 			try {
 				icadu.dejarSeguirUsuario(nickNameSeguidor, nickNameSeguido);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}     
+				message = e.getMessage();
+			}
+			request.setAttribute("mensaje", message);
+			rd=request.getRequestDispatcher("seguirUsuario.jsp");
+			rd.forward(request, response);
 		}else if(this.esListarSeguidores(request)) {
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String[] listaSeguidores= icadu.usuariosSeguidos(nickNameSeguidor);
@@ -254,10 +250,8 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esAltaUsuarioEspectador (HttpServletRequest request) {
-
 		if(request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Espectador") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
-
 			return true;
 		}
 		return false;
@@ -270,6 +264,7 @@ public class Usuario extends HttpServlet {
 		}
 		return false;
 	}	
+	
 	private boolean esSeguirUsuario (HttpServletRequest request) {
 		if(request.getParameterMap().containsKey("seguirUsuario")&& !request.getParameter("seguirUsuario").isEmpty()  ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	

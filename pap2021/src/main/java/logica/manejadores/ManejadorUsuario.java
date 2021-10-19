@@ -92,20 +92,8 @@ public class ManejadorUsuario {
 	}
 	
 	public void dejarSeguirUsuario(Usuario seguidor, Usuario seguido) throws Exception {
-
-		//System.out.println(seguido.getNickName()+"' AND u.seguidores_nickname='"+seguidor.getNickName());
-		/*Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();	
-		
-		Query query = em.createQuery("DELETE FROM usuario_usuario u WHERE u.seguidos_nickname='"+seguido.getNickName()+"' AND u.seguidores_nickname='"+seguidor.getNickName()+"'");
-		//query.setParameter("seguido", seguido.getNickName());
-	    ///query.setParameter("seguidor", seguidor.getNickName());
-	    em.getTransaction().begin();
-	    em.getTransaction().commit();*/
-		
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		//seguidor.dejarDeSeguir(seguido);
 		seguido.dejarDeSeguir(seguidor);
         try {
         	em.getTransaction().begin();
@@ -118,5 +106,18 @@ public class ManejadorUsuario {
 	        }
         	throw new Exception("ERROR!");
         }
+	}
+	
+	public List<String> getUsuariosSeguidos(String seguidor) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		Query query = em.createNativeQuery("SELECT u.seguidos_nickname FROM usuario_usuario u WHERE u.seguidores_nickname=:seguidor");
+	    query.setParameter("seguidor", seguidor);
+	    try {
+			return (List<String>)query.getResultList();	
+        }
+	    catch (Exception e) { 
+			return null;
+	    }
 	}
 }

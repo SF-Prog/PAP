@@ -55,7 +55,9 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	    	Usuario uSeguido = mU.buscarUsuarioPorNickname(seguido);
 	    	if (uSeguido == null) {
 	    		throw new Exception("No existe el usuario " + seguido);
-	    	} else {
+	    	} else if (checkSeguidor(uSeguidor.getNickName(), seguido)) {
+	    		throw new Exception("El usuario " + seguidor + " ya sigue a " + seguido);
+	    	} else {	    		
 	    		mU.seguirUsuario(uSeguidor, uSeguido);
 	    	}
 	    }
@@ -71,7 +73,9 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	    	Usuario uSeguido = mU.buscarUsuarioPorNickname(seguido);
 	    	if (uSeguido == null) {
 	    		throw new Exception("No existe el usuario " + seguido);
-	    	} else {
+	    	} else if (!checkSeguidor(uSeguidor.getNickName(), seguido)) {
+	    		throw new Exception("El usuario " + seguidor + " no sigue a " + seguido);
+	    	} else {	    		
 	    		mU.dejarSeguirUsuario(uSeguidor, uSeguido);
 	    	}
 	    }
@@ -102,11 +106,10 @@ public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {
 	@Override
 	public boolean checkSeguidor(String nicknameSeguidor, String nicknameSeguido) {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
-		Usuario u = mU.buscarUsuarioPorNickname(nicknameSeguidor);
-		List<Usuario> seguidos = u.getUsuariosSeguidos();
+		List<String> seguidos = mU.getUsuariosSeguidos(nicknameSeguidor);
 		if(seguidos != null) {
-			for(Usuario usu: seguidos) {
-				if(nicknameSeguido.equals(usu.getNickName())){
+			for(String usu: seguidos) {
+				if(nicknameSeguido.equals(usu)){
 					return true;
 				}
 			}

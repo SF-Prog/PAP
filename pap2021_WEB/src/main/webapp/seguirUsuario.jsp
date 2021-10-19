@@ -1,12 +1,16 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
 
 <!--  CONTENIDO SEGUIR USUARIO -->
 <!-- <ul id="listaUsuarios"></ul> -->
 <ul class="list-group" id="listaUsuarios">
-
 </ul>
+<div id="seccionFormulario">
+	<c:if test="${mensaje!= null}">
+		<div class="alert alert-danger" style="text-align: center;"><p>${mensaje}</p></div>
+	</c:if>
+</div>
 <script>
 
 function traerUsuarios() {
