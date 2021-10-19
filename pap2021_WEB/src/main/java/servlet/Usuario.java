@@ -90,11 +90,11 @@ public class Usuario extends HttpServlet {
 					 request.setAttribute("mensaje", "Bienvenido "+usuario.getNickName());					 
 					 rd=request.getRequestDispatcher("index.jsp");
 				}else{
-					request.setAttribute("mensaje", "Email y/o contraseña incorrecta");
+					request.setAttribute("mensaje", "Usuario y/o contraseï¿½a incorrecta");
 					rd=request.getRequestDispatcher("inicioSesion.jsp");
 				}
 			}else{
-				request.setAttribute("mensaje", "Debe ingresar email y contraseña");
+				request.setAttribute("mensaje", "Debe ingresar email y contraseï¿½a");
 				rd=request.getRequestDispatcher("inicioSesion.jsp");
 			}
 			rd.forward(request, response);
