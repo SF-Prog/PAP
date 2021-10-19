@@ -98,14 +98,14 @@ public class Funciones extends HttpServlet {
 			}
     		
     		
-    		System.out.println("si"); 
+
     	
     		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
-    		System.out.println("no"); 
+
         	
 
 			//icadfde.
-		    //Gson gson = new Gson();
+		   //Gson gson = new Gson();
 		    //System.out.println(iccde.seleccionaPaquete(request.getParameter("paquete")));
 	        // Convert numbers array into JSON string.
 	        //String paquetesDetalleJson = gson.toJson(iccde.seleccionaEspectaculo(request.getParameter("paquete")));

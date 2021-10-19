@@ -129,12 +129,20 @@ public class Usuario extends HttpServlet {
 			String descripcionGeneral =request.getParameter("descripcionGeneralU");
 			String link = request.getParameter("linkU");
 			String biografia = request.getParameter("biografiaU");
-			
-			icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
-			System.out.println("entro Artista");
-			request.setAttribute("mensaje", "Usuario creado correctament");
-			rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			PrintWriter out = response.getWriter();
+			if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
+				icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
+				System.out.println("entro Artista");
+				out.print("Usuario creado correctamente"); 
+				/*request.setAttribute("mensaje", "Usuario creado correctament");
+				rd=request.getRequestDispatcher("index.jsp");
+				rd.forward(request, response);*/
+			}else{
+				out.print("Nickname y/o email ya estan en uso"); 
+				/*request.setAttribute("mensaje", "Nickname y/o email ya estan en uso");
+				rd=request.getRequestDispatcher("altaUsuario.jsp");
+				rd.forward(request, response);*/
+			}
 		}else if(this.esAltaUsuarioEspectador(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR
 			String nickName =request.getParameter("nicknameU");
@@ -152,15 +160,22 @@ public class Usuario extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
-			icadu.ingresaUsuarioEspectador( dt);
-			System.out.println( dt);
-			System.out.println("entro espectador");
-			//PrintWriter out = response.getWriter( dt);
-			
-			request.setAttribute("mensaje", "Usuario creado correctament");
-			rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			System.out.println("espoectador");
+			PrintWriter out = response.getWriter();
+			if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
+				DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
+				icadu.ingresaUsuarioEspectador( dt);
+
+				out.print("Usuario creado correctamente"); 
+				/*request.setAttribute("mensaje", "Usuario creado correctament");
+				rd=request.getRequestDispatcher("index.jsp");
+				rd.forward(request, response);*/
+			}else{
+				out.print("Nickname y/o email ya estan en uso"); 
+				/*request.setAttribute("mensaje", "Nickname y/o email ya estan en uso");
+				rd=request.getRequestDispatcher("altaUsuario.jsp");
+				rd.forward(request, response);*/
+			}
 		}else if(this.esCerrarSesion(request)){
 			HttpSession sesion = request.getSession(false);
 		    sesion.invalidate();
@@ -241,8 +256,10 @@ public class Usuario extends HttpServlet {
 	}
 	
 	private boolean esAltaUsuarioEspectador (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("TipoUsuario")&& !request.getParameter("TipoUsuario").equals("Espectador") ){
+
+		if(request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Espectador") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
+
 			return true;
 		}
 		return false;
