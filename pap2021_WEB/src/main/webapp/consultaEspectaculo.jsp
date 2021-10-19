@@ -1,20 +1,48 @@
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
 <!--  CONTENIDO CONSULTA ESPECTACULO -->
+<style>
+.contenido {
+    margin: 10px;
+    padding: 25px;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+}
+.contenido hr{
+    border-top: 2px solid #3e42cbb8!important;
+    
+}
 
-<select name="plataformas" id="plataformas"  onchange="taerEspectaculo();detallePlataformas();">
+.contenido h3{
+    text-transform: capitalize;
+    font-weight: 600;
+     font-style: italic;
+}
+
+select {
+    font-family: inherit;
+    font-size: x-large;
+    /* line-height: revert; */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 15px;
+}
+</style>
+
+<div class="row">
+<select  class=" col-sm-12 col-md-3   col-md-offset-2 form-select" aria-label="Default select example" name="plataformas" id="plataformas"  onchange="taerEspectaculo();detallePlataformas();">
  <!--  <option value="" disabled >Seleccione Plataforma</option> -->
   
 </select>
 
 
-<select name="Espectaculo" id="espectaculo" onchange="taerFunciones();detalleEspectaculo();">
+<select  class="col-sm-12 col-md-3  form-select" aria-label="Default select example" name="Espectaculo" id="espectaculo" onchange="taerFunciones();detalleEspectaculo();">
  <!-- <option value="" disabled >Seleccione Eventos</option> -->
 </select>
-<select name="funciones" id="funciones" onchange="detalleFuncion();">
+<select  class="col-sm-12 col-md-3 form-select" aria-label="Default select example" name="funciones" id="funciones" onchange="detalleFuncion();">
  <!--  <option value="" disabled >Seleccione funciones</option> -->
 </select>
-
+</div>
 
 <!--<select name="paquetes" id="Paquetes">
   <option value="" disabled >Seleccione Paquetes</option>
@@ -146,7 +174,7 @@
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divPlataforma").innerHTML='<h3>'+datos.nombre+'</h3><p>'+datos.descripcion+'<br/><a href="'+datos.urlasociada+'" target="_blank">Ver mas</a></p>';
+		    	document.getElementById("divPlataforma").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><a href="'+datos.urlasociada+'" target="_blank">Ver mas</a></p></div>';
 			    
 		    }
 		};
@@ -167,7 +195,7 @@
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divEspectaculo").innerHTML='<h3>'+datos.nombre+'</h3><p>'+datos.descripcion+'<br/><b><em>Costo: </em></b>'+datos.costo+'<br/><b><em>Duracion: </em></b>'+datos.duracion+'<br/><b><em>Fecha de registro: </em></b>'+datos.fechaRegistro+'<br/><b><em>Maximo de espectadores: </em></b>'+datos.espectadoresMax+'<br/><b><em>Minimo de espectadores: </em></b>'+datos.espectadoresMin+'</p>';
+		    	document.getElementById("divEspectaculo").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><b><em>Costo: </em></b>'+datos.costo+'<br/><b><em>Duracion: </em></b>'+datos.duracion+'<br/><b><em>Fecha de registro: </em></b>'+datos.fechaRegistro+'<br/><b><em>Maximo de espectadores: </em></b>'+datos.espectadoresMax+'<br/><b><em>Minimo de espectadores: </em></b>'+datos.espectadoresMin+'</p> </div>';
 			    
 		    }
 		};
@@ -188,7 +216,7 @@
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divFuncion").innerHTML='<h3>'+datos.nombre+'</h3><p><b><em>Fecha: </em></b>'+datos.fecha+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p>';
+		    	document.getElementById("divFuncion").innerHTML='<div  class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha: </em></b>'+datos.fecha+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p></div>';
 			    
 		    }
 		};
