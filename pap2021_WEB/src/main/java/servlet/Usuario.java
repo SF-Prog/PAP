@@ -109,7 +109,7 @@ public class Usuario extends HttpServlet {
 
 		}else if(this.esAltaUsuarioArtista(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA	
-			System.out.println("entro Artista");
+			
 			String nickName =request.getParameter("nicknameU");
 			String email =request.getParameter("emailU");
 			String nombre =  request.getParameter("nombreU");
@@ -160,7 +160,7 @@ public class Usuario extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("espoectador");
+			
 			PrintWriter out = response.getWriter();
 			if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
 				DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
