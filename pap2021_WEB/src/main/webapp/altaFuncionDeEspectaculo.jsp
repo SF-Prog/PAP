@@ -56,7 +56,9 @@
 			</div>
 			<input  class="form-control" type="date" name="fecchaU" id="birthday" name="birthday">
 		</div>
-		
+		<div class="row" style="margin:40px 0 0 30px" id="msg">
+				
+		</div>
 		<div class="row" style="margin:40px 0 0 30px">
 			<input type="submit" name="btnEnvio" value="Ingresar Usuario" class="btn btn-primary col-md-2">		
 		</div>
@@ -151,17 +153,18 @@ function taerArtistas(){
 	    	 let bandera = true;
 		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
 		    	 console.log(datos[i],i);
-		         var option = document.createElement('option');
-		         option.text = option.value = datos[i];
-		         if(bandera){
-		        	 option.text="Seleccione Artistas";
-		        	 option.value="";
-		        	 option.selected= true;
-		        	 option.disabled= true;
-		        	 bandera =false;
-		         }
-		         select.add(option, i);
-		         
+		    	 if( datos[i]!= null){
+			         var option = document.createElement('option');
+			         option.text = option.value = datos[i];
+			         if(bandera ){
+			        	 option.text="Seleccione Artistas";
+			        	 option.value="";
+			        	 option.selected= true;
+			        	 option.disabled= true;
+			        	 bandera =false;
+			         }
+			         select.add(option, i);
+		    	 }
 		         
 		     }
 	    }
@@ -282,8 +285,14 @@ function enviar(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	       // Typical action to be performed when the document is ready:
-	     console.log(xhttp);
+	       // Typical action to be performed when the document is ready
+
+	    	if(xhttp.responseText =="ingreso Funcion"){
+	    		 document.getElementById("altaFuncion").reset();
+	    		document.getElementById("msg").innerHTML='<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>';
+	    	}else{
+	    		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>';
+	    	}
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);

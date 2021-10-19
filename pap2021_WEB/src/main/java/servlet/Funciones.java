@@ -88,12 +88,15 @@ public class Funciones extends HttpServlet {
         	System.out.println(listaArtistas);
     	
     		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta, imagen);
-    		
+    		PrintWriter out2 = response.getWriter();
     		try {
 				icadfde.ingresaFuncion(dtFuncion, listaArtistas);
+
+				out2.print("ingreso Funcion"); 
 			} catch (AltaFuncionDeEspectaculoExcepcion e) {
 				// TODO Auto-generated catch block
-				throw new ServletException(e.getMessage());
+				out2.println(e.getMessage()); 
+				//throw new ServletException();
 				
 			}
     		
