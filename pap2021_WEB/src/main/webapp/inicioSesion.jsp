@@ -2,19 +2,15 @@
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
 <!--  CONTENIDO INICIO SESION -->
-<div id="seccionFormulario">
-	<form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
+<div id="seccionFormulario" style="margin-left: 40px; height: 100%; width:100%; display: flex; justify-content: center; align-items: center;">
+	<form action="Usuario" method="post" name="nombreForm" style="height: 350px; width: 300px; padding: 20px; border: 1px solid #EEE; border-radius: 15px; margin-top: 50px; display: flex; flex-flow: row wrap; align-items: center; justify-content: center;">
 		<div class="row">
-		  <div class="col-md-3">
 		    <label for="user" class="form-label">Usuario</label>
 		    <input type="text" class="form-control" name="user" id="user" required>
-		  </div>
 		</div>
 		<div class="row">
-		  <div class="col-md-3">
 		    <label for="password" class="form-label">Contraseña</label>
 		    <input type="password" class="form-control" name="password" id="password" required>
-		  </div>
 		</div>
 		<c:if test="${mensaje!= null}">
 			<div class="alert alert-danger" style="text-align: center;"><p>${mensaje}</p></div>
