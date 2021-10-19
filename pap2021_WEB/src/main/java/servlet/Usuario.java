@@ -216,7 +216,15 @@ public class Usuario extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}     
-		}		
+		}else if(this.esListarSeguidores(request)) {
+			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			String[] listaSeguidores= icadu.usuariosSeguidos(nickNameSeguidor);
+			
+		    Gson gson = new Gson();
+	        String plataformasJson = gson.toJson(listaSeguidores);
+			PrintWriter out = response.getWriter();
+	        out.println(plataformasJson); 
+		}
 	}
 
 	private boolean esInicioSesion (HttpServletRequest request) {
@@ -273,6 +281,13 @@ public class Usuario extends HttpServlet {
 	private boolean esDejarSeguirUsuario(HttpServletRequest request) {
 		if(request.getParameterMap().containsKey("dejarSeguir") && !request.getParameter("dejarSeguir").isEmpty()){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR		
+			return true;
+		}
+		return false;
+	}		
+	
+	private boolean esListarSeguidores(HttpServletRequest request) {
+		if(request.getParameterMap().containsKey("listarSeguidores")){	
 			return true;
 		}
 		return false;
