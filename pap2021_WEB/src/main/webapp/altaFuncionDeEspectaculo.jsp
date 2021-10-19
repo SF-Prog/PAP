@@ -289,6 +289,7 @@ function enviar(){
 
 	    	if(xhttp.responseText =="ingreso Funcion"){
 	    		 document.getElementById("altaFuncion").reset();
+	    		 document.getElementById('artistas').value='';
 	    		document.getElementById("msg").innerHTML='<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>';
 	    	}else{
 	    		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>';
