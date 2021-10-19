@@ -66,15 +66,14 @@ public class Usuario extends HttpServlet {
 		RequestDispatcher rd;
 		if(this.esInicioSesion(request)){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION	
-			String email = request.getParameter("email");
+			String user = request.getParameter("user");
 			String password = request.getParameter("password");
 			boolean conectado = false;
-			if(email !=""  && password != "") {
+			if(user != ""  && password != "") {
 				ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
-				logica.Usuario usuario = this.iniciarSesionUsuario(usuarios,email,password);
+				logica.Usuario usuario = this.iniciarSesionUsuario(usuarios,user,password);
 				if(usuario != null) {
-					 HttpSession session = request.getSession(conectado);
-					 
+					 HttpSession session = request.getSession(conectado);					 
 					 
 					 session.setAttribute("conectado", true);
 					 session.setAttribute("uNickName", usuario.getNickName());
@@ -88,25 +87,18 @@ public class Usuario extends HttpServlet {
 						 session.setAttribute("tipo", "espectador");
 					 }else {
 						 session.setAttribute("tipo", "admin");
-					 }
-					 
-					 request.setAttribute("mensaje", "Bienvenido "+usuario.getNickName());
-					 
+					 }					 
+					 request.setAttribute("mensaje", "Bienvenido "+usuario.getNickName());					 
 					 rd=request.getRequestDispatcher("index.jsp");
-					 rd.forward(request, response);
 				}else{
 					request.setAttribute("mensaje", "Email y/o contraseña incorrecta");
 					rd=request.getRequestDispatcher("inicioSesion.jsp");
-					rd.forward(request, response);
 				}
-				
-				
 			}else{
 				request.setAttribute("mensaje", "Debe ingresar email y contraseña");
 				rd=request.getRequestDispatcher("inicioSesion.jsp");
-				rd.forward(request, response);
 			}
-
+			rd.forward(request, response);
 		}else if(this.esAltaUsuarioArtista(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA	
 			System.out.println("entro Artista");
@@ -213,7 +205,7 @@ public class Usuario extends HttpServlet {
 	}
 
 	private boolean esInicioSesion (HttpServletRequest request) {
-		if(request.getParameterMap().containsKey("email") && request.getParameterMap().containsKey("password") ){
+		if(request.getParameterMap().containsKey("user") && request.getParameterMap().containsKey("password") ){
 			// SE ESTA CONSULTANDO DESDE EL INICIO DE SESION			
 			return true;
 		}
@@ -229,8 +221,6 @@ public class Usuario extends HttpServlet {
 		}
 		return false;
 	}
-	
-
 	
 	private boolean esAltaUsuarioArtista (HttpServletRequest request) {
 		if( request.getParameterMap().containsKey("TipoUsuario") && request.getParameter("TipoUsuario").equals("Artista") ){
@@ -271,30 +261,20 @@ public class Usuario extends HttpServlet {
 		return false;
 	}	
 
-	private logica.Usuario iniciarSesionUsuario (ArrayList<logica.Usuario> usuarios,String email ,String password){
+	private logica.Usuario iniciarSesionUsuario (ArrayList<logica.Usuario> usuarios,String usuario,String password){
 		logica.Usuario dtu = null;
-		if(email.equals("admin@admin.com") && password.equals("1234")) {
-			Date fecha = new Date();
-			dtu = new logica.Usuario ("admin","admin","admin","admin@admin.com",fecha,"","");
-			System.out.println("ingreso admin");
-		}else{
-			
-		
-			Iterator<logica.Usuario> eIterator = usuarios.iterator(); 
-			
-			boolean existe = false;
-			while(eIterator.hasNext() && !existe){
-				logica.Usuario temp = eIterator.next();
-				if(temp.getEmail().equals(email)){
-					if(password.equals(temp.getPassword())) {
-						existe = true;
-						dtu=temp;
-						System.out.println("ingreso usuario");
-					}
-					
-				}
+		Iterator<logica.Usuario> eIterator = usuarios.iterator();		
+		boolean existe = false;
+		while(eIterator.hasNext() && !existe){
+			logica.Usuario temp = eIterator.next();
+			if(temp.getEmail().equals(usuario) || temp.getNickName().equals(usuario)){
+				if(password.equals(temp.getPassword())) {
+					existe = true;
+					dtu=temp;
+					System.out.println("ingreso usuario");
+				}				
 			}
 		}
-		return dtu ;
+		return dtu;
 	}
 }

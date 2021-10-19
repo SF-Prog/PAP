@@ -6,13 +6,13 @@
 	<form action="Usuario" method="post" name="nombreForm" style="mergin-left: 40px;">
 		<div class="row">
 		  <div class="col-md-3">
-		    <label for="email" class="form-label">E-mail</label>
-		    <input type="email" class="form-control" name="email" id="email" aria-describedby="email" required>
+		    <label for="user" class="form-label">Usuario</label>
+		    <input type="text" class="form-control" name="user" id="user" required>
 		  </div>
 		</div>
 		<div class="row">
 		  <div class="col-md-3">
-		    <label for="password" class="form-label">Password </label>
+		    <label for="password" class="form-label">Contraseña</label>
 		    <input type="password" class="form-control" name="password" id="password" required>
 		  </div>
 		</div>
