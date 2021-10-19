@@ -197,9 +197,11 @@ public class Usuario extends HttpServlet {
 			} catch (Exception e) { 
 				message = e.getMessage();
 			}       
-			request.setAttribute("mensaje", message);
+			PrintWriter out=response.getWriter(); 
+	        out.print(message);
+			/*request.setAttribute("mensaje", message);
 			rd=request.getRequestDispatcher("seguirUsuario.jsp");
-			rd.forward(request, response);
+			rd.forward(request, response);*/
 		}else if(this.esDejarSeguirUsuario(request)){			
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String nickNameSeguido =request.getParameter("nickNameSeguido");
@@ -209,9 +211,11 @@ public class Usuario extends HttpServlet {
 			} catch (Exception e) {
 				message = e.getMessage();
 			}
-			request.setAttribute("mensaje", message);
+			PrintWriter out=response.getWriter(); 
+	        out.print(message);
+			/*request.setAttribute("mensaje", message);
 			rd=request.getRequestDispatcher("seguirUsuario.jsp");
-			rd.forward(request, response);
+			rd.forward(request, response);*/
 		}else if(this.esListarSeguidores(request)) {
 			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
 			String[] listaSeguidores= icadu.usuariosSeguidos(nickNameSeguidor);
