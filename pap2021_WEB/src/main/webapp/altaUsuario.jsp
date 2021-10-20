@@ -17,21 +17,21 @@
 		<div class="row">
 			<div class="col-md-5">
 				<label class="form-label">Nombre:</label> 
-				<input class="form-control" type="text" name="nombreU" placeholder="Ingrese su nombre" required /><br/>
+				<input class="form-control" type="text" name="nombreU" placeholder="Ingrese su nombre" /><br/>
 			</div>
 			<div class="col-md-5">
 				<label class="form-label">Apellido:</label> 
-				<input class="form-control" type="text" name="apellidoU" placeholder="Ingrese su apellido" required /><br/>
+				<input class="form-control" type="text" name="apellidoU" placeholder="Ingrese su apellido" /><br/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-5">
 				<label class="form-label">Password:</label> 
-				<input class="form-control" type="text" name="password" placeholder="contraseña" required /><br/>
+				<input class="form-control" type="password" name="password" placeholder="Ingrese su contraseña" required /><br/>
 			</div>
 			<div class="col-md-5">
 				<label class="form-label">Verificar Password:</label> 
-				<input class="form-control" type="text" name="vpassword" placeholder="contraseña" required /><br/>
+				<input class="form-control" type="password" name="vpassword" placeholder="Reingrese su contraseña" required /><br/>
 			</div>
 		</div> 
 		<div class="row">

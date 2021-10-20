@@ -90,11 +90,11 @@ public class Usuario extends HttpServlet {
 					 request.setAttribute("mensaje", "Bienvenido "+usuario.getNickName());					 
 					 rd=request.getRequestDispatcher("index.jsp");
 				}else{
-					request.setAttribute("mensaje", "Usuario y/o contraseï¿½a incorrecta");
+					request.setAttribute("mensaje", "Usuario y/o contraseña incorrecta");
 					rd=request.getRequestDispatcher("inicioSesion.jsp");
 				}
 			}else{
-				request.setAttribute("mensaje", "Debe ingresar email y contraseï¿½a");
+				request.setAttribute("mensaje", "Debe ingresar usuario y contraseña");
 				rd=request.getRequestDispatcher("inicioSesion.jsp");
 			}
 			rd.forward(request, response);
@@ -125,7 +125,7 @@ public class Usuario extends HttpServlet {
 				icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
 				System.out.println("entro Artista");
 				out.print("Usuario creado correctamente"); 
-				/*request.setAttribute("mensaje", "Usuario creado correctament");
+				/*request.setAttribute("mensaje", "Usuario creado correctamente");
 				rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);*/
 			}else{
@@ -158,7 +158,7 @@ public class Usuario extends HttpServlet {
 				icadu.ingresaUsuarioEspectador( dt);
 
 				out.print("Usuario creado correctamente"); 
-				/*request.setAttribute("mensaje", "Usuario creado correctament");
+				/*request.setAttribute("mensaje", "Usuario creado correctamente");
 				rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);*/
 			}else{
@@ -171,7 +171,7 @@ public class Usuario extends HttpServlet {
 			HttpSession sesion = request.getSession(false);
 		    sesion.invalidate();
 		    
-			request.setAttribute("mensaje", "Nos vemos");
+			request.setAttribute("mensaje", "Sesión cerrada");
 			rd=request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);			 
 	        
