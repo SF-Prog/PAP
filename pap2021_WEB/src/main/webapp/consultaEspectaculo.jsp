@@ -174,7 +174,7 @@ select {
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divPlataforma").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><a href="'+datos.urlasociada+'" target="_blank">Ver mas</a></p></div>';
+		    	document.getElementById("divPlataforma").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><a href="'+datos.urlasociada+'" target="_blank">URL Asociada</a></p></div>';
 			    
 		    }
 		};

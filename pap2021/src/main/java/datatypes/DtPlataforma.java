@@ -22,7 +22,7 @@ public class DtPlataforma {
 	}
 
 	public DtPlataforma(String nombre, String descripcion, int duracion, String espectadoresMin, String espectadoresMax,
-			String uRLAsociada, float costo, String fechaAlta) {
+			String URLAsociada, float costo, String fechaAlta) {
 		super();
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
@@ -78,8 +78,8 @@ public class DtPlataforma {
 		return URLAsociada;
 	}
 
-	public void setURLAsociada(String uRLAsociada) {
-		URLAsociada = uRLAsociada;
+	public void setURLAsociada(String URLAsociada) {
+		this.URLAsociada = URLAsociada;
 	}
 
 	public float getCosto() {

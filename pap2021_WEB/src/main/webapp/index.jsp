@@ -9,7 +9,7 @@
 	<c:if test="${mensaje!= null}">
 		<div class="alert alert-success" style="text-align: center; font-size: 32px; width: 300px; margin-right: auto;  margin-left: auto; height: 150px;"><p>${mensaje} </p></div>
 	</c:if>
-	<div style="height: 200px; width: 200px; font-size: 3rem; color: #EEE; margin: 300px 0 0 200px;">
+	<div style="font-size: 3rem; color: #EEE; margin: 300px 0 0 200px; position: fixed;">
 		<p>CORONATICKETS UY</p>
 	</div>
 </div>
