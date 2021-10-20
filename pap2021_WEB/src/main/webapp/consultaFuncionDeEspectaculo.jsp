@@ -173,8 +173,9 @@ select {
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divPlataforma").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><a href="'+datos.urlasociada+'" target="_blank">URL Asociada</a></p></div>';
-			    
+		    	document.getElementById("divPlataforma").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><a href="'+datos.URLAsociada+'" target="_blank">URL Asociada</a></p></div>';
+		    	document.getElementById("divEspectaculo").innerHTML="";
+		    	document.getElementById("divFuncion").innerHTML="";
 		    }
 		};
 		xhttp.open("POST", "Espectaculo", true);
@@ -195,7 +196,7 @@ select {
 		    if(datos)
 		    	console.log(datos)
 		    	document.getElementById("divEspectaculo").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><b><em>Costo: </em></b>'+datos.costo+'<br/><b><em>Duracion: </em></b>'+datos.duracion+'<br/><b><em>Fecha de registro: </em></b>'+datos.fechaRegistro+'<br/><b><em>Maximo de espectadores: </em></b>'+datos.espectadoresMax+'<br/><b><em>Minimo de espectadores: </em></b>'+datos.espectadoresMin+'</p></div>';
-			    
+		    	document.getElementById("divFuncion").innerHTML="";
 		    }
 		};
 		xhttp.open("POST", "Espectaculo", true);

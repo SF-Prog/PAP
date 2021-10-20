@@ -85,13 +85,13 @@
 function enviar(){
 	var formParametr = new FormData(document.getElementById("altaUsuarioForm"));
 	if(formParametr.get('nicknameU')==""){
-		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar un nickname</div>';
+		msg("Debe ingresar un nickname",false);
 	} else if(formParametr.get('emailU')==""){
-		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar un email</div>';
+		msg("Debe ingresar un email",false);
 	} else if(formParametr.get('password')==""){
-		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar una contraseña</div>';
+		msg("Debe ingresar una contraseña",false);
 	} else if(formParametr.get('vpassword')==""){
-		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe reingresar la contraseña</div>';
+		msg("Debe reingresar la contraseña",false);
 	} else if(formParametr.get('vpassword') == formParametr.get('password')){		
 		//document.getElementById("altaUsuarioForm").submit();		
 		
@@ -102,16 +102,16 @@ function enviar(){
 		   
 		    	if(xhttp.responseText =="Usuario creado correctamente"){
 		    		 document.getElementById("altaUsuarioForm").reset();
-		    		document.getElementById("msg").innerHTML='<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>';
+		    		msg(xhttp.responseText,true);
 		    	}else{
-		    		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>';
+		    		msg(xhttp.responseText,false);
 		    	}		    
 		    }
 		};
 		xhttp.open("POST", "Usuario", true);
 		xhttp.send(formParametr);
 	}else{
-		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Contraseñas distintas</div>';
+		msg("Contraseñas distintas",false);
 	}
 }
 
@@ -129,6 +129,16 @@ function ocultarCampos(){
 	
 }
 ocultarCampos();
+
+function msg(msg,estado){
+    if(estado){
+        document.getElementById('msg').innerHTML ='<div class="col-sm-12  col-md-offset-3 col-md-6 alert alert-success" role="alert">'+msg+'</div>';
+    }else{    
+        document.getElementById('msg').innerHTML ='<div class="col-sm-12  col-md-offset-3 col-md-6 alert alert-danger" role="alert">'+msg+'</div>';
+    }
+    
+    setTimeout(function(){   document.getElementById('msg').innerHTML =''; }, 2000);
+}
 </script>
 <!-- FIN  CONTENIDO ALTA USUARIO -->
 <%@ include file="/footer.jsp"%>
