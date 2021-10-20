@@ -84,10 +84,16 @@
 
 function enviar(){
 	var formParametr = new FormData(document.getElementById("altaUsuarioForm"));
-	if(formParametr.get('vpassword') == formParametr.get('password')){
-		
-		//document.getElementById("altaUsuarioForm").submit();
-		
+	if(formParametr.get('nicknameU')==""){
+		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar un nickname</div>';
+	} else if(formParametr.get('emailU')==""){
+		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar un email</div>';
+	} else if(formParametr.get('password')==""){
+		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe ingresar una contraseña</div>';
+	} else if(formParametr.get('vpassword')==""){
+		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Debe reingresar la contraseña</div>';
+	} else if(formParametr.get('vpassword') == formParametr.get('password')){		
+		//document.getElementById("altaUsuarioForm").submit();		
 		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -99,8 +105,7 @@ function enviar(){
 		    		document.getElementById("msg").innerHTML='<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>';
 		    	}else{
 		    		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>';
-		    	}
-		    
+		    	}		    
 		    }
 		};
 		xhttp.open("POST", "Usuario", true);
@@ -108,8 +113,6 @@ function enviar(){
 	}else{
 		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">Contraseñas distintas</div>';
 	}
-	
- 
 }
 
 function ocultarCampos(){
