@@ -23,4 +23,6 @@ public interface IControladorConsultaDeEspectaculo {
 	public ArrayList<DtPaquete> listarPaquetes();
 	public String[] listarPaquetesComboBox();
 	public DtPaquete seleccionaPaquete(String nombre);
+	
+	public String[] listarArtistasInvitados();
 }

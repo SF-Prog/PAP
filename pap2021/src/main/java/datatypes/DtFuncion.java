@@ -8,6 +8,7 @@ public class DtFuncion {
 	private String horaInicio;
 	private Date fechaRegistro;
 	private String image;
+	private String[] artistasInvitados;
 	
 	public DtFuncion() {
 		super();
@@ -20,6 +21,16 @@ public class DtFuncion {
 		this.setHoraInicio(horaInicio);
 		this.setFechaRegistro(fechaRegistro);
 		this.setImage(image);
+	}
+
+	public DtFuncion(String nombre, Date fecha, String horaInicio, Date fechaRegistro, String image, String[] artistasInvitados) {
+		super();
+		this.setNombre(nombre);
+		this.setFecha(fecha);
+		this.setHoraInicio(horaInicio);
+		this.setFechaRegistro(fechaRegistro);
+		this.setImage(image);
+		this.setArtistasInvitados(artistasInvitados);
 	}
 
 	public String getNombre() {
@@ -60,6 +71,14 @@ public class DtFuncion {
 
 	public void setImage(String image) {
 		this.image = image;
+	}	
+
+	public String[] getArtistasInvitados() {
+		return artistasInvitados;
+	}
+
+	public void setArtistasInvitados(String[] artistasInvitados) {
+		this.artistasInvitados = artistasInvitados;
 	}	
 	
 	@Override

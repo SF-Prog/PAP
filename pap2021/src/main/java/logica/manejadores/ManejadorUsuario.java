@@ -53,6 +53,19 @@ public class ManejadorUsuario {
 		}		
 		return res;
 	}
+
+	public List<String> getArtistasInvitadosEnFuncion(String funcion) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		Query query = em.createNativeQuery("SELECT a.artista_nickname FROM usuario_funcion a WHERE a.funciones_nombre=:funcion");
+	    query.setParameter("funcion", funcion);
+	    try {
+			return (List<String>)query.getResultList();	
+        }
+	    catch (Exception e) { 
+			return null;
+	    }
+	}
 	
 	public Usuario buscarUsuarioPorNickname(String nickname) {
 		Conexion conexion = Conexion.getInstancia();

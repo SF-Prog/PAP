@@ -12,6 +12,7 @@ import logica.Espectaculo;
 import logica.Funcion;
 import logica.Plataforma;
 import logica.manejadores.ManejadorPlataforma;
+import logica.manejadores.ManejadorUsuario;
 
 public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorConsultaDeFuncionDeEspectaculo{
 	private Plataforma plataformaSeleccionada = null;
@@ -144,11 +145,28 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 			if(temp.getNombre().equals(nombre)){
 				existe = true;
 				this.funcionSeleccionada = temp;
-				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro(),temp.getImage());
+				dtf =new DtFuncion(temp.getNombre(),temp.getFecha(),temp.getHoraInicio(),temp.getFechaRegistro(),temp.getImage(),this.listarArtistasInvitados());
 			}
 		}
 		return dtf;
 	}
 
-	
+	@Override
+	public String[] listarArtistasInvitados() {
+		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
+		String funcion = this.funcionSeleccionada.getNombre();
+		List<String> artistasInvitados = mU.getArtistasInvitadosEnFuncion(funcion);
+		if (artistasInvitados != null){
+			String[] Artistas = new String[artistasInvitados.size()+1];
+			Artistas[0]="";
+			int i=1;
+			for(String artista : artistasInvitados){
+				Artistas[i] = artista;
+				i++;
+			}
+			return Artistas;
+		} else {
+			return new String[0];
+		}
+	}	
 }

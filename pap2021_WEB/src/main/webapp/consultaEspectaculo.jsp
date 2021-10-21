@@ -214,7 +214,7 @@ select {
 		    if (this.readyState == 4 && this.status == 200) {
 		       // Typical action to be performed when the document is ready:
 		    let datos = JSON.parse(xhttp.response); 	
-		    console.log(datos.length);
+		    console.log(datos);
 		    if(datos)
 		    	console.log(datos)
 		    	document.getElementById("divFuncion").innerHTML='<div  class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha de registro: </em></b>'+datos.fecha+'<br/><b><em>Fecha de inicio: </em></b>'+fechaConversor(datos.fechaRegistro)+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p></div>';

@@ -15,7 +15,9 @@ public interface IControladorConsultaDeFuncionDeEspectaculo {
 	public String[] listarEspectaculosComboBox();
 	public DtEspectaculo seleccionaEspectaculo(String nombre); 
 	
-	public ArrayList<DtFuncion>  listarFunciones();
+	public ArrayList<DtFuncion> listarFunciones();
 	public String[] listarFuncionesComboBox();
 	public DtFuncion seleccionaFuncion(String nombre);
+	
+	public String[] listarArtistasInvitados();
 }
