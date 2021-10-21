@@ -9,16 +9,18 @@
 	
 		<div class="row"> 
 			<div class="col-md-5">
-				<select name="plataformas" id="plataformas"  onchange="seleccionarPlataforma();taerEspectaculo();">
+				<select name="plataformas" id="plataformas"  onchange="seleccionarPlataforma();">
 				 <!--  <option value="" disabled >Seleccione Plataforma</option> -->
 				</select>
+				<button type="button" class="btn btn-primary" onclick="taerEspectaculo();">Traer Espectaculos</button>
 			</div>
 		</div>
 		<div class="row"> 
 			<div class="col-md-5">
-				<select name="Espectaculo" id="espectaculo" onchange="seleccionarEspectaculo();taerArtistas();">
+				<select name="Espectaculo" id="espectaculo" onchange="seleccionarEspectaculo();">
 				 <!-- <option value="" disabled >Seleccione Eventos</option> -->
 				</select>
+				<button type="button"  class="btn btn-primary"  onclick="taerArtistas();">Traer Artistas</button>
 			</div>
 		</div>
 		<div class="row">
@@ -107,6 +109,9 @@ function taerEspectaculo(){
 	       // Typical action to be performed when the document is ready:
 		    let datos = JSON.parse(xhttp.response); 	
 		    console.log(datos.length);
+		    borrarSelect("artistas");
+		    document.getElementById("listaArtistas").innerHTML='';
+
 		    if(datos.length > 0) {
 		    	document.getElementById("espectaculo").innerHTML='';
 			    var select = document.getElementById("espectaculo");
@@ -140,7 +145,7 @@ function taerArtistas(){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 		    let datos = JSON.parse(xhttp.response); 	
-		    console.log(datos.length);/*
+		    console.log(datos.length);
 		    if(datos.length > 0){
 	    		document.getElementById("artistas").innerHTML='';
 			     var select = document.getElementById("artistas");
@@ -160,7 +165,7 @@ function taerArtistas(){
 				         select.add(option, i);
 			    	 }		         
 		     	 }         
-	     	 }*/
+	     	 }
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
@@ -176,7 +181,11 @@ function seleccionarPlataforma(){
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
 		    let datos = JSON.parse(xhttp.response); 	
-		    console.log(datos.length);/*
+		    console.log(datos.length);
+		    borrarSelect("espectaculo");
+		    borrarSelect("artistas");
+	    	document.getElementById("listaArtistas").innerHTML='';
+		    /*
 		    if(datos.length > 0){
 			     var select = document.getElementById("espectaculo");
 		    	 let bandera = true;
