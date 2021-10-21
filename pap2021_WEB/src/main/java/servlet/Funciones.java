@@ -59,22 +59,15 @@ public class Funciones extends HttpServlet {
 		if(this.esAltaFuncionDeEspectaculo(request)) {
 
 			String nombre = request.getParameter("Nombre");
-		    Date fechaAlta=null;
-			try {
-				fechaAlta = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaAlta"));
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}  
         	String horaInicio = request.getParameter("horaInicio");
-        	Date fechaInicio=null;
+        	Date fechaInicio=new Date();
 			try {
 				fechaInicio = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaInicio"));
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			} 
-        	
+			}
+        	Date fechaAlta=new Date();
 			String imagen = "";
 			
 			//Gson gson = new Gson();
@@ -92,16 +85,12 @@ public class Funciones extends HttpServlet {
     		try {
 				icadfde.ingresaFuncion(dtFuncion, listaArtistas);
 
-				out2.print("ingreso Funcion"); 
+				out2.print("Funcion dada de alta"); 
 			} catch (AltaFuncionDeEspectaculoExcepcion e) {
 				// TODO Auto-generated catch block
 				out2.println(e.getMessage()); 
-				//throw new ServletException();
-				
+				//throw new ServletException();				
 			}
-    		
-    		
-
     	
     		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
 
@@ -153,6 +142,7 @@ public class Funciones extends HttpServlet {
 
 		}else if(this.selectPlataforma(request)){
 			// TRAIGO LA LISTA DE ESPECTACULOS
+			System.out.println("PLATAFORMA EN SERVER " + request.getParameter("plataforma"));
 			icadfde.seleccionaPlataforma(request.getParameter("plataforma"));
 			
 

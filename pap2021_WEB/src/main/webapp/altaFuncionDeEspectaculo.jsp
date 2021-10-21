@@ -13,6 +13,8 @@
 				 <!--  <option value="" disabled >Seleccione Plataforma</option> -->
 				</select>
 			</div>
+		</div>
+		<div class="row"> 
 			<div class="col-md-5">
 				<select name="Espectaculo" id="espectaculo" onchange="seleccionarEspectaculo();taerArtistas();">
 				 <!-- <option value="" disabled >Seleccione Eventos</option> -->
@@ -24,10 +26,11 @@
 				<label class="form-label">Nombre:</label> 
 				<input class="form-control" type="text" name="Nombre" placeholder="Ingrese su nickname" required /><br/>
 			</div>
-			<div class="col-md-5">
-			
+		</div>
+		<div class="row">
+			<div class="col-md-5">			
 	         	<label class="form-label">Fecha de Inicio:</label> 
-	            <input  class="form-control" type="date" name="fechaAlta" id="birthday" name="birthday">
+	            <input  class="form-control" type="date" name="fechaInicio" required /><br/>
 			</div>
 		</div>
 		<div class="row">
@@ -35,14 +38,10 @@
 				<label class="form-label">Hora:</label> 
 				<input class="form-control" type="time" name="horaInicio" required /><br/>
 			</div>
-			<div class="col-md-5">
-			
-	         	<label class="form-label">Fecha de alta:</label> 
-	            <input  class="form-control" type="date" name="fechaInicio" id="birthday" name="birthday">
-			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3">
+				<label class="form-label">Artistas invitados:</label><br/>
 				<select name="Artistas" id="artistas" >
 				 <!-- <option value="" disabled >Seleccione Eventos</option> -->
 				</select>
@@ -54,13 +53,11 @@
 				<ul id="listaArtistas">				
 				</ul>
 			</div>
-			<input  class="form-control" type="date" name="fecchaU" id="birthday" name="birthday">
 		</div>
-		<div class="row" style="margin:40px 0 0 30px" id="msg">
-				
+		<div class="row" style="margin:40px 0 0 30px" id="msg">				
 		</div>
 		<div class="row" style="margin:40px 0 0 30px">
-			<input type="submit" name="btnEnvio" value="Ingresar Usuario" class="btn btn-primary col-md-2">		
+			<input type="submit" name="btnEnvio" value="Ingresar Función" class="btn btn-primary col-md-2">		
 		</div>
 	</form>
 </div>
@@ -74,32 +71,30 @@ function taerPlataformas(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
-	    let datos = JSON.parse(xhttp.response); 	
-	    console.log(datos.length);
-	    if(datos.length > 0)
-	    	document.getElementById("plataformas").innerHTML='';
-		     var select = document.getElementById("plataformas");
-	    	 let bandera = true;
-		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
-		    	 console.log(datos[i],i);
-		         var option = document.createElement('option');
-		         option.text = option.value = datos[i];
-		         if(bandera){
-		        	 option.text="Seleccione Plataforma";
-		        	 option.value="";
-		        	 option.selected= true;
-		        	 option.disabled= true;
-		        	 bandera =false;
-		         }
-		         select.add(option, i);
-		         
-		         
-		     }
+		    let datos = JSON.parse(xhttp.response); 	
+		    console.log(datos.length);
+		    if(datos.length > 0){
+		    	 document.getElementById("plataformas").innerHTML='';
+			     var select = document.getElementById("plataformas");
+		    	 let bandera = true;
+			     for(var i = 0 ; i  <= datos.length-1 ; i++) {
+			    	 console.log(datos[i],i);
+			         var option = document.createElement('option');
+			         option.text = option.value = datos[i];
+			         if(bandera){
+			        	 option.text="Seleccione Plataforma";
+			        	 option.value="";
+			        	 option.selected= true;
+			        	 option.disabled= true;
+			        	 bandera =false;
+			         }
+			         select.add(option, i);	   
+			     }
+		    }
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
 	xhttp.send(formParametr);
-
 }
 
 function taerEspectaculo(){
@@ -110,27 +105,26 @@ function taerEspectaculo(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
-	    let datos = JSON.parse(xhttp.response); 	
-	    console.log(datos.length);
-	    if(datos.length > 0)
-	    	document.getElementById("espectaculo").innerHTML='';
-		     var select = document.getElementById("espectaculo");
-	    	 let bandera = true;
-		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
-		    	 console.log(datos[i],i);
-		         var option = document.createElement('option');
-		         option.text = option.value = datos[i];
-		         if(bandera){
-		        	 option.text="Seleccione Espectaculo";
-		        	 option.value="";
-		        	 option.selected= true;
-		        	 option.disabled= true;
-		        	 bandera =false;
-		         }
-		         select.add(option, i);
-		         
-		         
-		     }
+		    let datos = JSON.parse(xhttp.response); 	
+		    console.log(datos.length);
+		    if(datos.length > 0) {
+		    	document.getElementById("espectaculo").innerHTML='';
+			    var select = document.getElementById("espectaculo");
+		    	let bandera = true;
+			    for(var i = 0 ; i  <= datos.length-1 ; i++) {
+			    	 console.log(datos[i],i);
+			         var option = document.createElement('option');
+			         option.text = option.value = datos[i];
+			         if(bandera){
+			        	 option.text="Seleccione Espectaculo";
+			        	 option.value="";
+			        	 option.selected= true;
+			        	 option.disabled= true;
+			        	 bandera =false;
+			         }
+			         select.add(option, i);	     
+		     	}
+		    }
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
@@ -145,28 +139,28 @@ function taerArtistas(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
-	    let datos = JSON.parse(xhttp.response); 	
-	    console.log(datos.length);
-	    if(datos.length > 0)
-	    	document.getElementById("artistas").innerHTML='';
-		     var select = document.getElementById("artistas");
-	    	 let bandera = true;
-		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
-		    	 console.log(datos[i],i);
-		    	 if( datos[i]!= null){
-			         var option = document.createElement('option');
-			         option.text = option.value = datos[i];
-			         if(bandera ){
-			        	 option.text="Seleccione Artistas";
-			        	 option.value="";
-			        	 option.selected= true;
-			        	 option.disabled= true;
-			        	 bandera =false;
-			         }
-			         select.add(option, i);
-		    	 }
-		         
-		     }
+		    let datos = JSON.parse(xhttp.response); 	
+		    console.log(datos.length);/*
+		    if(datos.length > 0){
+	    		document.getElementById("artistas").innerHTML='';
+			     var select = document.getElementById("artistas");
+		    	 let bandera = true;
+			     for(var i = 0 ; i  <= datos.length-1 ; i++) {
+			    	 console.log(datos[i],i);
+			    	 if( datos[i]!= null){
+				         var option = document.createElement('option');
+				         option.text = option.value = datos[i];
+				         if(bandera ){
+				        	 option.text="Seleccione Artistas";
+				        	 option.value="";
+				        	 option.selected= true;
+				        	 option.disabled= true;
+				        	 bandera =false;
+				         }
+				         select.add(option, i);
+			    	 }		         
+		     	 }         
+	     	 }*/
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
@@ -181,27 +175,25 @@ function seleccionarPlataforma(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
-	    let datos = JSON.parse(xhttp.response); 	
-	    console.log(datos.length);
-	    if(datos.length > 0)
-	    	document.getElementById("espectaculo").innerHTML='';
-		     var select = document.getElementById("espectaculo");
-	    	 let bandera = true;
-		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
-		    	 console.log(datos[i],i);
-		         var option = document.createElement('option');
-		         option.text = option.value = datos[i];
-		         if(bandera){
-		        	 option.text="Seleccione Espectaculo";
-		        	 option.value="";
-		        	 option.selected= true;
-		        	 option.disabled= true;
-		        	 bandera =false;
-		         }
-		         select.add(option, i);
-		         
-		         
-		     }
+		    let datos = JSON.parse(xhttp.response); 	
+		    console.log(datos.length);/*
+		    if(datos.length > 0){
+			     var select = document.getElementById("espectaculo");
+		    	 let bandera = true;
+			     for(var i = 0 ; i  <= datos.length-1 ; i++) {
+			    	 console.log(datos[i],i);
+			         var option = document.createElement('option');
+			         option.text = option.value = datos[i];
+			         if(bandera){
+			        	 option.text="Seleccione Espectaculo";
+			        	 option.value="";
+			        	 option.selected= true;
+			        	 option.disabled= true;
+			        	 bandera =false;
+			         }
+			         select.add(option, i);	
+	     		  }
+ 			}*/
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
@@ -217,34 +209,32 @@ function seleccionarEspectaculo(){
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	       // Typical action to be performed when the document is ready:
-	    let datos = JSON.parse(xhttp.response); 	
-	    console.log(datos.length);
-	    if(datos.length > 0)
-	    	document.getElementById("espectaculo").innerHTML='';
-		     var select = document.getElementById("espectaculo");
-	    	 let bandera = true;
-		     for(var i = 0 ; i  <= datos.length-1 ; i++) {
-		    	 console.log(datos[i],i);
-		         var option = document.createElement('option');
-		         option.text = option.value = datos[i];
-		         if(bandera){
-		        	 option.text="Seleccione Espectaculo";
-		        	 option.value="";
-		        	 option.selected= true;
-		        	 option.disabled= true;
-		        	 bandera =false;
-		         }
-		         select.add(option, i);
-		         
-		         
-		     }
+		    let datos = JSON.parse(xhttp.response); 	
+		    console.log(datos.length);/*
+		    if(datos.length > 0){
+		    	borrarSelect("artistas");
+		    	borrarSelect("listaArtistas");
+			     var select = document.getElementById("espectaculo");
+		    	 let bandera = true;
+			     for(var i = 0 ; i  <= datos.length-1 ; i++) {
+			    	 console.log(datos[i],i);
+			         var option = document.createElement('option');
+			         option.text = option.value = datos[i];
+			         if(bandera){
+			        	 option.text="Seleccione Espectaculo";
+			        	 option.value="";
+			        	 option.selected= true;
+			        	 option.disabled= true;
+			        	 bandera =false;
+			         }
+			         select.add(option, i);		 
+			     }
+	     	}*/
 	    }
 	};
 	xhttp.open("POST", "Funciones", true);
 	xhttp.send(formParametr);
 }
-
-
 
 function agregar() {
     let artista = document.getElementById('artistas').value;  
@@ -276,31 +266,53 @@ function enviar(){
 	
 	for (var i = 0; i < document.getElementById('listaArtistas').getElementsByTagName('li').length; i++) {
 		listaArtistas[i]=document.getElementById('listaArtistas').getElementsByTagName('li')[i].dataset.value;
+	}	
+	if(formParametr.get('Espectaculo')!=null && formParametr.get('plataformas')!=null && formParametr.get('Espectaculo')!="" && formParametr.get('plataformas')!=""){
+		listaArtistas = JSON.stringify(listaArtistas) ;
+		formParametr.append("listaArtistas",listaArtistas);
+		formParametr.append("altaFuncion","altaFuncion");
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		       // Typical action to be performed when the document is ready
+
+		    	if(xhttp.responseText =="Funcion dada de alta"){
+		    		 document.getElementById("altaFuncion").reset();
+		    		 document.getElementById('artistas').value='';
+		    		 msg(xhttp.responseText,true);
+		    	}else{
+		    		 msg(xhttp.responseText,false);
+		    	}		
+		    }
+		};
+		xhttp.open("POST", "Funciones", true);
+		xhttp.send(formParametr);
+	} else if(formParametr.get('plataformas')=="" || formParametr.get('plataformas')==null) {
+		 msg("Debe seleccionar una plataforma",false);
+	} else{
+		 msg("Debe seleccionar un espectaculo",false);
 	}
-	
-
-	listaArtistas = JSON.stringify(listaArtistas) ;
-	formParametr.append("listaArtistas",listaArtistas);
-	formParametr.append("altaFuncion","altaFuncion");
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	       // Typical action to be performed when the document is ready
-
-	    	if(xhttp.responseText =="ingreso Funcion"){
-	    		 document.getElementById("altaFuncion").reset();
-	    		 document.getElementById('artistas').value='';
-	    		document.getElementById("msg").innerHTML='<div class="alert alert-success" role="alert">'+ xhttp.responseText+'</div>';
-	    	}else{
-	    		document.getElementById("msg").innerHTML='<div class="alert alert-danger" role="alert">'+ xhttp.responseText+'</div>';
-	    	}
-	    }
-	};
-	xhttp.open("POST", "Funciones", true);
-	xhttp.send(formParametr);
 	return false;
 }
 taerPlataformas();
+
+function msg(msg,estado){
+    if(estado){
+        document.getElementById('msg').innerHTML ='<div class="col-sm-12  col-md-offset-3 col-md-6 alert alert-success" role="alert">'+msg+'</div>';
+    }else{    
+        document.getElementById('msg').innerHTML ='<div class="col-sm-12  col-md-offset-3 col-md-6 alert alert-danger" role="alert">'+msg+'</div>';
+    }
+    
+    setTimeout(function(){   document.getElementById('msg').innerHTML =''; }, 2000);
+}
+
+function borrarSelect(elemento){
+    var select = document.getElementById(elemento);
+    var length = select.options.length;
+    for (i = length-1; i >= 0; i--) {
+      select.options[i] = null;
+    }
+}
 </script>
 <!-- FIN  CONTENIDO ALTA FUNCION ESPECTACULO -->
 <%@ include file="/footer.jsp"%>

@@ -195,7 +195,7 @@ select {
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divEspectaculo").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><b><em>Costo: </em></b>'+datos.costo+'<br/><b><em>Duracion: </em></b>'+datos.duracion+'<br/><b><em>Fecha de registro: </em></b>'+datos.fechaRegistro+'<br/><b><em>Maximo de espectadores: </em></b>'+datos.espectadoresMax+'<br/><b><em>Minimo de espectadores: </em></b>'+datos.espectadoresMin+'</p></div>';
+		    	document.getElementById("divEspectaculo").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p>'+datos.descripcion+'<br/><b><em>Costo: </em></b>'+datos.costo+'<br/><b><em>Duracion: </em></b>'+datos.duracion+'<br/><b><em>Fecha de registro: </em></b>'+datos.fechaRegistro)+'<br/><b><em>Maximo de espectadores: </em></b>'+datos.espectadoresMax+'<br/><b><em>Minimo de espectadores: </em></b>'+datos.espectadoresMin+'</p></div>';
 		    	document.getElementById("divFuncion").innerHTML="";
 		    }
 		};
@@ -216,7 +216,7 @@ select {
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divFuncion").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha: </em></b>'+datos.fecha+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p></div>';
+		    	document.getElementById("divFuncion").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha de registro: </em></b>'+datos.fecha+'<br/><b><em>Fecha de inicio: </em></b>'+fechaConversor(datos.fechaRegistro)+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p></div>';
 			    
 		    }
 		};
@@ -225,6 +225,12 @@ select {
 	
 	}
 	taerPlataformas();
+	
+	function fechaConversor(fecha){
+	    var d = new Date(fecha);
+	    var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear();
+	    return datestring;
+	}
 </script>
 <!-- FIN  CONTENIDO CONSULTA DE FUNCION DE ESPECTACULO  -->
 <%@ include file="/footer.jsp"%>

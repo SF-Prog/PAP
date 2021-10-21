@@ -133,6 +133,7 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 	};
 	
 	public String[] listarEspectaculosComboBox() {
+		System.out.println("PLATAFORMA EN CONTROLADOR " + this.plataformaSeleccionada.getNombre());
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		String[] Espectaculos = new String[listEspectaculos.size() + 1];
 		Espectaculos[0] = "";
