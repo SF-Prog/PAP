@@ -216,7 +216,7 @@ select {
 		    console.log(datos.length);
 		    if(datos)
 		    	console.log(datos)
-		    	document.getElementById("divFuncion").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha de registro: </em></b>'+datos.fecha+'<br/><b><em>Fecha de inicio: </em></b>'+fechaConversor(datos.fechaRegistro)+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'</p></div>';
+		    	document.getElementById("divFuncion").innerHTML='<div class="contenido"><h3>'+datos.nombre+'</h3><hr/><p><b><em>Fecha de registro: </em></b>'+datos.fecha+'<br/><b><em>Fecha de inicio: </em></b>'+fechaConversor(datos.fechaRegistro)+'<br/><b><em>Hora inicio: </em></b>'+datos.horaInicio+'<br/><b><em>Artistas Invitados: </em></b>'+datos.artistasInvitados.toString()+'</p></div>';
 			    
 		    }
 		};
