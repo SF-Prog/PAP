@@ -107,7 +107,8 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 					temp.getUrlAsociada(),
 					temp.getCosto(),
 					temp.getFechaRegistro(),
-					temp.getImage()
+					temp.getImage(),
+					temp.getArtista().getNickName()
 				);
 			}
 		}			

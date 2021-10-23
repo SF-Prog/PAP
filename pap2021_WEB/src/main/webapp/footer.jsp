@@ -1,7 +1,7 @@
 <style>
 footer {
-   position: absolute;
-   top: 100vh;
+   position: relative;
+   /*top: 100vh;*/
    width: 100%;
    background-color: #EEE;
 }
