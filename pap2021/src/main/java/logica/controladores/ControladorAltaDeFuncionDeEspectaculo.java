@@ -116,6 +116,11 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		};
 		return artistasEnElSistema;
 	};
+
+	@Override
+	public void agregarArtistaAFuncion(String nombreArtista) {		
+		artistasIngresadosEnFuncion.add(nombreArtista);
+	};
 	
 	@Override
 	public String[] listarPlataformasComboBox() {
@@ -131,7 +136,8 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		}
 		return Plataformas;
 	};
-	
+
+	@Override
 	public String[] listarEspectaculosComboBox() {
 		System.out.println("PLATAFORMA EN CONTROLADOR " + this.plataformaSeleccionada.getNombre());
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
@@ -144,7 +150,8 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		}
 		return Espectaculos;
 	};
-	
+
+	@Override
 	public String[] listarArtistasComboBox() {
 		if (espectaculoSeleccionado != null) {
 			ManejadorUsuario mU = ManejadorUsuario.getInstancia();
@@ -165,9 +172,5 @@ public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDe
 		else {
 			return new String[0];
 		}
-	};
-	
-	public void agregarArtistaAFuncion(String nombreArtista) {		
-		artistasIngresadosEnFuncion.add(nombreArtista);
 	};
 }

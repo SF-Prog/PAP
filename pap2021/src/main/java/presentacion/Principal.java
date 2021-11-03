@@ -23,6 +23,18 @@ import interfaces.IControladorConsultaDeUsuario;
 import interfaces.IControladorCrearPaqueteDeEspectaculos;
 import interfaces.IControladorModificarDatosDeUsuario;
 import interfaces.IControladorRegistroAFuncionDeEspectaculo;
+import publicadores.ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish;
+import publicadores.ControladorAltaDeEspectaculoPublish;
+import publicadores.ControladorAltaDeFuncionDeEspectaculoPublish;
+import publicadores.ControladorAltaDePlataformaPublish;
+import publicadores.ControladorAltaDeUsuarioPublish;
+import publicadores.ControladorConsultaDeEspectaculoPublish;
+import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublish;
+import publicadores.ControladorConsultaDePaqueteDeEspectaculosPublish;
+import publicadores.ControladorConsultaDeUsuarioPublish;
+import publicadores.ControladorCrearPaqueteDeEspectaculosPublish;
+import publicadores.ControladorModificarDatosDeUsuarioPublish;
+import publicadores.ControladorRegistroAFuncionDeEspectaculoPublish;
 
 public class Principal {
 	private JFrame frmCoronatickets;
@@ -54,6 +66,32 @@ public class Principal {
 	}
 
 	public Principal() {
+		ControladorAltaDeUsuarioPublish caup = new ControladorAltaDeUsuarioPublish();
+		ControladorAltaDeEspectaculoPublish caep = new ControladorAltaDeEspectaculoPublish();
+		ControladorAltaDeFuncionDeEspectaculoPublish cafep = new ControladorAltaDeFuncionDeEspectaculoPublish();
+		ControladorAltaDePlataformaPublish capp = new ControladorAltaDePlataformaPublish();
+		ControladorConsultaDeUsuarioPublish ccdup = new ControladorConsultaDeUsuarioPublish();
+		ControladorConsultaDeEspectaculoPublish ccdep = new ControladorConsultaDeEspectaculoPublish();
+		ControladorConsultaDeFuncionDeEspectaculoPublish ccdfep = new ControladorConsultaDeFuncionDeEspectaculoPublish();
+		ControladorConsultaDePaqueteDeEspectaculosPublish ccdpep = new ControladorConsultaDePaqueteDeEspectaculosPublish();
+		ControladorModificarDatosDeUsuarioPublish cmdup = new ControladorModificarDatosDeUsuarioPublish();
+		ControladorCrearPaqueteDeEspectaculosPublish ccpep = new ControladorCrearPaqueteDeEspectaculosPublish();
+		ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish caepp = new ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish();
+		ControladorRegistroAFuncionDeEspectaculoPublish crfep = new ControladorRegistroAFuncionDeEspectaculoPublish();
+
+		caup.publicar();
+		caep.publicar();
+		cafep.publicar();
+		capp.publicar();
+		ccdup.publicar();
+		ccdep.publicar();
+		ccdfep.publicar();
+		ccdpep.publicar();
+		cmdup.publicar();
+		ccpep.publicar();
+		caepp.publicar();
+		crfep.publicar();
+		
 		initialize();
 
 		Fabrica fabrica = Fabrica.getInstancia();
