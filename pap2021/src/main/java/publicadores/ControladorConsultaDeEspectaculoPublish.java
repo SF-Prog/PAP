@@ -51,62 +51,62 @@ public class ControladorConsultaDeEspectaculoPublish {
 		return iCon.listarPlataformas();
 	}
 	
-	@WebService
+	@WebMethod
 	public String[] listarPlataformasComboBox() {
 		return iCon.listarPlataformasComboBox();
 	}
 	
-	@WebService
+	@WebMethod
 	public DtPlataforma seleccionaPlataforma(String nombre) {
 		return iCon.seleccionaPlataforma(nombre);
 	}
 
-	@WebService
+	@WebMethod
 	public ArrayList<DtEspectaculo> listarEspectaculos() {
 		return iCon.listarEspectaculos();
 	}
 	
-	@WebService
+	@WebMethod
 	public String[] listarEspectaculosComboBox() {
 		return iCon.listarEspectaculosComboBox();
 	}
 
-	@WebService
+	@WebMethod
 	public DtEspectaculo seleccionaEspectaculo(String nombre) {
 		return iCon.seleccionaEspectaculo(nombre);
 	}
 
-	@WebService
+	@WebMethod
 	public ArrayList<DtFuncion> listarFunciones() {
 		return iCon.listarFunciones();
 	}
 
-	@WebService
+	@WebMethod
 	public String[] listarFuncionesComboBox() {
 		return iCon.listarFuncionesComboBox();
 	}
 	
-	@WebService
+	@WebMethod
 	public DtFuncion seleccionaFuncion(String nombre) {
 		return iCon.seleccionaFuncion(nombre);
 	}
 
-	@WebService
+	@WebMethod
 	public ArrayList<DtPaquete> listarPaquetes() {
 		return iCon.listarPaquetes();
 	}
 	
-	@WebService
+	@WebMethod
 	public String[] listarPaquetesComboBox() {
 		return iCon.listarPaquetesComboBox();
 	}
 	
-	@WebService
+	@WebMethod
 	public DtPaquete seleccionaPaquete(String nombre) {
 		return iCon.seleccionaPaquete(nombre);
 	}
 
-	@WebService
+	@WebMethod
 	public String[] listarArtistasInvitados() {
 		return iCon.listarArtistasInvitados();
 	}	
