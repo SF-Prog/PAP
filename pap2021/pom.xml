@@ -30,11 +30,17 @@
 	    <artifactId>axis</artifactId>
 	    <version>1.4</version>
 	</dependency>
-	<dependency>
+	<!--<dependency>
 	    <groupId>javax.xml</groupId>
 	    <artifactId>jaxrpc-api</artifactId>
 	    <version>1.1</version>
-	</dependency>		
+	</dependency>	-->	
+	<dependency>
+	  <groupId>com.sun.xml.ws</groupId>
+	  <artifactId>jaxws-ri</artifactId>
+	  <version>2.3.2</version>
+	  <type>pom</type>
+	</dependency>
 </dependencies>
 <!--   
   <dependencyManagement>
