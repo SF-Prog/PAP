@@ -23,18 +23,7 @@ import interfaces.IControladorConsultaDeUsuario;
 import interfaces.IControladorCrearPaqueteDeEspectaculos;
 import interfaces.IControladorModificarDatosDeUsuario;
 import interfaces.IControladorRegistroAFuncionDeEspectaculo;
-import publicadores.ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish;
-import publicadores.ControladorAltaDeEspectaculoPublish;
-import publicadores.ControladorAltaDeFuncionDeEspectaculoPublish;
-import publicadores.ControladorAltaDePlataformaPublish;
-import publicadores.ControladorAltaDeUsuarioPublish;
-import publicadores.ControladorConsultaDeEspectaculoPublish;
-import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublish;
-import publicadores.ControladorConsultaDePaqueteDeEspectaculosPublish;
-import publicadores.ControladorConsultaDeUsuarioPublish;
-import publicadores.ControladorCrearPaqueteDeEspectaculosPublish;
-import publicadores.ControladorModificarDatosDeUsuarioPublish;
-import publicadores.ControladorRegistroAFuncionDeEspectaculoPublish;
+import publicadores.ControladorPublish;
 
 public class Principal {
 	private JFrame frmCoronatickets;
@@ -66,7 +55,9 @@ public class Principal {
 	}
 
 	public Principal() {
-		ControladorAltaDeUsuarioPublish caup = new ControladorAltaDeUsuarioPublish();
+		ControladorPublish caup = new ControladorPublish();
+		caup.publicar();
+		/*ControladorAltaDeUsuarioPublish caup = new ControladorAltaDeUsuarioPublish();
 		ControladorAltaDeEspectaculoPublish caep = new ControladorAltaDeEspectaculoPublish();
 		ControladorAltaDeFuncionDeEspectaculoPublish cafep = new ControladorAltaDeFuncionDeEspectaculoPublish();
 		ControladorAltaDePlataformaPublish capp = new ControladorAltaDePlataformaPublish();
@@ -90,7 +81,7 @@ public class Principal {
 		cmdup.publicar();
 		ccpep.publicar();
 		caepp.publicar();
-		crfep.publicar();
+		crfep.publicar();*/
 		
 		initialize();
 
