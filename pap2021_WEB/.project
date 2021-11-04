@@ -3,6 +3,7 @@
 	<name>pap2021_WEB</name>
 	<comment></comment>
 	<projects>
+		<project>pap2021</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
