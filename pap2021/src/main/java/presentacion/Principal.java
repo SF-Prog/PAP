@@ -66,10 +66,10 @@ public class Principal {
 	}
 
 	public Principal() {
-		ControladorAltaDeUsuarioPublish caup = new ControladorAltaDeUsuarioPublish();
-		ControladorAltaDeEspectaculoPublish caep = new ControladorAltaDeEspectaculoPublish();
-		ControladorAltaDeFuncionDeEspectaculoPublish cafep = new ControladorAltaDeFuncionDeEspectaculoPublish();
-		ControladorAltaDePlataformaPublish capp = new ControladorAltaDePlataformaPublish();
+		//ControladorAltaDeUsuarioPublish caup = new ControladorAltaDeUsuarioPublish();
+		//ControladorAltaDeEspectaculoPublish caep = new ControladorAltaDeEspectaculoPublish();
+		//ControladorAltaDeFuncionDeEspectaculoPublish cafep = new ControladorAltaDeFuncionDeEspectaculoPublish();
+		//ControladorAltaDePlataformaPublish capp = new ControladorAltaDePlataformaPublish();
 		ControladorConsultaDeUsuarioPublish ccdup = new ControladorConsultaDeUsuarioPublish();
 		ControladorConsultaDeEspectaculoPublish ccdep = new ControladorConsultaDeEspectaculoPublish();
 		ControladorConsultaDeFuncionDeEspectaculoPublish ccdfep = new ControladorConsultaDeFuncionDeEspectaculoPublish();
@@ -79,10 +79,10 @@ public class Principal {
 		ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish caepp = new ControladorAgregarEspectaculoAPaqueteDeEspectaculosPublish();
 		ControladorRegistroAFuncionDeEspectaculoPublish crfep = new ControladorRegistroAFuncionDeEspectaculoPublish();
 
-		caup.publicar();
-		caep.publicar();
-		cafep.publicar();
-		capp.publicar();
+		//caup.publicar();
+		//caep.publicar();
+		//cafep.publicar();
+		//capp.publicar();
 		ccdup.publicar();
 		ccdep.publicar();
 		ccdfep.publicar();
