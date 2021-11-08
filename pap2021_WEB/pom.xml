@@ -26,11 +26,11 @@
     </plugins>
   </build>
   <dependencies>
-  <dependency>
+  	<!--  <dependency>
 		<groupId>com.pap2021</groupId>
   		<artifactId>pap2021</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
+	</dependency> -->
 	<dependency>
 		<groupId>org.postgresql</groupId>
 		<artifactId>postgresql</artifactId>

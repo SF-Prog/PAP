@@ -13,14 +13,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.rpc.ServiceException;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import datatypes.DtFuncion;
+/*import datatypes.DtFuncion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
+*/
+
+import publicadoares.DtFuncion;
+import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublish;
+import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublishService;
+import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublishServiceLocator;
 
 /**
  * Servlet implementation class Funciones
@@ -29,16 +37,26 @@ import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 @WebServlet("/Funciones")
 public class Funciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Fabrica fabrica;
-	IControladorAltaDeFuncionDeEspectaculo icadfde;
+	//Fabrica fabrica;
+	//IControladorAltaDeFuncionDeEspectaculo icadfde;
+	ControladorConsultaDeFuncionDeEspectaculoPublishService icadfdes;
+	ControladorConsultaDeFuncionDeEspectaculoPublish icadfde;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Funciones() {
         super();
-        fabrica = Fabrica.getInstancia();
-        icadfde = fabrica.getIControladorAltaDeFuncionDeEspectaculo();
+        //fabrica = Fabrica.getInstancia();
+        //icadfde = fabrica.getIControladorAltaDeFuncionDeEspectaculo();
         // TODO Auto-generated constructor stub
+        icadfdes = new ControladorConsultaDeFuncionDeEspectaculoPublishServiceLocator();
+        try {
+        	icadfde = icadfdes.getControladorConsultaDeFuncionDeEspectaculoPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	/**

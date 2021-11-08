@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.rpc.ServiceException;
 
-import interfaces.Fabrica;
+/*import interfaces.Fabrica;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
-import interfaces.IControladorConsultaDeEspectaculo;
+import interfaces.IControladorConsultaDeEspectaculo;*/
 
 import publicadores.ControladorConsultaDeEspectaculoPublish;
 import publicadores.ControladorConsultaDeEspectaculoPublishService;
@@ -42,7 +42,7 @@ public class Espectaculo extends HttpServlet {
         //iccde = fabrica.getIControladorConsultaDeEspectaculo();
         iccdes = new ControladorConsultaDeEspectaculoPublishServiceLocator();
         try {
-        	iccde = iccde.getControladorConsultaDeEspectaculoPublishServicePort();
+        	iccde = iccdes.getControladorConsultaDeEspectaculoPublishPort();
         } catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
