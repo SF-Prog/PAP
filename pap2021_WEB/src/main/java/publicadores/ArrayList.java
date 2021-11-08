@@ -7,6 +7,10 @@
 
 package publicadores;
 
+import java.util.Iterator;
+
+import logica.Usuario;
+
 public class ArrayList  extends publicadores.AbstractList  implements java.io.Serializable {
     public ArrayList() {
     }
@@ -76,5 +80,10 @@ public class ArrayList  extends publicadores.AbstractList  implements java.io.Se
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }
+
+	public Iterator<Usuario> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.rpc.ServiceException;
 
 import com.google.gson.Gson;
 
@@ -25,6 +26,10 @@ import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeUsuario;
 
+import publicadores.ControladorConsultaDeUsuarioPublish;
+import publicadores.ControladorConsultaDeUsuarioPublishService;
+import publicadores.ControladorConsultaDeUsuarioPublishServiceLocator;
+
 /**
  * Servlet implementation class Usuario
  */
@@ -32,9 +37,12 @@ import interfaces.IControladorConsultaDeUsuario;
 @WebServlet("/Usuario")
 public class Usuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Fabrica fabrica;
-	IControladorConsultaDeUsuario iccdu;
-	IControladorAltaDeUsuario icadu;
+	//Fabrica fabrica;
+	//IControladorConsultaDeUsuario iccdu;
+	//IControladorAltaDeUsuario icadu;
+	ControladorConsultaDeUsuarioPublishService ccups;
+	ControladorConsultaDeUsuarioPublish iccdu;
+	//ControladorPublish port
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,9 +50,16 @@ public class Usuario extends HttpServlet {
     public Usuario() {
         super();
         // TODO Auto-generated constructor stub
-        fabrica =  Fabrica.getInstancia();
-		iccdu = fabrica.getIControladorConsultaDeUsuario();
-		icadu = fabrica.getIControladorAltaDeUsuario();		
+        //fabrica =  Fabrica.getInstancia();
+		//iccdu = fabrica.getIControladorConsultaDeUsuario();
+		//icadu = fabrica.getIControladorAltaDeUsuario();	
+        ccups = new ControladorConsultaDeUsuarioPublishServiceLocator();
+        try {
+			iccdu = ccups.getControladorConsultaDeUsuarioPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	/**
@@ -69,8 +84,9 @@ public class Usuario extends HttpServlet {
 			String password = request.getParameter("password");
 			boolean conectado = false;
 			if(user != ""  && password != "") {
-				ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
-				logica.Usuario usuario = this.iniciarSesionUsuario(usuarios,user,password);
+				//ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
+				ArrayList<DtUsuario> usuarios = iccdu.listarUsuarios();
+				DtUsuario usuario = this.iniciarSesionUsuario(usuarios,user,password);
 				if(usuario != null) {
 					 HttpSession session = request.getSession(conectado);					 
 					 
@@ -80,9 +96,9 @@ public class Usuario extends HttpServlet {
 					 session.setAttribute("uApellido", usuario.getApellido());
 					 session.setAttribute("uNombre", usuario.getNombre());
 
-					 if(usuario instanceof logica.Artista){
+					 if(usuario instanceof DtArtista){
 						 session.setAttribute("tipo", "artista");
-					 }else if(usuario instanceof logica.Espectador) {
+					 }else if(usuario instanceof DtEspectador) {
 						 session.setAttribute("tipo", "espectador");
 					 }else {
 						 session.setAttribute("tipo", "admin");
@@ -121,7 +137,8 @@ public class Usuario extends HttpServlet {
 			String link = request.getParameter("linkU");
 			String biografia = request.getParameter("biografiaU");
 			PrintWriter out = response.getWriter();
-			if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
+			//if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
+			if(true){
 				icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
 				System.out.println("entro Artista");
 				out.print("Usuario creado correctamente"); 
@@ -182,7 +199,7 @@ public class Usuario extends HttpServlet {
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
 		}else if(this.esTraerUsuarios(request)){
-			ArrayList<logica.Usuario> listUsuarios =  iccdu.listarUsuarios();
+			ArrayList<DtUsuario> listUsuarios=  iccdu.listarUsuarios();
 		    Gson gson = new Gson();		   
 	        // Convert numbers array into JSON string.
 	        String plataformasJson = gson.toJson(listUsuarios);
@@ -292,16 +309,37 @@ public class Usuario extends HttpServlet {
 		return false;
 	}	
 
-	private logica.Usuario iniciarSesionUsuario (ArrayList<logica.Usuario> usuarios,String usuario,String password){
-		logica.Usuario dtu = null;
-		Iterator<logica.Usuario> eIterator = usuarios.iterator();		
+	private DtUsuario iniciarSesionUsuario (ArrayList<DtUsuario> usuarios,String usuario,String password){
+		//logica.Usuario dtu = null;
+		
+		//Iterator<logica.Usuario> eIterator = usuarios.iterator();		
+		//boolean existe = false;
+		//while(eIterator.hasNext() && !existe){
+		//	logica.Usuario temp = eIterator.next();
+		//	if(temp.getEmail().equals(usuario) || temp.getNickName().equals(usuario)){
+		//		if(password.equals(temp.getPassword())) {
+		//			existe = true;
+		//			dtu= new(temp) ;
+		//			System.out.println("ingreso usuario");
+		//		}				
+		//	}
+		//}
+		//return dtu;
+		
+		DtUsuario dtu = null;
+		Iterator<DtUsuario> eIterator = usuarios.iterator();		
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
-			logica.Usuario temp = eIterator.next();
+			DtUsuario temp = eIterator.next();
 			if(temp.getEmail().equals(usuario) || temp.getNickName().equals(usuario)){
 				if(password.equals(temp.getPassword())) {
 					existe = true;
-					dtu=temp;
+					dtu= temp ;
+					 /*if(usuario instanceof DtArtista){
+						 dtu= new DtArtista(usuario.getNickName(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(), usuario.getFecha(),usuario.getPassword(),usuario.getImage(),usuario.getDescGeneral(), usuario.getBiografia(),usuario.getLink() );
+					 }else if(usuario instanceof DtEspectador) {
+						 dtu= new DtEspectador(usuario.getNickName(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(), usuario.getFecha(),usuario.getPassword(),usuario.getImage());
+					 }*/
 					System.out.println("ingreso usuario");
 				}				
 			}
