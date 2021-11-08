@@ -21,7 +21,9 @@ import javax.xml.rpc.ServiceException;
 
 import com.google.gson.Gson;
 
-import datatypes.DtUsuario;
+import publicadores.DtArtista;
+import publicadores.DtEspectador;
+import publicadores.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeUsuario;
 import interfaces.IControladorConsultaDeUsuario;
@@ -117,73 +119,78 @@ public class Usuario extends HttpServlet {
 		}else if(this.esAltaUsuarioArtista(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ARTISTA	
 			
-			String nickName =request.getParameter("nicknameU");
-			String email =request.getParameter("emailU");
-			String nombre =  request.getParameter("nombreU");
-			String apellido = request.getParameter("apellidoU");
-			String password =request.getParameter("password");
-			String imagen ="";
-			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-			String parameter = request.getParameter("fecchaU");
-			Date fecha = null ;
-			try {
-				fecha = in.parse(parameter);
-			} catch (ParseException e) {
+			//String nickName =request.getParameter("nicknameU");
+			//String email =request.getParameter("emailU");
+			//String nombre =  request.getParameter("nombreU");
+			//String apellido = request.getParameter("apellidoU");
+			//String password =request.getParameter("password");
+			//String imagen ="";
+			//SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+			//String parameter = request.getParameter("fecchaU");
+			//Date fecha = null ;
+			//try {
+			//	fecha = in.parse(parameter);
+			//} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//	e.printStackTrace();
+			//}
 			
-			String descripcionGeneral =request.getParameter("descripcionGeneralU");
-			String link = request.getParameter("linkU");
-			String biografia = request.getParameter("biografiaU");
-			PrintWriter out = response.getWriter();
+			//String descripcionGeneral =request.getParameter("descripcionGeneralU");
+			//String link = request.getParameter("linkU");
+			//String biografia = request.getParameter("biografiaU");
+			//PrintWriter out = response.getWriter();
 			//if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
-			if(true){
-				icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
-				System.out.println("entro Artista");
-				out.print("Usuario creado correctamente"); 
+			//if(true){
+			//	icadu.ingresaUsuarioArtista(new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen), descripcionGeneral, biografia, link);
+			//	System.out.println("entro Artista");
+			//	out.print("Usuario creado correctamente"); 
 				/*request.setAttribute("mensaje", "Usuario creado correctamente");
 				rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);*/
-			}else{
-				out.print("Nickname y/o email ya estan en uso"); 
+			//}else{
+			//	out.print("Nickname y/o email ya estan en uso"); 
 				/*request.setAttribute("mensaje", "Nickname y/o email ya estan en uso");
 				rd=request.getRequestDispatcher("altaUsuario.jsp");
 				rd.forward(request, response);*/
-			}
+			//}
+			
+			 PrintWriter out=response.getWriter(); 
+		        out.println("comentado");	
 		}else if(this.esAltaUsuarioEspectador(request) ){
 			// SE ESTA CONSULTANDO DESDE EL ALTA USUARIO ESPECTADOR
-			String nickName =request.getParameter("nicknameU");
-			String email =request.getParameter("emailU");
-			String nombre =  request.getParameter("nombreU");
-			String apellido = request.getParameter("apellidoU");
-			String password =request.getParameter("password");
-			String imagen ="";
-			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-			String parameter = request.getParameter("fecchaU");
-			Date fecha = null ;
-			try {
-				fecha = in.parse(parameter);
-			} catch (ParseException e) {
+			//String nickName =request.getParameter("nicknameU");
+			//String email =request.getParameter("emailU");
+			//String nombre =  request.getParameter("nombreU");
+			//String apellido = request.getParameter("apellidoU");
+			//String password =request.getParameter("password");
+			//String imagen ="";
+			//SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+			//String parameter = request.getParameter("fecchaU");
+			//Date fecha = null ;
+			//try {
+			//	fecha = in.parse(parameter);
+			//} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//	e.printStackTrace();
+			//}
 			
-			PrintWriter out = response.getWriter();
-			if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
-				DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
-				icadu.ingresaUsuarioEspectador( dt);
+			//PrintWriter out = response.getWriter();
+			//if(!icadu.existeUsuarioPorEmail(email) && !icadu.existeUsuarioPorNickname(nickName)){
+			//	DtUsuario dt=new DtUsuario(nickName, nombre,  apellido,  email,  fecha,password,imagen);
+			///	icadu.ingresaUsuarioEspectador( dt);
 
-				out.print("Usuario creado correctamente"); 
+			//	out.print("Usuario creado correctamente"); 
 				/*request.setAttribute("mensaje", "Usuario creado correctamente");
 				rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);*/
-			}else{
-				out.print("Nickname y/o email ya estan en uso"); 
+			//}else{
+			//	out.print("Nickname y/o email ya estan en uso"); 
 				/*request.setAttribute("mensaje", "Nickname y/o email ya estan en uso");
 				rd=request.getRequestDispatcher("altaUsuario.jsp");
 				rd.forward(request, response);*/
-			}
+			//}
+			 PrintWriter out=response.getWriter(); 
+		        out.println("comentado");	
 		}else if(this.esCerrarSesion(request)){
 			HttpSession sesion = request.getSession(false);
 		    sesion.invalidate();
@@ -199,48 +206,56 @@ public class Usuario extends HttpServlet {
 	        sesion.invalidate();
 	        response.sendRedirect("index.jsp");*/
 		}else if(this.esTraerUsuarios(request)){
-			ArrayList<DtUsuario> listUsuarios=  iccdu.listarUsuarios();
-		    Gson gson = new Gson();		   
+			//ArrayList<DtUsuario> listUsuarios=  iccdu.listarUsuarios();
+		    //Gson gson = new Gson();		   
 	        // Convert numbers array into JSON string.
-	        String plataformasJson = gson.toJson(listUsuarios);
+	        //String plataformasJson = gson.toJson(listUsuarios);
+	        //PrintWriter out=response.getWriter(); 
+	        //out.println(plataformasJson);	      
 	        PrintWriter out=response.getWriter(); 
-	        out.println(plataformasJson);	        
+	        out.println("comentado");	 
 		}else if(this.esSeguirUsuario(request)){			
-			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
-			String nickNameSeguido =request.getParameter("nickNameSeguido");	
-			String message = "Usuario seguido correctamente";		
-			try {
-				icadu.seguirUsuario(nickNameSeguidor, nickNameSeguido);
-			} catch (Exception e) { 
-				message = e.getMessage();
-			}       
-			PrintWriter out=response.getWriter(); 
-	        out.print(message);
+			//String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			//String nickNameSeguido =request.getParameter("nickNameSeguido");	
+			//String message = "Usuario seguido correctamente";		
+			//try {
+				//icadu.seguirUsuario(nickNameSeguidor, nickNameSeguido);
+			//} catch (Exception e) { 
+			//	message = e.getMessage();
+			//}       
+			//PrintWriter out=response.getWriter(); 
+	       // out.print(message);
 			/*request.setAttribute("mensaje", message);
 			rd=request.getRequestDispatcher("seguirUsuario.jsp");
 			rd.forward(request, response);*/
+	        PrintWriter out=response.getWriter(); 
+	        out.println("comentado");	
 		}else if(this.esDejarSeguirUsuario(request)){			
-			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
-			String nickNameSeguido =request.getParameter("nickNameSeguido");
-			String message = "Usuario dejado de seguir correctamente";
-			try {
-				icadu.dejarSeguirUsuario(nickNameSeguidor, nickNameSeguido);
-			} catch (Exception e) {
-				message = e.getMessage();
-			}
-			PrintWriter out=response.getWriter(); 
-	        out.print(message);
+			//String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			//String nickNameSeguido =request.getParameter("nickNameSeguido");
+			//String message = "Usuario dejado de seguir correctamente";
+			//try {
+			//	icadu.dejarSeguirUsuario(nickNameSeguidor, nickNameSeguido);
+			//} catch (Exception e) {
+			//	message = e.getMessage();
+			//}
+			//PrintWriter out=response.getWriter(); 
+	        //out.print(message);
 			/*request.setAttribute("mensaje", message);
 			rd=request.getRequestDispatcher("seguirUsuario.jsp");
 			rd.forward(request, response);*/
+	        PrintWriter out=response.getWriter(); 
+	        out.println("comentado");	
 		}else if(this.esListarSeguidores(request)) {
-			String nickNameSeguidor =request.getParameter("nickNameSeguidor");
-			String[] listaSeguidores= icadu.usuariosSeguidos(nickNameSeguidor);
+			//String nickNameSeguidor =request.getParameter("nickNameSeguidor");
+			//String[] listaSeguidores= icadu.usuariosSeguidos(nickNameSeguidor);
 			
-		    Gson gson = new Gson();
-	        String plataformasJson = gson.toJson(listaSeguidores);
-			PrintWriter out = response.getWriter();
-	        out.println(plataformasJson); 
+		    //Gson gson = new Gson();
+	        //String plataformasJson = gson.toJson(listaSeguidores);
+			//PrintWriter out = response.getWriter();
+	        //out.println(plataformasJson); 
+	        PrintWriter out=response.getWriter(); 
+	        out.println("comentado");	
 		}
 	}
 

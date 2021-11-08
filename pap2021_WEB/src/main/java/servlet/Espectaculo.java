@@ -8,10 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.rpc.ServiceException;
+
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import interfaces.IControladorConsultaDeEspectaculo;
 
+import publicadores.ControladorConsultaDeEspectaculoPublish;
+import publicadores.ControladorConsultaDeEspectaculoPublishService;
+import publicadores.ControladorConsultaDeEspectaculoPublishServiceLocator;
 
 import com.google.gson.Gson;
 /**
@@ -21,18 +26,27 @@ import com.google.gson.Gson;
 @WebServlet("/Espectaculo")
 public class Espectaculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Fabrica fabrica;
-	IControladorConsultaDeEspectaculo iccde;
-	IControladorAltaDeFuncionDeEspectaculo icadfde;
+	//Fabrica fabrica;
+	//IControladorConsultaDeEspectaculo iccde;
+	//IControladorAltaDeFuncionDeEspectaculo icadfde;
+	ControladorConsultaDeEspectaculoPublishService iccdes;
+	ControladorConsultaDeEspectaculoPublish iccde;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Espectaculo() {
         super();
         // TODO Auto-generated constructor stub
-        fabrica = Fabrica.getInstancia();
-        iccde = fabrica.getIControladorConsultaDeEspectaculo();
-       
+        //fabrica = Fabrica.getInstancia();
+        //iccde = fabrica.getIControladorConsultaDeEspectaculo();
+        iccdes = new ControladorConsultaDeEspectaculoPublishServiceLocator();
+        try {
+        	iccde = iccde.getControladorConsultaDeEspectaculoPublishServicePort();
+        } catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	/**
