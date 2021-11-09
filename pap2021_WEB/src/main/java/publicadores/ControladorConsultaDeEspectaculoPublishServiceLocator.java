@@ -22,7 +22,7 @@ public class ControladorConsultaDeEspectaculoPublishServiceLocator extends org.a
     }
 
     // Use to get a proxy class for ControladorConsultaDeEspectaculoPublishPort
-    private java.lang.String ControladorConsultaDeEspectaculoPublishPort_address = "http://127.0.0.1:5000/ControladorConsultaDeEspectaculo";
+    private java.lang.String ControladorConsultaDeEspectaculoPublishPort_address = "http://127.0.0.1:8080/ControladorConsultaDeEspectaculo";
 
     public java.lang.String getControladorConsultaDeEspectaculoPublishPortAddress() {
         return ControladorConsultaDeEspectaculoPublishPort_address;

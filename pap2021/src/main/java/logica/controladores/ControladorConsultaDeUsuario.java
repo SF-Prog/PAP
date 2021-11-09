@@ -24,6 +24,7 @@ public class ControladorConsultaDeUsuario implements IControladorConsultaDeUsuar
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		return mU.getUsuarios();		
 	}
+	@Override
 	public ArrayList<DtUsuario> listarUsuariosDt() {
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		ArrayList<DtUsuario>  dtu = null;

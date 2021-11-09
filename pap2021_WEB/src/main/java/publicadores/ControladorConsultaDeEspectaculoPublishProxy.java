@@ -44,40 +44,34 @@ public class ControladorConsultaDeEspectaculoPublishProxy implements publicadore
     return controladorConsultaDeEspectaculoPublish;
   }
   
-  public java.lang.String[] listarArtistasInvitados() throws java.rmi.RemoteException{
+  public java.lang.String[] listarEspectaculosComboBox() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarArtistasInvitados();
+    return controladorConsultaDeEspectaculoPublish.listarEspectaculosComboBox();
   }
   
-  public publicadores.ArrayList listarPaquetes() throws java.rmi.RemoteException{
+  public java.lang.String[] listarPlataformasComboBox() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarPaquetes();
+    return controladorConsultaDeEspectaculoPublish.listarPlataformasComboBox();
   }
   
-  public publicadores.DtPaquete seleccionaPaquete(java.lang.String arg0) throws java.rmi.RemoteException{
+  public java.lang.String[] listarFuncionesComboBox() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.seleccionaPaquete(arg0);
+    return controladorConsultaDeEspectaculoPublish.listarFuncionesComboBox();
   }
   
-  public publicadores.DtFuncion seleccionaFuncion(java.lang.String arg0) throws java.rmi.RemoteException{
+  public java.lang.String[] listarPaquetesComboBox() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.seleccionaFuncion(arg0);
+    return controladorConsultaDeEspectaculoPublish.listarPaquetesComboBox();
   }
   
-  public publicadores.ArrayList listarEspectaculos() throws java.rmi.RemoteException{
+  public publicadores.ArrayList listarPlataformas() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarEspectaculos();
-  }
-  
-  public publicadores.ArrayList listarFunciones() throws java.rmi.RemoteException{
-    if (controladorConsultaDeEspectaculoPublish == null)
-      _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarFunciones();
+    return controladorConsultaDeEspectaculoPublish.listarPlataformas();
   }
   
   public publicadores.DtPlataforma seleccionaPlataforma(java.lang.String arg0) throws java.rmi.RemoteException{
@@ -92,34 +86,40 @@ public class ControladorConsultaDeEspectaculoPublishProxy implements publicadore
     return controladorConsultaDeEspectaculoPublish.seleccionaEspectaculo(arg0);
   }
   
-  public publicadores.ArrayList listarPlataformas() throws java.rmi.RemoteException{
+  public java.lang.String[] listarArtistasInvitados() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarPlataformas();
+    return controladorConsultaDeEspectaculoPublish.listarArtistasInvitados();
   }
   
-  public java.lang.String[] listarPlataformasComboBox() throws java.rmi.RemoteException{
+  public publicadores.ArrayList listarFunciones() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarPlataformasComboBox();
+    return controladorConsultaDeEspectaculoPublish.listarFunciones();
   }
   
-  public java.lang.String[] listarEspectaculosComboBox() throws java.rmi.RemoteException{
+  public publicadores.DtFuncion seleccionaFuncion(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarEspectaculosComboBox();
+    return controladorConsultaDeEspectaculoPublish.seleccionaFuncion(arg0);
   }
   
-  public java.lang.String[] listarPaquetesComboBox() throws java.rmi.RemoteException{
+  public publicadores.ArrayList listarEspectaculos() throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarPaquetesComboBox();
+    return controladorConsultaDeEspectaculoPublish.listarEspectaculos();
   }
   
-  public java.lang.String[] listarFuncionesComboBox() throws java.rmi.RemoteException{
+  public publicadores.DtPaquete seleccionaPaquete(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeEspectaculoPublish == null)
       _initControladorConsultaDeEspectaculoPublishProxy();
-    return controladorConsultaDeEspectaculoPublish.listarFuncionesComboBox();
+    return controladorConsultaDeEspectaculoPublish.seleccionaPaquete(arg0);
+  }
+  
+  public publicadores.ArrayList listarPaquetes() throws java.rmi.RemoteException{
+    if (controladorConsultaDeEspectaculoPublish == null)
+      _initControladorConsultaDeEspectaculoPublishProxy();
+    return controladorConsultaDeEspectaculoPublish.listarPaquetes();
   }
   
   

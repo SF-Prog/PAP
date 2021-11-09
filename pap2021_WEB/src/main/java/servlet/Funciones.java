@@ -25,10 +25,12 @@ import interfaces.Fabrica;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 */
 
-import publicadoares.DtFuncion;
-import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublish;
-import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublishService;
-import publicadores.ControladorConsultaDeFuncionDeEspectaculoPublishServiceLocator;
+import publicadores.DtFuncion;
+import publicadores.ControladorConsultaDeEspectaculoPublish;
+import publicadores.ControladorConsultaDeEspectaculoPublishService;
+import publicadores.ControladorConsultaDeEspectaculoPublishServiceLocator;
+
+import publicadores.DtEspectaculo;
 
 /**
  * Servlet implementation class Funciones
@@ -39,20 +41,19 @@ public class Funciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//Fabrica fabrica;
 	//IControladorAltaDeFuncionDeEspectaculo icadfde;
-	ControladorConsultaDeFuncionDeEspectaculoPublishService icadfdes;
-	ControladorConsultaDeFuncionDeEspectaculoPublish icadfde;
+	ControladorConsultaDeEspectaculoPublishService icadfdes;
+	ControladorConsultaDeEspectaculoPublish icadfde;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Funciones() {
         super();
-        //fabrica = Fabrica.getInstancia();
-        //icadfde = fabrica.getIControladorAltaDeFuncionDeEspectaculo();
+
         // TODO Auto-generated constructor stub
-        icadfdes = new ControladorConsultaDeFuncionDeEspectaculoPublishServiceLocator();
+        icadfdes = new ControladorConsultaDeEspectaculoPublishServiceLocator();
         try {
-        	icadfde = icadfdes.getControladorConsultaDeFuncionDeEspectaculoPublishPort();
+        	icadfde = icadfdes.getControladorConsultaDeEspectaculoPublishPort();
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,39 +77,38 @@ public class Funciones extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(this.esAltaFuncionDeEspectaculo(request)) {
 
-			String nombre = request.getParameter("Nombre");
-        	String horaInicio = request.getParameter("horaInicio");
-        	Date fechaInicio=new Date();
-			try {
-				fechaInicio = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaInicio"));
-			} catch (ParseException e1) {
+			//String nombre = request.getParameter("Nombre");
+        	//String horaInicio = request.getParameter("horaInicio");
+        	//Date fechaInicio=new Date();
+			//try {
+			//	fechaInicio = new SimpleDateFormat("yyy-MM-dd").parse(request.getParameter("fechaInicio"));
+			//} catch (ParseException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-        	Date fechaAlta=new Date();
-			String imagen = "";
+			//	e1.printStackTrace();
+			//}
+        	//Date fechaAlta=new Date();
+			//String imagen = "";
 			
-			//Gson gson = new Gson();
+			
         	
-        	String json= request.getParameter("listaArtistas"); 
-        	ObjectMapper mapper = new ObjectMapper();
+        	//String json= request.getParameter("listaArtistas"); 
+        	//ObjectMapper mapper = new ObjectMapper();
    
-        	List<String> listaArtistas = mapper.readValue(json, new TypeReference<List<String>>(){});
-        	//List<String> listaArtistas= null;
-        	//String[] listaArtistas = request.getParameter("listaArtistas"); 
-        	System.out.println(listaArtistas);
+        	//List<String> listaArtistas = mapper.readValue(json, new TypeReference<List<String>>(){});
+        	
+        	//System.out.println(listaArtistas);
     	
-    		DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta, imagen);
-    		PrintWriter out2 = response.getWriter();
-    		try {
-				icadfde.ingresaFuncion(dtFuncion, listaArtistas);
+    		//DtFuncion dtFuncion = new DtFuncion(nombre, fechaInicio, horaInicio, fechaAlta, imagen);
+    		//PrintWriter out2 = response.getWriter();
+    		//try {
+			//	icadfde.ingresaFuncion(dtFuncion, listaArtistas);
 
-				out2.print("Funcion dada de alta"); 
-			} catch (AltaFuncionDeEspectaculoExcepcion e) {
-				// TODO Auto-generated catch block
-				out2.println(e.getMessage()); 
+			//	out2.print("Funcion dada de alta"); 
+			//} catch (AltaFuncionDeEspectaculoExcepcion e) {
+			//	// TODO Auto-generated catch block
+			//	out2.println(e.getMessage()); 
 				//throw new ServletException();				
-			}
+			//}
     	
     		//JOptionPane.showMessageDialog(this, e.getMessage(), nombreFormulario, JOptionPane.ERROR_MESSAGE);
 
@@ -149,15 +149,15 @@ public class Funciones extends HttpServlet {
 
 		}else if(this.getArtistas(request)){
 			// TRAIGO LA LISTA DE ESPECTACULOS
-			
-
-			String[] listaEspectaculos= icadfde.listarArtistasComboBox();
+		/*	
+	
+			String[] listaEspectaculos= icadfde.listarArtistasComboBox();			
 		    Gson gson = new Gson();
 		    System.out.println(listaEspectaculos);
 	        // Convert numbers array into JSON string.
 	        String espectaculosJson = gson.toJson(listaEspectaculos);
 	        out.println(espectaculosJson); 
-
+		 	*/
 		}else if(this.selectPlataforma(request)){
 			// TRAIGO LA LISTA DE ESPECTACULOS
 			System.out.println("PLATAFORMA EN SERVER " + request.getParameter("plataforma"));
@@ -166,7 +166,7 @@ public class Funciones extends HttpServlet {
 
 	     }else if(this.selectEspectaculos(request)){
 			// TRAIGO LA LISTA DE ESPECTACULOS
-	    	 logica.Espectaculo esp = icadfde.seleccionaEspectaculo(request.getParameter("espectaculos"));
+	    	 DtEspectaculo esp = icadfde.seleccionaEspectaculo(request.getParameter("espectaculos"));
 	    	 System.out.println(esp.getNombre());
 	     }
 	}

@@ -54,6 +54,10 @@ public class ControladorConsultaDeUsuarioPublish {
 	}
 
 	@WebMethod
+	public ArrayList<DtUsuario> listarUsuariosDt() {
+		return iCon.listarUsuariosDt();		
+	}
+	@WebMethod
 	public ArrayList<DtUsuario> seleccionaUsuario(String nickname) {
 		return iCon.seleccionaUsuario(nickname);
 	}
@@ -66,5 +70,18 @@ public class ControladorConsultaDeUsuarioPublish {
 	@WebMethod
 	public ArrayList<DtFuncion> listaInfoFunciones(String nickname) {
 		return iCon.listaInfoFunciones(nickname);
+	}
+	
+	@WebMethod
+	public DtUsuario dtu() {
+		return null;		
+	}
+	@WebMethod
+	public DtArtista dta() {
+		return null;		
+	}
+	@WebMethod
+	public DtEspectador dte() {
+		return null;		
 	}
 }

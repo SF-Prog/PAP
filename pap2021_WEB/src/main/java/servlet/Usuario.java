@@ -87,7 +87,8 @@ public class Usuario extends HttpServlet {
 			boolean conectado = false;
 			if(user != ""  && password != "") {
 				//ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
-				ArrayList<DtUsuario> usuarios = iccdu.listarUsuarios();
+				//ArrayList<DtUsuario> usuarios = iccdu.listarUsuarios();
+				publicadores.ArrayList usuarios = iccdu.listarUsuariosDt();
 				DtUsuario usuario = this.iniciarSesionUsuario(usuarios,user,password);
 				if(usuario != null) {
 					 HttpSession session = request.getSession(conectado);					 
@@ -324,7 +325,7 @@ public class Usuario extends HttpServlet {
 		return false;
 	}	
 
-	private DtUsuario iniciarSesionUsuario (ArrayList<DtUsuario> usuarios,String usuario,String password){
+	private DtUsuario iniciarSesionUsuario(publicadores.ArrayList usuarios,String usuario,String password){
 		//logica.Usuario dtu = null;
 		
 		//Iterator<logica.Usuario> eIterator = usuarios.iterator();		

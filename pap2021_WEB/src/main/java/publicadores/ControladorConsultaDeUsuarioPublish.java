@@ -8,8 +8,12 @@
 package publicadores;
 
 public interface ControladorConsultaDeUsuarioPublish extends java.rmi.Remote {
-    public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException;
-    public publicadores.ArrayList listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException;
-    public publicadores.ArrayList listarUsuarios() throws java.rmi.RemoteException;
     public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException;
+    public publicadores.ArrayList listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException;
+    public publicadores.DtArtista dta() throws java.rmi.RemoteException;
+    public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException;
+    public publicadores.DtUsuario dtu() throws java.rmi.RemoteException;
+    public publicadores.ArrayList listarUsuariosDt() throws java.rmi.RemoteException;
+    public publicadores.ArrayList listarUsuarios() throws java.rmi.RemoteException;
+    public publicadores.DtEspectador dte() throws java.rmi.RemoteException;
 }
