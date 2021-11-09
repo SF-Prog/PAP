@@ -44,10 +44,10 @@ public class ControladorConsultaDeUsuarioPublishProxy implements publicadores.Co
     return controladorConsultaDeUsuarioPublish;
   }
   
-  public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException{
+  public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeUsuarioPublish == null)
       _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.listaInfoEspectaculos(arg0);
+    return controladorConsultaDeUsuarioPublish.seleccionaUsuario(arg0);
   }
   
   public publicadores.ArrayList listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException{
@@ -62,10 +62,10 @@ public class ControladorConsultaDeUsuarioPublishProxy implements publicadores.Co
     return controladorConsultaDeUsuarioPublish.listarUsuarios();
   }
   
-  public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
+  public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeUsuarioPublish == null)
       _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.seleccionaUsuario(arg0);
+    return controladorConsultaDeUsuarioPublish.listaInfoEspectaculos(arg0);
   }
   
   

@@ -68,14 +68,14 @@ case 13:
         if(!arg0_1id.equals("")){
          arg0_1idTemp  = arg0_1id;
         }
-        publicadores.ArrayList listaInfoEspectaculos13mtemp = sampleControladorConsultaDeUsuarioPublishProxyid.listaInfoEspectaculos(arg0_1idTemp);
-if(listaInfoEspectaculos13mtemp == null){
+        publicadores.ArrayList seleccionaUsuario13mtemp = sampleControladorConsultaDeUsuarioPublishProxyid.seleccionaUsuario(arg0_1idTemp);
+if(seleccionaUsuario13mtemp == null){
 %>
-<%=listaInfoEspectaculos13mtemp %>
+<%=seleccionaUsuario13mtemp %>
 <%
 }else{
-        if(listaInfoEspectaculos13mtemp!= null){
-        String tempreturnp14 = listaInfoEspectaculos13mtemp.toString();
+        if(seleccionaUsuario13mtemp!= null){
+        String tempreturnp14 = seleccionaUsuario13mtemp.toString();
         %>
         <%=tempreturnp14%>
         <%
@@ -123,14 +123,14 @@ case 26:
         if(!arg0_3id.equals("")){
          arg0_3idTemp  = arg0_3id;
         }
-        publicadores.ArrayList seleccionaUsuario26mtemp = sampleControladorConsultaDeUsuarioPublishProxyid.seleccionaUsuario(arg0_3idTemp);
-if(seleccionaUsuario26mtemp == null){
+        publicadores.ArrayList listaInfoEspectaculos26mtemp = sampleControladorConsultaDeUsuarioPublishProxyid.listaInfoEspectaculos(arg0_3idTemp);
+if(listaInfoEspectaculos26mtemp == null){
 %>
-<%=seleccionaUsuario26mtemp %>
+<%=listaInfoEspectaculos26mtemp %>
 <%
 }else{
-        if(seleccionaUsuario26mtemp!= null){
-        String tempreturnp27 = seleccionaUsuario26mtemp.toString();
+        if(listaInfoEspectaculos26mtemp!= null){
+        String tempreturnp27 = listaInfoEspectaculos26mtemp.toString();
         %>
         <%=tempreturnp27%>
         <%

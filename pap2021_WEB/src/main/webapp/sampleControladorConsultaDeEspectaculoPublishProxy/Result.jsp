@@ -63,48 +63,120 @@ if(getControladorConsultaDeEspectaculoPublish10mtemp == null){
 break;
 case 13:
         gotMethod = true;
-        java.lang.String[] listarArtistasInvitados13mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarArtistasInvitados();
-if(listarArtistasInvitados13mtemp == null){
-%>
-<%=listarArtistasInvitados13mtemp %>
-<%
-}else{
-        String tempreturnp14 = null;
-        if(listarArtistasInvitados13mtemp != null){
-        java.util.List listreturnp14= java.util.Arrays.asList(listarArtistasInvitados13mtemp);
-        tempreturnp14 = listreturnp14.toString();
-        }
-        %>
-        <%=tempreturnp14%>
-        <%
-}
-break;
-case 16:
-        gotMethod = true;
-        publicadores.ArrayList listarPaquetes16mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPaquetes();
-if(listarPaquetes16mtemp == null){
-%>
-<%=listarPaquetes16mtemp %>
-<%
-}else{
-        if(listarPaquetes16mtemp!= null){
-        String tempreturnp17 = listarPaquetes16mtemp.toString();
-        %>
-        <%=tempreturnp17%>
-        <%
-        }}
-break;
-case 19:
-        gotMethod = true;
-        String arg0_1id=  request.getParameter("arg028");
+        String arg0_1id=  request.getParameter("arg026");
             java.lang.String arg0_1idTemp = null;
         if(!arg0_1id.equals("")){
          arg0_1idTemp  = arg0_1id;
         }
-        publicadores.DtPaquete seleccionaPaquete19mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaPaquete(arg0_1idTemp);
-if(seleccionaPaquete19mtemp == null){
+        publicadores.DtFuncion seleccionaFuncion13mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaFuncion(arg0_1idTemp);
+if(seleccionaFuncion13mtemp == null){
 %>
-<%=seleccionaPaquete19mtemp %>
+<%=seleccionaFuncion13mtemp %>
+<%
+}else{
+%>
+<TABLE>
+<TR>
+<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">fechaRegistro:</TD>
+<TD>
+<%
+if(seleccionaFuncion13mtemp != null){
+java.util.Calendar typefechaRegistro16 = seleccionaFuncion13mtemp.getFechaRegistro();
+        java.text.DateFormat dateFormatfechaRegistro16 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaRegistro16 = typefechaRegistro16.getTime();
+        String tempResultfechaRegistro16 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaRegistro16.format(datefechaRegistro16));
+        %>
+        <%= tempResultfechaRegistro16 %>
+        <%
+}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">fecha:</TD>
+<TD>
+<%
+if(seleccionaFuncion13mtemp != null){
+java.util.Calendar typefecha18 = seleccionaFuncion13mtemp.getFecha();
+        java.text.DateFormat dateFormatfecha18 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefecha18 = typefecha18.getTime();
+        String tempResultfecha18 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfecha18.format(datefecha18));
+        %>
+        <%= tempResultfecha18 %>
+        <%
+}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">horaInicio:</TD>
+<TD>
+<%
+if(seleccionaFuncion13mtemp != null){
+java.lang.String typehoraInicio20 = seleccionaFuncion13mtemp.getHoraInicio();
+        String tempResulthoraInicio20 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typehoraInicio20));
+        %>
+        <%= tempResulthoraInicio20 %>
+        <%
+}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">image:</TD>
+<TD>
+<%
+if(seleccionaFuncion13mtemp != null){
+java.lang.String typeimage22 = seleccionaFuncion13mtemp.getImage();
+        String tempResultimage22 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeimage22));
+        %>
+        <%= tempResultimage22 %>
+        <%
+}%>
+</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">nombre:</TD>
+<TD>
+<%
+if(seleccionaFuncion13mtemp != null){
+java.lang.String typenombre24 = seleccionaFuncion13mtemp.getNombre();
+        String tempResultnombre24 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre24));
+        %>
+        <%= tempResultnombre24 %>
+        <%
+}%>
+</TD>
+</TABLE>
+<%
+}
+break;
+case 28:
+        gotMethod = true;
+        publicadores.ArrayList listarEspectaculos28mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarEspectaculos();
+if(listarEspectaculos28mtemp == null){
+%>
+<%=listarEspectaculos28mtemp %>
+<%
+}else{
+        if(listarEspectaculos28mtemp!= null){
+        String tempreturnp29 = listarEspectaculos28mtemp.toString();
+        %>
+        <%=tempreturnp29%>
+        <%
+        }}
+break;
+case 31:
+        gotMethod = true;
+        String arg0_2id=  request.getParameter("arg040");
+            java.lang.String arg0_2idTemp = null;
+        if(!arg0_2id.equals("")){
+         arg0_2idTemp  = arg0_2id;
+        }
+        publicadores.DtPaquete seleccionaPaquete31mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaPaquete(arg0_2idTemp);
+if(seleccionaPaquete31mtemp == null){
+%>
+<%=seleccionaPaquete31mtemp %>
 <%
 }else{
 %>
@@ -116,9 +188,9 @@ if(seleccionaPaquete19mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">descuento:</TD>
 <TD>
 <%
-if(seleccionaPaquete19mtemp != null){
+if(seleccionaPaquete31mtemp != null){
 %>
-<%=seleccionaPaquete19mtemp.getDescuento()
+<%=seleccionaPaquete31mtemp.getDescuento()
 %><%}%>
 </TD>
 <TR>
@@ -126,11 +198,11 @@ if(seleccionaPaquete19mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">descripcion:</TD>
 <TD>
 <%
-if(seleccionaPaquete19mtemp != null){
-java.lang.String typedescripcion24 = seleccionaPaquete19mtemp.getDescripcion();
-        String tempResultdescripcion24 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion24));
+if(seleccionaPaquete31mtemp != null){
+java.lang.String typedescripcion36 = seleccionaPaquete31mtemp.getDescripcion();
+        String tempResultdescripcion36 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion36));
         %>
-        <%= tempResultdescripcion24 %>
+        <%= tempResultdescripcion36 %>
         <%
 }%>
 </TD>
@@ -139,11 +211,11 @@ java.lang.String typedescripcion24 = seleccionaPaquete19mtemp.getDescripcion();
 <TD COLSPAN="2" ALIGN="LEFT">nombre:</TD>
 <TD>
 <%
-if(seleccionaPaquete19mtemp != null){
-java.lang.String typenombre26 = seleccionaPaquete19mtemp.getNombre();
-        String tempResultnombre26 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre26));
+if(seleccionaPaquete31mtemp != null){
+java.lang.String typenombre38 = seleccionaPaquete31mtemp.getNombre();
+        String tempResultnombre38 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre38));
         %>
-        <%= tempResultnombre26 %>
+        <%= tempResultnombre38 %>
         <%
 }%>
 </TD>
@@ -151,106 +223,31 @@ java.lang.String typenombre26 = seleccionaPaquete19mtemp.getNombre();
 <%
 }
 break;
-case 30:
+case 42:
         gotMethod = true;
-        String arg0_2id=  request.getParameter("arg043");
-            java.lang.String arg0_2idTemp = null;
-        if(!arg0_2id.equals("")){
-         arg0_2idTemp  = arg0_2id;
-        }
-        publicadores.DtFuncion seleccionaFuncion30mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaFuncion(arg0_2idTemp);
-if(seleccionaFuncion30mtemp == null){
+        publicadores.ArrayList listarPaquetes42mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPaquetes();
+if(listarPaquetes42mtemp == null){
 %>
-<%=seleccionaFuncion30mtemp %>
+<%=listarPaquetes42mtemp %>
 <%
 }else{
-%>
-<TABLE>
-<TR>
-<TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">fechaRegistro:</TD>
-<TD>
-<%
-if(seleccionaFuncion30mtemp != null){
-java.util.Calendar typefechaRegistro33 = seleccionaFuncion30mtemp.getFechaRegistro();
-        java.text.DateFormat dateFormatfechaRegistro33 = java.text.DateFormat.getDateInstance();
-        java.util.Date datefechaRegistro33 = typefechaRegistro33.getTime();
-        String tempResultfechaRegistro33 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaRegistro33.format(datefechaRegistro33));
+        if(listarPaquetes42mtemp!= null){
+        String tempreturnp43 = listarPaquetes42mtemp.toString();
         %>
-        <%= tempResultfechaRegistro33 %>
+        <%=tempreturnp43%>
         <%
-}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">fecha:</TD>
-<TD>
-<%
-if(seleccionaFuncion30mtemp != null){
-java.util.Calendar typefecha35 = seleccionaFuncion30mtemp.getFecha();
-        java.text.DateFormat dateFormatfecha35 = java.text.DateFormat.getDateInstance();
-        java.util.Date datefecha35 = typefecha35.getTime();
-        String tempResultfecha35 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfecha35.format(datefecha35));
-        %>
-        <%= tempResultfecha35 %>
-        <%
-}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">horaInicio:</TD>
-<TD>
-<%
-if(seleccionaFuncion30mtemp != null){
-java.lang.String typehoraInicio37 = seleccionaFuncion30mtemp.getHoraInicio();
-        String tempResulthoraInicio37 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typehoraInicio37));
-        %>
-        <%= tempResulthoraInicio37 %>
-        <%
-}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">image:</TD>
-<TD>
-<%
-if(seleccionaFuncion30mtemp != null){
-java.lang.String typeimage39 = seleccionaFuncion30mtemp.getImage();
-        String tempResultimage39 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeimage39));
-        %>
-        <%= tempResultimage39 %>
-        <%
-}%>
-</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">nombre:</TD>
-<TD>
-<%
-if(seleccionaFuncion30mtemp != null){
-java.lang.String typenombre41 = seleccionaFuncion30mtemp.getNombre();
-        String tempResultnombre41 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre41));
-        %>
-        <%= tempResultnombre41 %>
-        <%
-}%>
-</TD>
-</TABLE>
-<%
-}
+        }}
 break;
 case 45:
         gotMethod = true;
-        publicadores.ArrayList listarEspectaculos45mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarEspectaculos();
-if(listarEspectaculos45mtemp == null){
+        publicadores.ArrayList listarFunciones45mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarFunciones();
+if(listarFunciones45mtemp == null){
 %>
-<%=listarEspectaculos45mtemp %>
+<%=listarFunciones45mtemp %>
 <%
 }else{
-        if(listarEspectaculos45mtemp!= null){
-        String tempreturnp46 = listarEspectaculos45mtemp.toString();
+        if(listarFunciones45mtemp!= null){
+        String tempreturnp46 = listarFunciones45mtemp.toString();
         %>
         <%=tempreturnp46%>
         <%
@@ -258,30 +255,120 @@ if(listarEspectaculos45mtemp == null){
 break;
 case 48:
         gotMethod = true;
-        publicadores.ArrayList listarFunciones48mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarFunciones();
-if(listarFunciones48mtemp == null){
+        java.lang.String[] listarPlataformasComboBox48mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPlataformasComboBox();
+if(listarPlataformasComboBox48mtemp == null){
 %>
-<%=listarFunciones48mtemp %>
+<%=listarPlataformasComboBox48mtemp %>
 <%
 }else{
-        if(listarFunciones48mtemp!= null){
-        String tempreturnp49 = listarFunciones48mtemp.toString();
+        String tempreturnp49 = null;
+        if(listarPlataformasComboBox48mtemp != null){
+        java.util.List listreturnp49= java.util.Arrays.asList(listarPlataformasComboBox48mtemp);
+        tempreturnp49 = listreturnp49.toString();
+        }
         %>
         <%=tempreturnp49%>
         <%
-        }}
+}
 break;
 case 51:
         gotMethod = true;
-        String arg0_3id=  request.getParameter("arg070");
+        java.lang.String[] listarEspectaculosComboBox51mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarEspectaculosComboBox();
+if(listarEspectaculosComboBox51mtemp == null){
+%>
+<%=listarEspectaculosComboBox51mtemp %>
+<%
+}else{
+        String tempreturnp52 = null;
+        if(listarEspectaculosComboBox51mtemp != null){
+        java.util.List listreturnp52= java.util.Arrays.asList(listarEspectaculosComboBox51mtemp);
+        tempreturnp52 = listreturnp52.toString();
+        }
+        %>
+        <%=tempreturnp52%>
+        <%
+}
+break;
+case 54:
+        gotMethod = true;
+        java.lang.String[] listarPaquetesComboBox54mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPaquetesComboBox();
+if(listarPaquetesComboBox54mtemp == null){
+%>
+<%=listarPaquetesComboBox54mtemp %>
+<%
+}else{
+        String tempreturnp55 = null;
+        if(listarPaquetesComboBox54mtemp != null){
+        java.util.List listreturnp55= java.util.Arrays.asList(listarPaquetesComboBox54mtemp);
+        tempreturnp55 = listreturnp55.toString();
+        }
+        %>
+        <%=tempreturnp55%>
+        <%
+}
+break;
+case 57:
+        gotMethod = true;
+        java.lang.String[] listarFuncionesComboBox57mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarFuncionesComboBox();
+if(listarFuncionesComboBox57mtemp == null){
+%>
+<%=listarFuncionesComboBox57mtemp %>
+<%
+}else{
+        String tempreturnp58 = null;
+        if(listarFuncionesComboBox57mtemp != null){
+        java.util.List listreturnp58= java.util.Arrays.asList(listarFuncionesComboBox57mtemp);
+        tempreturnp58 = listreturnp58.toString();
+        }
+        %>
+        <%=tempreturnp58%>
+        <%
+}
+break;
+case 60:
+        gotMethod = true;
+        publicadores.ArrayList listarPlataformas60mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPlataformas();
+if(listarPlataformas60mtemp == null){
+%>
+<%=listarPlataformas60mtemp %>
+<%
+}else{
+        if(listarPlataformas60mtemp!= null){
+        String tempreturnp61 = listarPlataformas60mtemp.toString();
+        %>
+        <%=tempreturnp61%>
+        <%
+        }}
+break;
+case 63:
+        gotMethod = true;
+        java.lang.String[] listarArtistasInvitados63mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarArtistasInvitados();
+if(listarArtistasInvitados63mtemp == null){
+%>
+<%=listarArtistasInvitados63mtemp %>
+<%
+}else{
+        String tempreturnp64 = null;
+        if(listarArtistasInvitados63mtemp != null){
+        java.util.List listreturnp64= java.util.Arrays.asList(listarArtistasInvitados63mtemp);
+        tempreturnp64 = listreturnp64.toString();
+        }
+        %>
+        <%=tempreturnp64%>
+        <%
+}
+break;
+case 66:
+        gotMethod = true;
+        String arg0_3id=  request.getParameter("arg085");
             java.lang.String arg0_3idTemp = null;
         if(!arg0_3id.equals("")){
          arg0_3idTemp  = arg0_3id;
         }
-        publicadores.DtPlataforma seleccionaPlataforma51mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaPlataforma(arg0_3idTemp);
-if(seleccionaPlataforma51mtemp == null){
+        publicadores.DtPlataforma seleccionaPlataforma66mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaPlataforma(arg0_3idTemp);
+if(seleccionaPlataforma66mtemp == null){
 %>
-<%=seleccionaPlataforma51mtemp %>
+<%=seleccionaPlataforma66mtemp %>
 <%
 }else{
 %>
@@ -293,11 +380,11 @@ if(seleccionaPlataforma51mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">espectadoresMax:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typeespectadoresMax54 = seleccionaPlataforma51mtemp.getEspectadoresMax();
-        String tempResultespectadoresMax54 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeespectadoresMax54));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typeespectadoresMax69 = seleccionaPlataforma66mtemp.getEspectadoresMax();
+        String tempResultespectadoresMax69 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeespectadoresMax69));
         %>
-        <%= tempResultespectadoresMax54 %>
+        <%= tempResultespectadoresMax69 %>
         <%
 }%>
 </TD>
@@ -306,11 +393,11 @@ java.lang.String typeespectadoresMax54 = seleccionaPlataforma51mtemp.getEspectad
 <TD COLSPAN="2" ALIGN="LEFT">fechaAlta:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typefechaAlta56 = seleccionaPlataforma51mtemp.getFechaAlta();
-        String tempResultfechaAlta56 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefechaAlta56));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typefechaAlta71 = seleccionaPlataforma66mtemp.getFechaAlta();
+        String tempResultfechaAlta71 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typefechaAlta71));
         %>
-        <%= tempResultfechaAlta56 %>
+        <%= tempResultfechaAlta71 %>
         <%
 }%>
 </TD>
@@ -319,9 +406,9 @@ java.lang.String typefechaAlta56 = seleccionaPlataforma51mtemp.getFechaAlta();
 <TD COLSPAN="2" ALIGN="LEFT">costo:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
+if(seleccionaPlataforma66mtemp != null){
 %>
-<%=seleccionaPlataforma51mtemp.getCosto()
+<%=seleccionaPlataforma66mtemp.getCosto()
 %><%}%>
 </TD>
 <TR>
@@ -329,11 +416,11 @@ if(seleccionaPlataforma51mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">descripcion:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typedescripcion60 = seleccionaPlataforma51mtemp.getDescripcion();
-        String tempResultdescripcion60 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion60));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typedescripcion75 = seleccionaPlataforma66mtemp.getDescripcion();
+        String tempResultdescripcion75 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion75));
         %>
-        <%= tempResultdescripcion60 %>
+        <%= tempResultdescripcion75 %>
         <%
 }%>
 </TD>
@@ -342,11 +429,11 @@ java.lang.String typedescripcion60 = seleccionaPlataforma51mtemp.getDescripcion(
 <TD COLSPAN="2" ALIGN="LEFT">espectadoresMin:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typeespectadoresMin62 = seleccionaPlataforma51mtemp.getEspectadoresMin();
-        String tempResultespectadoresMin62 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeespectadoresMin62));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typeespectadoresMin77 = seleccionaPlataforma66mtemp.getEspectadoresMin();
+        String tempResultespectadoresMin77 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeespectadoresMin77));
         %>
-        <%= tempResultespectadoresMin62 %>
+        <%= tempResultespectadoresMin77 %>
         <%
 }%>
 </TD>
@@ -355,9 +442,9 @@ java.lang.String typeespectadoresMin62 = seleccionaPlataforma51mtemp.getEspectad
 <TD COLSPAN="2" ALIGN="LEFT">duracion:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
+if(seleccionaPlataforma66mtemp != null){
 %>
-<%=seleccionaPlataforma51mtemp.getDuracion()
+<%=seleccionaPlataforma66mtemp.getDuracion()
 %><%}%>
 </TD>
 <TR>
@@ -365,11 +452,11 @@ if(seleccionaPlataforma51mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">uRLAsociada:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typeuRLAsociada66 = seleccionaPlataforma51mtemp.getURLAsociada();
-        String tempResultuRLAsociada66 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeuRLAsociada66));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typeuRLAsociada81 = seleccionaPlataforma66mtemp.getURLAsociada();
+        String tempResultuRLAsociada81 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeuRLAsociada81));
         %>
-        <%= tempResultuRLAsociada66 %>
+        <%= tempResultuRLAsociada81 %>
         <%
 }%>
 </TD>
@@ -378,11 +465,11 @@ java.lang.String typeuRLAsociada66 = seleccionaPlataforma51mtemp.getURLAsociada(
 <TD COLSPAN="2" ALIGN="LEFT">nombre:</TD>
 <TD>
 <%
-if(seleccionaPlataforma51mtemp != null){
-java.lang.String typenombre68 = seleccionaPlataforma51mtemp.getNombre();
-        String tempResultnombre68 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre68));
+if(seleccionaPlataforma66mtemp != null){
+java.lang.String typenombre83 = seleccionaPlataforma66mtemp.getNombre();
+        String tempResultnombre83 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre83));
         %>
-        <%= tempResultnombre68 %>
+        <%= tempResultnombre83 %>
         <%
 }%>
 </TD>
@@ -390,17 +477,17 @@ java.lang.String typenombre68 = seleccionaPlataforma51mtemp.getNombre();
 <%
 }
 break;
-case 72:
+case 87:
         gotMethod = true;
-        String arg0_4id=  request.getParameter("arg095");
+        String arg0_4id=  request.getParameter("arg0110");
             java.lang.String arg0_4idTemp = null;
         if(!arg0_4id.equals("")){
          arg0_4idTemp  = arg0_4id;
         }
-        publicadores.DtEspectaculo seleccionaEspectaculo72mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaEspectaculo(arg0_4idTemp);
-if(seleccionaEspectaculo72mtemp == null){
+        publicadores.DtEspectaculo seleccionaEspectaculo87mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.seleccionaEspectaculo(arg0_4idTemp);
+if(seleccionaEspectaculo87mtemp == null){
 %>
-<%=seleccionaEspectaculo72mtemp %>
+<%=seleccionaEspectaculo87mtemp %>
 <%
 }else{
 %>
@@ -412,9 +499,9 @@ if(seleccionaEspectaculo72mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">espectadoresMax:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
+if(seleccionaEspectaculo87mtemp != null){
 %>
-<%=seleccionaEspectaculo72mtemp.getEspectadoresMax()
+<%=seleccionaEspectaculo87mtemp.getEspectadoresMax()
 %><%}%>
 </TD>
 <TR>
@@ -422,9 +509,9 @@ if(seleccionaEspectaculo72mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">costo:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
+if(seleccionaEspectaculo87mtemp != null){
 %>
-<%=seleccionaEspectaculo72mtemp.getCosto()
+<%=seleccionaEspectaculo87mtemp.getCosto()
 %><%}%>
 </TD>
 <TR>
@@ -432,11 +519,11 @@ if(seleccionaEspectaculo72mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">image:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.lang.String typeimage79 = seleccionaEspectaculo72mtemp.getImage();
-        String tempResultimage79 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeimage79));
+if(seleccionaEspectaculo87mtemp != null){
+java.lang.String typeimage94 = seleccionaEspectaculo87mtemp.getImage();
+        String tempResultimage94 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeimage94));
         %>
-        <%= tempResultimage79 %>
+        <%= tempResultimage94 %>
         <%
 }%>
 </TD>
@@ -445,11 +532,11 @@ java.lang.String typeimage79 = seleccionaEspectaculo72mtemp.getImage();
 <TD COLSPAN="2" ALIGN="LEFT">descripcion:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.lang.String typedescripcion81 = seleccionaEspectaculo72mtemp.getDescripcion();
-        String tempResultdescripcion81 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion81));
+if(seleccionaEspectaculo87mtemp != null){
+java.lang.String typedescripcion96 = seleccionaEspectaculo87mtemp.getDescripcion();
+        String tempResultdescripcion96 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedescripcion96));
         %>
-        <%= tempResultdescripcion81 %>
+        <%= tempResultdescripcion96 %>
         <%
 }%>
 </TD>
@@ -458,11 +545,11 @@ java.lang.String typedescripcion81 = seleccionaEspectaculo72mtemp.getDescripcion
 <TD COLSPAN="2" ALIGN="LEFT">artista:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.lang.String typeartista83 = seleccionaEspectaculo72mtemp.getArtista();
-        String tempResultartista83 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeartista83));
+if(seleccionaEspectaculo87mtemp != null){
+java.lang.String typeartista98 = seleccionaEspectaculo87mtemp.getArtista();
+        String tempResultartista98 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeartista98));
         %>
-        <%= tempResultartista83 %>
+        <%= tempResultartista98 %>
         <%
 }%>
 </TD>
@@ -471,13 +558,13 @@ java.lang.String typeartista83 = seleccionaEspectaculo72mtemp.getArtista();
 <TD COLSPAN="2" ALIGN="LEFT">fechaRegistro:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.util.Calendar typefechaRegistro85 = seleccionaEspectaculo72mtemp.getFechaRegistro();
-        java.text.DateFormat dateFormatfechaRegistro85 = java.text.DateFormat.getDateInstance();
-        java.util.Date datefechaRegistro85 = typefechaRegistro85.getTime();
-        String tempResultfechaRegistro85 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaRegistro85.format(datefechaRegistro85));
+if(seleccionaEspectaculo87mtemp != null){
+java.util.Calendar typefechaRegistro100 = seleccionaEspectaculo87mtemp.getFechaRegistro();
+        java.text.DateFormat dateFormatfechaRegistro100 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaRegistro100 = typefechaRegistro100.getTime();
+        String tempResultfechaRegistro100 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaRegistro100.format(datefechaRegistro100));
         %>
-        <%= tempResultfechaRegistro85 %>
+        <%= tempResultfechaRegistro100 %>
         <%
 }%>
 </TD>
@@ -486,9 +573,9 @@ java.util.Calendar typefechaRegistro85 = seleccionaEspectaculo72mtemp.getFechaRe
 <TD COLSPAN="2" ALIGN="LEFT">espectadoresMin:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
+if(seleccionaEspectaculo87mtemp != null){
 %>
-<%=seleccionaEspectaculo72mtemp.getEspectadoresMin()
+<%=seleccionaEspectaculo87mtemp.getEspectadoresMin()
 %><%}%>
 </TD>
 <TR>
@@ -496,11 +583,11 @@ if(seleccionaEspectaculo72mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">urlAsociada:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.lang.String typeurlAsociada89 = seleccionaEspectaculo72mtemp.getUrlAsociada();
-        String tempResulturlAsociada89 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeurlAsociada89));
+if(seleccionaEspectaculo87mtemp != null){
+java.lang.String typeurlAsociada104 = seleccionaEspectaculo87mtemp.getUrlAsociada();
+        String tempResulturlAsociada104 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeurlAsociada104));
         %>
-        <%= tempResulturlAsociada89 %>
+        <%= tempResulturlAsociada104 %>
         <%
 }%>
 </TD>
@@ -509,9 +596,9 @@ java.lang.String typeurlAsociada89 = seleccionaEspectaculo72mtemp.getUrlAsociada
 <TD COLSPAN="2" ALIGN="LEFT">duracion:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
+if(seleccionaEspectaculo87mtemp != null){
 %>
-<%=seleccionaEspectaculo72mtemp.getDuracion()
+<%=seleccionaEspectaculo87mtemp.getDuracion()
 %><%}%>
 </TD>
 <TR>
@@ -519,103 +606,16 @@ if(seleccionaEspectaculo72mtemp != null){
 <TD COLSPAN="2" ALIGN="LEFT">nombre:</TD>
 <TD>
 <%
-if(seleccionaEspectaculo72mtemp != null){
-java.lang.String typenombre93 = seleccionaEspectaculo72mtemp.getNombre();
-        String tempResultnombre93 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre93));
+if(seleccionaEspectaculo87mtemp != null){
+java.lang.String typenombre108 = seleccionaEspectaculo87mtemp.getNombre();
+        String tempResultnombre108 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenombre108));
         %>
-        <%= tempResultnombre93 %>
+        <%= tempResultnombre108 %>
         <%
 }%>
 </TD>
 </TABLE>
 <%
-}
-break;
-case 97:
-        gotMethod = true;
-        publicadores.ArrayList listarPlataformas97mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPlataformas();
-if(listarPlataformas97mtemp == null){
-%>
-<%=listarPlataformas97mtemp %>
-<%
-}else{
-        if(listarPlataformas97mtemp!= null){
-        String tempreturnp98 = listarPlataformas97mtemp.toString();
-        %>
-        <%=tempreturnp98%>
-        <%
-        }}
-break;
-case 100:
-        gotMethod = true;
-        java.lang.String[] listarPlataformasComboBox100mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPlataformasComboBox();
-if(listarPlataformasComboBox100mtemp == null){
-%>
-<%=listarPlataformasComboBox100mtemp %>
-<%
-}else{
-        String tempreturnp101 = null;
-        if(listarPlataformasComboBox100mtemp != null){
-        java.util.List listreturnp101= java.util.Arrays.asList(listarPlataformasComboBox100mtemp);
-        tempreturnp101 = listreturnp101.toString();
-        }
-        %>
-        <%=tempreturnp101%>
-        <%
-}
-break;
-case 103:
-        gotMethod = true;
-        java.lang.String[] listarEspectaculosComboBox103mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarEspectaculosComboBox();
-if(listarEspectaculosComboBox103mtemp == null){
-%>
-<%=listarEspectaculosComboBox103mtemp %>
-<%
-}else{
-        String tempreturnp104 = null;
-        if(listarEspectaculosComboBox103mtemp != null){
-        java.util.List listreturnp104= java.util.Arrays.asList(listarEspectaculosComboBox103mtemp);
-        tempreturnp104 = listreturnp104.toString();
-        }
-        %>
-        <%=tempreturnp104%>
-        <%
-}
-break;
-case 106:
-        gotMethod = true;
-        java.lang.String[] listarPaquetesComboBox106mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarPaquetesComboBox();
-if(listarPaquetesComboBox106mtemp == null){
-%>
-<%=listarPaquetesComboBox106mtemp %>
-<%
-}else{
-        String tempreturnp107 = null;
-        if(listarPaquetesComboBox106mtemp != null){
-        java.util.List listreturnp107= java.util.Arrays.asList(listarPaquetesComboBox106mtemp);
-        tempreturnp107 = listreturnp107.toString();
-        }
-        %>
-        <%=tempreturnp107%>
-        <%
-}
-break;
-case 109:
-        gotMethod = true;
-        java.lang.String[] listarFuncionesComboBox109mtemp = sampleControladorConsultaDeEspectaculoPublishProxyid.listarFuncionesComboBox();
-if(listarFuncionesComboBox109mtemp == null){
-%>
-<%=listarFuncionesComboBox109mtemp %>
-<%
-}else{
-        String tempreturnp110 = null;
-        if(listarFuncionesComboBox109mtemp != null){
-        java.util.List listreturnp110= java.util.Arrays.asList(listarFuncionesComboBox109mtemp);
-        tempreturnp110 = listreturnp110.toString();
-        }
-        %>
-        <%=tempreturnp110%>
-        <%
 }
 break;
 }

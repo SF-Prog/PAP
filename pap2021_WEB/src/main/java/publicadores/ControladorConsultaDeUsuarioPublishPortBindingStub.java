@@ -24,7 +24,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("listaInfoEspectaculos");
+        oper.setName("seleccionaUsuario");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
@@ -55,7 +55,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("seleccionaUsuario");
+        oper.setName("listaInfoEspectaculos");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
@@ -183,7 +183,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         }
     }
 
-    public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException {
+    public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -195,7 +195,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listaInfoEspectaculos"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "seleccionaUsuario"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -285,7 +285,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
 }
     }
 
-    public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException {
+    public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -297,7 +297,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "seleccionaUsuario"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listaInfoEspectaculos"));
 
         setRequestHeaders(_call);
         setAttachments(_call);

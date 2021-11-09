@@ -8,10 +8,10 @@
 <LI><A HREF="Input.jsp?method=2" TARGET="inputs"> getEndpoint()</A></LI>
 <LI><A HREF="Input.jsp?method=5" TARGET="inputs"> setEndpoint(java.lang.String)</A></LI>
 <LI><A HREF="Input.jsp?method=10" TARGET="inputs"> getControladorConsultaDeUsuarioPublish()</A></LI>
-<LI><A HREF="Input.jsp?method=13" TARGET="inputs"> listaInfoEspectaculos(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=13" TARGET="inputs"> seleccionaUsuario(java.lang.String)</A></LI>
 <LI><A HREF="Input.jsp?method=18" TARGET="inputs"> listaInfoFunciones(java.lang.String)</A></LI>
 <LI><A HREF="Input.jsp?method=23" TARGET="inputs"> listarUsuarios()</A></LI>
-<LI><A HREF="Input.jsp?method=26" TARGET="inputs"> seleccionaUsuario(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=26" TARGET="inputs"> listaInfoEspectaculos(java.lang.String)</A></LI>
 </UL>
 </BODY>
 </HTML>

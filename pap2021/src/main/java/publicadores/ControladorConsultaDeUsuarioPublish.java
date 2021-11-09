@@ -4,6 +4,8 @@ import configuraciones.WebServiceConfiguracion;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 import datatypes.DtUsuario;
+import datatypes.DtArtista;
+import datatypes.DtEspectador;
 import interfaces.Fabrica;
 import interfaces.IControladorConsultaDeUsuario;
 import logica.Usuario;
