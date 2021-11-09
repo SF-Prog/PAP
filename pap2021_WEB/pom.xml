@@ -30,7 +30,7 @@
 		<groupId>com.pap2021</groupId>
   		<artifactId>pap2021</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-	</dependency> -->
+	</dependency> 
 	<dependency>
 		<groupId>org.postgresql</groupId>
 		<artifactId>postgresql</artifactId>
@@ -45,17 +45,15 @@
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
 		<version>${hibernate.version}</version>
-	</dependency>
+	</dependency>-->
 	
 	<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>4.0.1</version>
-    <scope>provided</scope>
-	    
-	    
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>  
 	</dependency>
-		<dependency>
+	<dependency>
 	    <groupId>taglibs</groupId>
 	    <artifactId>standard</artifactId>
 	    <version>1.1.2</version>
