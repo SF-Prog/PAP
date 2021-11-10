@@ -1,7 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/java/publicadores/AbstractCollection.java=UTF-8
-encoding//src/main/java/publicadores/AbstractList.java=UTF-8
-encoding//src/main/java/publicadores/ArrayList.java=UTF-8
 encoding//src/main/java/publicadores/ControladorConsultaDeEspectaculoPublish.java=UTF-8
 encoding//src/main/java/publicadores/ControladorConsultaDeEspectaculoPublishPortBindingStub.java=UTF-8
 encoding//src/main/java/publicadores/ControladorConsultaDeEspectaculoPublishService.java=UTF-8

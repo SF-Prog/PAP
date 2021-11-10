@@ -8,7 +8,10 @@ import datatypes.DtArtista;
 import datatypes.DtEspectador;
 import interfaces.Fabrica;
 import interfaces.IControladorConsultaDeUsuario;
+import logica.Artista;
+import logica.Espectador;
 import logica.Usuario;
+import logica.manejadores.ManejadorUsuario;
 
 import java.util.ArrayList;
 
@@ -51,41 +54,61 @@ public class ControladorConsultaDeUsuarioPublish {
 
 	
 	@WebMethod
-	public ArrayList<Usuario> listarUsuarios() {
+	public DtEspectador[] listarUsuariosEspectador() {
+		ArrayList<Usuario>  dtu = iCon.listarUsuarios();
+		int i = 0;
+		int a = 0;
+		for(Usuario u : dtu) {
+			if(u instanceof Espectador){
+				a++;
+			}
+		};
 		
-		return iCon.listarUsuarios();		
+		DtEspectador[]  ret = new DtEspectador[a];
+		
+		
+		
+		for(Usuario usuario : dtu) {
+			if(usuario instanceof Espectador){
+				Espectador usuarioE = (Espectador) usuario;
+				ret[i] = new  DtEspectador(usuarioE.getNickName(),
+						usuarioE.getNombre(),
+						usuarioE.getApellido(),
+						usuarioE.getEmail(),
+						usuarioE.getFechaNac(),
+						usuarioE.getPassword(),
+						usuarioE.getImage());
+				i++;
+			}
+		};
+		return ret;			
+	}
+	
+	@WebMethod
+	public DtArtista[] listarUsuariosArtista() {
+		
+		ArrayList<Usuario>  dtu = iCon.listarUsuarios();
+		int i = 0;
+		DtArtista[]  ret = new DtArtista[dtu.size()];
+		for(Usuario usuario : dtu) {
+			if(usuario instanceof Artista){
+				Artista usuarioA = (Artista) usuario;
+				ret[i] = new DtArtista(usuarioA.getNickName(),usuarioA.getNombre(), usuarioA.getApellido(),usuarioA.getEmail(), usuarioA.getFechaNac(),usuarioA.getPassword(),usuarioA.getImage(),usuarioA.getDescGeneral(), usuarioA.getBiografia(),usuarioA.getLink() );
+				  i++;
+			}
+		};
+		return ret;		
 	}
 	/*public ArrayList<Usuario> listarUsuarios() {
-		ArrayList<DtEspectaculo> arraylist = iCon.listarUsuarios();
-		int i = 0;
-		DtEspectaculo[]  ret = new DtEspectaculo[arraylist.size()];
-		for(DtEspectaculo s : arraylist) {
-	        ret[i]=s;
-	        i++;
-	    }
-		return ret;
+else if(usuario instanceof Espectador) {
+				Espectador usuarioE = (Espectador) usuario;
+				dtu.add(new DtEspectador(usuarioE.getNickName(),usuarioE.getNombre(), usuarioE.getApellido(),usuarioE.getEmail(), usuarioE.getFechaNac(),usuarioE.getPassword(),usuarioE.getImage()));
+			}
 		return iCon.listarUsuarios();		
 	}*/
 	
 
-	@WebMethod
-	public DtUsuario[] listarUsuariosDt() {
-		ArrayList<DtUsuario> arraylist = iCon.listarUsuariosDt();
-		int i = 0;
-		System.out.println("aca");
-		System.out.println(arraylist.size());
-		
-		DtUsuario[]  ret = new DtUsuario[arraylist.size()];
-		for(DtUsuario s : arraylist) {
-	        ret[i]=s;
-	        i++;
-	    }
-		return ret;	
-	}
-	/*public ArrayList<DtUsuario> listarUsuariosDt() {
-		
-		return iCon.listarUsuariosDt();		
-	}*/
+
 	@WebMethod
 	public DtUsuario[] seleccionaUsuario(String nickname) {
 		ArrayList<DtUsuario> arraylist = iCon.seleccionaUsuario(nickname);

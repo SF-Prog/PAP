@@ -24,6 +24,28 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("listarUsuariosEspectador");
+        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtEspectadorArray"));
+        oper.setReturnClass(publicadores.DtEspectador[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
+        param = oper.getReturnParamDesc();
+        param.setItemQName(new javax.xml.namespace.QName("", "item"));
+        oper.setStyle(org.apache.axis.constants.Style.RPC);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[0] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("listarUsuariosArtista");
+        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtArtistaArray"));
+        oper.setReturnClass(publicadores.DtArtista[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
+        param = oper.getReturnParamDesc();
+        param.setItemQName(new javax.xml.namespace.QName("", "item"));
+        oper.setStyle(org.apache.axis.constants.Style.RPC);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[1] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("listaInfoEspectaculos");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -34,37 +56,13 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         param.setItemQName(new javax.xml.namespace.QName("", "item"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[0] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("seleccionaUsuario");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtUsuarioArray"));
-        oper.setReturnClass(publicadores.DtUsuario[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
-        param = oper.getReturnParamDesc();
-        param.setItemQName(new javax.xml.namespace.QName("", "item"));
-        oper.setStyle(org.apache.axis.constants.Style.RPC);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[1] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("listarUsuarios");
-        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
-        oper.setStyle(org.apache.axis.constants.Style.RPC);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("listarUsuariosDt");
-        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtUsuarioArray"));
-        oper.setReturnClass(publicadores.DtUsuario[].class);
+        oper.setName("dtu");
+        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtUsuario"));
+        oper.setReturnClass(publicadores.DtUsuario.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
-        param = oper.getReturnParamDesc();
-        param.setItemQName(new javax.xml.namespace.QName("", "item"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[3] = oper;
@@ -79,10 +77,14 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _operations[4] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("dtu");
-        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtUsuario"));
-        oper.setReturnClass(publicadores.DtUsuario.class);
+        oper.setName("listaInfoFunciones");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtFuncionArray"));
+        oper.setReturnClass(publicadores.DtFuncion[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
+        param = oper.getReturnParamDesc();
+        param.setItemQName(new javax.xml.namespace.QName("", "item"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[5] = oper;
@@ -97,11 +99,11 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _operations[6] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("listaInfoFunciones");
+        oper.setName("seleccionaUsuario");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "arg0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtFuncionArray"));
-        oper.setReturnClass(publicadores.DtFuncion[].class);
+        oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "dtUsuarioArray"));
+        oper.setReturnClass(publicadores.DtUsuario[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         param = oper.getReturnParamDesc();
         param.setItemQName(new javax.xml.namespace.QName("", "item"));
@@ -140,33 +142,21 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://publicadores/", "abstractCollection");
-            cachedSerQNames.add(qName);
-            cls = publicadores.AbstractCollection.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
-            qName = new javax.xml.namespace.QName("http://publicadores/", "abstractList");
-            cachedSerQNames.add(qName);
-            cls = publicadores.AbstractList.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
-            qName = new javax.xml.namespace.QName("http://publicadores/", "arrayList");
-            cachedSerQNames.add(qName);
-            cls = publicadores.ArrayList.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
             qName = new javax.xml.namespace.QName("http://publicadores/", "dtArtista");
             cachedSerQNames.add(qName);
             cls = publicadores.DtArtista.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://publicadores/", "dtArtistaArray");
+            cachedSerQNames.add(qName);
+            cls = publicadores.DtArtista[].class;
+            cachedSerClasses.add(cls);
+            qName = new javax.xml.namespace.QName("http://publicadores/", "dtArtista");
+            qName2 = new javax.xml.namespace.QName("", "item");
+            cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+            cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
             qName = new javax.xml.namespace.QName("http://publicadores/", "dtEspectaculo");
             cachedSerQNames.add(qName);
@@ -190,6 +180,15 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://publicadores/", "dtEspectadorArray");
+            cachedSerQNames.add(qName);
+            cls = publicadores.DtEspectador[].class;
+            cachedSerClasses.add(cls);
+            qName = new javax.xml.namespace.QName("http://publicadores/", "dtEspectador");
+            qName2 = new javax.xml.namespace.QName("", "item");
+            cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+            cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
             qName = new javax.xml.namespace.QName("http://publicadores/", "dtFuncion");
             cachedSerQNames.add(qName);
@@ -289,12 +288,80 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         }
     }
 
-    public publicadores.DtEspectaculo[] listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException {
+    public publicadores.DtEspectador[] listarUsuariosEspectador() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listarUsuariosEspectador"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (publicadores.DtEspectador[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (publicadores.DtEspectador[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtEspectador[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public publicadores.DtArtista[] listarUsuariosArtista() throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[1]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listarUsuariosArtista"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (publicadores.DtArtista[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (publicadores.DtArtista[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtArtista[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public publicadores.DtEspectaculo[] listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[2]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -323,75 +390,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
 }
     }
 
-    public publicadores.DtUsuario[] seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[1]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "seleccionaUsuario"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {arg0});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (publicadores.DtUsuario[]) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (publicadores.DtUsuario[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtUsuario[].class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public publicadores.ArrayList listarUsuarios() throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[2]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listarUsuarios"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (publicadores.ArrayList) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (publicadores.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.ArrayList.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public publicadores.DtUsuario[] listarUsuariosDt() throws java.rmi.RemoteException {
+    public publicadores.DtUsuario dtu() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -403,7 +402,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listarUsuariosDt"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "dtu"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -415,9 +414,9 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         else {
             extractAttachments(_call);
             try {
-                return (publicadores.DtUsuario[]) _resp;
+                return (publicadores.DtUsuario) _resp;
             } catch (java.lang.Exception _exception) {
-                return (publicadores.DtUsuario[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtUsuario[].class);
+                return (publicadores.DtUsuario) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtUsuario.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -459,7 +458,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
 }
     }
 
-    public publicadores.DtUsuario dtu() throws java.rmi.RemoteException {
+    public publicadores.DtFuncion[] listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -471,11 +470,11 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "dtu"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listaInfoFunciones"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {arg0});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -483,9 +482,9 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         else {
             extractAttachments(_call);
             try {
-                return (publicadores.DtUsuario) _resp;
+                return (publicadores.DtFuncion[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (publicadores.DtUsuario) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtUsuario.class);
+                return (publicadores.DtFuncion[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtFuncion[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -527,7 +526,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
 }
     }
 
-    public publicadores.DtFuncion[] listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException {
+    public publicadores.DtUsuario[] seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -539,7 +538,7 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "listaInfoFunciones"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://publicadores/", "seleccionaUsuario"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -551,9 +550,9 @@ public class ControladorConsultaDeUsuarioPublishPortBindingStub extends org.apac
         else {
             extractAttachments(_call);
             try {
-                return (publicadores.DtFuncion[]) _resp;
+                return (publicadores.DtUsuario[]) _resp;
             } catch (java.lang.Exception _exception) {
-                return (publicadores.DtFuncion[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtFuncion[].class);
+                return (publicadores.DtUsuario[]) org.apache.axis.utils.JavaUtils.convert(_resp, publicadores.DtUsuario[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
