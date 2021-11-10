@@ -44,40 +44,16 @@ public class ControladorConsultaDeUsuarioPublishProxy implements publicadores.Co
     return controladorConsultaDeUsuarioPublish;
   }
   
-  public publicadores.ArrayList listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException{
+  public publicadores.DtEspectaculo[] listaInfoEspectaculos(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeUsuarioPublish == null)
       _initControladorConsultaDeUsuarioPublishProxy();
     return controladorConsultaDeUsuarioPublish.listaInfoEspectaculos(arg0);
   }
   
-  public publicadores.ArrayList listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException{
-    if (controladorConsultaDeUsuarioPublish == null)
-      _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.listaInfoFunciones(arg0);
-  }
-  
-  public publicadores.DtArtista dta() throws java.rmi.RemoteException{
-    if (controladorConsultaDeUsuarioPublish == null)
-      _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.dta();
-  }
-  
-  public publicadores.ArrayList seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
+  public publicadores.DtUsuario[] seleccionaUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
     if (controladorConsultaDeUsuarioPublish == null)
       _initControladorConsultaDeUsuarioPublishProxy();
     return controladorConsultaDeUsuarioPublish.seleccionaUsuario(arg0);
-  }
-  
-  public publicadores.DtUsuario dtu() throws java.rmi.RemoteException{
-    if (controladorConsultaDeUsuarioPublish == null)
-      _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.dtu();
-  }
-  
-  public publicadores.ArrayList listarUsuariosDt() throws java.rmi.RemoteException{
-    if (controladorConsultaDeUsuarioPublish == null)
-      _initControladorConsultaDeUsuarioPublishProxy();
-    return controladorConsultaDeUsuarioPublish.listarUsuariosDt();
   }
   
   public publicadores.ArrayList listarUsuarios() throws java.rmi.RemoteException{
@@ -86,10 +62,34 @@ public class ControladorConsultaDeUsuarioPublishProxy implements publicadores.Co
     return controladorConsultaDeUsuarioPublish.listarUsuarios();
   }
   
+  public publicadores.DtUsuario[] listarUsuariosDt() throws java.rmi.RemoteException{
+    if (controladorConsultaDeUsuarioPublish == null)
+      _initControladorConsultaDeUsuarioPublishProxy();
+    return controladorConsultaDeUsuarioPublish.listarUsuariosDt();
+  }
+  
   public publicadores.DtEspectador dte() throws java.rmi.RemoteException{
     if (controladorConsultaDeUsuarioPublish == null)
       _initControladorConsultaDeUsuarioPublishProxy();
     return controladorConsultaDeUsuarioPublish.dte();
+  }
+  
+  public publicadores.DtUsuario dtu() throws java.rmi.RemoteException{
+    if (controladorConsultaDeUsuarioPublish == null)
+      _initControladorConsultaDeUsuarioPublishProxy();
+    return controladorConsultaDeUsuarioPublish.dtu();
+  }
+  
+  public publicadores.DtArtista dta() throws java.rmi.RemoteException{
+    if (controladorConsultaDeUsuarioPublish == null)
+      _initControladorConsultaDeUsuarioPublishProxy();
+    return controladorConsultaDeUsuarioPublish.dta();
+  }
+  
+  public publicadores.DtFuncion[] listaInfoFunciones(java.lang.String arg0) throws java.rmi.RemoteException{
+    if (controladorConsultaDeUsuarioPublish == null)
+      _initControladorConsultaDeUsuarioPublishProxy();
+    return controladorConsultaDeUsuarioPublish.listaInfoFunciones(arg0);
   }
   
   

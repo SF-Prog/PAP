@@ -48,29 +48,88 @@ public class ControladorConsultaDeUsuarioPublish {
         return endpoint;
 	}
 
+
+	
 	@WebMethod
 	public ArrayList<Usuario> listarUsuarios() {
+		
 		return iCon.listarUsuarios();		
 	}
+	/*public ArrayList<Usuario> listarUsuarios() {
+		ArrayList<DtEspectaculo> arraylist = iCon.listarUsuarios();
+		int i = 0;
+		DtEspectaculo[]  ret = new DtEspectaculo[arraylist.size()];
+		for(DtEspectaculo s : arraylist) {
+	        ret[i]=s;
+	        i++;
+	    }
+		return ret;
+		return iCon.listarUsuarios();		
+	}*/
+	
 
 	@WebMethod
-	public ArrayList<DtUsuario> listarUsuariosDt() {
+	public DtUsuario[] listarUsuariosDt() {
+		ArrayList<DtUsuario> arraylist = iCon.listarUsuariosDt();
+		int i = 0;
+		System.out.println("aca");
+		System.out.println(arraylist.size());
+		
+		DtUsuario[]  ret = new DtUsuario[arraylist.size()];
+		for(DtUsuario s : arraylist) {
+	        ret[i]=s;
+	        i++;
+	    }
+		return ret;	
+	}
+	/*public ArrayList<DtUsuario> listarUsuariosDt() {
+		
 		return iCon.listarUsuariosDt();		
-	}
+	}*/
 	@WebMethod
-	public ArrayList<DtUsuario> seleccionaUsuario(String nickname) {
+	public DtUsuario[] seleccionaUsuario(String nickname) {
+		ArrayList<DtUsuario> arraylist = iCon.seleccionaUsuario(nickname);
+		int i = 0;
+		DtUsuario[]  ret = new DtUsuario[arraylist.size()];
+		for(DtUsuario s : arraylist) {
+	        ret[i]=s;
+	        i++;
+	    }
+		return ret;	
+	}
+	/*public ArrayList<DtUsuario> seleccionaUsuario(String nickname) {
 		return iCon.seleccionaUsuario(nickname);
-	}
+	}*/
 
 	@WebMethod
-	public ArrayList<DtEspectaculo> listaInfoEspectaculos(String nickname) {
+	public DtEspectaculo[] listaInfoEspectaculos(String nickname) {
+		ArrayList<DtEspectaculo> arraylist = iCon.listaInfoEspectaculos(nickname);
+		int i = 0;
+		DtEspectaculo[]  ret = new DtEspectaculo[arraylist.size()];
+		for(DtEspectaculo s : arraylist) {
+	        ret[i]=s;
+	        i++;
+	    }
+		return ret;	
+	}
+	/*public ArrayList<DtEspectaculo> listaInfoEspectaculos(String nickname) {
 		return iCon.listaInfoEspectaculos(nickname);
-	}
+	}*/
 
 	@WebMethod
-	public ArrayList<DtFuncion> listaInfoFunciones(String nickname) {
-		return iCon.listaInfoFunciones(nickname);
+	public DtFuncion[] listaInfoFunciones(String nickname) {
+		ArrayList<DtFuncion> arraylist = iCon.listaInfoFunciones(nickname);
+		int i = 0;
+		DtFuncion[]  ret = new DtFuncion[arraylist.size()];
+		for(DtFuncion s : arraylist) {
+	        ret[i]=s;
+	        i++;
+	    }
+		return ret;	
 	}
+	/*public ArrayList<DtFuncion> listaInfoFunciones(String nickname) {
+		return iCon.listaInfoFunciones(nickname);
+	}*/
 	
 	@WebMethod
 	public DtUsuario dtu() {

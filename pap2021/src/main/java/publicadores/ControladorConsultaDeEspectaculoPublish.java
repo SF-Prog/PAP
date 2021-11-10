@@ -47,9 +47,19 @@ public class ControladorConsultaDeEspectaculoPublish {
 	}
 
 	@WebMethod
-	public ArrayList<DtPlataforma> listarPlataformas() {
-		return iCon.listarPlataformas();
+	public  DtPlataforma[] listarPlataformas() {
+		ArrayList<DtPlataforma> arraylist = iCon.listarPlataformas();
+		int i = 0;
+		DtPlataforma[]  ret = new DtPlataforma[arraylist.size()];
+		for(DtPlataforma s : arraylist) {
+            ret[i]=s;
+            i++;
+        }
+		return ret;
 	}
+	/*public  ArrayList<DtPlataforma> listarPlataformas() {
+		return iCon.listarPlataformas();
+	}*/
 	
 	@WebMethod
 	public String[] listarPlataformasComboBox() {
@@ -62,9 +72,20 @@ public class ControladorConsultaDeEspectaculoPublish {
 	}
 
 	@WebMethod
-	public ArrayList<DtEspectaculo> listarEspectaculos() {
-		return iCon.listarEspectaculos();
+	public DtEspectaculo[] listarEspectaculos() {
+
+		ArrayList<DtEspectaculo> arraylist = iCon.listarEspectaculos();
+		int i = 0;
+		DtEspectaculo[]  ret = new DtEspectaculo[arraylist.size()];
+		for(DtEspectaculo s : arraylist) {
+            ret[i]=s;
+            i++;
+        }
+		return ret;
 	}
+	/*public ArrayList<DtEspectaculo> listarEspectaculos() {
+		return iCon.listarEspectaculos();
+	}*/
 	
 	@WebMethod
 	public String[] listarEspectaculosComboBox() {
@@ -77,9 +98,19 @@ public class ControladorConsultaDeEspectaculoPublish {
 	}
 
 	@WebMethod
-	public ArrayList<DtFuncion> listarFunciones() {
-		return iCon.listarFunciones();
+	public DtFuncion[] listarFunciones() {
+		ArrayList<DtFuncion> arraylist = iCon.listarFunciones();
+		int i = 0;
+		DtFuncion[]  ret = new DtFuncion[arraylist.size()];
+		for(DtFuncion s : arraylist) {
+            ret[i]=s;
+            i++;
+        }
+		return ret;
 	}
+	/*public ArrayList<DtFuncion> listarFunciones() {
+		return iCon.listarFunciones();
+	}*/
 
 	@WebMethod
 	public String[] listarFuncionesComboBox() {
@@ -92,9 +123,19 @@ public class ControladorConsultaDeEspectaculoPublish {
 	}
 
 	@WebMethod
-	public ArrayList<DtPaquete> listarPaquetes() {
-		return iCon.listarPaquetes();
+	public DtPaquete[] listarPaquetes() {
+		ArrayList<DtPaquete> arraylist = iCon.listarPaquetes();
+		int i = 0;
+		DtPaquete[]  ret = new DtPaquete[arraylist.size()];
+		for(DtPaquete s : arraylist) {
+            ret[i]=s;
+            i++;
+        }
+		return ret;
 	}
+	/*public ArrayList<DtPaquete> listarPaquetes() {
+		return iCon.listarPaquetes();
+	}*/
 	
 	@WebMethod
 	public String[] listarPaquetesComboBox() {

@@ -22,7 +22,7 @@ public class ControladorConsultaDeUsuarioPublishServiceLocator extends org.apach
     }
 
     // Use to get a proxy class for ControladorConsultaDeUsuarioPublishPort
-    private java.lang.String ControladorConsultaDeUsuarioPublishPort_address = "http://127.0.0.1:8080/ControladorConsultaDeUsuario";
+    private java.lang.String ControladorConsultaDeUsuarioPublishPort_address = "http://127.0.0.1:5000/ControladorConsultaDeUsuario";
 
     public java.lang.String getControladorConsultaDeUsuarioPublishPortAddress() {
         return ControladorConsultaDeUsuarioPublishPort_address;

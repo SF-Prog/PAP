@@ -7,7 +7,7 @@
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
-  	<hibernate.version>5.4.4.Final</hibernate.version>
+  	<!--<hibernate.version>5.4.4.Final</hibernate.version>-->
   </properties>
   <!--   mvn install:install-file -Dfile=pap2021.jar -DgrupoId=com.pap2021  -DartifactId=pap2021 -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -DgeneratePom=true -->
   <build>
@@ -70,19 +70,19 @@
 		<version>2.9.8</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.apache.axis/axis -->
-<dependency>
-    <groupId>org.apache.axis</groupId>
-    <artifactId>axis</artifactId>
-    <version>1.4</version>
-</dependency>
-   
-   
-   <!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc-api -->
-<dependency>
-    <groupId>javax.xml</groupId>
-    <artifactId>jaxrpc-api</artifactId>
-    <version>1.1</version>
-</dependency>
+	<dependency>
+	    <groupId>org.apache.axis</groupId>
+	    <artifactId>axis</artifactId>
+	    <version>1.4</version>
+	</dependency>
+	   
+	   
+	   <!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc-api -->
+	<dependency>
+	    <groupId>javax.xml</groupId>
+	    <artifactId>jaxrpc-api</artifactId>
+	    <version>1.1</version>
+	</dependency>
 </dependencies>
 
 </project>

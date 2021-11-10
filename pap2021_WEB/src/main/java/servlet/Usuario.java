@@ -88,7 +88,11 @@ public class Usuario extends HttpServlet {
 			if(user != ""  && password != "") {
 				//ArrayList<logica.Usuario> usuarios = iccdu.listarUsuarios();
 				//ArrayList<DtUsuario> usuarios = iccdu.listarUsuarios();
-				publicadores.ArrayList usuarios = iccdu.listarUsuariosDt();
+				
+				for(DtUsuario s : iccdu.listarUsuariosDt()) {
+					System.out.println(s.getEmail());			       
+			    }
+				DtUsuario[] usuarios = iccdu.listarUsuariosDt();
 				DtUsuario usuario = this.iniciarSesionUsuario(usuarios,user,password);
 				if(usuario != null) {
 					 HttpSession session = request.getSession(conectado);					 
@@ -325,7 +329,7 @@ public class Usuario extends HttpServlet {
 		return false;
 	}	
 
-	private DtUsuario iniciarSesionUsuario(publicadores.ArrayList usuarios,String usuario,String password){
+	private DtUsuario iniciarSesionUsuario(DtUsuario[] usuarios,String usuario,String password){
 		//logica.Usuario dtu = null;
 		
 		//Iterator<logica.Usuario> eIterator = usuarios.iterator();		
@@ -343,7 +347,7 @@ public class Usuario extends HttpServlet {
 		//return dtu;
 		
 		DtUsuario dtu = null;
-		Iterator<DtUsuario> eIterator = usuarios.iterator();		
+		/*Iterator<DtUsuario> eIterator = usuarios.iterator();		
 		boolean existe = false;
 		while(eIterator.hasNext() && !existe){
 			DtUsuario temp = eIterator.next();
@@ -351,15 +355,22 @@ public class Usuario extends HttpServlet {
 				if(password.equals(temp.getPassword())) {
 					existe = true;
 					dtu= temp ;
-					 /*if(usuario instanceof DtArtista){
-						 dtu= new DtArtista(usuario.getNickName(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(), usuario.getFecha(),usuario.getPassword(),usuario.getImage(),usuario.getDescGeneral(), usuario.getBiografia(),usuario.getLink() );
-					 }else if(usuario instanceof DtEspectador) {
-						 dtu= new DtEspectador(usuario.getNickName(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(), usuario.getFecha(),usuario.getPassword(),usuario.getImage());
-					 }*/
 					System.out.println("ingreso usuario");
 				}				
 			}
-		}
+		}*/
+		boolean existe = false;
+		for(DtUsuario temp : usuarios) {
+			System.out.println(temp.getEmail());
+			if(temp.getEmail().equals(usuario) || temp.getNickName().equals(usuario)){
+				;
+				if(password.equals(temp.getPassword())) {
+					existe = true;
+					dtu= temp ;
+					System.out.println("ingreso usuario");
+				}				
+			}
+	    }
 		return dtu;
 	}
 }
