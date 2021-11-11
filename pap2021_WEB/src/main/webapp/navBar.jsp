@@ -1,5 +1,14 @@
 <%HttpSession sesion = request.getSession();%>
 <body>
+<style>
+
+@media (max-width: 600px) {
+  .hiddenClass {
+    display: none;
+  }
+}
+
+</style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -12,7 +21,7 @@
 		if (sesion.getAttribute("tipo") != "artista") {%>
       	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
-		  <li><a href="seguirUsuario.jsp">Seguimiento de Usuarios</a></li>
+		  <!--  <li class="hiddenClass"><a class="hiddenClass" href="seguirUsuario.jsp">Seguimiento de Usuarios</a></li> -->
 
 		  <li><form action="Usuario" method="POST" name="nombreForm" style="mergin-left: 40px;">
 		      <input type="hidden"  name="close" value="close" class="btn btn-primary">
@@ -21,10 +30,10 @@
 	      </li>
 
 	  <%}else if(sesion.getAttribute("tipo") != "espectador"){%>
-	      <li><a href="altaFuncionDeEspectaculo.jsp">Alta Función de Espectáculo</a></li>
+	      <li class="hiddenClass"><a href="altaFuncionDeEspectaculo.jsp">Alta Función de Espectáculo</a></li>
       	  <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
           <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li>
-		  <li><a href="seguirUsuario.jsp">Seguimiento de Usuarios</a></li>
+		 <!--  <li class="hiddenClass"><a class="hiddenClass" href="seguirUsuario.jsp">Seguimiento de Usuarios</a></li> -->
 
 		  <li><form action="Usuario" method="POST" name="nombreForm" style="mergin-left: 40px;">
 		       <input type="hidden" name="close" value="close" class="btn btn-primary">
@@ -33,9 +42,6 @@
 	     </li>
 	<%}}else {%>
       	 <li><a href="inicioSesion.jsp">Inicio Sesión</a></li>  
-	     <li><a href="altaUsuario.jsp">Alta usuario</a></li>
-      	 <li><a href="consultaEspectaculo.jsp">Consulta Espectáculo</a></li>
-      	 <li><a href="consultaFuncionDeEspectaculo.jsp">Consulta Función de Espectáculo</a></li> 
 	<%}%>
        <!-- NO MINIMOS -->
        <!--  <li><a href="#">Consulta de Usuario</a></li>
@@ -71,3 +77,4 @@ function cerrarSesion(){
     return false;
 }
 </script>
+<div class="container">

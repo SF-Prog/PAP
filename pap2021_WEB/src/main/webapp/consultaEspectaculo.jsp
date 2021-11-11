@@ -25,21 +25,26 @@ select {
     /* line-height: revert; */
     border: 1px solid #ddd;
     border-radius: 15px;
-    margin: 15px;
+    margin: 10px 0 ;
+}
+
+.movil {
+   width:100%;
+    /*margin: 10px;*/
 }
 </style>
 
 <div class="row">
-<select  class=" col-sm-12 col-md-3   col-md-offset-2 form-select" aria-label="Default select example" name="plataformas" id="plataformas"  onchange="taerEspectaculo();detallePlataformas();">
+<select  class=" col-sm-12 col-md-3  movil form-select" aria-label="Default select example" name="plataformas" id="plataformas"  onchange="taerEspectaculo();detallePlataformas();">
  <!--  <option value="" disabled >Seleccione Plataforma</option> -->
   
 </select>
 
 
-<select  class="col-sm-12 col-md-3  form-select" aria-label="Default select example" name="Espectaculo" id="espectaculo" onchange="taerFunciones();detalleEspectaculo();">
+<select  class="col-sm-12 col-md-3 movil form-select" aria-label="Default select example" name="Espectaculo" id="espectaculo" onchange="taerFunciones();detalleEspectaculo();">
  <!-- <option value="" disabled >Seleccione Eventos</option> -->
 </select>
-<select  class="col-sm-12 col-md-3 form-select" aria-label="Default select example" name="funciones" id="funciones" onchange="detalleFuncion();">
+<select  class="col-sm-12 col-md-3 movil form-select" aria-label="Default select example" name="funciones" id="funciones" onchange="detalleFuncion();">
  <!--  <option value="" disabled >Seleccione funciones</option> -->
 </select>
 </div>

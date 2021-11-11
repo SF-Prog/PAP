@@ -1,3 +1,4 @@
+</div>
 <style>
 footer {
    position: relative;
