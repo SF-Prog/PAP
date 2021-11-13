@@ -209,12 +209,7 @@ public class ControladorConsultaDeEspectaculoTest {
 		
 	}//*/	
 	
-	@Test
-	void listarPaquetesLleno() {
-		assertNotNull(CCE.listarPaquetes());
-		
-	}//*/
-	
+
 
 		
 	@Test

@@ -27,7 +27,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
-		ArrayList<DtPlataforma> dtPlataformas = null;
+		ArrayList<DtPlataforma> dtPlataformas =new ArrayList<DtPlataforma>();
 		List<Plataforma> listPlataformas = mP.getPlataformas();
 		for(Plataforma p : listPlataformas){
 			DtPlataforma dtp = new DtPlataforma(p.getNombre(),p.getDescripcion(),p.getDuracion(),p.getEspectadoresMin(),p.getEspectadoresMax(),p.getURLAsociada(),p.getCosto(),p.getFechaAlta());
@@ -62,7 +62,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
-		ArrayList<DtEspectaculo> dtEspectaculos = null;
+		ArrayList<DtEspectaculo> dtEspectaculos=new ArrayList<DtEspectaculo>();
 		List<Espectaculo> listEspectaculos = this.plataformaSeleccionada.getEspectaculos();
 		for(Espectaculo e : listEspectaculos){
 			DtEspectaculo dte = new DtEspectaculo(e.getNombre(),e.getDescripcion(),e.getDuracion(),e.getEspectadoresMin(),e.getEspectadoresMax(),e.getUrlAsociada(),e.getCosto(),e.getFechaRegistro(),e.getImage());
@@ -112,10 +112,10 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		return dte;
 	}
 
-	@SuppressWarnings("null")
+
 	@Override
 	public ArrayList<DtFuncion> listarFunciones() {
-		ArrayList<DtFuncion> dtFunciones =null;
+		ArrayList<DtFuncion> dtFunciones =new ArrayList<DtFuncion>();
 		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		for(Funcion e : listFunciones){
 			DtFuncion dtf = new DtFuncion(e.getNombre(),e.getFecha(),e.getHoraInicio(),e.getFechaRegistro(),e.getImage());
