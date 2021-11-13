@@ -1,6 +1,5 @@
 package logica.controladores;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ class ControladorAltaDePlataformaTest {
 	
 	@Test
 	void existePlataformaTest() {
-		String nombrePlataforma = "NombrePlataforma";
+		String nombrePlataforma = "NombrePlataformCAP";
 		DtPlataforma dtPlataforma = new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		try { CAP.ingresaPlataforma(dtPlataforma); } catch(AltaPlataformaExcepcion ape) {};
 		assertTrue(CAP.existePlataforma(nombrePlataforma));
@@ -25,7 +24,7 @@ class ControladorAltaDePlataformaTest {
 	
 	@Test
 	void ingresaPlataformaSuccessTest() {
-		String nombrePlataforma = "Nombre2Plataforma";
+		String nombrePlataforma = "Nombre2PlataformaCAP";
 		DtPlataforma dtPlataforma = new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		try { CAP.ingresaPlataforma(dtPlataforma); } catch(AltaPlataformaExcepcion ape) {};
 		assertTrue(CAP.existePlataforma(nombrePlataforma));
@@ -33,7 +32,7 @@ class ControladorAltaDePlataformaTest {
 	
 	@Test
 	void ingresaPlataformaExistenteTest() {
-		String nombrePlataforma = "Nombre3Plataforma";
+		String nombrePlataforma = "Nombre3PlataformaCAP";
 		DtPlataforma dtPlataforma = new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		try { CAP.ingresaPlataforma(dtPlataforma); } catch(AltaPlataformaExcepcion ape) {};
 		assertThrows(AltaPlataformaExcepcion.class, () ->  CAP.ingresaPlataforma(dtPlataforma));

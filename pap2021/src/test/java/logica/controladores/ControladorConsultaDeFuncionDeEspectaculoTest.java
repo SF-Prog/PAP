@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,21 +25,21 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 	ControladorAltaDeFuncionDeEspectaculo CAFE = new ControladorAltaDeFuncionDeEspectaculo();
 	Date date = new Date();
 	
-	String nombrePlataforma = "NombrePlataforma";
-	String nombrePlataforma2 = "NombrePlataforma2";
-	String nicknameArtista1 = "artistaTest";
-	String emailArtista1 = "artista@test.com";
-	String nicknameArtista2 = "artistaTest2";
-	String emailArtista2 = "artista2@test.com";
+	String nombrePlataforma = "NombrePlataformaCCFDE";
+	String nombrePlataforma2 = "NombrePlataforma2CCFDE";
+	String nicknameArtista1 = "artistaTestCCFDE";
+	String emailArtista1 = "artista@test.comCCFDE";
+	String nicknameArtista2 = "artistaTest2CCFDE";
+	String emailArtista2 = "artista2@test.comCCFDE";
 	DtPlataforma dtPlataforma =  new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 	DtPlataforma dtPlataforma2 = new DtPlataforma(nombrePlataforma2, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 	DtUsuario dtArtista = new DtUsuario(nicknameArtista1, "nombre", "apellido", emailArtista1, date, "password", "urlImage");
 	DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
-	String nombreEspctaculo = "nombre espctaculo";
+	String nombreEspctaculo = "nombre espctaculoCCFDE";
 	DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspctaculo, "descripcion", 90, 10, 20,"url", 20, date, "img");
-	String nombreEspctaculo2 = "nombre espctaculo2";
+	String nombreEspctaculo2 = "nombre espctaculo2CCFDE";
 	DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspctaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
-	String nombrefuncion = "nombre funcion";
+	String nombrefuncion = "nombre funcionCCFDE";
 	DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
 	@BeforeAll
 	public static void inicializarTest() {
@@ -51,21 +50,21 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 		
 		Date date = new Date();
 		
-		String nombrePlataforma = "NombrePlataforma";
-		String nombrePlataforma2 = "NombrePlataforma2";
-		String nicknameArtista1 = "artistaTest";
-		String emailArtista1 = "artista@test.com";
-		String nicknameArtista2 = "artistaTest2";
-		String emailArtista2 = "artista2@test.com";
+		String nombrePlataforma = "NombrePlataformaCCFDE";
+		String nombrePlataforma2 = "NombrePlataforma2CCFDE";
+		String nicknameArtista1 = "artistaTestCCFDE";
+		String emailArtista1 = "artista@test.comCCFDE";
+		String nicknameArtista2 = "artistaTest2CCFDE";
+		String emailArtista2 = "artista2@test.comCCFDE";
 		DtPlataforma dtPlataforma =  new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		DtPlataforma dtPlataforma2 = new DtPlataforma(nombrePlataforma2, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		DtUsuario dtArtista = new DtUsuario(nicknameArtista1, "nombre", "apellido", emailArtista1, date, "password", "urlImage");
 		DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
-		String nombreEspctaculo = "nombre espctaculo";
+		String nombreEspctaculo = "nombre espctaculoCCFDE";
 		DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspctaculo, "descripcion", 90, 10, 20,"url", 20, date, "img");
-		String nombreEspctaculo2 = "nombre espctaculo2";
+		String nombreEspctaculo2 = "nombre espctaculo2CCFDE";
 		DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspctaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
-		String nombrefuncion = "nombre funcion";
+		String nombrefuncion = "nombre funcionCCFDE";
 		DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
 
 		

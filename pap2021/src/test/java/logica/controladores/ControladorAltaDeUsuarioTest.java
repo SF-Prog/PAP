@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -220,13 +219,7 @@ class ControladorAltaDeUsuarioTest {
 		String[] resultadoEsperadoSeguidos = new String[1];
 		resultadoEsperadoSeguidos[0] = artista1;
 		try { CAU.seguirUsuario(espectador, artista1); } catch(Exception e) {};
-		try {
-			CAU.dejarSeguirUsuario(espectador, artista2);
-		} catch (Exception e) {
-			assertArrayEquals(CAU.usuariosSeguidos(espectador), resultadoEsperadoSeguidos);
-			assertTrue(CAU.checkSeguidor(espectador, artista1));
-			assertFalse(CAU.checkSeguidor(espectador, artista2));
-		}
+		assertThrows(Exception.class, () -> CAU.dejarSeguirUsuario(espectador, artista2));
 	}
 
 }

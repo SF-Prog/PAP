@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,24 +22,24 @@ class ControladorAltaDeEspectaculoTest {
 	ControladorAltaDePlataforma CAP = new ControladorAltaDePlataforma();
 	ControladorAltaDeUsuario CAU = new ControladorAltaDeUsuario();
 	Date date = new Date();
-	String nombrePlataforma = "NombrePlataforma";
-	String nombrePlataforma2 = "NombrePlataforma2";
-	String nicknameArtista1 = "artistaTest";
-	String emailArtista1 = "artista@test.com";
-	String nicknameArtista2 = "artistaTest2";
-	String emailArtista2 = "artista2@test.com";
+	String nombrePlataforma = "NombrePlataformaCAEE";
+	String nombrePlataforma2 = "NombrePlataforma2CAEE";
+	String nicknameArtista1 = "artistaTestCAEE";
+	String emailArtista1 = "artista@test.comCAEE";
+	String nicknameArtista2 = "artistaTest2CAEE";
+	String emailArtista2 = "artista2@test.comCAEE";
 	@BeforeAll
 	public static void initialization() {
 		ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
 		ControladorAltaDePlataforma CAP = new ControladorAltaDePlataforma();
 		ControladorAltaDeUsuario CAU = new ControladorAltaDeUsuario();
 		Date date = new Date();
-		String nombrePlataforma = "NombrePlataforma";
-		String nombrePlataforma2 = "NombrePlataforma2";
-		String nicknameArtista1 = "artistaTest";
-		String emailArtista1 = "artista@test.com";
-		String nicknameArtista2 = "artistaTest2";
-		String emailArtista2 = "artista2@test.com";
+		String nombrePlataforma = "NombrePlataformaCAEE";
+		String nombrePlataforma2 = "NombrePlataforma2CAEE";
+		String nicknameArtista1 = "artistaTestCAEE";
+		String emailArtista1 = "artista@test.comCAEE";
+		String nicknameArtista2 = "artistaTest2CAEE";
+		String emailArtista2 = "artista2@test.comCAEE";
 		DtPlataforma dtPlataforma = new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		try { CAP.ingresaPlataforma(dtPlataforma); } catch(AltaPlataformaExcepcion ape) {};
 		
@@ -50,8 +49,8 @@ class ControladorAltaDeEspectaculoTest {
 		DtUsuario dtArtista = new DtUsuario(nicknameArtista1, "nombre", "apellido", emailArtista1, date, "password", "urlImage");
 		CAU.ingresaUsuarioArtista(dtArtista, "descripcion", "biografia", "link");
 		
-		String nickname2 = "artista2Test";
-		String email2 = "artista2@test.com";
+		String nickname2 = "artista2TestCAEE";
+		String email2 = "artista2@test.comCAEE";
 		DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
 		CAU.ingresaUsuarioArtista(dtArtista2, "descripcion", "biografia", "link");
 		
@@ -81,7 +80,7 @@ class ControladorAltaDeEspectaculoTest {
 	
 	@Test
 	void existeEspectaculoSuccessTest() {
-		String nombreEspectaculo = "nombreEspectaculo";
+		String nombreEspectaculo = "nombreEspectaculoCAEE";
 		DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspectaculo, "descripcion", 100, 1, 10, "url", 15, date, "imagen", nicknameArtista1);
 		try {
 			CAE.ingresaEspectaculo(nombrePlataforma, nicknameArtista1, dtEspectaculo);
@@ -91,7 +90,7 @@ class ControladorAltaDeEspectaculoTest {
 	
 	@Test
 	void existeEspectaculoErrorTest() {
-		String nombreEspectaculo = "nombreEspectaculo";
+		String nombreEspectaculo = "nombreEspectaculoCAEE";
 		DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspectaculo, "descripcion", 100, 1, 10, "url", 15, date, "imagen", nicknameArtista1);
 		try {
 			CAE.ingresaEspectaculo(nombrePlataforma, nicknameArtista1, dtEspectaculo);
