@@ -9,5 +9,5 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 public class ControladorAgregarEspectaculoAPaqueteDeEspectaculosTest {
-
+	ControladorAgregarEspectaculoAPaqueteDeEspectaculos CAPEPE = new ControladorAgregarEspectaculoAPaqueteDeEspectaculos();
 }
