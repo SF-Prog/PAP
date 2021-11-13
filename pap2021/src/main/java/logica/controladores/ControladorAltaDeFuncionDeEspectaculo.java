@@ -19,11 +19,11 @@ import logica.manejadores.ManejadorUsuario;
 import persistencia.Conexion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
 
-
 public class ControladorAltaDeFuncionDeEspectaculo implements IControladorAltaDeFuncionDeEspectaculo{
 	private Plataforma plataformaSeleccionada;
 	private Espectaculo espectaculoSeleccionado;
 	private List<String> artistasIngresadosEnFuncion = new ArrayList<String>();
+	@SuppressWarnings("unused")
 	private List<String> artistasIngresadosEnSistema = new ArrayList<String>();
 	
 	public ControladorAltaDeFuncionDeEspectaculo() {

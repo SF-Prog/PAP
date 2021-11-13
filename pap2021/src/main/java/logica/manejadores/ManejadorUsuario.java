@@ -24,6 +24,7 @@ public class ManejadorUsuario {
 		return instancia;
 	}	
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Usuario> getUsuarios() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
@@ -38,13 +39,13 @@ public class ManejadorUsuario {
 		em.persist(usuario);
 		em.getTransaction().commit();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public List<String> getArtistas() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		Query query = em.createQuery("select a from Artista a");		
-		List<Artista> listArtista = (List<Artista>)query.getResultList();	
-		
+		Query query = em.createQuery("select a from Artista a");
+		List<Artista> listArtista = (List<Artista>)query.getResultList();		
 		List<String> res = new ArrayList<>();
 		for(Artista u: listArtista) {
 			if (u instanceof Artista){
@@ -54,6 +55,7 @@ public class ManejadorUsuario {
 		return res;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<String> getArtistasInvitadosEnFuncion(String funcion) {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
@@ -121,6 +123,7 @@ public class ManejadorUsuario {
         }
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<String> getUsuariosSeguidos(String seguidor) {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();

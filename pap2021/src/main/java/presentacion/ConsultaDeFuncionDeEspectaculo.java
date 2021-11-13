@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import interfaces.IControladorConsultaDeFuncionDeEspectaculo;
-import logica.Espectaculo;
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
 

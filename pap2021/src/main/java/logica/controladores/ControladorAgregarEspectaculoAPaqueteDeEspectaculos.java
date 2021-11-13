@@ -13,35 +13,29 @@ public class ControladorAgregarEspectaculoAPaqueteDeEspectaculos implements ICon
 	
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
 	public void seleccionarPaquete(String paquete) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	@Override
 	public void seleccionarPlataforma(String plataforma) {
-		// TODO Auto-generated method stub		
 	}
 	
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculosEnPlataformaNoEnElPaquete() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
 	public void seleccionarEspectaculo(String espectaculo) {
-		// TODO Auto-generated method stub
 	}
 	
 	@Override
 	public void ingresarEspectaculoAPaquete() {
-		// TODO Auto-generated method stub		
 	}
 }
 
