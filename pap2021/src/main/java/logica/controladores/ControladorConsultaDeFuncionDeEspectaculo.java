@@ -23,6 +23,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		super();
 	}
 	
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
@@ -58,6 +59,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		return dtp;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
 		ArrayList<DtEspectaculo> dtEspectaculos = null;
@@ -110,6 +112,7 @@ public class ControladorConsultaDeFuncionDeEspectaculo implements IControladorCo
 		return dte;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtFuncion> listarFunciones() {
 		ArrayList<DtFuncion> dtFunciones =null;

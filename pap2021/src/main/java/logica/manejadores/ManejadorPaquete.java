@@ -21,6 +21,7 @@ public class ManejadorPaquete {
 		return instancia;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Paquete> getPaquetes() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();	

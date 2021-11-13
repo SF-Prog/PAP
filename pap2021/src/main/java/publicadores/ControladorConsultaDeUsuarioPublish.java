@@ -11,8 +11,6 @@ import interfaces.IControladorConsultaDeUsuario;
 import logica.Artista;
 import logica.Espectador;
 import logica.Usuario;
-import logica.manejadores.ManejadorUsuario;
-
 import java.util.ArrayList;
 
 import javax.jws.WebMethod;

@@ -20,6 +20,7 @@ public class ManejadorPlataforma {
 		return instancia;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Plataforma> getPlataformas() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();	

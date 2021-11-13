@@ -21,6 +21,7 @@ public class ManejadorRegistro {
 		return instancia;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Registro> getRegistros() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();	

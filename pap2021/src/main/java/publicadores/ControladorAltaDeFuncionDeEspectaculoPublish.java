@@ -8,8 +8,6 @@ import excepciones.AltaFuncionDeEspectaculoExcepcion;
 import interfaces.Fabrica;
 import interfaces.IControladorAltaDeFuncionDeEspectaculo;
 import logica.Espectaculo;
-import logica.manejadores.ManejadorUsuario;
-
 import java.util.List;
 
 import javax.jws.WebMethod;

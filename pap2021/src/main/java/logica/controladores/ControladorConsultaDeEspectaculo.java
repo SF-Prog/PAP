@@ -21,12 +21,14 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	private Plataforma plataformaSeleccionada= null;
 	private Espectaculo espectaculoSeleccionada= null;
 	private Funcion funcionSeleccionada = null;
+	@SuppressWarnings("unused")
 	private Paquete paqueteSeleccionado = null;
 	
 	public ControladorConsultaDeEspectaculo() {
 		super();
 	}
 	
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
@@ -62,6 +64,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dtp;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
 		ArrayList<DtEspectaculo> dtEspectaculos = null;
@@ -115,6 +118,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dte;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtFuncion> listarFunciones() {
 		ArrayList<DtFuncion> dtFunciones =null;
@@ -156,6 +160,7 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dtf;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
 		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();

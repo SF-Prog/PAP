@@ -3,16 +3,12 @@ package logica.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.RollbackException;
-
 import datatypes.DtUsuario;
 import interfaces.IControladorAltaDeUsuario;
 import logica.Artista;
 import logica.Espectador;
 import logica.Usuario;
 import logica.manejadores.ManejadorUsuario;
-import persistencia.Conexion;
 
 public class ControladorAltaDeUsuario implements IControladorAltaDeUsuario {	
 	public ControladorAltaDeUsuario() {

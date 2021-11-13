@@ -1,23 +1,17 @@
 package logica.controladores;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import datatypes.DtArtista;
 import datatypes.DtEspectaculo;
-import datatypes.DtUsuario;
 import excepciones.AltaEspectaculoExcepcion;
-import excepciones.AltaPlataformaExcepcion;
 import interfaces.IControladorAltaDeEspectaculo;
 import logica.Artista;
 import logica.Espectaculo;
 import logica.Plataforma;
-import logica.Usuario;
 import logica.manejadores.ManejadorPlataforma;
 import logica.manejadores.ManejadorUsuario;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import persistencia.Conexion;
 
 public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectaculo {	

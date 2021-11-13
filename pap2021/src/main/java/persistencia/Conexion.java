@@ -21,11 +21,11 @@ public class Conexion {
 	}
 	
 	public EntityManager getEntityManager() {
-		return this.em;
+		return em;
 	}
 	
 	public void close() {
-		this.em.close();
-		this.emf.close();
+		em.close();
+		emf.close();
 	}
 }
