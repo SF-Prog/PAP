@@ -37,7 +37,6 @@ public class ControladorAltaDeEspectaculo implements IControladorAltaDeEspectacu
         	i++;
         }
         return res;
- 
 	}
 
 	@Override
