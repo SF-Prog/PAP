@@ -1,38 +1,30 @@
 package logica.controladores;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
+
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+
 
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
-import datatypes.DtPaquete;
+
 import datatypes.DtPlataforma;
 import datatypes.DtUsuario;
 import excepciones.AltaEspectaculoExcepcion;
+import excepciones.AltaFuncionDeEspectaculoExcepcion;
 import excepciones.AltaPlataformaExcepcion;
-import logica.Espectaculo;
-import logica.Funcion;
-import logica.Paquete;
-import logica.Plataforma;
-import logica.manejadores.ManejadorPaquete;
-import logica.manejadores.ManejadorPlataforma;
-import logica.manejadores.ManejadorUsuario;
+
 public class ControladorConsultaDeEspectaculoTest {
 	ControladorConsultaDeEspectaculo CCE = new ControladorConsultaDeEspectaculo();
 	ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
 	ControladorAltaDePlataforma CAP = new ControladorAltaDePlataforma();
 	ControladorAltaDeUsuario CAU = new ControladorAltaDeUsuario();
+	ControladorAltaDeFuncionDeEspectaculo CAFE = new ControladorAltaDeFuncionDeEspectaculo();
 	Date date = new Date();
 	
 	String nombrePlataforma = "NombrePlataforma";
@@ -41,19 +33,25 @@ public class ControladorConsultaDeEspectaculoTest {
 	String emailArtista1 = "artista@test.com";
 	String nicknameArtista2 = "artistaTest2";
 	String emailArtista2 = "artista2@test.com";
-	DtPlataforma dtPlataforma = null;
-	DtPlataforma dtPlataforma2 = null;
-	DtUsuario dtArtista = null;
-	DtUsuario dtArtista2 = null;
-	DtEspectaculo dtEspectaculo = null;
-	DtEspectaculo dtEspectaculo2 = null;
+	DtPlataforma dtPlataforma =  new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
+	DtPlataforma dtPlataforma2 = new DtPlataforma(nombrePlataforma2, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
+	DtUsuario dtArtista = new DtUsuario(nicknameArtista1, "nombre", "apellido", emailArtista1, date, "password", "urlImage");
+	DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
+	String nombreEspctaculo = "nombre espctaculo";
+	DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspctaculo, "descripcion", 90, 10, 20,"url", 20, date, "img");
+	String nombreEspctaculo2 = "nombre espctaculo2";
+	DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspctaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
+	String nombrefuncion = "nombre funcion";
+	DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
+
 	
 	@BeforeAll
 	public static void inicializarTest() {
-		ControladorConsultaDeEspectaculo CCE = new ControladorConsultaDeEspectaculo();
 		ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
 		ControladorAltaDePlataforma CAP = new ControladorAltaDePlataforma();
 		ControladorAltaDeUsuario CAU = new ControladorAltaDeUsuario();
+		ControladorAltaDeFuncionDeEspectaculo CAFE = new ControladorAltaDeFuncionDeEspectaculo();
+		
 		Date date = new Date();
 		
 		String nombrePlataforma = "NombrePlataforma";
@@ -62,12 +60,23 @@ public class ControladorConsultaDeEspectaculoTest {
 		String emailArtista1 = "artista@test.com";
 		String nicknameArtista2 = "artistaTest2";
 		String emailArtista2 = "artista2@test.com";
-		DtPlataforma dtPlataforma = null;
-		DtPlataforma dtPlataforma2 = null;
-		DtUsuario dtArtista = null;
-		DtUsuario dtArtista2 = null;
-		DtEspectaculo dtEspectaculo = null;
-		DtEspectaculo dtEspectaculo2 = null;
+		DtPlataforma dtPlataforma =  new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
+		DtPlataforma dtPlataforma2 = new DtPlataforma(nombrePlataforma2, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
+		DtUsuario dtArtista = new DtUsuario(nicknameArtista1, "nombre", "apellido", emailArtista1, date, "password", "urlImage");
+		DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
+		String nombreEspctaculo = "nombre espctaculo";
+		DtEspectaculo dtEspectaculo = new DtEspectaculo(nombreEspctaculo, "descripcion", 90, 10, 20,"url", 20, date, "img");
+		String nombreEspctaculo2 = "nombre espctaculo2";
+		DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspctaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
+		String nombrefuncion = "nombre funcion";
+		DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
+
+		
+		
+		List<String> artistasInvitados =new ArrayList<String>();  
+		artistasInvitados.add(nicknameArtista2);  
+		
+		
 		 dtPlataforma = new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");
 		try { 
 			CAP.ingresaPlataforma(dtPlataforma); 
@@ -99,9 +108,20 @@ public class ControladorConsultaDeEspectaculoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//(String nombre, String descripcion, int duracion, String espectadoresMin, String espectadoresMax,	String URLAsociada, float costo, String fechaAlta)
-		//Plataforma a = new Plataforma("plataforma", "descripcion", 90, "10", "100","url", 100, "20-2-2000");
+		
+		
+		dFuncion = new DtFuncion("nombre funcion", date, "00:00:00", date, "img");
+		try {
+			CAFE.seleccionaPlataforma(nombrePlataforma);
+			CAFE.seleccionaEspectaculo("nombre espctaculo");
+			CAFE.ingresaFuncion(dFuncion, artistasInvitados);
+		} catch (AltaFuncionDeEspectaculoExcepcion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 }
+	
 	
 	
 	@Test
@@ -109,88 +129,103 @@ public class ControladorConsultaDeEspectaculoTest {
 		final int EXPECTED_LENGTH = 1;
 		System.out.print( CCE.listarPlataformas());
 		int resultado = CCE.listarPlataformas().size();
+		
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado > EXPECTED_LENGTH);
 	}
 
 	
-	/*//@Test
+	@Test
 	void  listarPlataformasComboBoxLLeno() {
+		final int EXPECTED_LENGTH = 1;
+		int resultado = CCE.listarPlataformasComboBox().length;
+		
+	   // Use number.length to get the length of the array.
+	   assertTrue(resultado > EXPECTED_LENGTH);
+		
+		/*
 		String[] resultadoEsperado = new String[1];
 		resultadoEsperado[0]="";
-		assertEquals(resultadoEsperado,CCE.listarPlataformasComboBox());
-	}//*/
+		assertEquals(resultadoEsperado,CCE.listarPlataformasComboBox());*/
+		
+	}///*
 	
 	
-	/*//@Test
+	@Test
 	void  seleccionaPlataforma() {
-		System.out.println(nombrePlataforma);
-		assertEquals(CCE.seleccionaPlataforma(nombrePlataforma), dtPlataforma);
+		DtPlataforma plataforma = CCE.seleccionaPlataforma(nombrePlataforma);
+		DtPlataforma dtPlataforma =  new DtPlataforma(nombrePlataforma, "descripcion", 10, "1", "100", "https://google.com", 10, "1/1/2020");;
+		assertEquals(plataforma.getNombre(), dtPlataforma.getNombre());
 
 	}//*/
 	
-	/*//@Test
+	@Test
 	void  listarEspectaculosComboBoxLleno(){
+		CCE.seleccionaPlataforma(nombrePlataforma);
 		final int EXPECTED_LENGTH = 1;
 		int resultado = CCE.listarEspectaculosComboBox().length;
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado > EXPECTED_LENGTH);
 	}//*/
 	
-	/*//@Test
+	@Test
 	void  listarEspectaculosLlena(){
+		CCE.seleccionaPlataforma(nombrePlataforma);
 		assertNotNull(CCE.listarEspectaculos());
 	}//*/
 
-	/*//@Test
+	@Test
 	void seleccionaEspectaculo() {
 		//DtEspectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,String urlAsociada, float costo, Date fechaRegistro, String image)
 		//Date fecha = new Date();
 		//DtEspectaculo dtEspectaculo = new DtEspectaculo("nombre espctaculo", "descripcion", 90, 10, 20,"url", 20, fecha, "img");
-		
-		assertEquals(CCE.seleccionaEspectaculo("nombre espctaculo"), dtEspectaculo);
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		assertEquals(CCE.seleccionaEspectaculo(nombreEspctaculo).getNombre(), dtEspectaculo.getNombre());
 	}//*/
 	
-	/*//@Test
+	@Test
 	void  listarFuncionesLleno() {
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		CCE.seleccionaEspectaculo("nombre espctaculo");
 		assertNotNull(CCE.listarFunciones());
 	}//*/
 	
-	/*//@Test
+	@Test
 	void  listarFuncionesComboBoxLleno() {
-		assertNotNull(CCE.listarFuncionesComboBox());
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		CCE.seleccionaEspectaculo(nombreEspctaculo);
+		final int EXPECTED_LENGTH = 1;
+		int resultado = CCE.listarFuncionesComboBox().length;
+	   // Use number.length to get the length of the array.
+	   assertTrue(resultado >EXPECTED_LENGTH);
 	}//*/
 	
-	/*//@Test
-	void seleccionaFuncion() {
-		Date fecha = new Date();
-		DtFuncion dtFuncion = new DtFuncion();
-		
-		assertEquals(CCE.seleccionaFuncion("nombre funcion"), dtFuncion);
+	@Test
+	void seleccionaFuncion() {	
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		CCE.seleccionaEspectaculo("nombre espctaculo");
+		DtFuncion Funcion = CCE.seleccionaFuncion("nombre funcion");
+		assertEquals(Funcion.getNombre(), dFuncion.getNombre());
 		
 	}//*/	
 	
-	/*//@Test
+	@Test
 	void listarPaquetesLleno() {
 		assertNotNull(CCE.listarPaquetes());
 		
 	}//*/
 	
-	/*@Test
-	void  listarPaquetesComboBoxLleno() {
-		final int EXPECTED_LENGTH = 1;
-		int resultado = CCE.listarPaquetesComboBox().length;
-	   // Use number.length to get the length of the array.
-	   assertTrue(resultado > EXPECTED_LENGTH);
 
-	}//*/
 		
-	/*@Test
+	@Test
 	void listarArtistasInvitadosLLeno() {
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		CCE.seleccionaEspectaculo(nombreEspctaculo);
+		CCE.seleccionaFuncion(nombrefuncion);
 		final int EXPECTED_LENGTH = 1;
 		int resultado = CCE.listarArtistasInvitados().length;
 	   // Use number.length to get the length of the array.
-	   assertTrue(resultado == EXPECTED_LENGTH);
+	   assertTrue(resultado >EXPECTED_LENGTH);
 
 	}//*/
 	
@@ -205,12 +240,13 @@ public class ControladorConsultaDeEspectaculoTest {
 	   assertTrue(resultado == EXPECTED_LENGTH);
 
 	}//*/
-	
-	/*@Test
+	/*
+	@Test
 	void  listarPlataformasComboBoxVacio() {
-		String[] resultadoEsperado = new String[1];
-		resultadoEsperado[0]="";
-		assertEquals(resultadoEsperado,CCE.listarPlataformasComboBox());
+		final int EXPECTED_LENGTH = 1;
+		int resultado = CCE.listarPlataformasComboBox().length;
+	   // Use number.length to get the length of the array.
+	   assertTrue(resultado == EXPECTED_LENGTH);
 	}//*/
 	
 	/*@Test
@@ -238,24 +274,13 @@ public class ControladorConsultaDeEspectaculoTest {
 		assertNull(CCE.listarFuncionesComboBox());	
 	}//*/
 	
-	/*@Test
-	void  listarPaquetesVacio() {
-		assertNull(CCE.listarPaquetes());	
-	}*/
 
-	/*@Test
-	void  listarPaquetesComboBoxVacio() {
-		final int EXPECTED_LENGTH = 1;
-		int resultado = CCE.listarPaquetesComboBox().length;
-	   // Use number.length to get the length of the array.
-	   assertTrue(resultado == EXPECTED_LENGTH);
-	}*/
 	
 	/*@Test
 	void  listarArtistasInvitadosVacio() {
 		int resultado = CCE.listarArtistasInvitados().length;
 	   // Use number.length to get the length of the array.
 		assertNull(resultado);
-	}*/	
+	}//*/	
 
 }
