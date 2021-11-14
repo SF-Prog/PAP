@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+
 
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
@@ -89,8 +89,8 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 		 dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
 		CAU.ingresaUsuarioArtista(dtArtista2, "descripcion", "biografia", "link");
 		
-		dtEspectaculo = new DtEspectaculo("nombre espctaculo", "descripcion", 90, 10, 20,"url", 20, date, "img");
-		dtEspectaculo2 = new DtEspectaculo("nombre espctaculo2", "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
+		dtEspectaculo = new DtEspectaculo(nombreEspctaculo, "descripcion", 90, 10, 20,"url", 20, date, "img");
+		dtEspectaculo2 = new DtEspectaculo(nombreEspctaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
 		
 		 try {
 			CAE.ingresaEspectaculo(nombrePlataforma,nicknameArtista1, dtEspectaculo);
@@ -106,10 +106,10 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 		}
 		
 		
-		dFuncion = new DtFuncion("nombre funcion", date, "00:00:00", date, "img");
+		dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
 		try {
 			CAFE.seleccionaPlataforma(nombrePlataforma);
-			CAFE.seleccionaEspectaculo("nombre espctaculo");
+			CAFE.seleccionaEspectaculo(nombreEspctaculo);
 			CAFE.ingresaFuncion(dFuncion, artistasInvitados);
 		} catch (AltaFuncionDeEspectaculoExcepcion e) {
 			// TODO Auto-generated catch block
@@ -173,7 +173,7 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 	@Test
 	void  listarFuncionesLleno() {
 		CCFE.seleccionaPlataforma(nombrePlataforma);
-		CCFE.seleccionaEspectaculo("nombre espctaculo");
+		CCFE.seleccionaEspectaculo(nombreEspctaculo);
 		assertNotNull(CCFE.listarFunciones());
 	}//*/
 	
@@ -190,8 +190,8 @@ public class ControladorConsultaDeFuncionDeEspectaculoTest {
 	@Test
 	void seleccionaFuncion() {	
 		CCFE.seleccionaPlataforma(nombrePlataforma);
-		CCFE.seleccionaEspectaculo("nombre espctaculo");
-		DtFuncion Funcion = CCFE.seleccionaFuncion("nombre funcion");
+		CCFE.seleccionaEspectaculo(nombreEspctaculo);
+		DtFuncion Funcion = CCFE.seleccionaFuncion(nombrefuncion);
 		assertEquals(Funcion.getNombre(), dFuncion.getNombre());
 		
 	}//*/	
