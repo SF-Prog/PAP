@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 184d39e935df982a576925cb59eba5bf939066b1
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
