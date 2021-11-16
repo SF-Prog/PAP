@@ -184,6 +184,32 @@ public class ControladorConsultaDeEspectaculoTest {
 	}//*/
 	
 	@Test
+	void toSting() {
+		//DtEspectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,String urlAsociada, float costo, Date fechaRegistro, String image)
+		//Date fecha = new Date();
+		//DtEspectaculo dtEspectaculo = new DtEspectaculo("nombre espctaculo", "descripcion", 90, 10, 20,"url", 20, fecha, "img");
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		DtEspectaculo dtEspectaculo = CCE.seleccionaEspectaculo(nombreEspctaculo);
+		String resultado = dtEspectaculo.toString();
+	   // Use number.length to get the length of the array.
+	   assertTrue(!resultado.equals(""));
+		//assertEquals(CCE.seleccionaEspectaculo(nombreEspctaculo).getNombre(), dtEspectaculo.getNombre());
+	}//*/
+	
+	
+	@Test
+	void getArtista() {
+		//DtEspectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,String urlAsociada, float costo, Date fechaRegistro, String image)
+		//Date fecha = new Date();
+		//DtEspectaculo dtEspectaculo = new DtEspectaculo("nombre espctaculo", "descripcion", 90, 10, 20,"url", 20, fecha, "img");
+		CCE.seleccionaPlataforma(nombrePlataforma);
+		DtEspectaculo dtEspectaculo = CCE.seleccionaEspectaculo(nombreEspctaculo);
+		String resultado = dtEspectaculo.getArtista();
+	   // Use number.length to get the length of the array.
+	   assertTrue(!resultado.equals(""));
+		//assertEquals(CCE.seleccionaEspectaculo(nombreEspctaculo).getNombre(), dtEspectaculo.getNombre());
+	}//*/
+	@Test
 	void  listarFuncionesLleno() {
 		CCE.seleccionaPlataforma(nombrePlataforma);
 		CCE.seleccionaEspectaculo(nombreEspctaculo);

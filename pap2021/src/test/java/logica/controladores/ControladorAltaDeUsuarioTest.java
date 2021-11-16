@@ -7,6 +7,8 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import datatypes.DtArtista;
+import datatypes.DtEspectador;
 import datatypes.DtUsuario;
 
 class ControladorAltaDeUsuarioTest {
@@ -220,5 +222,6 @@ class ControladorAltaDeUsuarioTest {
 		try { CAU.seguirUsuario(espectador, artista1); } catch(Exception e) {};
 		assertThrows(Exception.class, () -> CAU.dejarSeguirUsuario(espectador, artista2));
 	}
+
 
 }
