@@ -1,7 +1,7 @@
 package logica.controladores;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,15 +21,8 @@ public class ControladorConsultaDeUsuarioTest {
 		CAU = new ControladorAltaDeUsuario();
 		CCU = new ControladorConsultaDeUsuario();
 	}
-
-	@Test
-	void listarUsuariosTest() {		
-		ArrayList<Usuario> usuarios = CCU.listarUsuarios();
-		assertTrue(usuarios.size()> 0);
-	}
 	
-	/*
-	 * @Test
+	@Test
 	void listarUsuariosTest() {		
 		ArrayList<Usuario> usuarios = CCU.listarUsuarios();
 		assertEquals(usuarios.size(), 0);
@@ -50,6 +43,19 @@ public class ControladorConsultaDeUsuarioTest {
 		usuarios = CCU.listarUsuarios();
 		assertEquals(usuarios.size(), 2);
 	}
-	 */
 	
+	@Test
+	void seleccionaUsuarioTest() {
+		assertNull(CCU.seleccionaUsuario("nickname"));
+	}
+	
+	@Test
+	void listaInfoEspectaculosTest() {
+		assertNull(CCU.listaInfoEspectaculos("nickname"));
+	}
+	
+	@Test
+	void listaInfoFuncionesTest() {
+		assertNull(CCU.listaInfoFunciones("nickname"));
+	}
 }

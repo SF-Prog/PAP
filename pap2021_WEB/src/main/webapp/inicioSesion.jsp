@@ -2,7 +2,7 @@
 <%@ include file="/head.jsp"%>
 <%@ include file="/navBar.jsp"%>
 <!--  CONTENIDO INICIO SESION -->
-<div id="seccionFormulario" style="margin-left: 40px; height: 100%; width:100%; display: flex; justify-content: center; align-items: center;">
+<div id="seccionFormulario" style="height: 100%; width:100%; display: flex; justify-content: center; align-items: center;">
 	<form action="Usuario" method="post" name="nombreForm" style="height: 350px; width: 300px; padding: 20px; border: 1px solid #EEE; border-radius: 15px; margin-top: 50px; display: flex; flex-flow: row wrap; align-items: center; justify-content: center;">
 		<div style="height: 40px; width: 100%;">
 		    <label for="user" class="form-label">Usuario</label>

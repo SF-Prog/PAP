@@ -10,10 +10,6 @@ public class DtUsuario {
 	protected Date fechaNac;
 	protected String password;
 	protected String image;
-	
-	public DtUsuario() {
-		super();
-	}
 
 	public DtUsuario(String nickName, String nombre, String apellido, String email, Date fecha, String password, String image) {
 		super();

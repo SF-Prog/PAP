@@ -1,6 +1,6 @@
 package logica.controladores;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Date;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import datatypes.DtEspectaculo;
@@ -28,6 +27,8 @@ class ControladorAltaDeEspectaculoTest {
 	String emailArtista1 = "artista@test.comCAEE";
 	String nicknameArtista2 = "artistaTest2CAEE";
 	String emailArtista2 = "artista2@test.comCAEE";
+	
+	@SuppressWarnings("unused")
 	@BeforeAll
 	public static void initialization() {
 		ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
@@ -53,7 +54,6 @@ class ControladorAltaDeEspectaculoTest {
 		String email2 = "artista2@test.comCAEE";
 		DtUsuario dtArtista2 = new DtUsuario(nicknameArtista2, "nombre", "apellido", emailArtista2, date, "password", "urlImage");
 		CAU.ingresaUsuarioArtista(dtArtista2, "descripcion", "biografia", "link");
-		
 	}
 	
 	@Test
@@ -61,7 +61,7 @@ class ControladorAltaDeEspectaculoTest {
 		String[] resultadoEsperado = new String[2];
 		resultadoEsperado[0] = nombrePlataforma;
 		resultadoEsperado[1] = nombrePlataforma2;
-		assertTrue(2 < CAE.listarPlataformas().length);
+		assertEquals(2, CAE.listarPlataformas().length);
 	};
 	
 	@Test
@@ -69,14 +69,13 @@ class ControladorAltaDeEspectaculoTest {
 		String[] resultadoEsperado = new String[2];
 		resultadoEsperado[0] = nicknameArtista1;
 		resultadoEsperado[1] = nicknameArtista2;
-		assertTrue(2 < CAE.listarArtistas().length);
+		assertEquals(2, CAE.listarArtistas().length);
 	};
 	
 	@Test
 	void existeEspectaculoInexistenteTest() {
 		assertFalse(CAE.existeEspectaculo(nombrePlataforma, "inexistente"));
 	}
-	
 	
 	@Test
 	void existeEspectaculoSuccessTest() {
@@ -95,9 +94,6 @@ class ControladorAltaDeEspectaculoTest {
 		try {
 			CAE.ingresaEspectaculo(nombrePlataforma, nicknameArtista1, dtEspectaculo);
 		} catch(AltaEspectaculoExcepcion e) {};
-		assertThrows(AltaEspectaculoExcepcion.class, () -> CAE.ingresaEspectaculo(nombrePlataforma, nicknameArtista1, dtEspectaculo));
-	
-	}
-	
-	
+		assertThrows(AltaEspectaculoExcepcion.class, () -> CAE.ingresaEspectaculo(nombrePlataforma, nicknameArtista1, dtEspectaculo));	
+	}	
  }

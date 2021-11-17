@@ -48,8 +48,6 @@ public class ControladorConsultaDeUsuarioPublish {
 	public Endpoint getEndpoint() {
         return endpoint;
 	}
-
-
 	
 	@WebMethod
 	public DtEspectador[] listarUsuariosEspectador() {
@@ -63,8 +61,6 @@ public class ControladorConsultaDeUsuarioPublish {
 		};
 		
 		DtEspectador[]  ret = new DtEspectador[a];
-		
-		
 		
 		for(Usuario usuario : dtu) {
 			if(usuario instanceof Espectador){

@@ -5,10 +5,6 @@ import java.util.Date;
 public class DtRegistro {
 	private Date fechaRegistro;
 	private float costo;
-	
-	public DtRegistro() {
-		super();
-	}
 
 	public DtRegistro(Date fechaRegistro, float costo) {
 		super();

@@ -7,10 +7,6 @@ public class DtArtista extends DtUsuario {
 	private String biografia;
 	private String link;
 	
-	public DtArtista() {
-		super();
-	}
-	
 	public DtArtista(String nickName, String nombre, String apellido, String email, Date fecha, String password, String image, String descGeneral, String biografia,String link ){
 		super(nickName, nombre, apellido, email, fecha, password, image);
 		this.setDescGeneral(descGeneral);

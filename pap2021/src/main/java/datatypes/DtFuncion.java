@@ -9,10 +9,6 @@ public class DtFuncion {
 	private Date fechaRegistro;
 	private String image;
 	private String[] artistasInvitados;
-	
-	public DtFuncion() {
-		super();
-	}
 
 	public DtFuncion(String nombre, Date fecha, String horaInicio, Date fechaRegistro, String image) {
 		super();

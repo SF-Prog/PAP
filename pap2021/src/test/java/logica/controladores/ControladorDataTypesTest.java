@@ -8,19 +8,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import datatypes.DtArtista;
+import datatypes.DtEspectaculo;
 import datatypes.DtEspectador;
 import datatypes.DtFuncion;
+import datatypes.DtPaquete;
 import datatypes.DtPlataforma;
 import datatypes.DtRegistro;
 
 public class ControladorDataTypesTest {
 	ControladorAltaDeUsuario CAU;
 	Date date;
+	
 	@BeforeEach
 	void inicializacion() {
 		CAU = new ControladorAltaDeUsuario();
 		date = new Date();
 	}
+	
 	@Test
 	void dtEspectador() {
 		String espectador = "espectadorDSUI4Test";
@@ -36,6 +40,7 @@ public class ControladorDataTypesTest {
 		DtArtista dtArtista = new DtArtista(artista1, "nombre", "apellido", emaila1, date, "password", "urlImage","descripcion", "biografia", "link");
 		assertTrue(dtArtista.getDescGeneral().equals("descripcion"));
 	}
+	
 	@Test
 	void dtArtistaGetBiografia(){
 		String artista1 = "artistaDSUI3Test";
@@ -43,6 +48,7 @@ public class ControladorDataTypesTest {
 		DtArtista dtArtista = new DtArtista(artista1, "nombre", "apellido", emaila1, date, "password", "urlImage","descripcion", "biografia", "link");
 		assertTrue(dtArtista.getBiografia().equals("biografia"));
 	}
+	
 	@Test
 	void dtArtistaGetLink(){
 		String artista1 = "artistaDSUI3Test";
@@ -50,6 +56,7 @@ public class ControladorDataTypesTest {
 		DtArtista dtArtista = new DtArtista(artista1, "nombre", "apellido", emaila1, date, "password", "urlImage","descripcion", "biografia", "link");
 		assertTrue(dtArtista.getLink().equals("link"));
 	}
+	
 	@Test
 	void dtArtistaToString(){
 		String artista1 = "artistaDSUI3Test";
@@ -58,31 +65,34 @@ public class ControladorDataTypesTest {
 		String resultado = dtArtista.toString();
 	   // Use number.length to get the length of the array.
 	   assertTrue(!resultado.equals(""));
-	}
-	
+	}	
 
 	@Test
 	void dtRegistro() {
 		DtRegistro dtRegistro = new DtRegistro(date,100);
 		assertTrue(dtRegistro.getCosto()== 100);
 	}
+	
 	@Test
 	void dtRegistroGetFechaRegistro() {
 		DtRegistro dtRegistro = new DtRegistro(date,100);
 		dtRegistro.getFechaRegistro();
 		assertTrue(dtRegistro.getFechaRegistro()== date);
 	}
+	
 	@Test
 	void  dtRegistroSetFechaRegistro() {
 		DtRegistro dtRegistro = new DtRegistro(date,100);
 		dtRegistro.setFechaRegistro(date);
 		assertTrue(dtRegistro.getFechaRegistro()== date);
 	}
+	
 	@Test
 	void  dtRegistroGetCosto() {
 		DtRegistro dtRegistro = new DtRegistro(date,100);
 		assertTrue(dtRegistro.getCosto()== 100);
 	}
+	
 	@Test
 	void dtRegistrosetCosto() {
 		DtRegistro dtRegistro = new DtRegistro(date,100);
@@ -90,8 +100,6 @@ public class ControladorDataTypesTest {
 		assertTrue(dtRegistro.getCosto()== 200);
 	}
 	
-	
-	//********************************* 
 	@Test
 	void dtPlataforma() {
 		DtPlataforma dtPlataforma = new DtPlataforma("nombrePlataforma", "descripcion","URLAsociada");
@@ -138,13 +146,34 @@ public class ControladorDataTypesTest {
 		 assertTrue(dtPlataforma.getFechaAlta().equals("fechaAlta"));
 	}
 	
-	/********************************************/
-	
 	@Test
 	void dtFuncion() {
 		DtFuncion dtfuncion =new DtFuncion("nombre", date, "horaInicio", date, "image");
 		assertTrue(!dtfuncion.toString().equals(""));
 	}
 	
-
+	@Test
+	void dtFuncionConArtistasInvitados() {
+		String [] artistasInvitados = new String[0];
+		DtFuncion dtfuncion =new DtFuncion("nombre", date, "horaInicio", date, "image", artistasInvitados);
+		assertTrue(!dtfuncion.toString().equals(""));
+	}
+	
+	@Test
+	void dtPaquete() {
+		DtPaquete dtPaquete =new DtPaquete("nombre", "descripcion", 0);
+		assertTrue(!dtPaquete.toString().equals(""));
+	}
+	
+	@Test
+	void dtEspectaculo() {
+		DtEspectaculo dtEspectaculo =new DtEspectaculo("nombre", "descripcion", 100, 1, 100, "url", 50, date, "image");
+		assertTrue(!dtEspectaculo.toString().equals(""));
+	}
+	
+	@Test
+	void dtEspectaculoConArtista() {
+		DtEspectaculo dtEspectaculo =new DtEspectaculo("nombre", "descripcion", 100, 1, 100, "url", 50, date, "image", "artista");
+		assertTrue(!dtEspectaculo.toString().equals(""));
+	}
 }

@@ -9,10 +9,6 @@ public class DtPlataforma {
 	private String URLAsociada;
 	private float costo;
 	private String fechaAlta;
-	
-	public DtPlataforma() {
-		super();
-	}
 
 	public DtPlataforma(String nombre, String descripcion, String URLAsociada) {
 		super();

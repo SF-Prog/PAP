@@ -1,4 +1,5 @@
 package logica.controladores;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -6,9 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import datatypes.DtEspectaculo;
 import datatypes.DtFuncion;
@@ -17,6 +16,7 @@ import datatypes.DtUsuario;
 import excepciones.AltaEspectaculoExcepcion;
 import excepciones.AltaFuncionDeEspectaculoExcepcion;
 import excepciones.AltaPlataformaExcepcion;
+
 public class ControladorAltaDeFuncionDeEspectaculoTest {
 	ControladorAltaDeFuncionDeEspectaculo CAFE = new ControladorAltaDeFuncionDeEspectaculo();
 	ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
@@ -40,6 +40,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 	DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspectaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
 	String nombrefuncion = "nombre funcionCAFE";
 	DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
+	
 	@BeforeAll
 	public static void inicializarTest() {
 		ControladorAltaDeEspectaculo CAE = new ControladorAltaDeEspectaculo();
@@ -65,8 +66,6 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		DtEspectaculo dtEspectaculo2 = new DtEspectaculo(nombreEspectaculo2, "descripcion2", 92 ,12, 22,"url2", 22 ,date, "img2");
 		String nombrefuncion = "nombre funcionCAFE";
 		DtFuncion dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
-
-		
 		
 		List<String> artistasInvitados =new ArrayList<String>();  
 		artistasInvitados.add(nicknameArtista2);  
@@ -102,8 +101,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		} catch (AltaEspectaculoExcepcion e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 		
 		dFuncion = new DtFuncion(nombrefuncion, date, "00:00:00", date, "img");
 		try {
@@ -113,8 +111,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		} catch (AltaFuncionDeEspectaculoExcepcion e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 	
 	@Test
@@ -123,11 +120,8 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		int resultado = CAFE.listarPlataformasComboBox().length;
 		
 	   // Use number.length to get the length of the array.
-	   assertTrue(resultado > EXPECTED_LENGTH);
-		
-	}///*
-	
-	
+	   assertTrue(resultado > EXPECTED_LENGTH);		
+	}
 	
 	@Test
 	void  listarEspectaculosComboBoxLleno(){
@@ -136,7 +130,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		int resultado = CAFE.listarEspectaculosComboBox().length;
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado > EXPECTED_LENGTH);
-	}//*/
+	}
 	
 
 	@Test
@@ -146,7 +140,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		//DtEspectaculo dtEspectaculo = new DtEspectaculo("nombre espctaculo", "descripcion", 90, 10, 20,"url", 20, fecha, "img");
 		CAFE.seleccionaPlataforma(nombrePlataforma);
 		assertEquals(CAFE.seleccionaEspectaculo(nombreEspectaculo).getNombre(), dtEspectaculo.getNombre());
-	}//*/
+	}
 	
 	
 	@Test
@@ -157,7 +151,7 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		int resultado = CAFE.listarPlataformasComboBox().length;
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado >EXPECTED_LENGTH);
-	}//*/
+	}
 	
 	@Test
 	void  listarArtistasComboBoxLleno() {
@@ -167,28 +161,15 @@ public class ControladorAltaDeFuncionDeEspectaculoTest {
 		int resultado = CAFE.listarArtistasComboBox().length;
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado >EXPECTED_LENGTH);
-	}//*/
+	}
 	
 	@Test
-	void  listarArtistasTest() {
+	void listarArtistasTest() {
 		CAFE.seleccionaPlataforma(nombrePlataforma);
 		CAFE.seleccionaEspectaculo(nombreEspectaculo);
 		final int EXPECTED_LENGTH = 1;
 		int resultado = CAFE.listarArtistas().size();
 	   // Use number.length to get the length of the array.
 	   assertTrue(resultado > EXPECTED_LENGTH);
-	}//*/
-	
-	
-	
-	
-	
-	@Test
-	void agregarArtistaAFuncionTest() {
-		CAFE.seleccionaPlataforma(nombrePlataforma);
-		CAFE.seleccionaEspectaculo(nombreEspectaculo);
-		CAFE.agregarArtistaAFuncion("nombre");
-		
-	}//*/
-	
+	}
 }

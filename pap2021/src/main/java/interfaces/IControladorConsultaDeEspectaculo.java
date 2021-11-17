@@ -21,7 +21,6 @@ public interface IControladorConsultaDeEspectaculo {
 	public DtFuncion seleccionaFuncion(String nombre);
 	
 	public ArrayList<DtPaquete> listarPaquetes();
-	public String[] listarPaquetesComboBox();
 	public DtPaquete seleccionaPaquete(String nombre);
 	
 	public String[] listarArtistasInvitados();

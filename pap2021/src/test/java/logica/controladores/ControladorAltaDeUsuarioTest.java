@@ -2,13 +2,10 @@ package logica.controladores;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import datatypes.DtArtista;
-import datatypes.DtEspectador;
 import datatypes.DtUsuario;
 
 class ControladorAltaDeUsuarioTest {
@@ -20,12 +17,6 @@ class ControladorAltaDeUsuarioTest {
 		CAU = new ControladorAltaDeUsuario();
 		date = new Date();
 	}
-  //	@AfterEach
-  //	@Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
-  //	void timeout() {
-  //		// Timeout
-  //	}
-	
 	
 	@Test
 	void ingresarEspectadorSuccessTest() {
@@ -46,8 +37,6 @@ class ControladorAltaDeUsuarioTest {
 		// Valida que esxiste el Artista ingresado por su nickname y su email.
 		assertTrue(CAU.existeUsuarioPorNickname(nickname) && CAU.existeUsuarioPorEmail(email));
 	}
-	
-	
 	
 	@Test
 	void noExisteUsuarioPorNickNameTest() {
@@ -222,6 +211,4 @@ class ControladorAltaDeUsuarioTest {
 		try { CAU.seguirUsuario(espectador, artista1); } catch(Exception e) {};
 		assertThrows(Exception.class, () -> CAU.dejarSeguirUsuario(espectador, artista2));
 	}
-
-
 }

@@ -31,6 +31,7 @@ public class DtEspectaculo {
 		this.setFechaRegistro(fechaRegistro);
 		this.setImage(image);
 	}
+	
 	public DtEspectaculo(String nombre, String descripcion, int duracion, int espectadoresMin, int espectadoresMax,
 			String urlAsociada, float costo, Date fechaRegistro, String image, String artista) {
 		super();
@@ -116,6 +117,14 @@ public class DtEspectaculo {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public String getArtista() {
+		return artista;
+	}
+
+	public void setArtista(String artista) {
+		this.artista = artista;
 	}	
 	
 	@Override
@@ -126,14 +135,5 @@ public class DtEspectaculo {
 		}	
 		String retorno = "\nNombre: " + this.getNombre() + "\nDescripcion: " + this.getDescripcion() + "\nDuracion: " + this.getDuracion() + "\nEspectadores Minimo: " + this.getEspectadoresMin() + "\nEspectadores Maximo: " + this.getEspectadoresMax() + "\nUrl = " + this.getUrlAsociada() + "\nCosto = " + this.getCosto() + "\nFecha De Registro: " + fechaRegistro;
 		return retorno ;
-	}
-	
-	public String getArtista() {
-		return artista;
-	}
-
-	public void setArtista(String artista) {
-		this.artista = artista;
-	}
-	
+	}	
 }

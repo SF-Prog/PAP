@@ -28,7 +28,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		super();
 	}
 	
-	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtPlataforma> listarPlataformas() {
 		ManejadorPlataforma mP = ManejadorPlataforma.getInstancia();		
@@ -64,7 +63,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dtp;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtEspectaculo> listarEspectaculos(){
 		ArrayList<DtEspectaculo> dtEspectaculos =new ArrayList<DtEspectaculo>();
@@ -118,7 +116,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		return dte;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public ArrayList<DtFuncion> listarFunciones() {
 		ArrayList<DtFuncion> dtFunciones =new ArrayList<DtFuncion>();;
@@ -145,9 +142,8 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	
 	@Override
 	public DtFuncion seleccionaFuncion(String nombre) {
-		List<Funcion> listFunciones = this.espectaculoSeleccionada.getFunciones();
 		DtFuncion dtf=null;
-		Iterator<Funcion> fIterator = listFunciones.iterator();
+		Iterator<Funcion> fIterator = this.espectaculoSeleccionada.getFunciones().iterator();
 		boolean existe = false;
 		while(fIterator.hasNext() && !existe){
 			Funcion temp = fIterator.next();
@@ -164,16 +160,13 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 	@Override
 	public ArrayList<DtPaquete> listarPaquetes() {
 		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
-		ArrayList<DtPaquete> dtPaquete =null;
-		List<Paquete> listPaquetes = mPa.getPaquetes();
-		for(Paquete p : listPaquetes){
-			List<Espectaculo> listEspectaculos = p.getEspectaculos();
+		ArrayList<DtPaquete> dtPaquete = null;
+		for(Paquete p : mPa.getPaquetes()){
 			DtPaquete dtp = null;
-			Iterator<Espectaculo> eIterator = listEspectaculos.iterator();
+			Iterator<Espectaculo> eIterator = p.getEspectaculos().iterator();
 			boolean existe = false;
 			while(eIterator.hasNext() && !existe){
-				Espectaculo temp = eIterator.next();
-				if(temp.getNombre().equals(this.espectaculoSeleccionada.getNombre())){
+				if(eIterator.next().getNombre().equals(this.espectaculoSeleccionada.getNombre())){
 					existe = true;
 					dtp = new DtPaquete(p.getNombre(),p.getDescripcion(),p.getDescuento());
 				}
@@ -181,32 +174,6 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 			dtPaquete.add(dtp);
 		}
 		return dtPaquete;
-	}
-
-	
-	@Override
-	public String[] listarPaquetesComboBox() {
-		ManejadorPaquete mPa = ManejadorPaquete.getInstancia();
-		List<Paquete> listPaquetes = mPa.getPaquetes();
-		String[] Paquetes = new String[listPaquetes.size()+1];
-		Paquetes[0]="";
-		int i=1;
-		for(Paquete p : listPaquetes){
-			List<Espectaculo> listEspectaculos = p.getEspectaculos();
-			Iterator<Espectaculo> eIterator = listEspectaculos.iterator();
-			boolean existe = false;
-			while(eIterator.hasNext() && !existe){
-				Espectaculo temp = eIterator.next();
-				if(temp.getNombre().equals(this.espectaculoSeleccionada.getNombre())){
-					existe = true;
-					Paquetes[i] = p.getNombre();
-					
-				}
-			}
-			i++;
-		}
-		return Paquetes;
-
 	}
 	
 	@Override
@@ -232,17 +199,13 @@ public class ControladorConsultaDeEspectaculo implements IControladorConsultaDeE
 		ManejadorUsuario mU = ManejadorUsuario.getInstancia();
 		String funcion = this.funcionSeleccionada.getNombre();
 		List<String> artistasInvitados = mU.getArtistasInvitadosEnFuncion(funcion);
-		if (artistasInvitados != null){
-			String[] Artistas = new String[artistasInvitados.size()+1];
-			Artistas[0]="";
-			int i=1;
-			for(String artista : artistasInvitados){
-				Artistas[i] = artista;
-				i++;
-			}
-			return Artistas;
-		} else {
-			return new String[0];
+		String[] Artistas = new String[artistasInvitados.size()+1];
+		Artistas[0]="";
+		int i=1;
+		for(String artista : artistasInvitados){
+			Artistas[i] = artista;
+			i++;
 		}
+		return Artistas;
 	}	
 }

@@ -138,11 +138,6 @@ public class ControladorConsultaDeEspectaculoPublish {
 	}*/
 	
 	@WebMethod
-	public String[] listarPaquetesComboBox() {
-		return iCon.listarPaquetesComboBox();
-	}
-	
-	@WebMethod
 	public DtPaquete seleccionaPaquete(String nombre) {
 		return iCon.seleccionaPaquete(nombre);
 	}

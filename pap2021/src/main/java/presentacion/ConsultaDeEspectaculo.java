@@ -178,7 +178,6 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 					if(!campoVacio.equals(comboBoxEspectaculos.getSelectedItem().toString())) {
 						iccde.seleccionaEspectaculo(comboBoxEspectaculos.getSelectedItem().toString());
 						inicializarComboBoxFunciones();
-						inicializarComboBoxPaquetes();
 					}
 				}
 			}
@@ -234,10 +233,5 @@ public class ConsultaDeEspectaculo extends JInternalFrame {
 	public void inicializarComboBoxFunciones() {
 		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(iccde.listarFuncionesComboBox());
 		comboBoxFunciones.setModel(modelclases);
-	}
-	
-	public void inicializarComboBoxPaquetes() {
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(iccde.listarPaquetesComboBox());
-		comboBoxPaquetes.setModel(modelclases);
 	}
 }

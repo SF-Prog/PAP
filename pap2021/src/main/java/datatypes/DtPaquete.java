@@ -4,10 +4,6 @@ public class DtPaquete {
 	private String nombre;
 	private String descripcion;
 	private float descuento;
-
-	public DtPaquete() {
-		super();
-	}
 	
 	public DtPaquete(String nombre, String descripcion, float descuento) {
 		super();
