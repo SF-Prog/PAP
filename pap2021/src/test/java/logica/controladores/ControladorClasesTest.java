@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import logica.Artista;
 import logica.Espectaculo;
 import logica.Espectador;
+import logica.EspectadorPaquete;
 import logica.Funcion;
 import logica.Paquete;
 import logica.Plataforma;
@@ -86,12 +87,26 @@ public class ControladorClasesTest {
 	void Espectador() {
 		Espectador e = new Espectador("espectadorDSUI4Test", "nombre", "apellido", "espectadorDSUI3@test.com", date, "password", "urlImage");
 		e.setApellido("s");
-		
+
+		EspectadorPaquete ep = new EspectadorPaquete(date);
+		List<EspectadorPaquete> lep = new ArrayList<EspectadorPaquete>();
+		lep.add(ep);
+		e.setEspectadorPaquetes(lep);
+
 		assertEquals(e.getNombre(), "nombre");
+		assertEquals(lep, e.getEspectadorPaquetes());
 
 		Espectador e2 = new Espectador();
 		e2.setNickName("nickname");
 		assertEquals(e2.getNickName(), "nickname");
+	}
+	
+	@Test
+	void EspectadorPaquete() {
+		EspectadorPaquete ep = new EspectadorPaquete();
+		ep.setFechaCompra(date);
+
+		assertEquals(date, ep.getFechaCompra());
 	}
 	
 	@Test

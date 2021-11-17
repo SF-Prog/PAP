@@ -2,6 +2,7 @@ package logica.controladores;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,17 +16,19 @@ import logica.Usuario;
 public class ControladorConsultaDeUsuarioTest {
 	ControladorAltaDeUsuario CAU;
 	ControladorConsultaDeUsuario CCU;
+	int cantUsuariosActuales;
 
 	@BeforeEach
 	void inicializacion() {
 		CAU = new ControladorAltaDeUsuario();
 		CCU = new ControladorConsultaDeUsuario();
+		cantUsuariosActuales = CCU.listarUsuarios().size();
 	}
 	
 	@Test
-	void listarUsuariosTest() {		
+	void listarUsuariosTest() {
 		ArrayList<Usuario> usuarios = CCU.listarUsuarios();
-		assertEquals(usuarios.size(), 0);
+		assertEquals(usuarios.size(), cantUsuariosActuales);
 
 		String espectador = "espectadorTestCCU";
 		String emaile = "espectador@test.comCCU";
@@ -33,7 +36,7 @@ public class ControladorConsultaDeUsuarioTest {
 		CAU.ingresaUsuarioEspectador(dtEspectador);
 
 		usuarios = CCU.listarUsuarios();
-		assertEquals(usuarios.size(), 1);
+		assertEquals(usuarios.size(), cantUsuariosActuales + 1);
 		
 		String artista = "artistaTestCCU";
 		String emaila = "artista@test.comCCU";
@@ -41,7 +44,7 @@ public class ControladorConsultaDeUsuarioTest {
 		CAU.ingresaUsuarioArtista(dtArtista, "descripcion", "biografia", "link");
 
 		usuarios = CCU.listarUsuarios();
-		assertEquals(usuarios.size(), 2);
+		assertEquals(usuarios.size(), cantUsuariosActuales + 2);
 	}
 	
 	@Test
