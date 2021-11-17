@@ -51,8 +51,6 @@ public class Espectaculo {
 		this.setFechaRegistro(fechaRegistro);
 		this.setImage(image);
 	}
-	
-	
 
 	public String getNombre() {
 		return nombre;
